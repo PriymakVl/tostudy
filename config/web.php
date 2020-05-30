@@ -1,0 +1,104 @@
+<?php
+
+$params = require __DIR__ . '/params.php';
+$db = require __DIR__ . '/db.php';
+
+$config = [
+    'id' => 'basic',
+    'basePath' => dirname(__DIR__),
+    'bootstrap' => ['log'],
+    'aliases' => [
+        '@bower' => '@vendor/bower-asset',
+        '@npm'   => '@vendor/npm-asset',
+    ],
+    'modules' => [
+        'school' => [
+            'class' => 'app\modules\school\Module',
+        ],
+        'language' => [
+            'class' => 'app\modules\language\Module',
+        ],
+        'country' => [
+            'class' => 'app\modules\country\Module',
+        ],
+        'city' => [
+            'class' => 'app\modules\city\Module',
+        ],
+        'course' => [
+            'class' => 'app\modules\course\Module',
+        ],
+    ],
+    'components' => [
+        'request' => [
+            // !!! insert a secret key in the following (if it is empty) - this is required by cookie validation
+            'cookieValidationKey' => 'CZBaFc5axh7kxy-NorBVNxpWpPYsFaQv',
+            'baseUrl' => '',
+        ],
+        'cache' => [
+            'class' => 'yii\caching\FileCache',
+        ],
+        'user' => [
+            'identityClass' => 'app\models\User',
+            'enableAutoLogin' => true,
+        ],
+        'errorHandler' => [
+            'errorAction' => 'site/error',
+        ],
+        'mailer' => [
+            'class' => 'yii\swiftmailer\Mailer',
+            // send all mails to a file by default. You have to set
+            // 'useFileTransport' to false and configure a transport
+            // for the mailer to send real emails.
+            'useFileTransport' => true,
+        ],
+        'log' => [
+            'traceLevel' => YII_DEBUG ? 3 : 0,
+            'targets' => [
+                [
+                    'class' => 'yii\log\FileTarget',
+                    'levels' => ['error', 'warning'],
+                ],
+            ],
+        ],
+        'db' => $db,
+
+        'urlManager' => [
+            'enablePrettyUrl' => true,
+            'showScriptName' => false,
+            'rules' => [
+                'schools' => 'school/school/index', 
+                'school' => 'school/school/view',
+                'school/<action:\w+>' => 'school/school/<action>', 
+
+                'languages' => 'language/language/index', 
+                'countries' => 'country/country/index', 
+                'cities' => 'city/city/index', 
+                //admin
+                'admin/schools' => 'school/school-admin/index',
+                'admin/school/<action:\w+>' => 'school/admin-school/<action>',
+            ],
+        ],
+        'svg' => [ 'class' => 'app\components\Svg', ],
+        
+    ],
+    'params' => $params,
+];
+
+if (YII_ENV_DEV) {
+    // configuration adjustments for 'dev' environment
+    $config['bootstrap'][] = 'debug';
+    $config['modules']['debug'] = [
+        'class' => 'yii\debug\Module',
+        // uncomment the following to add your IP if you are not connecting from localhost.
+        //'allowedIPs' => ['127.0.0.1', '::1'],
+    ];
+
+    $config['bootstrap'][] = 'gii';
+    $config['modules']['gii'] = [
+        'class' => 'yii\gii\Module',
+        // uncomment the following to add your IP if you are not connecting from localhost.
+        //'allowedIPs' => ['127.0.0.1', '::1'],
+    ];
+}
+
+return $config;
