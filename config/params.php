@@ -6,4 +6,6 @@ return [
     'senderName' => 'Example.com mailer',
 
     'currencies' => ['€', '$', '£',  '₽'],
+    //for pass data in footer
+    'languages',
 ];

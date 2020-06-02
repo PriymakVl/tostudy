@@ -3,11 +3,8 @@
 namespace app\modules\school\controllers;
 
 use Yii;
-use app\modules\course\models\Course;
 use app\modules\school\models\School;
-use app\modules\language\models\Language;
 use app\modules\city\models\City;
-use app\components\Svg;
 
 class SchoolController extends \app\controllers\BaseController
 {
@@ -18,11 +15,12 @@ class SchoolController extends \app\controllers\BaseController
         return $this->render('index', compact('schools', 'city'));
     }
 
-    public function actionView($school_id)
+    public function actionView($id)
     {
-    	$school = School::findOne($school_id);
+    	$school = School::findOne(['col_id' => $id]);
+        debug($school);
     	$courses = $school->courses;
-    	// debug($courses[0]->templateWeeksOption());
+    	// debug($courses[0]->col_description_ru);
         return $this->render('view', compact('school', 'courses'));
     }
 

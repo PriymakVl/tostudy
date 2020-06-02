@@ -469,7 +469,7 @@ input::placeholder {
 	left: 0;
 	height: calc(100% - 90px);
     width: 100%;
-	background-image: url('../img/bg.jpg');
+	background-image: url('../../img/bg.jpg');
 	background-size: cover;
 }
 

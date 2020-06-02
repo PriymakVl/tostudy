@@ -33,7 +33,7 @@
 						<div class="wrap-price">
 							<div class="price">
 								<span>от</span> 
-								<?= $school->courses[0]->price .' '. $school->currency ?>
+								<?= $school->courses[0]->getLowestPrice() .' '. $school->currency ?>
 								<span>/ нед</span>
 							</div>
 							<a href="school?school_id=<?= $school->col_id ?>" class="view">Смотреть курсы</a>

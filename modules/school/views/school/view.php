@@ -40,7 +40,7 @@
 					<div class="tab hidden tab2" id="js-tab2">
 						<ul>
 							<?php if ($courses): ?>
-								<?php foreach ($courses as $$cours): ?>
+								<?php foreach ($courses as $cours): ?>
 									
 									<li class="item">
 										<a href="#" class="question js-question" data-answer-id="#question-<?= $cours->col_id ?>">
@@ -50,7 +50,7 @@
 											</span>
 										</a>
 									<div class="answer js-answer" id="question-<?= $cours->col_id ?>">
-										<?= $cours->col_description ?>
+										<?= $cours->col_description_ru ?>
 									</div>
 									</li>
 

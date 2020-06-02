@@ -3,8 +3,8 @@
 namespace app\modules\course\controllers;
 
 use Yii;
-use app\modules\course\models\Course;
-use app\modules\course\models\CourseSearch;
+use app\modules\cours\models\Cours;
+use app\modules\cours\models\CourseSearch;
 use app\controllers\BaseController;
 use yii\web\NotFoundHttpException;
 use yii\filters\VerbFilter;

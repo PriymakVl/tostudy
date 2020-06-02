@@ -14,7 +14,9 @@
 		<ul id="js-form-course" class="form-select js-form-select">
 			<?php if ($courses): ?>
 				<?php foreach ($courses as $cours): ?>
-					<li class="js-course-option" data-value="<?= $cours->col_id ?>"><?= $cours->name ?></li>'
+					<li class="js-course-option" data-cours_id="<?= $cours->col_id ?>">
+						<?= $cours->name ?>
+					</li>
 				<?php endforeach ?>
 			<?php endif ?>
 		</ul> <!-- /.form-select -->

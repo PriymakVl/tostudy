@@ -73,12 +73,16 @@ $config = [
                 'languages' => 'language/language/index', 
                 'countries' => 'country/country/index', 
                 'cities' => 'city/city/index', 
+                'course/<action:\w+>' => 'course/course/<action>', 
+
                 //admin
                 'admin/schools' => 'school/school-admin/index',
                 'admin/school/<action:\w+>' => 'school/admin-school/<action>',
             ],
         ],
         'svg' => [ 'class' => 'app\components\Svg', ],
+        //get settings from table settings database
+        'setting' => ['class' => 'app\components\SettingComponent'],
         
     ],
     'params' => $params,

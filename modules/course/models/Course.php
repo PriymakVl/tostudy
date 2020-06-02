@@ -4,7 +4,7 @@ namespace app\modules\course\models;
 
 use Yii;
 
-class Course extends \app\modules\course\models\CourseBase
+class Course extends \app\modules\cours\models\CoursBase
 {
 
 

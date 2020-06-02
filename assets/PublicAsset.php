@@ -25,15 +25,15 @@ class PublicAsset extends AssetBundle
     ];
     public $js = [
     // <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
-    '/js/public/slick.min.js',
-    '/js/public/moment.min.js',
-    '/js/public/moment-with-locales.js',
-    '/js/public/nprogress.js',
-    '/js/public/main.js',
+    'js/public/slick.min.js',
+    // 'js/public/moment.min.js',
+    'js/public/moment-with-locales.js',
+    'js/public/nprogress.js',
+    'js/public/main.js',
     // <script src="//code.jivosite.com/widget/3gTQRLtjez" async></script>
     ];
     public $depends = [
-        // 'yii\web\YiiAsset',
-        //'yii\bootstrap\BootstrapAsset',
+        'yii\web\YiiAsset',
+        // 'yii\bootstrap\BootstrapAsset',
     ];
 }

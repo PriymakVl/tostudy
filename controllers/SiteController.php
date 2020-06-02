@@ -4,13 +4,13 @@ namespace app\controllers;
 
 use Yii;
 use yii\filters\AccessControl;
-use yii\web\Controller;
+use app\controllers\BaseController;
 use yii\web\Response;
 use yii\filters\VerbFilter;
-use app\models\LoginForm;
-use app\models\ContactForm;
+use app\models\{LoginForm, ContactForm, Review, Faq, Partner};
+use app\modules\school\models\School;
 
-class SiteController extends Controller
+class SiteController extends BaseController
 {
     /**
      * {@inheritdoc}
@@ -61,7 +61,12 @@ class SiteController extends Controller
      */
     public function actionIndex()
     {
-        return $this->render('index');
+        $reviews = Review::findAll(['col_home_page' => 1]);
+        $schools = School::findAll(['col_home_page' => 1]);
+        $questions = Faq::find()->all();
+        $partners = Partner::find()->all();
+        $this->setParams();
+        return $this->render('index', compact('schools', 'reviews', 'settings', 'questions', 'partners'));
     }
 
     /**

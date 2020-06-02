@@ -2,7 +2,6 @@
 
 /* @var $this \yii\web\View */
 /* @var $content string */
-
 use yii\helpers\Html;
 
 \app\assets\PublicAsset::register($this);
@@ -23,7 +22,11 @@ use yii\helpers\Html;
 
 <div class="wrapper">
 
-	<?=$this->render('@app/views/templates/header')?>
+	<?php if (Yii::$app->controller->id == 'site' && Yii::$app->controller->action->id == 'index'): ?>
+			<?=$this->render('@app/views/templates/header_home')?>
+		<?php else: ?>
+			<?=$this->render('@app/views/templates/header')?>
+	<?php endif ?>
 
     <?= $content ?>
 
