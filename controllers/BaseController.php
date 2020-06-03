@@ -15,6 +15,7 @@ class BaseController extends \yii\web\Controller
 		$this->request = Yii::$app->request;
 		$this->session = Yii::$app->session;
         $this->session->open();
+        $this->setParams();
 	} 
 
 	public function setMessage($text, $type = 'success')

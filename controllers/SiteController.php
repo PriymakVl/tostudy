@@ -7,7 +7,7 @@ use yii\filters\AccessControl;
 use app\controllers\BaseController;
 use yii\web\Response;
 use yii\filters\VerbFilter;
-use app\models\{LoginForm, ContactForm, Review, Faq, Partner};
+use app\models\{LoginForm, ContactForm, Review, Faq, Partner, Page};
 use app\modules\school\models\School;
 
 class SiteController extends BaseController
@@ -65,7 +65,6 @@ class SiteController extends BaseController
         $schools = School::findAll(['col_home_page' => 1]);
         $questions = Faq::find()->all();
         $partners = Partner::find()->all();
-        $this->setParams();
         return $this->render('index', compact('schools', 'reviews', 'settings', 'questions', 'partners'));
     }
 
@@ -108,17 +107,15 @@ class SiteController extends BaseController
      *
      * @return Response|string
      */
-    public function actionContact()
+    public function actionContacts()
     {
-        $model = new ContactForm();
-        if ($model->load(Yii::$app->request->post()) && $model->contact(Yii::$app->params['adminEmail'])) {
-            Yii::$app->session->setFlash('contactFormSubmitted');
+        // $model = new ContactForm();
+        // if ($model->load(Yii::$app->request->post()) && $model->contact(Yii::$app->params['adminEmail'])) {
+        //     Yii::$app->session->setFlash('contactFormSubmitted');
 
-            return $this->refresh();
-        }
-        return $this->render('contact', [
-            'model' => $model,
-        ]);
+        //     return $this->refresh();
+        // }
+        return $this->render('contacts');
     }
 
     /**
@@ -128,12 +125,19 @@ class SiteController extends BaseController
      */
     public function actionAbout()
     {
-        debug('argument');
-        return $this->render('about');
+        $page = Page::about();
+        return $this->render('about', ['page' => $page]);
     }
 
-    public function actionTest()
+    public function actionInsurance()
     {
-        return 'test';
+        $page = Page::insurance();
+        return $this->render('insurance', ['page' => $page]);
+    }
+
+    public function actionOrder()
+    {
+        $page = Page::order();
+        return $this->render('order', ['page' => $page]);
     }
 }

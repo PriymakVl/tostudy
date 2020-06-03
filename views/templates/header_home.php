@@ -5,7 +5,7 @@
 		<h1 class="title">Подберем программу обучения</h1>
 		<div class="subtitle">ВЫГОДНЕЕ, ЧЕМ НАПРЯМУЮ В ШКОЛЕ. СКИДКИ ДО 50%</div>
 		
-		<form action="/search.php" method="get" class="form">
+		<form action="/search/result" method="get" class="form">
 			<div>
 				<div class="input__field input__select js-open-form-select" data-id="#js-form-language">
 					<span class="js-selected">Язык</span>
@@ -30,8 +30,7 @@
 					<span class="js-selected">Город</span>
 					<?= Yii::$app->svg->get('arrow-bottom') ?>
 					<ul id="js-form-city" class="form-select js-form-select">
-						<li class="js-city-option" data-value="0"><?=$ini_file['search']['option_all']?></li>
-						<?//=$cities?>
+						<li class="js-city-option" data-value="0">Все</li>
 					</ul> <!-- /.form-select -->
 				</div> <!-- /.input__field -->
 			</div>

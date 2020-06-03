@@ -66,6 +66,9 @@ $config = [
             'enablePrettyUrl' => true,
             'showScriptName' => false,
             'rules' => [
+                //alias
+                '<alias:|contacts|about|insurance|order>' => 'site/<alias>',
+
                 'schools' => 'school/school/index', 
                 'school' => 'school/school/view',
                 'school/<action:\w+>' => 'school/school/<action>', 

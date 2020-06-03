@@ -63,12 +63,22 @@ class Country extends \app\models\ModelApp
         return $this->hasMany(City::className(), ['col_country_id' => 'col_id']);
     }
 
-    public function getSchools()
+    public static function countSchools($country_id)
     {
-        $shools = 0;
-        if (!$this->cities) return $schools;
-        foreach ($this->cities as $city) {
-            $schools += $city->schools ? count($city->schools) : 0;
+        $count = 0;
+        $schools = self::getSchools($country_id);
+        if ($schools) $count = count($schools);
+        return $count;
+    }
+
+    public static function getSchools($country_id)
+    {
+        $schools = [];
+        $cities = City::findAll(['col_country_id' => $country_id]);
+        if (!$cities) return $schools;
+        foreach ($cities as $city) {
+            if (!$city->schools) continue;
+            else $schools = array_merge($schools, $city->schools);
         }
         return $schools;
     }

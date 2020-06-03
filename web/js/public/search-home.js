@@ -17,9 +17,18 @@ $(document).ready(function() {
 	$('#js-form-country').on('click', '.js-country-option', function(){
 		let $this = $(this);
 		$('#js-search-country').val($this.data('value')); //параметр поиска
-		return $.get('/search/cities', {country_id: $this.data('value')}, (data) => {template_cities(data);});
-		// return location.href = '/search/cities?country_id=' + $this.data('value'); 
+		$.get('/search/cities', {country_id: $this.data('value')}, (data) => {template_cities(data);});
 		$selected.children('.js-selected').text($this.text());
+		$('.js-form-select').hide();
+		return false;
+	});
+
+	/* Выбор города (поиск)
+	------------------------------------------------------- */
+	$('#js-form-city').on('click', '.js-city-option', function(){
+		var $this = $(this);
+		$('#js-search-city').val($this.data('value')); 
+		$selected.children('.js-selected').text($this.text()); 
 		$('.js-form-select').hide();
 		return false;
 	});
@@ -27,7 +36,6 @@ $(document).ready(function() {
 });
 
 function template_countries(countries) {
-	// location.href = '/search/countries?lang_id=' + lang_id; 
 	if (!countries) return;
 	countries = JSON.parse(countries);
 	let list_item_str = '<li class="js-country-option" data-value="0">Все</li>';
@@ -40,7 +48,13 @@ function template_countries(countries) {
 
 function template_cities(cities) {
 	// return location.href = '/search/cities?lang_id=' + lang_id; 
-	return console.log(cities);
+	if (!cities) return;
+	cities = JSON.parse(cities);
+	let list_item_str = '<li class="js-city-option" data-value="0">Все</li>';
+	for(let i = 0; i < cities.length; i++) {
+		list_item_str += '<li class="js-city-option" data-value="' + cities[i].col_id + '">' + cities[i].col_title_ru + '</li>'
+	}
+	$('#js-form-city').empty().append(list_item_str);
 }
 
 			//возвращаем значения списка городов по умолчанию

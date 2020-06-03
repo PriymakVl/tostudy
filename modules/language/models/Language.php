@@ -18,6 +18,8 @@ use Yii;
 class Language extends \app\models\ModelApp
 {
 
+    public $countries;
+
     /**
      * {@inheritdoc}
      */
@@ -51,6 +53,24 @@ class Language extends \app\models\ModelApp
             'col_title_cn' => 'Col Title Cn',
             'col_img' => 'Col Img',
         ];
+    }
+
+    public function getCountries()
+    {
+        return $this->hasOne(this::className(), ['col_id' => 'col_lang_id']);
+    }
+
+    public static function getSchools($lang_id)
+    {
+        $schools = [];
+        $countries = Country::findAll(['col_lang_id' => $lang_id]);
+        if (!$countries) return $schools;
+        foreach ($countries as $country) {
+            $country_schools = Country::getSchools($country->col_id);
+            if (!$country_schools) continue;
+            else $schools = array_merge($schools, $country_schools);
+        }
+        return $schools;
     }
 
 

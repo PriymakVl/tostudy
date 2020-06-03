@@ -3,7 +3,7 @@
 			<a href="/" class="logo">to<span>study</span></a>
 			<ul class="nav row2">
 				<li class="link">
-					<a href="/about.php">О нас</a>
+					<a href="/about">О нас</a>
 				</li>
 				<li class="link sel">
 					<a href="#">Программы</a>
@@ -14,26 +14,26 @@
 					</ul> <!-- /.form-select -->
 				</li> <!-- /.link -->
 				<li class="link sel">
-					<a href="/info.php">Полезная информация</a>
+					<a href="/info">Полезная информация</a>
 					<ul class="form-select">
-						<li><a href="/info.php">Полезная информация</a></li>
-						<li><a href="/news.php">Новости</a></li>
+						<li><a href="/info">Полезная информация</a></li>
+						<li><a href="/news">Новости</a></li>
 					</ul> <!-- /.form-select -->
 				</li> <!-- /.link -->
 				<li class="link">
-					<a href="/actions.php">Акции</a>
+					<a href="/actions">Акции</a>
 				</li>
 				<li class="link">
-					<a href="/insurance.php">Страхование</a>
+					<a href="/insurance">Страхование</a>
 				</li>
 				<li class="link">
-					<a href="/how_to_order.php">Как заказать</a>
+					<a href="/order">Как заказать</a>
 				</li>
 				<li class="link">
-					<a href="/reviews.php">Отзывы</a>
+					<a href="/reviews">Отзывы</a>
 				</li>
 				<li class="link">
-					<a href="/contacts.php">Контакты</a>
+					<a href="/contacts">Контакты</a>
 				</li>
 			</ul> <!-- /.nav -->
 		</div> <!-- /.column-left -->
