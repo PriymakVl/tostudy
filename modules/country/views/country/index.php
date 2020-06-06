@@ -6,7 +6,7 @@ use app\modules\school\models\School;
 <div id="breadcrumbs">
 	<div class="wrap">
 		<a href="/">Главная</a>
-		<a href="/languages">Каталог школ (Языки)</a>
+		<a href="/languages">Языки</a>
 		<span><?=$lang->col_title_ru?></span>
 	</div> <!-- /.wrap -->
 </div> <!-- /#breadcrumbs -->
@@ -14,19 +14,24 @@ use app\modules\school\models\School;
 
 <section class="section section-countries">
 	<div class="wrap">
+
+		<?= app\widgets\Info::widget() ?>
+
 		<h1>Страны</h1>
 		<div class="countries">
 			<?php if ($countries): ?>
 				<?php foreach ($countries as $country): ?>
-
-					<a href="/cities?country_id=<?=$country->col_id?>" class="item">
-						<img src="/img/countries/<?= $country->col_img ?>" alt="<?= $country->col_title_ru ?>" class="country">
-						<div class="container">
-							<h3><?= $country->col_title_ru ?></h3>
-							<span class="school"><?= School::suffixWords($country->schools, 'ru', true) ?></span>
-						</div>
-						<span href="#" class="btn">Смотреть все школы</span>
-					</a>
+					<?php $count_schools = $country->countSchoolsByProgram($program); ?>
+					<?php if ($count_schools): ?>
+						<a href="/cities?country_id=<?=$country->col_id?>" class="item">
+							<img src="/img/countries/<?= $country->col_img ?>" alt="<?= $country->col_title_ru ?>" class="country">
+							<div class="container">
+								<h3><?= $country->col_title_ru ?></h3>
+								<span class="school"><?= School::suffixWords($count_schools, 'ru', true) ?></span>
+							</div>
+							<span href="#" class="btn">Смотреть все школы</span>
+						</a>
+					<? endif; ?>
 					<!-- suffixWords($arr['col_count_schools'], $ini_file['header']['locale'], true)  -->
 				<?php endforeach ?>
 			<?php endif ?>

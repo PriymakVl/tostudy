@@ -20,18 +20,18 @@
 			<div>
 				<h3>Клиентам</h3>
 				<ul>
-					<li><a href="/info.php" class="link">Полезная информация</a></li>
-					<li><a href="/news.php" class="link">Новости</a></li>
-					<li><a href="/insurance.php" class="link">Страхование</a></li>
-					<li><a href="/how_to_order.php" class="link">Как заказать</a></li>
+					<li><a href="/info" class="link">Полезная информация</a></li>
+					<li><a href="/news" class="link">Новости</a></li>
+					<li><a href="/insurance" class="link">Страхование</a></li>
+					<li><a href="/order" class="link">Как заказать</a></li>
 				</ul>
 			</div>
 			<div>
 				<h3>О нас</h3>
 				<ul>
-					<li><a href="/contacts.php" class="link">Контакты</a></li>
-					<li><a href="/about.php" class="link">О нас</a></li>
-					<li><a href="/reviews.php" class="link">Отзывы</a></li>
+					<li><a href="/contacts" class="link">Контакты</a></li>
+					<li><a href="/about" class="link">О нас</a></li>
+					<li><a href="/reviews" class="link">Отзывы</a></li>
 					<li>
 						<a href="https://www.facebook.com/<?= Yii::$app->setting->get('col_facebook') ?>/" target="_blank" class="link link2">
 							Facebook 

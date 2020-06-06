@@ -1,10 +1,14 @@
+<?php 
+	$this->registerJsFile('@web/js/public/calculator.js', ['depends' => [\yii\web\JqueryAsset::className()]]);
+ ?>
+
 <div id="breadcrumbs">
 	<div class="wrap">
 		<a href="/">Главная</a>
 		<a href="/languages">Языки</a>
-		<a href="/countries">Страны</a>
-		<a href="/cities">Города</a>
-		<a href="/schools">Школы</a>
+		<a href="/countries?lang_id=<?= Yii::$app->session->get('lang_id') ?>">Страны</a>
+		<a href="/cities?country_Id=<?= Yii::$app->session->get('country_id') ?>">Города</a>
+		<a href="/schools?city_id=<?= Yii::$app->session->get('city_id') ?>">Школы</a>
 		<span><?= $school->name ?></span>
 	</div> <!-- /.wrap -->
 </div> <!-- /#breadcrumbs -->

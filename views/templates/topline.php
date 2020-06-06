@@ -8,17 +8,24 @@
 				<li class="link sel">
 					<a href="#">Программы</a>
 					<ul class="form-select">
-						<li><a href="/languages">Языковые курсы</a></li>
-						<li><a href="/schools.php?sub_cat=1">Летние программы и лагеря для детей</a></li>
-						<li><a href="/schools.php?sub_cat=2">Высшее и последипломное образование</a></li>
+						<li>
+							<a href="/languages?program=<?= Yii::$app->program->get('language') ?>">Языковые курсы</a>
+						</li>
+						<li>
+							<a href="/languages?program=<?= Yii::$app->program->get('camp') ?>">Летние программы и лагеря для детей</a>
+						</li>
+						<li>
+							<a href="/languages?program=<?= Yii::$app->program->get('higher') ?>">Высшее и последипломное образование</a>
+						</li>
 					</ul> <!-- /.form-select -->
 				</li> <!-- /.link -->
-				<li class="link sel">
-					<a href="/info">Полезная информация</a>
-					<ul class="form-select">
+				<li class="link">
+					<!-- <a href="/info">Полезная информация</a> -->
+					<a href="/news">Новости</a>
+					<!-- <ul class="form-select">
 						<li><a href="/info">Полезная информация</a></li>
 						<li><a href="/news">Новости</a></li>
-					</ul> <!-- /.form-select -->
+					</ul> --> <!-- /.form-select -->
 				</li> <!-- /.link -->
 				<li class="link">
 					<a href="/actions">Акции</a>

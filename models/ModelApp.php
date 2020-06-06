@@ -63,4 +63,20 @@ class ModelApp extends \yii\db\ActiveRecord
         return $this->col_title_ru;
     }
 
+    public function sortSchoolsByProgram($program)
+    {
+        $schools_program = [];
+        if (!$this->schools) return $schools_program;
+        foreach ($this->schools as $school) {
+            if ($school->col_subcategory == intval($program)) $schools_program[] = $school;
+        }
+        return $schools_program;
+    }
+
+    public function countSchoolsByProgram($program)
+    {
+        $schools = $this->sortSchoolsByProgram($program);
+        return $schools ? count($schools) : 0;
+    }
+
 }

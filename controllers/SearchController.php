@@ -15,8 +15,8 @@ class SearchController extends \app\controllers\BaseController
         $schools = false;
         if(!empty($get['school'])) $schools = School::find()->where(['like', 'col_title', $get['school']])->all();
         else if (!empty($get['city'])) $schools = School::findAll(['col_city_id' => $get['city']]);
-        else if (!empty($get['country'])) $schools = Country::getSchools($get['country']);
-        else if (!empty($get['language'])) $schools = language::getSchools($get['language']);
+        else if (!empty($get['country'])) $schools = Country::findSchools($get['country']);
+        else if (!empty($get['language'])) $schools = language::findSchools($get['language']);
         return $this->render('result', compact('schools'));
     }
 

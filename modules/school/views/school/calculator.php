@@ -2,20 +2,16 @@
 	<h2>Калькулятор</h2>
 	<label class="input__label">
 		<span>Тип курса</span>
-		<span class="price" id="js-course-price"></span>
 	</label>
 	
-	<div class="input__field input__select js-open-form-select"
-		 data-value="0"
-		 data-school="<?=$_GET['id']?>"
-		 id="js-course" data-id="#js-form-course">
-		<span class="js-selected">Выберите курс</span>
+	<div class="input__field input__select" id="js-course">
+		<span class="js-selected" data-course_id="">Выберите курс</span>
 		<?= Yii::$app->svg->get('arrow-bottom') ?>
 		<ul id="js-form-course" class="form-select js-form-select">
 			<?php if ($courses): ?>
-				<?php foreach ($courses as $cours): ?>
-					<li class="js-course-option" data-cours_id="<?= $cours->col_id ?>">
-						<?= $cours->name ?>
+				<?php foreach ($courses as $course): ?>
+					<li class="js-course-option" data-course_id="<?= $course->col_id ?>">
+						<?= $course->name ?>
 					</li>
 				<?php endforeach ?>
 			<?php endif ?>
@@ -26,11 +22,10 @@
 		<span>Количество недель</span>
 	</label>
 	
-	<div class="input__field input__select js-open-form-select" data-weeks="0" id="js-weeks" data-id="#js-form-weeks">
-		<span class="js-selected">Выберите количество недель</span>
+	<div class="input__field input__select" id="js-weeks">
+		<span class="js-selected" data-price="0">Выберите количество недель</span>
 		<?= Yii::$app->svg->get('arrow-bottom') ?>
-		<ul id="js-form-weeks" class="form-select js-form-select">
-			<?//=$weeks_op?>
+		<ul id="js-form-weeks" class="form-select">
 		</ul> <!-- /.form-select -->
 	</div> <!-- /.input__field -->
 	

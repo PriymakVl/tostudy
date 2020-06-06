@@ -35,7 +35,7 @@
 							</div>
 							<a href="/school?id=<?= $school->col_id ?>" class="view">Смотреть курсы</a>
 						</div>
-					</div>'
+					</div>
 
 				<?php endforeach ?>
 			</div>

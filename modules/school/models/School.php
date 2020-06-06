@@ -8,6 +8,7 @@ use app\modules\course\models\Course;
 
 class School extends \app\modules\school\models\SchoolBase
 {
+
     public static function suffixWords($n, $key, $output_n = true) 
     {
     	$words = [

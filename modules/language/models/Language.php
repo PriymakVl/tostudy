@@ -3,6 +3,7 @@
 namespace app\modules\language\models;
 
 use Yii;
+use app\modules\country\models\Country;
 
 /**
  * This is the model class for table "tbl_languages".
@@ -60,15 +61,19 @@ class Language extends \app\models\ModelApp
         return $this->hasOne(this::className(), ['col_id' => 'col_lang_id']);
     }
 
-    public static function getSchools($lang_id)
+    public function getSchools()
+    {
+        return self::findSchools($this->col_id);
+    }
+
+    public static function findSchools($lang_id)
     {
         $schools = [];
-        $countries = Country::findAll(['col_lang_id' => $lang_id]);
+        $countries = Country::findAll(['col_language_id' => $lang_id]);
         if (!$countries) return $schools;
         foreach ($countries as $country) {
-            $country_schools = Country::getSchools($country->col_id);
-            if (!$country_schools) continue;
-            else $schools = array_merge($schools, $country_schools);
+            if (!$country->schools) continue;
+            else $schools = array_merge($schools, $country->schools);
         }
         return $schools;
     }

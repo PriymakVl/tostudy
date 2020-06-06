@@ -1,52 +1,71 @@
+<?php 
+use yii\helpers\Html;
+use yii\widgets\ActiveForm;
+use app\widgets\Alert;
+
+?>
+
 <div id="breadcrumbs">
 	<div class="wrap">
-		<a href="/"><?=$ini_file['pages']['home']?></a>
-		<span><?=$ini_file['nav']['link7']?></span>
+		<a href="/">Главная</a>
+		<span>Контакты</span>
 	</div> <!-- /.wrap -->
 </div> <!-- /#breadcrumbs -->
 
+<div class="wrap">
+	<?php if( Yii::$app->session->hasFlash('success') ): ?>
+		<div  class="alert alert-success">
+			<?php echo Yii::$app->session->getFlash('success'); ?>
+		</div>
+	<?php elseif( Yii::$app->session->hasFlash('error') ): ?>
+		<div class="alert alert-danger">
+			<?php echo Yii::$app->session->getFlash('error'); ?>
+		</div>
+	<?php endif;?>
+</div>
+
 <div id="contacts">
 	<div class="wrap">
-		<h1 class="page-title"><?=$ini_file['nav']['link7']?></h1>
+		<h1 class="page-title">Контакты</h1>
 		<div class="content row">
 			<div class="column-left">
-				<p><?=$row_st['col_address']?></p>
-				<p><?=$ini_file['contacts']['tel']?>: <?=$row_st['col_tel']?></p>
-				<p><?=$row_st['col_email']?></p>
+				<p><?= $contact->col_address_ru ?></p>
+				<p>тел: <?= $contact->col_tel ?></p>
+				<p><?= $contact->col_email ?></p>
 				<div class="social-network">
-					<a href="https://www.facebook.com/<?=$row_st['col_facebook']?>/" target="_blank">
+					<a href="https://www.facebook.com/<?= $contact->col_facebook ?>/" target="_blank">
 						<?= Yii::$app->svg->get('facebook-contacts') ?>
 					</a>
-					<a href="https://www.instagram.com/<?=$row_st['col_instagram']?>/" target="_blank">
+					<a href="https://www.instagram.com/<?= $contact->col_instagram ?>/" target="_blank">
 						<?= Yii::$app->svg->get('instagram-contacts') ?>
 					</a>
-					<a href="https://vk.com/<?=$row_st['col_vk']?>/" target="_blank">
+					<a href="https://vk.com/<?= $contact->col_vk ?>/" target="_blank">
 						<?= Yii::$app->svg->get('vk-contacts') ?>
 					</a>
-					<a href="https://ok.com/<?=$row_st['col_ok']?>/" target="_blank">
+					<a href="https://ok.com/<?= $contact->col_ok ?>/" target="_blank">
 						<?= Yii::$app->svg->get('ok-contacts') ?>
 					</a>
 				</div> <!-- /.social-network -->
-				<p class="label"><?=$ini_file['contacts']['schedule']?>:</p>
-				<p class="last"><?=$row_st['col_schedule']?></p>
+				<p class="label">Гравфик работы:</p>
+				<p class="last">Ежедневно с 10:00 до 21:00 (без перерыва и выходных)</p>
 			</div> <!-- /.column-left -->
 			
 			<div class="form">
-				<h2><?=$ini_file['feedback']['title']?>:</h2>
-				<label class="input__label"><?=$ini_file['feedback']['username']?></label>
-				<div class="input__field">
-					<input type="text" id="js-username-feedback">
-				</div>
-				<label class="input__label"><?=$ini_file['feedback']['email']?></label>
-				<div class="input__field">
-					<input type="email" id="js-email-feedback">
-				</div>
-				<label class="input__label"><?=$ini_file['feedback']['comment']?></label>
-				<div class="input__field input__text last">
-					<textarea id="js-comment-feedback"></textarea>
-				</div>
-				<a href="#" class="btn btn2" id="js-feedback"><?=$ini_file['feedback']['btn']?></a>
+				<h2>Напишите нам:</h2>
+				<? $form = ActiveForm::begin(); ?>
+
+					<?= $form->field($model, 'col_username', ['template' => "{error}\n{label}\n{input}"])->label('Имя',['class'=>'input__label']) ?>
+
+					<?= $form->field($model, 'col_email', ['template' => "{error}\n{label}\n{input}"])->label('Email',['class'=>'input__label']) ?>
+
+					<?= $form->field($model, 'col_comment', ['template' => "{error}\n{label}\n{input}"])->textarea(['class' => ''])->label('Текст',['class'=>'input__label']) ?>
+
+					<?= Html::submitButton('Отправить', ['class' => 'btn btn2']) ?>
+
+				<?php ActiveForm::end() ?>
 			</div> <!-- /.form -->
-		</div> <!-- /.content -->
-	</div> <!-- /.wrap -->
-</div> <!-- /#contacts -->
+
+		</div>	<!-- /.row -->
+	</div>	<!-- /.wrap -->
+</div>	<!-- /#contacts -->
+

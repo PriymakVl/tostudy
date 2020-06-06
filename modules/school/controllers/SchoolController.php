@@ -10,9 +10,11 @@ class SchoolController extends \app\controllers\BaseController
 {
     public function actionIndex($city_id)
     {
+        Yii::$app->session->set('city_id', $city_id);
+        $program = Yii::$app->session->get('program');
     	$city = City::findOne($city_id);
-    	$schools = School::findAll(['col_city_id' => $city_id]);
-        return $this->render('index', compact('schools', 'city'));
+        $schools = $city->sortSchoolsByProgram($program);
+        return $this->render('index', compact('schools', 'city', 'program'));
     }
 
     public function actionView($id)

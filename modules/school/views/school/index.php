@@ -6,8 +6,8 @@
 	<div class="wrap">
 		<a href="/">Главная</a>
 		<a href="/languages">Языки</a>
-		<a href="/countries">Страны</a>
-		<a href="/cities">Города</a>
+		<a href="/countries?lang_id=<?= Yii::$app->session->get('lang_id') ?>">Страны</a>
+		<a href="/cities?country_Id=<?= Yii::$app->session->get('country_id') ?>">Города</a>
 		<span><?= $city->col_title_ru ?></span>
 	</div> <!-- /.wrap -->
 </div> <!-- /#breadcrumbs -->
@@ -15,16 +15,19 @@
 	
 <section class="section section-schools">
 	<div class="wrap">
+		
+		<?= app\widgets\Info::widget() ?>
+
 		<h2>Школы</h2>
 		<div class="schools">
 			<?php if ($schools): ?>
 				<?php foreach ($schools as $school): ?>
 
 					<div class="item">
-						<a href="school?school_id=<?= $school->col_id ?>" class="wrap-img">
+						<a href="school?id=<?= $school->col_id ?>" class="wrap-img">
 							<img src="img/schools/<?= $school->col_img_mini ?>" alt="<?= $shool->col_title_ru ?>">
 						</a>
-						<h4><a href="<?= $school->col_url ?>"><?= $shool->col_title_ru ?></a></h4>
+						<h4><a href="school?id=<?= $school->col_id ?>"><?= $shool->col_title_ru ?></a></h4>
 						<div class="location">
 							<?= Yii::$app->svg->get('locale') ?>
 							<?= $school->city->name ?>,
@@ -36,9 +39,9 @@
 								<?= $school->courses[0]->getLowestPrice() .' '. $school->currency ?>
 								<span>/ нед</span>
 							</div>
-							<a href="school?school_id=<?= $school->col_id ?>" class="view">Смотреть курсы</a>
+							<a href="school?id=<?= $school->col_id ?>" class="view">Смотреть курсы</a>
 						</div>
-					</div>';
+					</div>
 
 				<?php endforeach ?>
 			<?php endif ?>

@@ -67,4 +67,5 @@ class City extends \app\models\ModelApp
     {
         return $this->hasOne(Country::className(), ['col_id' => 'col_country_id']);
     }
+    
 }

@@ -7,14 +7,10 @@ use app\modules\language\models\Language;
 
 class BaseController extends \yii\web\Controller
 {
-	public $session;
-	public $request;
 
 	public function init()
 	{
-		$this->request = Yii::$app->request;
-		$this->session = Yii::$app->session;
-        $this->session->open();
+        Yii::$app->session->open();
         $this->setParams();
 	} 
 

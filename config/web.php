@@ -67,7 +67,10 @@ $config = [
             'showScriptName' => false,
             'rules' => [
                 //alias
-                '<alias:|contacts|about|insurance|order>' => 'site/<alias>',
+                '<alias:|contacts|about|insurance|order|reviews|>' => 'site/<alias>',
+
+                'news' => 'news/index',
+                'article' => 'news/view',
 
                 'schools' => 'school/school/index', 
                 'school' => 'school/school/view',
@@ -86,6 +89,8 @@ $config = [
         'svg' => [ 'class' => 'app\components\Svg', ],
         //get settings from table settings database
         'setting' => ['class' => 'app\components\SettingComponent'],
+        //get programs educations
+        'program' => ['class' => 'app\components\ProgramComponent'],
         
     ],
     'params' => $params,

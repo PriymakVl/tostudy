@@ -21,7 +21,8 @@ class PublicAsset extends AssetBundle
     public $baseUrl = '@web';
     public $css = [
         'css/public/style.css',
-        'css/public/media.css'
+        'css/public/media.css',
+        'css/public/change.css',
     ];
     public $js = [
     // <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>

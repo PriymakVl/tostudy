@@ -7,8 +7,9 @@ use yii\filters\AccessControl;
 use app\controllers\BaseController;
 use yii\web\Response;
 use yii\filters\VerbFilter;
-use app\models\{LoginForm, ContactForm, Review, Faq, Partner, Page};
+use app\models\{LoginForm, ContactForm, Review, Faq, Partner, Page, Setting, Feedback, Article};
 use app\modules\school\models\School;
+use app\modules\course\models\Course;
 
 class SiteController extends BaseController
 {
@@ -102,21 +103,17 @@ class SiteController extends BaseController
         return $this->goHome();
     }
 
-    /**
-     * Displays contact page.
-     *
-     * @return Response|string
-     */
     public function actionContacts()
     {
-        // $model = new ContactForm();
-        // if ($model->load(Yii::$app->request->post()) && $model->contact(Yii::$app->params['adminEmail'])) {
-        //     Yii::$app->session->setFlash('contactFormSubmitted');
-
-        //     return $this->refresh();
-        // }
-        return $this->render('contacts');
+        $contact = Setting::find()->one();
+        $model = new Feedback;
+        if (Yii::$app->request->isGet) return $this->render('contacts', compact('contact', 'model'));
+        if ($model->load(Yii::$app->request->post()) && $model->save()) {
+            return $this->setMessage('Спасибо, заявка принята. Мы свяжемся с Вами в ближайшее время.')->back();
+        }
+        return $this->setMessage('Возникла ошибка', 'error')->back();
     }
+
 
     /**
      * Displays about page.
@@ -139,5 +136,18 @@ class SiteController extends BaseController
     {
         $page = Page::order();
         return $this->render('order', ['page' => $page]);
+    }
+
+    public function actionReviews()
+    {
+        $reviews = Review::find()->all();
+        return $this->render('reviews', ['reviews' => $reviews]);
+    }
+
+    public function actionCalculator($course_id)
+    {
+        $course = Course::findOne($course_id);
+        $weeks = $course->getWeeksWithPrices();
+        return json_encode($weeks);
     }
 }

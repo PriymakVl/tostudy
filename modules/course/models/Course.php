@@ -24,28 +24,29 @@ class Course extends \app\modules\course\models\CourseBase
    		return $this->col_title_ru;
    }
 
-   public function getWeeksPrices()
+   public function getWeeksWithPrices()
    {
    		$weeks = [];
 		if ($this->col_price) {
 			$cost = array_reverse(explode(',', $this->col_price));
 			foreach ($cost as $item) {
-				$price = explode(':', $item);
-				$weeks[$price[0]] = $price[1];
+				$arr = explode(':', $item);
+				$weeks[$arr[0]] = $arr[1];
 			}
 		}
 		return $weeks;
    }
 
-   public function templateWeeksOption()
-   {
-   		$template = '';
-   		$weeks = $this->getWeeksPrices();
-   		if ($weeks) {
-   			foreach ($weeks as $week => $price) {
-   				$template .= '<li class="js-weeks-option filtered" data-course="'. $this->col_id .'" data-weeks="'. $week .'" data-price="'. $price .'">'. $week .'</li>';
-   			}
-   		}
-   		return $template;
-   }
+//    public function templateWeeksOption()
+//    {
+//    		$template = '';
+//    		$weeks = $this->getWeeksWiPrices();
+//    		if ($weeks) {
+//    			foreach ($weeks as $week => $price) {
+//    				$template .= '<li class="js-weeks-option filtered" data-course="'. $this->col_id .'" data-weeks="'. $week .'" data-price="'. $price .'">'. $week .'</li>';
+//    			}
+//    		}
+//    		return $template;
+//    }
+
 }

@@ -71,7 +71,12 @@ class Country extends \app\models\ModelApp
         return $count;
     }
 
-    public static function getSchools($country_id)
+    public function getSchools()
+    {
+        return self::findSchools($this->col_id);
+    }
+
+    public static function findSchools($country_id)
     {
         $schools = [];
         $cities = City::findAll(['col_country_id' => $country_id]);
