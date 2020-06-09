@@ -1,5 +1,6 @@
 <header id="header" class="home">
-	<?= $this->render('topline') ?>
+
+	<?= $this->render('topline', ['home' => true]) ?>
 
 	<div class="content">
 		<h1 class="title">Подберем программу обучения</h1>

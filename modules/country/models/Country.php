@@ -4,6 +4,7 @@ namespace app\modules\country\models;
 
 use Yii;
 use app\modules\city\models\City;
+use app\modules\language\models\Language;
 
 /**
  * This is the model class for table "tbl_countries".
@@ -86,5 +87,15 @@ class Country extends \app\models\ModelApp
             else $schools = array_merge($schools, $city->schools);
         }
         return $schools;
+    }
+
+    public function getName()
+    {
+        return $this->col_title_ru;
+    }
+
+    public function getLanguage()
+    {
+        return $this->hasOne(Language::className(), ['col_id' => 'col_language_id']);
     }
 }

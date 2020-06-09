@@ -67,14 +67,14 @@ class SchoolBase extends \app\models\ModelApp
     public function attributeLabels()
     {
         return [
-            'col_id' => 'Col ID',
+            'col_id' => 'ID',
             'col_city_id' => 'Col City ID',
-            'col_meta_title' => 'Col Meta Title',
-            'col_meta_description' => 'Col Meta Description',
-            'col_meta_keywords' => 'Col Meta Keywords',
+            'col_meta_title' => 'Meta Title',
+            'col_meta_description' => 'Meta Description',
+            'col_meta_keywords' => 'Meta Keywords',
             'col_title' => 'Название школы',
             'col_url' => 'Col Url',
-            'col_img_mini' => 'Col Img Mini',
+            'col_img_mini' => 'Img Mini',
             'col_img' => 'Col Img',
             'col_description_en' => 'Col Description En',
             'col_description_es' => 'Col Description Es',
@@ -84,17 +84,17 @@ class SchoolBase extends \app\models\ModelApp
             'col_about_us_en' => 'Col About Us En',
             'col_about_us_es' => 'Col About Us Es',
             'col_about_us_ua' => 'Col About Us Ua',
-            'col_about_us_ru' => 'Col About Us Ru',
+            'col_about_us_ru' => 'О школе',
             'col_about_us_cn' => 'Col About Us Cn',
             'col_residence_en' => 'Col Residence En',
             'col_residence_es' => 'Col Residence Es',
             'col_residence_ua' => 'Col Residence Ua',
-            'col_residence_ru' => 'Col Residence Ru',
+            'col_residence_ru' => 'Проживание',
             'col_residence_cn' => 'Col Residence Cn',
-            'col_registration_fee' => 'Col Registration Fee',
-            'col_home_page' => 'Главная страница',
-            'col_currency' => 'Col Currency',
-            'col_subcategory' => 'Col Subcategory',
+            'col_registration_fee' => 'Регистрационный сбор',
+            'col_home_page' => 'На главной',
+            'col_currency' => 'Валюта',
+            'col_subcategory' => 'Программа',
         ];
     }
 }

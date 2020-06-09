@@ -76,13 +76,14 @@ class SiteController extends BaseController
      */
     public function actionLogin()
     {
+        $this->layout = 'admin';
         if (!Yii::$app->user->isGuest) {
-            return $this->goHome();
+            return $this->redirect('/admin/schools');
         }
 
         $model = new LoginForm();
         if ($model->load(Yii::$app->request->post()) && $model->login()) {
-            return $this->goBack();
+            return $this->redirect('/admin/schools');
         }
 
         $model->password = '';
@@ -101,6 +102,12 @@ class SiteController extends BaseController
         Yii::$app->user->logout();
 
         return $this->goHome();
+    }
+
+    public function actionAdmin()
+    {
+        if (Yii::$app->user->isGuest) return $this->redirect('login');
+        return $this->redirect('/admin/schools');
     }
 
     public function actionContacts()

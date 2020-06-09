@@ -5,6 +5,7 @@ $db = require __DIR__ . '/db.php';
 
 $config = [
     'id' => 'basic',
+    'name' => 'tostudy',
     'basePath' => dirname(__DIR__),
     'bootstrap' => ['log'],
     'aliases' => [
@@ -67,7 +68,7 @@ $config = [
             'showScriptName' => false,
             'rules' => [
                 //alias
-                '<alias:|contacts|about|insurance|order|reviews|>' => 'site/<alias>',
+                '<alias:|contacts|about|insurance|order|reviews|admin|login|>' => 'site/<alias>',
 
                 'news' => 'news/index',
                 'article' => 'news/view',
@@ -82,6 +83,7 @@ $config = [
                 'course/<action:\w+>' => 'course/course/<action>', 
 
                 //admin
+
                 'admin/schools' => 'school/school-admin/index',
                 'admin/school/<action:\w+>' => 'school/admin-school/<action>',
             ],

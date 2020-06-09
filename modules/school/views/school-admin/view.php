@@ -6,21 +6,21 @@ use yii\widgets\DetailView;
 /* @var $this yii\web\View */
 /* @var $model app\modules\school\models\School */
 
-$this->title = $model->col_id;
+$this->title = $model->col_title;
 $this->params['breadcrumbs'][] = ['label' => 'Schools', 'url' => ['index']];
 $this->params['breadcrumbs'][] = $this->title;
 \yii\web\YiiAsset::register($this);
 ?>
 <div class="school-view">
 
-    <h1><?= Html::encode($this->title) ?></h1>
+    <h3><?= 'Школа: ', '<b>', $model->col_title, '</b>' ?></h3>
 
     <p>
-        <?= Html::a('Update', ['update', 'id' => $model->col_id], ['class' => 'btn btn-primary']) ?>
-        <?= Html::a('Delete', ['delete', 'id' => $model->col_id], [
+        <?= Html::a('Редактировать', ['update', 'id' => $model->col_id], ['class' => 'btn btn-primary']) ?>
+        <?= Html::a('Удалить', ['delete', 'id' => $model->col_id], [
             'class' => 'btn btn-danger',
             'data' => [
-                'confirm' => 'Are you sure you want to delete this item?',
+                'confirm' => 'Вы уверены что хотите удалить эту школу?',
                 'method' => 'post',
             ],
         ]) ?>
@@ -35,28 +35,41 @@ $this->params['breadcrumbs'][] = $this->title;
             'col_meta_description',
             'col_meta_keywords',
             'col_title',
-            'col_url:url',
+
             'col_img_mini',
+
             'col_img',
-            'col_description_en:ntext',
-            'col_description_es:ntext',
-            'col_description_ua:ntext',
+
             'col_description_ru:ntext',
-            'col_description_cn:ntext',
-            'col_about_us_en:ntext',
-            'col_about_us_es:ntext',
-            'col_about_us_ua:ntext',
-            'col_about_us_ru:ntext',
-            'col_about_us_cn:ntext',
-            'col_residence_en:ntext',
-            'col_residence_es:ntext',
-            'col_residence_ua:ntext',
-            'col_residence_ru:ntext',
-            'col_residence_cn:ntext',
+
+            [
+            'attribute' => 'col_about_us_ru', 'format' => 'raw',
+            'value' => function($model) {return $model->col_about_us_ru;},
+            ],
+
+            [
+            'attribute' => 'col_residence_ru', 'format' => 'raw',
+            'value' => function($model) {return $model->col_residence_ru;},
+            ],
+
             'col_registration_fee',
-            'col_home_page',
-            'col_currency',
+
+            [
+            'attribute' => 'col_home_page', 
+            'value' => function($model) {return $model->col_home_page ? 'есть' : 'нет';},
+            ],
+
+            [
+            'attribute' => 'col_currency', 
+            'value' => function($model) {return Yii::$app->params['currencies'][$model->col_currency];},
+            ],
+
             'col_subcategory',
+
+            [
+            'attribute' => 'col_subcategory', 
+            'value' => function($model) {return Yii::$app->program->getName($model->col_subcategory);},
+            ],
         ],
     ]) ?>
 

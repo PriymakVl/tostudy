@@ -12,8 +12,6 @@ use yii\widgets\ActiveForm;
 
     <?php $form = ActiveForm::begin(); ?>
 
-    <?= $form->field($model, 'col_city_id')->textInput() ?>
-
     <?= $form->field($model, 'col_meta_title')->textInput(['maxlength' => true]) ?>
 
     <?= $form->field($model, 'col_meta_description')->textInput(['maxlength' => true]) ?>
@@ -22,49 +20,23 @@ use yii\widgets\ActiveForm;
 
     <?= $form->field($model, 'col_title')->textInput(['maxlength' => true]) ?>
 
-    <?= $form->field($model, 'col_url')->textInput(['maxlength' => true]) ?>
-
     <?= $form->field($model, 'col_img_mini')->textInput(['maxlength' => true]) ?>
 
     <?= $form->field($model, 'col_img')->textInput(['maxlength' => true]) ?>
 
-    <?= $form->field($model, 'col_description_en')->textarea(['rows' => 6]) ?>
-
-    <?= $form->field($model, 'col_description_es')->textarea(['rows' => 6]) ?>
-
-    <?= $form->field($model, 'col_description_ua')->textarea(['rows' => 6]) ?>
-
     <?= $form->field($model, 'col_description_ru')->textarea(['rows' => 6]) ?>
-
-    <?= $form->field($model, 'col_description_cn')->textarea(['rows' => 6]) ?>
-
-    <?= $form->field($model, 'col_about_us_en')->textarea(['rows' => 6]) ?>
-
-    <?= $form->field($model, 'col_about_us_es')->textarea(['rows' => 6]) ?>
-
-    <?= $form->field($model, 'col_about_us_ua')->textarea(['rows' => 6]) ?>
 
     <?= $form->field($model, 'col_about_us_ru')->textarea(['rows' => 6]) ?>
 
-    <?= $form->field($model, 'col_about_us_cn')->textarea(['rows' => 6]) ?>
-
-    <?= $form->field($model, 'col_residence_en')->textarea(['rows' => 6]) ?>
-
-    <?= $form->field($model, 'col_residence_es')->textarea(['rows' => 6]) ?>
-
-    <?= $form->field($model, 'col_residence_ua')->textarea(['rows' => 6]) ?>
-
     <?= $form->field($model, 'col_residence_ru')->textarea(['rows' => 6]) ?>
-
-    <?= $form->field($model, 'col_residence_cn')->textarea(['rows' => 6]) ?>
 
     <?= $form->field($model, 'col_registration_fee')->textInput(['maxlength' => true]) ?>
 
-    <?= $form->field($model, 'col_home_page')->textInput() ?>
+    <?= $form->field($model, 'col_home_page')->dropDownList(['0' => 'Нет', '1' => 'Да']); ?>
 
-    <?= $form->field($model, 'col_currency')->textInput() ?>
+    <?= $form->field($model, 'col_currency')->dropDownList(Yii::$app->params['currencies']); ?>
 
-    <?= $form->field($model, 'col_subcategory')->textInput() ?>
+    <?= $form->field($model, 'col_subcategory')->dropDownList(Yii::$app->program->all); ?>
 
     <div class="form-group">
         <?= Html::submitButton('Save', ['class' => 'btn btn-success']) ?>

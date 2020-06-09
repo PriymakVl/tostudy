@@ -1,4 +1,8 @@
-<div class="wrap topline row2">
+<?php if ($home): ?>
+	<div class="topline row2">
+<?php else: ?>
+	<div class="wrap topline row2">
+<?php endif ?>
 		<div class="column-left row2">
 			<a href="/" class="logo">to<span>study</span></a>
 			<ul class="nav row2">
@@ -12,10 +16,19 @@
 							<a href="/languages?program=<?= Yii::$app->program->get('language') ?>">Языковые курсы</a>
 						</li>
 						<li>
-							<a href="/languages?program=<?= Yii::$app->program->get('camp') ?>">Летние программы и лагеря для детей</a>
+							<a href="/languages?program=<?= Yii::$app->program->get('camp') ?>">Каникулярные программы и детские языковые лагеря</a>
+						</li>
+						<li>
+							<a href="/languages?program=<?= Yii::$app->program->get('secondary') ?>">Среднее образование</a>
 						</li>
 						<li>
 							<a href="/languages?program=<?= Yii::$app->program->get('higher') ?>">Высшее и последипломное образование</a>
+						</li>
+						<li>
+							<a href="/languages?program=<?= Yii::$app->program->get('online-course') ?>">Языковые онлайн курсы</a>
+						</li>
+						<li>
+							<a href="/languages?program=<?= Yii::$app->program->get('private-lessons') ?>">Частные уроки онлайн</a>
 						</li>
 					</ul> <!-- /.form-select -->
 				</li> <!-- /.link -->

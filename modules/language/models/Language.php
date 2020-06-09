@@ -78,5 +78,10 @@ class Language extends \app\models\ModelApp
         return $schools;
     }
 
+    public function getName()
+    {
+        return $this->col_title_ru;
+    }
+
 
 }

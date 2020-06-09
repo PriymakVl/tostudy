@@ -13,6 +13,7 @@ use yii\filters\VerbFilter;
  */
 class SchoolAdminController extends \app\controllers\BaseController
 {
+    public $layout = '@app/views/layouts/admin';
     /**
      * {@inheritdoc}
      */

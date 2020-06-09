@@ -6,7 +6,7 @@ use app\modules\school\models\School;
 <div id="breadcrumbs">
 	<div class="wrap">
 		<a href="/">Главная</a>
-		<span>Каталог школ</span>
+		<span>Языки</span>
 	</div> <!-- /.wrap -->
 </div> <!-- /#breadcrumbs -->
 

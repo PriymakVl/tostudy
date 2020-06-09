@@ -26,37 +26,26 @@ $this->params['breadcrumbs'][] = $this->title;
         'columns' => [
             ['class' => 'yii\grid\SerialColumn'],
 
-            // 'col_id',
-            // 'col_city_id',
-            // 'col_meta_title',
-            // 'col_meta_description',
-            // 'col_meta_keywords',
-            'col_title',
-            //'col_url:url',
+            'col_id',
             [
-            'attribute' => 'col_img_mini', 'label' => 'Изображение', 'format' => 'raw',
-            'value' => function($model) {return Html::img('@web/img/'. $model->col_img_mini, ['alt' => '', 'style' => 'max-width:100px;']);},
+            'attribute' => 'lang', 'label' => 'Язык', 'format' => 'raw',
+            'value' => function($model) {return $model->city->country->language->name;},
             ],
-            //'col_img',
-            //'col_description_en:ntext',
-            //'col_description_es:ntext',
-            //'col_description_ua:ntext',
-            // 'col_description_ru:ntext',
-            //'col_description_cn:ntext',
-            //'col_about_us_en:ntext',
-            //'col_about_us_es:ntext',
-            //'col_about_us_ua:ntext',
-            // 'col_about_us_ru:ntext',
-            //'col_about_us_cn:ntext',
-            //'col_residence_en:ntext',
-            //'col_residence_es:ntext',
-            //'col_residence_ua:ntext',
-            //'col_residence_ru:ntext',
-            //'col_residence_cn:ntext',
-            //'col_registration_fee',
-            ['attribute' => 'col_home_page', 'value' => function($model) {return $model->col_home_page ? 'есть' : 'нет';}],
-            //'col_currency',
-            //'col_subcategory',
+
+            [
+            'attribute' => 'country', 'label' => 'Страна', 'format' => 'raw',
+            'value' => function($model) {return $model->city->country->name;},
+            ],
+
+            'col_title',
+
+            [
+            'attribute' => 'col_img_mini', 'label' => 'Изображение', 'format' => 'raw', 'filter' => false,
+            'value' => function($model) {return Html::img('@web/img/'. $model->col_img_mini, ['style' => 'max-width:100px;']);},
+            ],
+
+
+            ['attribute' => 'col_home_page', 'filter' => false, 'value' => function($model) {return $model->col_home_page ? 'есть' : 'нет';}],
 
             ['class' => 'yii\grid\ActionColumn'],
         ],

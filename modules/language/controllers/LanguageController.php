@@ -9,19 +9,24 @@ use app\modules\language\models\Language;
 
 class LanguageController extends \app\controllers\BaseController
 {
-    public function actionIndex($program)
+    public function actionIndex($program = false)
     {
-        if (Yii::$app->session->get('program' != $program)) {
-            Yii::$app->session->set('program', $program);
-            return $this->redirect(['index', 'program' => $program]);
-        }
+        $this->setProgram($program);
     	$languages = Language::find()->all();
         return $this->render('index', compact('languages', 'program'));
     }
 
-    public function actionView()
+    private function setProgram($program)
     {
-        return $this->render('view');
+        $session = Yii::$app->session->get('program');
+        if ($program && $program == $session) return;
+        if ($program && $program != $session) return Yii::$app->session->set('program', $program);
+        if (!$program) return Yii::$app->session->set('program', null);
     }
+
+    // public function actionView()
+    // {
+    //     return $this->render('view');
+    // }
 
 }
