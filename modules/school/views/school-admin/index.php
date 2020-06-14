@@ -41,7 +41,7 @@ $this->params['breadcrumbs'][] = $this->title;
 
             [
             'attribute' => 'col_img_mini', 'label' => 'Изображение', 'format' => 'raw', 'filter' => false,
-            'value' => function($model) {return Html::img('@web/img/'. $model->col_img_mini, ['style' => 'max-width:100px;']);},
+            'value' => function($model) {return Html::img('@web/img/schools/'. $model->col_img_mini, ['style' => 'max-width:100px;']);},
             ],
 
 

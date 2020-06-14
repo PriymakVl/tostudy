@@ -78,12 +78,12 @@ class SiteController extends BaseController
     {
         $this->layout = 'admin';
         if (!Yii::$app->user->isGuest) {
-            return $this->redirect('/admin/schools');
+            return $this->redirect('/orders');
         }
 
         $model = new LoginForm();
         if ($model->load(Yii::$app->request->post()) && $model->login()) {
-            return $this->redirect('/admin/schools');
+            return $this->redirect('/orders');
         }
 
         $model->password = '';
@@ -107,7 +107,7 @@ class SiteController extends BaseController
     public function actionAdmin()
     {
         if (Yii::$app->user->isGuest) return $this->redirect('login');
-        return $this->redirect('/admin/schools');
+        return $this->redirect('/orders');
     }
 
     public function actionContacts()

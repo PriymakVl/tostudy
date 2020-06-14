@@ -3,10 +3,11 @@
 namespace app\modules\school\controllers;
 
 use Yii;
-use app\modules\school\models\School;
-use app\modules\school\models\SchoolSearch;
+use app\modules\school\models\{School, SchoolSearch};
+use app\models\ImageUpload;
 use yii\web\NotFoundHttpException;
 use yii\filters\VerbFilter;
+use yii\web\UploadedFile;
 
 /**
  * SchoolController implements the CRUD actions for School model.
@@ -65,7 +66,6 @@ class SchoolAdminController extends \app\controllers\BaseController
     public function actionCreate()
     {
         $model = new School();
-
         if ($model->load(Yii::$app->request->post()) && $model->save()) {
             return $this->setMessage('Школа добавлена')->redirect(['view', 'id' => $model->col_id]);
         }
@@ -107,6 +107,19 @@ class SchoolAdminController extends \app\controllers\BaseController
         $this->findModel($id)->delete();
 
         return $this->redirect(['index']);
+    }
+
+    public function actionImage($school_id = false)
+    {
+        $model = new ImageUpload();
+        $school = $this->findModel($school_id);
+        if (Yii::$app->request->isGet) return $this->render('form_img', compact('model', 'school'));
+        $file = UploadedFile::getInstance($model, 'image');
+        $big_size = 1;
+        if (Yii::$app->request->post('size') == $big_size) $school->col_img = $model->uploadFile($file, 'schools/big', $school->col_img);
+        else $school->col_img_mini = $model->uploadFile($file, 'schools', $school->col_img_mini);
+        $school->save(false);
+        $this->setMessage('изображение загружено')->redirect(['view', 'id' => $school->col_id]);
     }
 
     /**

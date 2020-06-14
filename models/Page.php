@@ -42,10 +42,11 @@ class Page extends \app\models\ModelApp
     public function rules()
     {
         return [
-            [['col_meta_title', 'col_meta_description', 'col_meta_keywords', 'col_title_ru', 'col_text_ru', 'col_title_en', 'col_title_es', 'col_title_ua', 'col_title_cn', 'col_text_en', 'col_text_es', 'col_text_ua', 'col_text_cn'], 'required'],
-            [['col_text_ru', 'col_text_en', 'col_text_es', 'col_text_ua', 'col_text_cn'], 'string'],
+            [['col_meta_title', 'col_meta_description', 'col_meta_keywords', 'col_title_ru', 'col_text_ru', ], 'required'],
+            [['col_text_ru'], 'string'],
             [['col_meta_title', 'col_meta_description', 'col_meta_keywords'], 'string', 'max' => 255],
-            [['col_title_ru', 'col_title_en', 'col_title_es', 'col_title_ua', 'col_title_cn'], 'string', 'max' => 100],
+            [['col_title_ru'], 'string', 'max' => 100],
+            [['col_title_en', 'col_title_es', 'col_title_ua', 'col_title_cn'], 'default', 'value' => ''],
         ];
     }
 
@@ -56,11 +57,11 @@ class Page extends \app\models\ModelApp
     {
         return [
             'col_id' => 'Col ID',
-            'col_meta_title' => 'Col Meta Title',
-            'col_meta_description' => 'Col Meta Description',
-            'col_meta_keywords' => 'Col Meta Keywords',
-            'col_title_ru' => 'Col Title Ru',
-            'col_text_ru' => 'Col Text Ru',
+            'col_meta_title' => 'Title (тег)',
+            'col_meta_description' => 'Description (метатег)',
+            'col_meta_keywords' => 'Keywords (метатег)',
+            'col_title_ru' => 'Название',
+            'col_text_ru' => 'Описание',
             'col_title_en' => 'Col Title En',
             'col_title_es' => 'Col Title Es',
             'col_title_ua' => 'Col Title Ua',

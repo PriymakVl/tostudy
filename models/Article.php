@@ -24,6 +24,13 @@ use Yii;
  */
 class Article extends \app\models\ModelApp
 {
+
+    const STATUS_DRAFT = 2;
+    const STATUS_PUBLISHED = 3;
+
+    public $file_img;
+    public $file_img_big;
+
     /**
      * {@inheritdoc}
      */
@@ -38,11 +45,14 @@ class Article extends \app\models\ModelApp
     public function rules()
     {
         return [
-            [['col_title_en', 'col_title_es', 'col_title_ua', 'col_title_ru', 'col_title_cn', 'col_text_en', 'col_text_es', 'col_text_ua', 'col_text_ru', 'col_text_cn', 'col_img', 'col_img_big', 'col_status'], 'required'],
-            [['col_text_en', 'col_text_es', 'col_text_ua', 'col_text_ru', 'col_text_cn'], 'string'],
+            [['col_title_ru', 'col_text_ru', 'file_img', 'file_img_big', 'col_status'], 'required'],
+            [['col_text_ru'], 'string'],
             [['col_status'], 'integer'],
-            [['col_title_en', 'col_title_es', 'col_title_ua', 'col_title_ru', 'col_title_cn'], 'string', 'max' => 255],
+            [['col_title_ru'], 'string', 'max' => 255],
+            [['file_img_big', 'file_img'], 'file', 'extensions' => 'jpg, jpeg, png'],
             [['col_img', 'col_img_big'], 'string', 'max' => 100],
+            [['col_title_en', 'col_title_es', 'col_title_ua', 'col_title_cn',], 'default', 'value' => ''],
+            [['col_text_en', 'col_text_es', 'col_text_ua', 'col_text_cn',], 'default', 'value' => ''],
         ];
     }
 
@@ -52,20 +62,45 @@ class Article extends \app\models\ModelApp
     public function attributeLabels()
     {
         return [
-            'col_id' => 'Col ID',
+            'col_id' => 'ID статьи',
             'col_title_en' => 'Col Title En',
             'col_title_es' => 'Col Title Es',
             'col_title_ua' => 'Col Title Ua',
-            'col_title_ru' => 'Col Title Ru',
+            'col_title_ru' => 'Название статьи',
             'col_title_cn' => 'Col Title Cn',
             'col_text_en' => 'Col Text En',
             'col_text_es' => 'Col Text Es',
             'col_text_ua' => 'Col Text Ua',
-            'col_text_ru' => 'Col Text Ru',
+            'col_text_ru' => 'Содержание статьи',
             'col_text_cn' => 'Col Text Cn',
-            'col_img' => 'Col Img',
+            'col_img' => 'Изображение',
             'col_img_big' => 'Col Img Big',
-            'col_status' => 'Col Status',
+            'col_status' => 'Статус',
+            'image' => 'Изображение',
         ];
+    }
+
+    public function getImage()
+    {
+        return Yii::getAlias('@web') . '/img/articles/' . $this->col_img;
+    }
+
+    public function getStatus()
+    {
+        switch ($this->col_status) {
+            case self::STATUS_PUBLISHED: return 'Опубликована';
+            case self::STATUS_DRAFT: return 'Черновик';
+            default: return 'Статус не определен';
+        }
+    }
+
+    public function beforeSave($insert)
+    {
+        if ($insert) {
+            $img = new ImageUpload();
+            $this->col_img = $img->uploadFile($this->file_img, 'articles', $this->col_img);  
+            $this->col_img_big = $img->uploadFile($this->file_img_big, 'articles/big', $this->col_img_big);  
+        }
+        return parent::beforeSave($insert);
     }
 }

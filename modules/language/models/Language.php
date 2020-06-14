@@ -3,7 +3,10 @@
 namespace app\modules\language\models;
 
 use Yii;
+use yii\helpers\Html;
 use app\modules\country\models\Country;
+use yii\web\UploadedFile;
+use app\models\ImageUpload;
 
 /**
  * This is the model class for table "tbl_languages".
@@ -20,6 +23,7 @@ class Language extends \app\models\ModelApp
 {
 
     public $countries;
+    public $image;
 
     /**
      * {@inheritdoc}
@@ -35,8 +39,9 @@ class Language extends \app\models\ModelApp
     public function rules()
     {
         return [
-            [['col_title_en', 'col_title_es', 'col_title_ua', 'col_title_ru', 'col_title_cn', 'col_img'], 'required'],
-            [['col_title_en', 'col_title_es', 'col_title_ua', 'col_title_ru', 'col_title_cn', 'col_img'], 'string', 'max' => 100],
+            [['col_title_ru', 'image'], 'required'],
+            [['col_title_ru', 'col_img'], 'string', 'max' => 100],
+            [['col_title_en', 'col_title_es', 'col_title_ua', 'col_title_cn'], 'default', 'value' => ''],
         ];
     }
 
@@ -46,13 +51,13 @@ class Language extends \app\models\ModelApp
     public function attributeLabels()
     {
         return [
-            'col_id' => 'Col ID',
+            'col_id' => 'ID языка',
             'col_title_en' => 'Col Title En',
             'col_title_es' => 'Col Title Es',
             'col_title_ua' => 'Col Title Ua',
-            'col_title_ru' => 'Col Title Ru',
+            'col_title_ru' => 'Название',
             'col_title_cn' => 'Col Title Cn',
-            'col_img' => 'Col Img',
+            'col_img' => 'Изображение',
         ];
     }
 
@@ -81,6 +86,21 @@ class Language extends \app\models\ModelApp
     public function getName()
     {
         return $this->col_title_ru;
+    }
+
+    public function createImage($width = '100px')
+    {
+        return Html::img('@web/img/languages/' . $this->col_img, ['width' => $width]);
+    }
+
+    public function add()
+    {
+        $this->image  = UploadedFile::getInstance($this, 'image');
+        if ($this->validate()) {
+            $obj = new ImageUpload();
+            $this->col_img = $obj->uploadFile($this->image, 'languages', $this->col_img);
+            return $this->save();
+        }
     }
 
 

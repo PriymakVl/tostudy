@@ -3,8 +3,11 @@
 namespace app\modules\country\models;
 
 use Yii;
+use yii\helpers\Html;
 use app\modules\city\models\City;
 use app\modules\language\models\Language;
+use yii\web\UploadedFile;
+use app\models\ImageUpload;
 
 /**
  * This is the model class for table "tbl_countries".
@@ -21,6 +24,9 @@ use app\modules\language\models\Language;
  */
 class Country extends \app\models\ModelApp
 {
+    public $file_image;
+    public $file_flag;
+
     /**
      * {@inheritdoc}
      */
@@ -35,9 +41,11 @@ class Country extends \app\models\ModelApp
     public function rules()
     {
         return [
-            [['col_language_id', 'col_title_en', 'col_title_es', 'col_title_ua', 'col_title_ru', 'col_title_cn', 'col_img', 'col_flag'], 'required'],
+            [['col_language_id',  'col_title_ru', 'file_image', 'file_flag' ], 'required'],
+            [['file_image', 'file_flag'], 'file', 'extensions' => 'jpeg, jpg, png'],
             [['col_language_id'], 'integer'],
-            [['col_title_en', 'col_title_es', 'col_title_ua', 'col_title_ru', 'col_title_cn', 'col_img', 'col_flag'], 'string', 'max' => 100],
+            [['col_title_ru', 'col_img', 'col_flag'], 'string', 'max' => 100],
+            [['col_title_en', 'col_title_es', 'col_title_ua', 'col_title_cn'], 'default', 'value' => '']
         ];
     }
 
@@ -47,15 +55,17 @@ class Country extends \app\models\ModelApp
     public function attributeLabels()
     {
         return [
-            'col_id' => 'Col ID',
-            'col_language_id' => 'Col Language ID',
+            'col_id' => 'ID страны',
+            'col_language_id' => 'Язык',
             'col_title_en' => 'Col Title En',
             'col_title_es' => 'Col Title Es',
             'col_title_ua' => 'Col Title Ua',
-            'col_title_ru' => 'Col Title Ru',
+            'col_title_ru' => 'Название страны',
             'col_title_cn' => 'Col Title Cn',
             'col_img' => 'Col Img',
             'col_flag' => 'Col Flag',
+            'image' => 'Изображение',
+            'flag' => 'Флаг',
         ];
     }
 
@@ -98,4 +108,27 @@ class Country extends \app\models\ModelApp
     {
         return $this->hasOne(Language::className(), ['col_id' => 'col_language_id']);
     }
+
+    public function getImage()
+    {
+        return '@web/img/countries/' . $this->col_img;
+    }
+
+    public function getFlag()
+    {
+        return '@web/img/countries/flags/' . $this->col_flag;
+    }
+
+    public function add()
+    {
+        if ($this->validate()) {
+            $img = new ImageUpload();
+            $flag = new ImageUpload();
+            $this->col_img = $img->uploadFile($this->file_image, 'countries', $this->col_img);
+            $this->col_flag = $flag->uploadFile($this->file_flag, 'countries/flags', $this->col_flag);
+            return $this->save(false);
+        }
+    }
 }
+
+

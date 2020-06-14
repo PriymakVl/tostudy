@@ -2,6 +2,8 @@
 
 use yii\helpers\Html;
 use yii\widgets\ActiveForm;
+use app\modules\city\models\City;
+use mihaildev\ckeditor\CKEditor;
 
 /* @var $this yii\web\View */
 /* @var $model app\modules\school\models\School */
@@ -20,15 +22,33 @@ use yii\widgets\ActiveForm;
 
     <?= $form->field($model, 'col_title')->textInput(['maxlength' => true]) ?>
 
-    <?= $form->field($model, 'col_img_mini')->textInput(['maxlength' => true]) ?>
+    <?php 
 
-    <?= $form->field($model, 'col_img')->textInput(['maxlength' => true]) ?>
+        $items = City::find()->select('col_title_ru')->asArray()->indexBy('col_id')->column();
+ 
+        $params = ['prompt' => 'Не выбран'];
+ 
+        echo $form->field($model, 'col_city_id')->dropDownList($items, $params)->label('Город');
 
-    <?= $form->field($model, 'col_description_ru')->textarea(['rows' => 6]) ?>
+     ?>
 
-    <?= $form->field($model, 'col_about_us_ru')->textarea(['rows' => 6]) ?>
+    <?
+        echo $form->field($model, 'col_about_us_ru')->widget(CKEditor::className(),[
+            'editorOptions' => [
+                'preset' => 'full',
+                'inline' => false, 
+            ],
+        ]);
+    ?>
 
-    <?= $form->field($model, 'col_residence_ru')->textarea(['rows' => 6]) ?>
+    <?
+        echo $form->field($model, 'col_residence_ru')->widget(CKEditor::className(),[
+            'editorOptions' => [
+                'preset' => 'full',
+                'inline' => false, 
+            ],
+        ]);
+    ?>
 
     <?= $form->field($model, 'col_registration_fee')->textInput(['maxlength' => true]) ?>
 
@@ -39,7 +59,7 @@ use yii\widgets\ActiveForm;
     <?= $form->field($model, 'col_subcategory')->dropDownList(Yii::$app->program->all); ?>
 
     <div class="form-group">
-        <?= Html::submitButton('Save', ['class' => 'btn btn-success']) ?>
+        <?= Html::submitButton('Сохранить', ['class' => 'btn btn-success']) ?>
     </div>
 
     <?php ActiveForm::end(); ?>

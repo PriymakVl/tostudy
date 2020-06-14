@@ -3,24 +3,27 @@
 use yii\helpers\Html;
 use yii\widgets\DetailView;
 
+
 /* @var $this yii\web\View */
 /* @var $model app\modules\city\models\City */
 
-$this->title = $model->col_id;
+$this->title = 'Город: ' . $model->col_title_ru;
+
 $this->params['breadcrumbs'][] = ['label' => 'Cities', 'url' => ['index']];
 $this->params['breadcrumbs'][] = $this->title;
-\yii\web\YiiAsset::register($this);
+
+app\assets\AdminAsset::register($this);
 ?>
 <div class="city-view">
 
     <h1><?= Html::encode($this->title) ?></h1>
 
     <p>
-        <?= Html::a('Update', ['update', 'id' => $model->col_id], ['class' => 'btn btn-primary']) ?>
-        <?= Html::a('Delete', ['delete', 'id' => $model->col_id], [
+        <?= Html::a('Редактировать', ['update', 'id' => $model->col_id], ['class' => 'btn btn-primary']) ?>
+        <?= Html::a('Удалить', ['delete', 'id' => $model->col_id], [
             'class' => 'btn btn-danger',
             'data' => [
-                'confirm' => 'Are you sure you want to delete this item?',
+                'confirm' => 'Вы уверены что хотите удалить этот город?',
                 'method' => 'post',
             ],
         ]) ?>
@@ -30,13 +33,13 @@ $this->params['breadcrumbs'][] = $this->title;
         'model' => $model,
         'attributes' => [
             'col_id',
-            'col_country_id',
-            'col_title_en',
-            'col_title_es',
-            'col_title_ua',
+
+            [ 'attribute' => 'col_country_id', 'value' => function($model) {return $model->country->name;},
+            'label' => 'Страна', 'headerOptions' => ['class' => 'text-info'], ],
+
             'col_title_ru',
-            'col_title_cn',
-            'col_img',
+
+            'image:image',
         ],
     ]) ?>
 

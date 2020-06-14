@@ -3,14 +3,15 @@
 namespace app\modules\course\models;
 
 use Yii;
+use app\modules\school\models\School;
 
 class Course extends \app\modules\course\models\CourseBase
 {
 
 
-   public function getSchools()
+   public function getSchool()
    {
-        return $this->hasOne(School::className(), ['col_id' => 'this']);
+        return $this->hasOne(School::className(), ['col_id' => 'col_school_id']);
    }
 
    public function getLowestPrice()
@@ -37,16 +38,6 @@ class Course extends \app\modules\course\models\CourseBase
 		return $weeks;
    }
 
-//    public function templateWeeksOption()
-//    {
-//    		$template = '';
-//    		$weeks = $this->getWeeksWiPrices();
-//    		if ($weeks) {
-//    			foreach ($weeks as $week => $price) {
-//    				$template .= '<li class="js-weeks-option filtered" data-course="'. $this->col_id .'" data-weeks="'. $week .'" data-price="'. $price .'">'. $week .'</li>';
-//    			}
-//    		}
-//    		return $template;
-//    }
+
 
 }

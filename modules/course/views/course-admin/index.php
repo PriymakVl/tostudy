@@ -2,12 +2,13 @@
 
 use yii\helpers\Html;
 use yii\grid\GridView;
+use app\modules\school\models\School;
 
 /* @var $this yii\web\View */
 /* @var $searchModel app\modules\course\models\CourseSearch */
 /* @var $dataProvider yii\data\ActiveDataProvider */
 
-$this->title = 'Courses';
+$this->title = 'Курсы';
 $this->params['breadcrumbs'][] = $this->title;
 ?>
 <div class="course-index">
@@ -15,10 +16,9 @@ $this->params['breadcrumbs'][] = $this->title;
     <h1><?= Html::encode($this->title) ?></h1>
 
     <p>
-        <?= Html::a('Create Course', ['create'], ['class' => 'btn btn-success']) ?>
+        <?= Html::a('Новый курс', ['create'], ['class' => 'btn btn-success']) ?>
     </p>
 
-    <?php // echo $this->render('_search', ['model' => $searchModel]); ?>
 
     <?= GridView::widget([
         'dataProvider' => $dataProvider,
@@ -27,18 +27,10 @@ $this->params['breadcrumbs'][] = $this->title;
             ['class' => 'yii\grid\SerialColumn'],
 
             'col_id',
-            'col_school_id',
-            'col_title_en',
-            'col_title_es',
-            'col_title_ua',
-            //'col_title_ru',
-            //'col_title_cn',
-            //'col_description_en:ntext',
-            //'col_description_es:ntext',
-            //'col_description_ua:ntext',
-            //'col_description_ru:ntext',
-            //'col_description_cn:ntext',
-            //'col_price:ntext',
+
+            ['attribute' => 'col_school_id', 'value' => function($model) { return $model->school->name; }],
+
+            'col_title_ru',
 
             ['class' => 'yii\grid\ActionColumn'],
         ],

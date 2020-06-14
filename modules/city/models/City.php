@@ -5,6 +5,7 @@ namespace app\modules\city\models;
 use Yii;
 use app\modules\school\models\School;
 use app\modules\country\models\Country;
+use app\models\ImageUpload;
 
 /**
  * This is the model class for table "tbl_cities".
@@ -20,6 +21,8 @@ use app\modules\country\models\Country;
  */
 class City extends \app\models\ModelApp
 {
+    public $file_image;
+
     /**
      * {@inheritdoc}
      */
@@ -34,10 +37,12 @@ class City extends \app\models\ModelApp
     public function rules()
     {
         return [
-            [['col_country_id', 'col_title_en', 'col_title_es', 'col_title_ua', 'col_title_ru', 'col_title_cn', 'col_img'], 'required'],
+            [['col_title_ru', 'file_image', 'col_country_id'], 'required'],
+            ['file_image', 'file', 'extensions' => 'jpeg, jpg, png'], 
             [['col_country_id'], 'integer'],
-            [['col_title_en', 'col_title_es', 'col_title_ua', 'col_title_ru', 'col_title_cn'], 'string', 'max' => 255],
+            [['col_title_ru', ], 'string', 'max' => 255],
             [['col_img'], 'string', 'max' => 100],
+            [['col_title_en', 'col_title_es', 'col_title_ua', 'col_title_cn'], 'default', 'value' => ''],
         ];
     }
 
@@ -47,14 +52,12 @@ class City extends \app\models\ModelApp
     public function attributeLabels()
     {
         return [
-            'col_id' => 'Col ID',
-            'col_country_id' => 'Col Country ID',
-            'col_title_en' => 'Col Title En',
-            'col_title_es' => 'Col Title Es',
-            'col_title_ua' => 'Col Title Ua',
-            'col_title_ru' => 'Col Title Ru',
-            'col_title_cn' => 'Col Title Cn',
+            'col_id' => 'ID города',
+            'col_country_id' => 'Страна',
+            'col_title_ru' => 'Название города',
             'col_img' => 'Col Img',
+            'image' => 'Изображение',
+            'language' => 'Язык',
         ];
     }
 
@@ -66,6 +69,20 @@ class City extends \app\models\ModelApp
     public function getCountry()
     {
         return $this->hasOne(Country::className(), ['col_id' => 'col_country_id']);
+    }
+
+    public function getImage()
+    {
+        return '@web/img/cities/' . $this->col_img;
+    }
+
+    public function beforeSave($insert)
+    {
+        if ($insert) {
+            $img = new ImageUpload();
+            $this->col_img = $img->uploadFile($this->file_image, 'cities', $this->col_img);  
+        }
+        return parent::beforeSave($insert);
     }
     
 }

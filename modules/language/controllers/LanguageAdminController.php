@@ -14,6 +14,8 @@ use yii\filters\VerbFilter;
  */
 class LanguageAdminController extends BaseController
 {
+    public $layout = '@app/views/layouts/admin';
+
     /**
      * {@inheritdoc}
      */
@@ -66,7 +68,7 @@ class LanguageAdminController extends BaseController
     {
         $model = new Language();
 
-        if ($model->load(Yii::$app->request->post()) && $model->save()) {
+        if ($model->load(Yii::$app->request->post()) && $model->add()) {
             return $this->redirect(['view', 'id' => $model->col_id]);
         }
 

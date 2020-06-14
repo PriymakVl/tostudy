@@ -2,20 +2,23 @@
 
 use yii\helpers\Html;
 use yii\grid\GridView;
+use app\assets\AdminAsset;
 
 /* @var $this yii\web\View */
 /* @var $searchModel app\modules\city\models\CitySearch */
 /* @var $dataProvider yii\data\ActiveDataProvider */
 
-$this->title = 'Cities';
+$this->title = 'Города';
 $this->params['breadcrumbs'][] = $this->title;
+
+AdminAsset::register($this);
 ?>
 <div class="city-index">
 
     <h1><?= Html::encode($this->title) ?></h1>
 
     <p>
-        <?= Html::a('Create City', ['create'], ['class' => 'btn btn-success']) ?>
+        <?= Html::a('Новый город', ['create'], ['class' => 'btn btn-success']) ?>
     </p>
 
     <?php // echo $this->render('_search', ['model' => $searchModel]); ?>
@@ -27,13 +30,16 @@ $this->params['breadcrumbs'][] = $this->title;
             ['class' => 'yii\grid\SerialColumn'],
 
             'col_id',
-            'col_country_id',
-            'col_title_en',
-            'col_title_es',
-            'col_title_ua',
-            //'col_title_ru',
-            //'col_title_cn',
-            //'col_img',
+
+            [ 'attribute' => 'language', 'value' => function($model) {return $model->country->language->name;},
+            'headerOptions' => ['class' => 'text-info'], ],
+
+            [ 'attribute' => 'col_country_id', 'value' => function($model) {return $model->country->name;},
+            'label' => 'Страна', 'headerOptions' => ['class' => 'text-info'], ],
+
+            'col_title_ru',
+
+            'image:image',
 
             ['class' => 'yii\grid\ActionColumn'],
         ],

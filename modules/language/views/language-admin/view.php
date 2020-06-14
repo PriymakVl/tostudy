@@ -6,21 +6,21 @@ use yii\widgets\DetailView;
 /* @var $this yii\web\View */
 /* @var $model app\modules\language\models\Language */
 
-$this->title = $model->col_id;
+$this->title = $model->col_title_ru;
 $this->params['breadcrumbs'][] = ['label' => 'Languages', 'url' => ['index']];
 $this->params['breadcrumbs'][] = $this->title;
 \yii\web\YiiAsset::register($this);
 ?>
 <div class="language-view">
 
-    <h1><?= Html::encode($this->title) ?></h1>
+    <h1><?= 'Язык: ' . $this->title ?></h1>
 
     <p>
-        <?= Html::a('Update', ['update', 'id' => $model->col_id], ['class' => 'btn btn-primary']) ?>
-        <?= Html::a('Delete', ['delete', 'id' => $model->col_id], [
+        <?= Html::a('Редактировать', ['update', 'id' => $model->col_id], ['class' => 'btn btn-primary']) ?>
+        <?= Html::a('Удалить', ['delete', 'id' => $model->col_id], [
             'class' => 'btn btn-danger',
             'data' => [
-                'confirm' => 'Are you sure you want to delete this item?',
+                'confirm' => 'Вы уверены что хотите удалить этот язык?',
                 'method' => 'post',
             ],
         ]) ?>
@@ -30,12 +30,12 @@ $this->params['breadcrumbs'][] = $this->title;
         'model' => $model,
         'attributes' => [
             'col_id',
-            'col_title_en',
-            'col_title_es',
-            'col_title_ua',
+
             'col_title_ru',
-            'col_title_cn',
-            'col_img',
+
+            [ 'attribute' => 'col_img', 'value' => function($model) {return $model->createImage();},
+            'format' => 'raw',
+            ],
         ],
     ]) ?>
 

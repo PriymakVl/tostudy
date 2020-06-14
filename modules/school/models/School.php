@@ -40,4 +40,9 @@ class School extends \app\modules\school\models\SchoolBase
     {
     	return Yii::$app->params['currencies'][$this->col_currency];
     }
+
+    public function getProgram()
+    {
+        return Yii::$app->program->getName($this->col_subcategory);
+    }
 }

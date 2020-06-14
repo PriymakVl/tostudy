@@ -6,38 +6,42 @@ use yii\widgets\DetailView;
 /* @var $this yii\web\View */
 /* @var $model app\modules\country\models\Country */
 
-$this->title = $model->col_id;
+$this->title = $model->col_title_ru;
+
 $this->params['breadcrumbs'][] = ['label' => 'Countries', 'url' => ['index']];
 $this->params['breadcrumbs'][] = $this->title;
-\yii\web\YiiAsset::register($this);
+
+app\assets\AdminAsset::register($this);
+
 ?>
 <div class="country-view">
 
-    <h1><?= Html::encode($this->title) ?></h1>
+    <h1>Страна: <?= $this->title ?></h1>
 
     <p>
-        <?= Html::a('Update', ['update', 'id' => $model->col_id], ['class' => 'btn btn-primary']) ?>
-        <?= Html::a('Delete', ['delete', 'id' => $model->col_id], [
+        <?= Html::a('Редактировать', ['update', 'id' => $model->col_id], ['class' => 'btn btn-primary']) ?>
+        <?= Html::a('Удалить', ['delete', 'id' => $model->col_id], [
             'class' => 'btn btn-danger',
             'data' => [
-                'confirm' => 'Are you sure you want to delete this item?',
+                'confirm' => 'Вы действительно хотите удалить эту страну?',
                 'method' => 'post',
             ],
         ]) ?>
+
     </p>
 
     <?= DetailView::widget([
         'model' => $model,
         'attributes' => [
             'col_id',
-            'col_language_id',
-            'col_title_en',
-            'col_title_es',
-            'col_title_ua',
+
+            ['attribute' => 'col_language_id', 'value' => function($model) {return $model->language->name;}, ],
+
             'col_title_ru',
-            'col_title_cn',
-            'col_img',
-            'col_flag',
+
+            'image:image',
+
+            'flag:image',
         ],
     ]) ?>
 

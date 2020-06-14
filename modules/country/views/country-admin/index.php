@@ -7,15 +7,19 @@ use yii\grid\GridView;
 /* @var $searchModel app\modules\country\models\CountrySearch */
 /* @var $dataProvider yii\data\ActiveDataProvider */
 
-$this->title = 'Countries';
+$this->title = 'Страны';
 $this->params['breadcrumbs'][] = $this->title;
+
+app\assets\AdminAsset::register($this);
+
 ?>
+
 <div class="country-index">
 
     <h1><?= Html::encode($this->title) ?></h1>
 
     <p>
-        <?= Html::a('Create Country', ['create'], ['class' => 'btn btn-success']) ?>
+        <?= Html::a('Новая страна', ['create'], ['class' => 'btn btn-success']) ?>
     </p>
 
     <?php // echo $this->render('_search', ['model' => $searchModel]); ?>
@@ -27,14 +31,14 @@ $this->params['breadcrumbs'][] = $this->title;
             ['class' => 'yii\grid\SerialColumn'],
 
             'col_id',
-            'col_language_id',
-            'col_title_en',
-            'col_title_es',
-            'col_title_ua',
-            //'col_title_ru',
-            //'col_title_cn',
-            //'col_img',
-            //'col_flag',
+
+            ['attribute' => 'col_language_id', 'value' => function($model) {return $model->language->name;}],
+
+            'col_title_ru',
+
+            'image:image',
+
+            'flag:image',
 
             ['class' => 'yii\grid\ActionColumn'],
         ],

@@ -2,6 +2,7 @@
 
 use yii\helpers\Html;
 use yii\widgets\ActiveForm;
+use app\modules\language\models\Language;
 
 /* @var $this yii\web\View */
 /* @var $model app\modules\country\models\Country */
@@ -10,26 +11,23 @@ use yii\widgets\ActiveForm;
 
 <div class="country-form">
 
-    <?php $form = ActiveForm::begin(); ?>
+    <?php $form = ActiveForm::begin(['options' => ['enctype' => 'multipart/form-data']]); ?>
 
-    <?= $form->field($model, 'col_language_id')->textInput() ?>
+    <?php 
 
-    <?= $form->field($model, 'col_title_en')->textInput(['maxlength' => true]) ?>
-
-    <?= $form->field($model, 'col_title_es')->textInput(['maxlength' => true]) ?>
-
-    <?= $form->field($model, 'col_title_ua')->textInput(['maxlength' => true]) ?>
+        $items = Language::find()->select('col_title_ru')->asArray()->indexBy('col_id')->orderBy('col_title_ru')->column();
+        $params = ['prompt' => 'Выберите язык'];
+        echo $form->field($model, 'col_language_id')->dropDownList($items, $params);
+     ?>
 
     <?= $form->field($model, 'col_title_ru')->textInput(['maxlength' => true]) ?>
 
-    <?= $form->field($model, 'col_title_cn')->textInput(['maxlength' => true]) ?>
+    <?= $form->field($model, 'file_image')->fileInput()->label('Изображение') ?>
 
-    <?= $form->field($model, 'col_img')->textInput(['maxlength' => true]) ?>
-
-    <?= $form->field($model, 'col_flag')->textInput(['maxlength' => true]) ?>
+    <?= $form->field($model, 'file_flag')->fileInput()->label('Флаг') ?>
 
     <div class="form-group">
-        <?= Html::submitButton('Save', ['class' => 'btn btn-success']) ?>
+        <?= Html::submitButton('Сохранить', ['class' => 'btn btn-success']) ?>
     </div>
 
     <?php ActiveForm::end(); ?>

@@ -8,12 +8,15 @@ use app\modules\country\models\CountrySearch;
 use app\controllers\BaseController;
 use yii\web\NotFoundHttpException;
 use yii\filters\VerbFilter;
+use yii\web\UploadedFile;
 
 /**
  * CountryAdminController implements the CRUD actions for Country model.
  */
 class CountryAdminController extends BaseController
 {
+    public $layout = '@app/views/layouts/admin';
+
     /**
      * {@inheritdoc}
      */
@@ -65,14 +68,14 @@ class CountryAdminController extends BaseController
     public function actionCreate()
     {
         $model = new Country();
+        if (Yii::$app->request->isGet)  return $this->render('create', ['model' => $model,]);
 
-        if ($model->load(Yii::$app->request->post()) && $model->save()) {
-            return $this->redirect(['view', 'id' => $model->col_id]);
-        }
+        $model->load(Yii::$app->request->post());
+        $model->file_image  = UploadedFile::getInstance($model, 'file_image');
+        $model->file_flag  = UploadedFile::getInstance($model, 'file_flag');
 
-        return $this->render('create', [
-            'model' => $model,
-        ]);
+        if ($model->add()) return $this->setMessage('Страна успешно добавлена')->redirect(['view', 'id' => $model->col_id]);
+        else throw new NotFoundHttpException('Ошибки при добавлении страны.');
     }
 
     /**

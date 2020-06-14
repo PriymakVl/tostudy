@@ -16,6 +16,11 @@ use Yii;
  */
 class Review extends \app\models\ModelApp
 {
+    const SHOW_HOME = 1;
+    const SHOW_HOME_NOT = 0;
+    const STATUS_PUBLISHED = 3;
+    const STATUS_DRAFT = 2;
+
     /**
      * {@inheritdoc}
      */
@@ -30,9 +35,9 @@ class Review extends \app\models\ModelApp
     public function rules()
     {
         return [
-            [['col_username', 'col_comment', 'col_date', 'col_status', 'col_home_page'], 'required'],
+            [['col_username', 'col_comment', 'col_status', 'col_home_page'], 'required'],
             [['col_comment'], 'string'],
-            [['col_date'], 'safe'],
+            [['col_date'], 'default', 'value' => date("Y-m-d H:i:s")],
             [['col_status', 'col_home_page'], 'integer'],
             [['col_username'], 'string', 'max' => 100],
         ];
@@ -44,12 +49,12 @@ class Review extends \app\models\ModelApp
     public function attributeLabels()
     {
         return [
-            'col_id' => 'Col ID',
-            'col_username' => 'Col Username',
-            'col_comment' => 'Col Comment',
-            'col_date' => 'Col Date',
-            'col_status' => 'Col Status',
-            'col_home_page' => 'Col Home Page',
+            'col_id' => 'ID отзыва',
+            'col_username' => 'Имя',
+            'col_comment' => 'Отзыв',
+            'col_date' => 'Дата',
+            'col_status' => 'Показывать',
+            'col_home_page' => 'На главной',
         ];
     }
 
@@ -71,5 +76,23 @@ class Review extends \app\models\ModelApp
     public function getComment()
     {
         return $this->col_comment;
+    }
+
+    public function getStatus()
+    {
+        switch($this->col_status) {
+            case self::STATUS_PUBLISHED: return 'Да';
+            case self::STATUS_DRAFT: return 'Нет';
+            default: return 'Статус не определен';
+        }
+    }
+
+    public function getHome()
+    {
+        switch($this->col_home_page) {
+            case self::SHOW_HOME: return 'Да';
+            case self::SHOW_HOME_NOT: return 'Нет';
+            default: return 'Ошибка';
+        }
     }
 }

@@ -24,13 +24,20 @@ $this->params['breadcrumbs'][] = $this->title;
                 'method' => 'post',
             ],
         ]) ?>
+        <?= Html::a('Добавить изображение', ['image', 'school_id' => $model->col_id], ['class' => 'btn btn-primary']) ?>
+        <?= Html::a('Смотреть на сайте', ['/school', 'id' => $model->col_id], ['class' => 'btn btn-primary', 'target' => '_blank']) ?>
     </p>
 
     <?= DetailView::widget([
         'model' => $model,
         'attributes' => [
             'col_id',
-            'col_city_id',
+
+            [
+            'attribute' => 'col_city_id',
+            'value' => function($model) {return $model->city->name;},
+            ],
+
             'col_meta_title',
             'col_meta_description',
             'col_meta_keywords',
@@ -64,12 +71,7 @@ $this->params['breadcrumbs'][] = $this->title;
             'value' => function($model) {return Yii::$app->params['currencies'][$model->col_currency];},
             ],
 
-            'col_subcategory',
-
-            [
-            'attribute' => 'col_subcategory', 
-            'value' => function($model) {return Yii::$app->program->getName($model->col_subcategory);},
-            ],
+            [ 'attribute' => 'col_subcategory', 'value' => function($model) {return $model->program;} ],
         ],
     ]) ?>
 

@@ -8,12 +8,16 @@ use app\modules\city\models\CitySearch;
 use app\controllers\BaseController;
 use yii\web\NotFoundHttpException;
 use yii\filters\VerbFilter;
+use yii\web\UploadedFile;
 
 /**
  * CityAdminController implements the CRUD actions for City model.
  */
 class CityAdminController extends BaseController
 {
+
+    public $layout = '@app/views/layouts/admin';
+
     /**
      * {@inheritdoc}
      */
@@ -65,14 +69,15 @@ class CityAdminController extends BaseController
     public function actionCreate()
     {
         $model = new City();
+        if (Yii::$app->request->isGet)  return $this->render('create', ['model' => $model,]);
 
-        if ($model->load(Yii::$app->request->post()) && $model->save()) {
-            return $this->redirect(['view', 'id' => $model->col_id]);
+        $model->load(Yii::$app->request->post());
+        $model->file_image  = UploadedFile::getInstance($model, 'file_image');
+
+        if ($model->save()) {
+            return $this->setMessage('Город успешно добавлен')->redirect(['view', 'id' => $model->col_id]);
         }
-
-        return $this->render('create', [
-            'model' => $model,
-        ]);
+        else throw new NotFoundHttpException('Ошибка при добавлении города.');
     }
 
     /**

@@ -7,7 +7,7 @@ use yii\grid\GridView;
 /* @var $searchModel app\modules\language\models\LanguageSearch */
 /* @var $dataProvider yii\data\ActiveDataProvider */
 
-$this->title = 'Languages';
+$this->title = 'Языки';
 $this->params['breadcrumbs'][] = $this->title;
 ?>
 <div class="language-index">
@@ -15,7 +15,7 @@ $this->params['breadcrumbs'][] = $this->title;
     <h1><?= Html::encode($this->title) ?></h1>
 
     <p>
-        <?= Html::a('Create Language', ['create'], ['class' => 'btn btn-success']) ?>
+        <?= Html::a('Новый язык', ['create'], ['class' => 'btn btn-success']) ?>
     </p>
 
     <?php // echo $this->render('_search', ['model' => $searchModel]); ?>
@@ -27,14 +27,16 @@ $this->params['breadcrumbs'][] = $this->title;
             ['class' => 'yii\grid\SerialColumn'],
 
             'col_id',
-            'col_title_en',
-            'col_title_es',
-            'col_title_ua',
-            'col_title_ru',
-            //'col_title_cn',
-            //'col_img',
 
-            ['class' => 'yii\grid\ActionColumn'],
+            'col_title_ru',
+
+            [
+                'attribute' => 'col_img', 'value' => function($model) {return $model->createImage();},
+                // 'headerOptions' => ['class' => 'text-info'], 
+                'format' => 'raw',
+            ],
+
+            ['class' => 'yii\grid\ActionColumn', 'header' => 'Действие',],
         ],
     ]); ?>
 

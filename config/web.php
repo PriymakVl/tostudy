@@ -83,9 +83,24 @@ $config = [
                 'course/<action:\w+>' => 'course/course/<action>', 
 
                 //admin
-
+                'admin/languages' => 'language/language-admin/index',
+                'admin/language/<action:\w+>' => 'language/admin-language/<action>',
+                'admin/countries' => 'country/country-admin/index',
+                'admin/country/<action:\w+>' => 'country/admin-country/<action>',
+                'admin/cities' => 'city/city-admin/index',
+                'admin/city/<action:\w+>' => 'city/admin-city/<action>',
+                'admin/courses' => 'course/course-admin/index',
+                'admin/course/<action:\w+>' => 'course/admin-course/<action>',
                 'admin/schools' => 'school/school-admin/index',
                 'admin/school/<action:\w+>' => 'school/admin-school/<action>',
+
+                'pages' => 'page/index',
+                'admin/news' => 'news-admin/index',
+                'admin/reviews' => 'review/index',
+                'partners' => 'partner/index',
+                'settings' => 'setting/view',
+                'orders' => 'order/index',
+
             ],
         ],
         'svg' => [ 'class' => 'app\components\Svg', ],

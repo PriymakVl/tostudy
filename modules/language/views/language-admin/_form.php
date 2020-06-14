@@ -10,22 +10,14 @@ use yii\widgets\ActiveForm;
 
 <div class="language-form">
 
-    <?php $form = ActiveForm::begin(); ?>
-
-    <?= $form->field($model, 'col_title_en')->textInput(['maxlength' => true]) ?>
-
-    <?= $form->field($model, 'col_title_es')->textInput(['maxlength' => true]) ?>
-
-    <?= $form->field($model, 'col_title_ua')->textInput(['maxlength' => true]) ?>
+    <?php $form = ActiveForm::begin(['options' => ['enctype' => 'multipart/form-data']]); ?>
 
     <?= $form->field($model, 'col_title_ru')->textInput(['maxlength' => true]) ?>
 
-    <?= $form->field($model, 'col_title_cn')->textInput(['maxlength' => true]) ?>
-
-    <?= $form->field($model, 'col_img')->textInput(['maxlength' => true]) ?>
+    <?= $form->field($model, 'image')->fileInput()->label('Изображение') ?>
 
     <div class="form-group">
-        <?= Html::submitButton('Save', ['class' => 'btn btn-success']) ?>
+        <?= Html::submitButton('Сохранить', ['class' => 'btn btn-success']) ?>
     </div>
 
     <?php ActiveForm::end(); ?>

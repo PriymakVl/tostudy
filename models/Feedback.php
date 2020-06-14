@@ -16,7 +16,10 @@ use Yii;
  */
 class Feedback extends \app\models\ModelApp
 {
-    const STATUS_NOT = 1;
+
+    const STATUS_WAITING = 2;
+    const STATUS_PROCESSING = 3;
+    const STATUS_COMPLETED = 4;
 
     /**
      * {@inheritdoc}
@@ -38,7 +41,7 @@ class Feedback extends \app\models\ModelApp
             ['col_email', 'email', 'message' => 'Неправильный email'],
             [['col_comment'], 'string'],
             [['col_date'], 'default', 'value' => date('Y-m-d h:m:s')],
-            [['col_status'], 'default', 'value' => self::STATUS_NOT],
+            [['col_status'], 'default', 'value' => self::STATUS_WAITING],
             [['col_username', 'col_email'], 'string', 'max' => 100],
         ];
     }
@@ -49,12 +52,29 @@ class Feedback extends \app\models\ModelApp
     public function attributeLabels()
     {
         return [
-            'col_id' => 'Col ID',
-            'col_username' => 'Col Username',
-            'col_email' => 'Col Email',
-            'col_comment' => 'Col Comment',
-            'col_date' => 'Col Date',
-            'col_status' => 'Col Status',
+            'col_id' => 'ID заявки',
+            'col_username' => 'Имя',
+            'col_email' => 'Email',
+            'col_comment' => 'Текст сообщения',
+            'col_date' => 'Дата добавления',
+            'col_status' => 'Статус',
         ];
+    }
+
+    public function scenarios()
+    {
+        $scenarios = parent::scenarios();
+        $scenarios['status'] = ['col_status'];
+        return $scenarios;
+    }
+
+    public function getStatus()
+    {
+        switch($this->col_status) {
+            case self::STATUS_WAITING: return 'Ожидание';
+            case self::STATUS_PROCESSING: return 'В обработке';
+            case self::STATUS_COMPLETED: return 'Завершен';
+            default: return 'Ошибка';
+        }
     }
 }

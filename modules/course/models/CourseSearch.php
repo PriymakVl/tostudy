@@ -4,12 +4,12 @@ namespace app\modules\course\models;
 
 use yii\base\Model;
 use yii\data\ActiveDataProvider;
-use app\modules\cours\models\Cours;
+use app\modules\course\models\Course;
 
 /**
  * CourseSearch represents the model behind the search form of `app\modules\course\models\Course`.
  */
-class CourseSearch extends Cours
+class CourseSearch extends Course
 {
     /**
      * {@inheritdoc}
