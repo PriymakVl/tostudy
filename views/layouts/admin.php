@@ -23,7 +23,9 @@ app\assets\AdminAsset::register($this);
 <body>
 <?php $this->beginBody() ?>
 
-    <?=$this->render('@app/views/templates/header_admin')?>
+    <?php if (Yii::$app->controller->action->id != 'login'): ?>
+        <?=$this->render('@app/views/templates/header_admin')?>
+    <? endif; ?>
 
     <div class="container content">
 
