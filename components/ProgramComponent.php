@@ -13,7 +13,7 @@ class ProgramComponent extends Component
     const PROGRAM_HIGHER_EDUCATION = 2;
     const PROGRAM_SECONDARY_EDUCATION = 3;
     const PROGRAM_ONLINE_COURSE = 4;
-    const PROGRAM_PRIVATE_ONLINE_LESSONS = 5;
+    const PROGRAM_INTERNSHIPS = 5;
 
     public $programs = [];
 	
@@ -25,7 +25,7 @@ class ProgramComponent extends Component
 		$this->programs['higher'] = self::PROGRAM_HIGHER_EDUCATION;
 		$this->programs['secondary'] = self::PROGRAM_SECONDARY_EDUCATION;
 		$this->programs['online-course'] = self::PROGRAM_ONLINE_COURSE;
-		$this->programs['private-lessons'] = self::PROGRAM_PRIVATE_ONLINE_LESSONS;
+		$this->programs['internships'] = self::PROGRAM_INTERNSHIPS;
 	}
 
     public function get($key){ 
@@ -35,12 +35,12 @@ class ProgramComponent extends Component
 
 	public function getAll()
 	{
-		$array[self::PROGRAM_LANGUAGE] = 'Языковые курсы';
-		$array[self::PROGRAM_CAMP] = 'Каникулярные программы и детские языковые лагеря';
-		$array[self::PROGRAM_HIGHER_EDUCATION] = 'Высшее и последипломное образование';
-		$array[self::PROGRAM_SECONDARY_EDUCATION] = 'Среднее образование';
-		$array[self::PROGRAM_ONLINE_COURSE] = 'Языковые онлайн курсы';
-		$array[self::PROGRAM_PRIVATE_ONLINE_LESSONS] = 'Частные уроки онлайн';
+		$array[self::PROGRAM_LANGUAGE] = 'Языковые курсы и школы за рубежом';
+		$array[self::PROGRAM_CAMP] = 'Языковые лагеря за границей для детей и подростков';
+		$array[self::PROGRAM_HIGHER_EDUCATION] = 'Высшее образование, MBA за рубежом';
+		$array[self::PROGRAM_SECONDARY_EDUCATION] = 'Среднее образование, школы, колледжи за границей';
+		$array[self::PROGRAM_ONLINE_COURSE] = 'Онлайн курсы языков';
+		$array[self::PROGRAM_INTERNSHIPS] = 'Стажировки и программы обмена за границей';
 		return $array;
 
 	}
@@ -48,12 +48,12 @@ class ProgramComponent extends Component
 	public function getName($key)
 	{
 		switch (intval($key)) {
-			case self::PROGRAM_LANGUAGE: return 'Языковые курсы';
-			case self::PROGRAM_CAMP: return 'Каникулярные программы и детские языковые лагеря';
-			case self::PROGRAM_HIGHER_EDUCATION: return 'Высшее и последипломное образование';
-			case self::PROGRAM_SECONDARY_EDUCATION: return 'Среднее образование';
-			case self::PROGRAM_ONLINE_COURSE: return 'Языковые онлайн курсы';
-			case self::PROGRAM_PRIVATE_ONLINE_LESSONS: return 'Частные уроки онлайн';
+			case self::PROGRAM_LANGUAGE: return 'Языковые курсы и школы за рубежом';
+			case self::PROGRAM_CAMP: return 'Языковые лагеря за границей для детей и подростков';
+			case self::PROGRAM_HIGHER_EDUCATION: return 'Высшее образование, MBA за рубежом';
+			case self::PROGRAM_SECONDARY_EDUCATION: return 'Среднее образование, школы, колледжи за границей';
+			case self::PROGRAM_ONLINE_COURSE: return 'Онлайн курсы языков';
+			case self::PROGRAM_INTERNSHIPS: return 'Стажировки и программы обмена за границей';
 			default: return 'Не возможно определить программу';
 		}
 	}

@@ -28,6 +28,19 @@ $config = [
         'course' => [
             'class' => 'app\modules\course\Module',
         ],
+        'offer' => [
+            'class' => 'app\modules\offer\Module',
+        ],
+    ],
+    'controllerMap' => [
+        'elfinder' => [
+        'class' => 'mihaildev\elfinder\PathController',
+            'access' => ['@'],
+            'root' => [
+             'path' => 'img',
+             'name' => 'Изображения'
+            ],
+        ]
     ],
     'components' => [
         'request' => [
@@ -71,7 +84,10 @@ $config = [
                 '<alias:|contacts|about|insurance|order|reviews|admin|login|>' => 'site/<alias>',
 
                 'news' => 'news/index',
-                'article' => 'news/view',
+                'article/<alias:\w+>' => 'news/view',
+
+                'offers' => 'offer/offer/index',
+                'offer/<alias:\w+>' => 'offer/offer/view',
 
                 'schools' => 'school/school/index', 
                 'school' => 'school/school/view',
@@ -92,7 +108,9 @@ $config = [
                 'admin/courses' => 'course/course-admin/index',
                 'admin/course/<action:\w+>' => 'course/admin-course/<action>',
                 'admin/schools' => 'school/school-admin/index',
-                'admin/school/<action:\w+>' => 'school/admin-school/<action>',
+                'admin/school/<action:\w+>' => 'school/school-admin/<action>',
+                'admin/offers' => 'offer/offer-admin/index',
+                'admin/offer/<action:\w+>' => 'offer/offer-admin/<action>',
 
                 'pages' => 'page/index',
                 'admin/news' => 'news-admin/index',

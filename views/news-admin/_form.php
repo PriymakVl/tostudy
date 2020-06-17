@@ -3,6 +3,7 @@
 use yii\helpers\Html;
 use yii\widgets\ActiveForm;
 use mihaildev\ckeditor\CKEditor;
+use mihaildev\elfinder\ElFinder;
 use app\models\Article;
 
 /* @var $this yii\web\View */
@@ -17,11 +18,13 @@ use app\models\Article;
     <?= $form->field($model, 'col_title_ru')->textInput(['maxlength' => true]) ?>
 
     <?php 
-        echo $form->field($model, 'col_text_ru')->widget(CKEditor::className(),[
-            'editorOptions' => [
-                'preset' => 'full',
-                'inline' => false,
-            ],
+        echo $form->field($model, 'col_text_ru')->widget(CKEditor::className(), [
+            'editorOptions' => ElFinder::ckeditorOptions(
+
+            ['elfinder', 'path' => 'articles/text'],
+
+            ['preset' => 'standard', 'removePlugins' => 'flash',]
+        ),
         ]);
     ?>
 

@@ -43,9 +43,7 @@ $this->params['breadcrumbs'][] = $this->title;
             'col_meta_keywords',
             'col_title',
 
-            'col_img_mini',
-
-            'col_img',
+            'img:image',
 
             'col_description_ru:ntext',
 

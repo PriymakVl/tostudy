@@ -2,6 +2,10 @@
 	margin-top: 60px;
 }
 
-.grid-view td img, .detail-view td img  {
+.grid-view td img  {
 	max-width: 100px;
 }
+
+/*.detail-view td img:not(.fr-draggable) {
+	max-width: 100px;
+}*/

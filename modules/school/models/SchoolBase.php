@@ -82,6 +82,7 @@ class SchoolBase extends \app\models\ModelApp
             'col_url' => 'Col Url',
             'col_img_mini' => 'Изображение  Mini',
             'col_img' => 'Изображение',
+            'img' => 'Изображеие',
             'col_description_ru' => 'Краткое описание',
             'col_about_us_ru' => 'О школе',
             'col_residence_ru' => 'Проживание',

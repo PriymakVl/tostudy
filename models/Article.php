@@ -3,6 +3,8 @@
 namespace app\models;
 
 use Yii;
+use app\models\ImageUpload;
+use app\helpers\Inflector;
 
 /**
  * This is the model class for table "tbl_articles".
@@ -102,5 +104,16 @@ class Article extends \app\models\ModelApp
             $this->col_img_big = $img->uploadFile($this->file_img_big, 'articles/big', $this->col_img_big);  
         }
         return parent::beforeSave($insert);
+    }
+
+    //для добавление алиасов для существующих статей
+    public static function addAliases()
+    {
+        $articles = self::find()->all();
+        if (!$articles) return;
+        foreach ($articles as $article) {
+            $article->col_alias = Inflector::slug($article->col_title_ru, '_');
+            $article->save(false);
+        }
     }
 }

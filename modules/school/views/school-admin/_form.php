@@ -4,6 +4,7 @@ use yii\helpers\Html;
 use yii\widgets\ActiveForm;
 use app\modules\city\models\City;
 use mihaildev\ckeditor\CKEditor;
+use mihaildev\elfinder\ElFinder;
 
 /* @var $this yii\web\View */
 /* @var $model app\modules\school\models\School */
@@ -33,20 +34,24 @@ use mihaildev\ckeditor\CKEditor;
      ?>
 
     <?
-        echo $form->field($model, 'col_about_us_ru')->widget(CKEditor::className(),[
-            'editorOptions' => [
-                'preset' => 'full',
-                'inline' => false, 
-            ],
+        echo $form->field($model, 'col_about_us_ru')->widget(CKEditor::className(), [
+            'editorOptions' => ElFinder::ckeditorOptions(
+
+            ['elfinder', 'path' => 'schools/description'],
+
+            ['preset' => 'standard', 'removePlugins' => 'flash',]
+        ),
         ]);
     ?>
 
     <?
-        echo $form->field($model, 'col_residence_ru')->widget(CKEditor::className(),[
-            'editorOptions' => [
-                'preset' => 'full',
-                'inline' => false, 
-            ],
+         echo $form->field($model, 'col_residence_ru')->widget(CKEditor::className(), [
+            'editorOptions' => ElFinder::ckeditorOptions(
+
+            ['elfinder', 'path' => 'schools/description'],
+            
+            ['preset' => 'standard', 'removePlugins' => 'flash',]
+        ),
         ]);
     ?>
 

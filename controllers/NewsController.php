@@ -13,9 +13,9 @@ class NewsController extends \app\controllers\BaseController
     }
 
 
-    public function actionView($id)
+    public function actionView($alias)
     {
-    	$article = Article::findOne($id);
+    	$article = Article::findOne(['col_alias' => $alias]);
         return $this->render('view', ['article' => $article]);
     }
 

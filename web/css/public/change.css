@@ -63,4 +63,11 @@
 	margin-bottom: 15px;
 }
 
+#header .link .form-select {
+	max-width: 350px;
+	max-height: 340px;
+}
+
+
+
 

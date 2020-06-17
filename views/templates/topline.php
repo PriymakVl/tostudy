@@ -13,22 +13,34 @@
 					<a href="#">Программы</a>
 					<ul class="form-select">
 						<li>
-							<a href="/languages?program=<?= Yii::$app->program->get('language') ?>">Языковые курсы</a>
+							<a href="/languages?program=<?= Yii::$app->program->get('language') ?>">
+								<?= Yii::$app->program->getName(Yii::$app->program->programs['language']) ?>
+							</a>
 						</li>
 						<li>
-							<a href="/languages?program=<?= Yii::$app->program->get('camp') ?>">Каникулярные программы и детские языковые лагеря</a>
+							<a href="/languages?program=<?= Yii::$app->program->get('camp') ?>">
+								<?= Yii::$app->program->getName(Yii::$app->program->programs['camp']) ?>
+							</a>
 						</li>
 						<li>
-							<a href="/languages?program=<?= Yii::$app->program->get('secondary') ?>">Среднее образование</a>
+							<a href="/languages?program=<?= Yii::$app->program->get('secondary') ?>">
+								<?= Yii::$app->program->getName(Yii::$app->program->programs['higher']) ?>
+							</a>
 						</li>
 						<li>
-							<a href="/languages?program=<?= Yii::$app->program->get('higher') ?>">Высшее и последипломное образование</a>
+							<a href="/languages?program=<?= Yii::$app->program->get('higher') ?>">
+								<?= Yii::$app->program->getName(Yii::$app->program->programs['secondary']) ?>
+							</a>
 						</li>
 						<li>
-							<a href="/languages?program=<?= Yii::$app->program->get('online-course') ?>">Языковые онлайн курсы</a>
+							<a href="/languages?program=<?= Yii::$app->program->get('online-course') ?>">
+								<?= Yii::$app->program->getName(Yii::$app->program->programs['online-course']) ?>
+							</a>
 						</li>
 						<li>
-							<a href="/languages?program=<?= Yii::$app->program->get('private-lessons') ?>">Частные уроки онлайн</a>
+							<a href="/languages?program=<?= Yii::$app->program->get('internships') ?>">
+								<?= Yii::$app->program->getName(Yii::$app->program->programs['internships']) ?>
+							</a>
 						</li>
 					</ul> <!-- /.form-select -->
 				</li> <!-- /.link -->
@@ -41,7 +53,7 @@
 					</ul> --> <!-- /.form-select -->
 				</li> <!-- /.link -->
 				<li class="link">
-					<a href="/actions">Акции</a>
+					<a href="/offers">Акции</a>
 				</li>
 				<li class="link">
 					<a href="/insurance">Страхование</a>

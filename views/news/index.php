@@ -15,7 +15,7 @@
 		<div class="content">
 			<?php if ($articles): ?>
 				<?php foreach ($articles as $article): ?>
-					<a href="/article?id=<?= $article->col_id ?>" class="articles-item">
+					<a href="/article/<?= $article->col_alias ?>" class="articles-item">
 						<img src="img/articles/<?= $article->col_img ?>" alt="<?= $article->col_title_ru ?>" title="<?= $article->col_title_ru ?>">
 						<h2><?= $article->col_title_ru ?></h2>
 					</a>

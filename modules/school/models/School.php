@@ -45,4 +45,9 @@ class School extends \app\modules\school\models\SchoolBase
     {
         return Yii::$app->program->getName($this->col_subcategory);
     }
+
+    public function getImg()
+    {
+        return Yii::getAlias('@web') . '/img/schools/' . $this->col_img_mini;
+    }
 }

@@ -1,21 +1,20 @@
 <?php
 
-namespace app\controllers;
+namespace app\modules\offer\controllers;
 
 use Yii;
-use app\models\Article;
-use app\models\ArticleSearch;
+use app\modules\offer\models\Offer;
+use app\modules\offer\models\OfferSearch;
 use app\controllers\BaseController;
 use yii\web\NotFoundHttpException;
 use yii\filters\VerbFilter;
 use yii\web\UploadedFile;
 
 /**
- * NewsAdminController implements the CRUD actions for Article model.
+ * OfferAdminController implements the CRUD actions for Offer model.
  */
-class NewsAdminController extends BaseController
+class OfferAdminController extends BaseController
 {
-
     public $layout = '@app/views/layouts/admin';
     
     /**
@@ -34,12 +33,12 @@ class NewsAdminController extends BaseController
     }
 
     /**
-     * Lists all Article models.
+     * Lists all Offer models.
      * @return mixed
      */
     public function actionIndex()
     {
-        $searchModel = new ArticleSearch();
+        $searchModel = new OfferSearch();
         $dataProvider = $searchModel->search(Yii::$app->request->queryParams);
 
         return $this->render('index', [
@@ -49,7 +48,7 @@ class NewsAdminController extends BaseController
     }
 
     /**
-     * Displays a single Article model.
+     * Displays a single Offer model.
      * @param integer $id
      * @return mixed
      * @throws NotFoundHttpException if the model cannot be found
@@ -62,25 +61,26 @@ class NewsAdminController extends BaseController
     }
 
     /**
-     * Creates a new Article model.
+     * Creates a new Offer model.
      * If creation is successful, the browser will be redirected to the 'view' page.
      * @return mixed
      */
     public function actionCreate()
     {
-        $model = new Article();
-        if (Yii::$app->request->isGet)  return $this->render('create', ['model' => $model,]);
+        $model = new Offer();
+
+        if (Yii::$app->request->isGet) return $this->render('create', ['model' => $model,]);
 
         $model->load(Yii::$app->request->post());
-        $model->file_img  = UploadedFile::getInstance($model, 'file_img');
-        $model->file_img_big  = UploadedFile::getInstance($model, 'file_img_big');
+        $model->file_img = UploadedFile::getInstance($model, 'file_img');
+        // $model->file_img_big = UploadedFile::getInstance($model, 'file_img_big');
 
-        if ($model->save()) return $this->setMessage('Статья успешно добавлена')->redirect(['view', 'id' => $model->col_id]);
-        else throw new NotFoundHttpException('Ошибки при добавлении статьи.');
+        if ($model->save()) return $this->redirect(['view', 'id' => $model->col_id]);
+        else throw new NotFoundHttpException('error create offer');
     }
 
     /**
-     * Updates an existing Article model.
+     * Updates an existing Offer model.
      * If update is successful, the browser will be redirected to the 'view' page.
      * @param integer $id
      * @return mixed
@@ -100,7 +100,7 @@ class NewsAdminController extends BaseController
     }
 
     /**
-     * Deletes an existing Article model.
+     * Deletes an existing Offer model.
      * If deletion is successful, the browser will be redirected to the 'index' page.
      * @param integer $id
      * @return mixed
@@ -114,24 +114,15 @@ class NewsAdminController extends BaseController
     }
 
     /**
-        add adds aliases to articles created before site changes
-    */
-    public function actionAddAliases()
-    {
-        Article::addAliases();
-        return $this->setMessage('Алиасы добавлены')->redirect(['index']);
-    }
-
-    /**
-     * Finds the Article model based on its primary key value.
+     * Finds the Offer model based on its primary key value.
      * If the model is not found, a 404 HTTP exception will be thrown.
      * @param integer $id
-     * @return Article the loaded model
+     * @return Offer the loaded model
      * @throws NotFoundHttpException if the model cannot be found
      */
     protected function findModel($id)
     {
-        if (($model = Article::findOne($id)) !== null) {
+        if (($model = Offer::findOne($id)) !== null) {
             return $model;
         }
 
