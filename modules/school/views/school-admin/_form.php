@@ -44,6 +44,7 @@ $this->registerJs("CKEDITOR.plugins.addExternal('youtube', 'js/vendor/ckeditor/y
         'clientOptions' => [
             'extraPlugins' => 'youtube',
             'allowedContent' => true,
+            'height' => 500,
             'toolbarGroups' => [
                 ['name' => 'mode'],
                 ['name' => 'undo'],
@@ -51,6 +52,7 @@ $this->registerJs("CKEDITOR.plugins.addExternal('youtube', 'js/vendor/ckeditor/y
                 ['name' => 'links', 'groups' => ['links', 'insert']],
                 ['name' => 'paragraph', 'groups' => [ 'list', 'indent', 'blocks', 'align', 'bidi' ]],
                 ['name' => 'youtube'], 
+                ['name' => 'styles'],
             ]
         ],
         'kcfinder' => true,
@@ -75,12 +77,14 @@ $this->registerJs("CKEDITOR.plugins.addExternal('youtube', 'js/vendor/ckeditor/y
         'clientOptions' => [
             'extraPlugins' => 'youtube',
             'allowedContent' => true,
+            'height' => 500,
             'toolbarGroups' => [
                 ['name' => 'mode'],
                 ['name' => 'undo'],
                 ['name' => 'basicstyles', 'groups' => ['basicstyles', 'cleanup']],
                 ['name' => 'links', 'groups' => ['links', 'insert']],
                 ['name' => 'paragraph', 'groups' => [ 'list', 'indent', 'blocks', 'align', 'bidi' ]],
+                ['name' => 'styles'],
                 ['name' => 'youtube'], 
             ]
         ],

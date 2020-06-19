@@ -66,7 +66,8 @@ class SiteController extends BaseController
         $schools = School::findAll(['col_home_page' => 1]);
         $questions = Faq::find()->all();
         $partners = Partner::find()->all();
-        return $this->render('index', compact('schools', 'reviews', 'settings', 'questions', 'partners'));
+        $model = new Feedback();
+        return $this->render('index/main', compact('model', 'schools', 'reviews', 'settings', 'questions', 'partners'));
     }
 
     /**
@@ -157,4 +158,5 @@ class SiteController extends BaseController
         $weeks = $course->getWeeksWithPrices();
         return json_encode($weeks);
     }
+
 }

@@ -40,7 +40,7 @@ class FeedbackSearch extends Feedback
      */
     public function search($params)
     {
-        $query = Feedback::find();
+        $query = Feedback::find()->orderBy(['col_id' => SORT_DESC]);
 
         // add conditions that should always apply here
 

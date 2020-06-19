@@ -1,5 +1,6 @@
 <?php 
-
+use app\widgets\modal\Modal;
+ 
 	$this->registerJsFile('@web/js/public/search-home.js', ['depends' => [\yii\web\JqueryAsset::className()]]);
  ?>
 
@@ -178,28 +179,7 @@
 	</section> <!-- /.section -->
 <?php endif ?>
 
-<section class="section-discuss">
-	<div class="wrap">
-		<h2>Есть вопросы?<br>Оставьте свой Email — и мы с Вами свяжемся!</h2>
-		<div class="form">
-			<div class="column">
-				<label class="input__label">Имя</label>
-				<div class="input__field">
-					<input type="text" id="js-username-contacts1">
-				</div>
-			</div> <!-- /.column -->
-			
-			<div class="column">
-				<label class="input__label">Email</label>
-				<div class="input__field">
-					<input type="email" id="js-email-contacts1">
-				</div>
-			</div> <!-- /.column -->
-			
-			<a href="#" class="btn btn2 js-contacts" data-id="1">Оставить заявку</a>
-		</div> <!-- /.form -->
-	</div> <!-- /.wrap -->
-</section> <!-- /.section-discuss -->
+<?= $this->render('form_question', ['model' => $model]) ?>
 
 <?php if ($partners): ?>
 	<section class="section section-partners">
@@ -215,3 +195,7 @@
 	</div> <!-- /.wrap -->
 </section> <!-- /.section-partners -->
 <?php endif ?>
+
+<?= Modal::widget() ?>
+
+

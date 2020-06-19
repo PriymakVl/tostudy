@@ -58,7 +58,7 @@ class SchoolBase extends \app\models\ModelApp
     public function rules()
     {
         return [
-            [['col_city_id', 'col_meta_title', 'col_meta_description', 'col_meta_keywords', 'col_title', 'col_about_us_ru', 'col_residence_ru', 'col_registration_fee', 'col_home_page', 'col_currency', 'col_subcategory', 'file_img_min', 'file_img'], 'required'],
+            [['col_city_id', 'col_meta_title', 'col_meta_description', 'col_meta_keywords', 'col_title', 'col_about_us_ru', 'col_residence_ru', 'col_registration_fee', 'col_home_page', 'col_currency', 'col_subcategory', 'file_img_mini', 'file_img'], 'required'],
 
             [['col_city_id', 'col_home_page', 'col_currency', 'col_subcategory'], 'integer'],
             [['col_description_ru', 'col_about_us_ru', 'col_residence_ru'], 'string'],

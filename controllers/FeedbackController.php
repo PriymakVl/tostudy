@@ -113,6 +113,19 @@ class FeedbackController extends BaseController
     }
 
     /**
+    *  create new feedbac from home page site
+    */
+    public function actionHome()
+    {
+        $model = new Feedback();
+        $model->col_comment = 'Свяжитесь со мной';
+        if ($model->load(Yii::$app->request->post()) && $model->save()) {
+            $message = 'Спасибо, заявка принята. Мы свяжемся с Вами в ближайшее время.';
+            return $this->setMessage($message)->goHome();
+        }
+    }
+
+    /**
      * Finds the Feedback model based on its primary key value.
      * If the model is not found, a 404 HTTP exception will be thrown.
      * @param integer $id
