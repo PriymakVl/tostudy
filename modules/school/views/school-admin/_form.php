@@ -3,12 +3,13 @@
 use yii\helpers\Html;
 use yii\widgets\ActiveForm;
 use app\modules\city\models\City;
-use mihaildev\ckeditor\CKEditor;
-use mihaildev\elfinder\ElFinder;
+use dosamigos\ckeditor\CKEditor;
 
 /* @var $this yii\web\View */
 /* @var $model app\modules\school\models\School */
 /* @var $form yii\widgets\ActiveForm */
+
+$this->registerJs("CKEDITOR.plugins.addExternal('youtube', 'js/vendor/ckeditor/youtube/plugin.js', '');");
 ?>
 
 <div class="school-form">
@@ -33,25 +34,69 @@ use mihaildev\elfinder\ElFinder;
 
      ?>
 
-    <?
+    <?= $form->field($model, 'file_img_mini')->fileInput()->label('Изображение мини') ?>
+
+    <?= $form->field($model, 'file_img')->fileInput()->label('Изображение') ?>
+
+    <?php 
         echo $form->field($model, 'col_about_us_ru')->widget(CKEditor::className(), [
-            'editorOptions' => ElFinder::ckeditorOptions(
-
-            ['elfinder', 'path' => 'schools/description'],
-
-            ['preset' => 'standard', 'removePlugins' => 'flash',]
-        ),
+        'preset' => 'custom',
+        'clientOptions' => [
+            'extraPlugins' => 'youtube',
+            'allowedContent' => true,
+            'toolbarGroups' => [
+                ['name' => 'mode'],
+                ['name' => 'undo'],
+                ['name' => 'basicstyles', 'groups' => ['basicstyles', 'cleanup']],
+                ['name' => 'links', 'groups' => ['links', 'insert']],
+                ['name' => 'paragraph', 'groups' => [ 'list', 'indent', 'blocks', 'align', 'bidi' ]],
+                ['name' => 'youtube'], 
+            ]
+        ],
+        'kcfinder' => true,
+        'kcfOptions' => [
+            'uploadURL' => '@web/img/schools/description',
+            'uploadDir' => '@webroot/img/schools/description',
+            'access' => [  // @link http://kcfinder.sunhater.com/install#_access
+                        'files' => [
+                            'upload' => true,
+                            'delete' => true,
+                            'rename' => true,
+                        ],
+                    ],
+                    'thumbsDir' => false,
+            ],
         ]);
     ?>
 
-    <?
-         echo $form->field($model, 'col_residence_ru')->widget(CKEditor::className(), [
-            'editorOptions' => ElFinder::ckeditorOptions(
-
-            ['elfinder', 'path' => 'schools/description'],
-            
-            ['preset' => 'standard', 'removePlugins' => 'flash',]
-        ),
+    <?php 
+        echo $form->field($model, 'col_residence_ru')->widget(CKEditor::className(), [
+        'preset' => 'custom',
+        'clientOptions' => [
+            'extraPlugins' => 'youtube',
+            'allowedContent' => true,
+            'toolbarGroups' => [
+                ['name' => 'mode'],
+                ['name' => 'undo'],
+                ['name' => 'basicstyles', 'groups' => ['basicstyles', 'cleanup']],
+                ['name' => 'links', 'groups' => ['links', 'insert']],
+                ['name' => 'paragraph', 'groups' => [ 'list', 'indent', 'blocks', 'align', 'bidi' ]],
+                ['name' => 'youtube'], 
+            ]
+        ],
+        'kcfinder' => true,
+        'kcfOptions' => [
+            'uploadURL' => '@web/img/schools/description',
+            'uploadDir' => '@webroot/img/schools/description',
+            'access' => [  // @link http://kcfinder.sunhater.com/install#_access
+                        'files' => [
+                            'upload' => true,
+                            'delete' => true,
+                            'rename' => true,
+                        ],
+                    ],
+                    'thumbsDir' => false,
+            ],
         ]);
     ?>
 

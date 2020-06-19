@@ -25,6 +25,7 @@ app\assets\AdminAsset::register($this);
                 'method' => 'post',
             ],
         ]) ?>
+        <?= Html::a('Посмотреть на сайте', ['article/' . $model->col_alias], ['target' => '_blank','class' => 'btn btn-primary']) ?>
     </p>
 
     <?= DetailView::widget([
@@ -34,11 +35,14 @@ app\assets\AdminAsset::register($this);
 
             'col_title_ru',
 
-            'col_text_ru:html',
+            ['attribute' => 'col_status', 'value' => function($model) { return $model->status; }],
+
+            'col_text_ru:raw',
 
             'image:image',
 
-            ['attribute' => 'col_status', 'value' => function($model) { return $model->status; }],
+            'imageBig:image',
+            
         ],
     ]) ?>
 

@@ -66,13 +66,15 @@ class SchoolAdminController extends \app\controllers\BaseController
     public function actionCreate()
     {
         $model = new School();
-        if ($model->load(Yii::$app->request->post()) && $model->save()) {
+        if (Yii::$app->request->isGet)  return $this->render('create', ['model' => $model,]);
+
+        $model->load(Yii::$app->request->post());
+        $model->file_img  = UploadedFile::getInstance($model, 'file_img');
+        $model->file_img_mini  = UploadedFile::getInstance($model, 'file_img_mini');
+        if ($model->save()) {
             return $this->setMessage('Школа добавлена')->redirect(['view', 'id' => $model->col_id]);
         }
-
-        return $this->render('create', [
-            'model' => $model,
-        ]);
+        else throw new NotFoundHttpException('Ошибка при добавлении школы.'); 
     }
 
     /**
@@ -85,14 +87,17 @@ class SchoolAdminController extends \app\controllers\BaseController
     public function actionUpdate($id)
     {
         $model = $this->findModel($id);
+        $model->scenario = 'update';
 
-        if ($model->load(Yii::$app->request->post()) && $model->save()) {
-            return $this->redirect(['view', 'id' => $model->col_id]);
+        if (Yii::$app->request->isGet)  return $this->render('update', ['model' => $model,]);
+
+        $model->load(Yii::$app->request->post());
+        $model->file_img  = UploadedFile::getInstance($model, 'file_img');
+        $model->file_img_mini  = UploadedFile::getInstance($model, 'file_img_mini');
+        if ($model->save()) {
+            return $this->setMessage('Школа отредактирована')->redirect(['view', 'id' => $model->col_id]);
         }
-
-        return $this->render('update', [
-            'model' => $model,
-        ]);
+        else throw new NotFoundHttpException('Ошибка при редактировании школы.'); 
     }
 
     /**
@@ -109,18 +114,6 @@ class SchoolAdminController extends \app\controllers\BaseController
         return $this->redirect(['index']);
     }
 
-    public function actionImage($school_id = false)
-    {
-        $model = new ImageUpload();
-        $school = $this->findModel($school_id);
-        if (Yii::$app->request->isGet) return $this->render('form_img', compact('model', 'school'));
-        $file = UploadedFile::getInstance($model, 'image');
-        $big_size = 1;
-        if (Yii::$app->request->post('size') == $big_size) $school->col_img = $model->uploadFile($file, 'schools/big', $school->col_img);
-        else $school->col_img_mini = $model->uploadFile($file, 'schools', $school->col_img_mini);
-        $school->save(false);
-        $this->setMessage('изображение загружено')->redirect(['view', 'id' => $school->col_id]);
-    }
 
     /**
      * Finds the School model based on its primary key value.

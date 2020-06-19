@@ -3,6 +3,8 @@
 namespace app\modules\school\models;
 
 use Yii;
+use app\models\ImageUpload;
+use yii\helpers\Inflector;
 
 /**
  * This is the model class for table "tbl_schools".
@@ -38,6 +40,10 @@ use Yii;
  */
 class SchoolBase extends \app\models\ModelApp
 {
+
+    public $file_img;
+    public $file_img_mini;
+
     /**
      * {@inheritdoc}
      */
@@ -52,15 +58,18 @@ class SchoolBase extends \app\models\ModelApp
     public function rules()
     {
         return [
-            [['col_city_id', 'col_meta_title', 'col_meta_description', 'col_meta_keywords', 'col_title', 'col_about_us_ru', 'col_residence_ru', 'col_registration_fee', 'col_home_page', 'col_currency', 'col_subcategory'], 'required'],
+            [['col_city_id', 'col_meta_title', 'col_meta_description', 'col_meta_keywords', 'col_title', 'col_about_us_ru', 'col_residence_ru', 'col_registration_fee', 'col_home_page', 'col_currency', 'col_subcategory', 'file_img_min', 'file_img'], 'required'],
+
             [['col_city_id', 'col_home_page', 'col_currency', 'col_subcategory'], 'integer'],
             [['col_description_ru', 'col_about_us_ru', 'col_residence_ru'], 'string'],
             [['col_meta_title', 'col_meta_description', 'col_meta_keywords', 'col_title'], 'string', 'max' => 255],
-            [['col_registration_fee'], 'string', 'max' => 10],
-            [['col_img_mini', 'col_img', 'col_description_ru'], 'default', 'value' => ''],
 
-            //todo delete from table
-            [['col_url', ], 'default', 'value' => ''],
+            [['col_registration_fee', 'col_img_mini', 'col_img'], 'string', 'max' => 10],
+            [['col_description_ru'], 'default', 'value' => ''],
+            [['file_img', 'file_img_mini'], 'file', 'extensions' => 'png, jpg, jpeg'],
+
+            [['col_url', ], 'default', 'value' => ''], //todo delete from table
+
             [['col_description_en', 'col_description_es', 'col_description_ua', 'col_description_cn'], 'default', 'value' => ''],
             [['col_about_us_en', 'col_about_us_es', 'col_about_us_ua', 'col_about_us_cn'], 'default', 'value' => ''],
             [['col_residence_en', 'col_residence_es', 'col_residence_ua', 'col_residence_cn'], 'default', 'value' => ''],
@@ -91,5 +100,27 @@ class SchoolBase extends \app\models\ModelApp
             'col_currency' => 'Валюта',
             'col_subcategory' => 'Программа',
         ];
+    }
+
+    public function scenarios()
+    {
+        $scenarios = parent::scenarios();
+        $scenarios['update'] = ['col_city_id', 'col_meta_title', 'col_meta_description', 'col_meta_keywords', 'col_title', 'col_about_us_ru', 'col_residence_ru', 'col_registration_fee', 'col_home_page', 'col_currency', 'col_subcategory'];
+        return $scenarios;
+    }
+
+    public function beforeSave($insert)
+    {
+        $img = new ImageUpload();
+        if ($insert) {
+             $this->col_img = $img->uploadFile($this->file_img, 'schools/big', $this->col_img); 
+             $this->col_img_mini = $img->uploadFile($this->file_img_mini, 'schools', $this->col_img_mini); 
+        }
+        else {
+            if ($this->file_img) $this->col_img = $img->uploadFile($this->file_img, 'schools/big', $this->col_img);
+            if ($this->file_img_mini) $this->col_img_mini = $img->uploadFile($this->file_img_mini, 'schools', $this->col_img_mini);
+        }
+        $this->col_alias = Inflector::slug($this->col_title, '_');
+        return true;
     }
 }

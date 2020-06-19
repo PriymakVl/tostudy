@@ -52,10 +52,18 @@ class Article extends \app\models\ModelApp
             [['col_status'], 'integer'],
             [['col_title_ru'], 'string', 'max' => 255],
             [['file_img_big', 'file_img'], 'file', 'extensions' => 'jpg, jpeg, png'],
+            // ['col_alias', 'save'],
             [['col_img', 'col_img_big'], 'string', 'max' => 100],
             [['col_title_en', 'col_title_es', 'col_title_ua', 'col_title_cn',], 'default', 'value' => ''],
             [['col_text_en', 'col_text_es', 'col_text_ua', 'col_text_cn',], 'default', 'value' => ''],
         ];
+    }
+
+    public function scenarios()
+    {
+        $scenarios = parent::scenarios();
+        $scenarios['update'] = ['col_title_ru', 'col_text_ru', 'col_status'];
+        return $scenarios;
     }
 
     /**
@@ -79,12 +87,18 @@ class Article extends \app\models\ModelApp
             'col_img_big' => 'Col Img Big',
             'col_status' => 'Статус',
             'image' => 'Изображение',
+            'imageBig' => 'Большое изображение',
         ];
     }
 
     public function getImage()
     {
         return Yii::getAlias('@web') . '/img/articles/' . $this->col_img;
+    }
+
+    public function getImageBig()
+    {
+        return Yii::getAlias('@web') . '/img/articles/big/' . $this->col_img_big;
     }
 
     public function getStatus()
@@ -98,22 +112,18 @@ class Article extends \app\models\ModelApp
 
     public function beforeSave($insert)
     {
+        $img = new ImageUpload();
         if ($insert) {
-            $img = new ImageUpload();
-            $this->col_img = $img->uploadFile($this->file_img, 'articles', $this->col_img);  
-            $this->col_img_big = $img->uploadFile($this->file_img_big, 'articles/big', $this->col_img_big);  
+             $this->col_img = $img->uploadFile($this->file_img, 'articles', $this->col_img); 
+             $this->col_img_big = $img->uploadFile($this->file_img_big, 'articles/big', $this->col_img_big); 
         }
-        return parent::beforeSave($insert);
+        else {
+            if ($this->file_img) $this->col_img = $img->uploadFile($this->file_img, 'articles', $this->col_img);
+            if ($this->file_img_big) $this->col_img_big = $img->uploadFile($this->file_img_big, 'articles/big', $this->col_img_big);
+        }
+        $this->col_alias = Inflector::slug($this->col_title_ru, '_');
+        return true;
     }
 
-    //для добавление алиасов для существующих статей
-    public static function addAliases()
-    {
-        $articles = self::find()->all();
-        if (!$articles) return;
-        foreach ($articles as $article) {
-            $article->col_alias = Inflector::slug($article->col_title_ru, '_');
-            $article->save(false);
-        }
-    }
+
 }

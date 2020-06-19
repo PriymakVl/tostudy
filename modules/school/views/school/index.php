@@ -24,10 +24,10 @@
 				<?php foreach ($schools as $school): ?>
 
 					<div class="item">
-						<a href="school?id=<?= $school->col_id ?>" class="wrap-img">
+						<a href="school/<?= $school->alias ?>" class="wrap-img">
 							<img src="img/schools/<?= $school->col_img_mini ?>" alt="<?= $shool->col_title_ru ?>">
 						</a>
-						<h4><a href="school?id=<?= $school->col_id ?>"><?= $shool->col_title_ru ?></a></h4>
+						<h4><a href="school/<?= $school->alias ?>"><?= $school->col_title ?></a></h4>
 						<div class="location">
 							<?= Yii::$app->svg->get('locale') ?>
 							<?= $school->city->name ?>,
@@ -39,7 +39,7 @@
 								<?= $school->courses[0]->getLowestPrice() .' '. $school->currency ?>
 								<span>/ нед</span>
 							</div>
-							<a href="school?id=<?= $school->col_id ?>" class="view">Смотреть курсы</a>
+							<a href="school/<?= $school->alias ?>" class="view">Смотреть курсы</a>
 						</div>
 					</div>
 

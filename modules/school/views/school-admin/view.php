@@ -24,8 +24,7 @@ $this->params['breadcrumbs'][] = $this->title;
                 'method' => 'post',
             ],
         ]) ?>
-        <?= Html::a('Добавить изображение', ['image', 'school_id' => $model->col_id], ['class' => 'btn btn-primary']) ?>
-        <?= Html::a('Смотреть на сайте', ['/school', 'id' => $model->col_id], ['class' => 'btn btn-primary', 'target' => '_blank']) ?>
+        <?= Html::a('Смотреть на сайте', ['/school/' . $model->alias], ['class' => 'btn btn-primary', 'target' => '_blank']) ?>
     </p>
 
     <?= DetailView::widget([

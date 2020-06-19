@@ -90,7 +90,7 @@ $config = [
                 'offer/<alias:\w+>' => 'offer/offer/view',
 
                 'schools' => 'school/school/index', 
-                'school' => 'school/school/view',
+                'school/<alias:\w+>' => 'school/school/view',
                 'school/<action:\w+>' => 'school/school/<action>', 
 
                 'languages' => 'language/language/index', 

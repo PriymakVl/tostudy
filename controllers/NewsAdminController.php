@@ -89,14 +89,16 @@ class NewsAdminController extends BaseController
     public function actionUpdate($id)
     {
         $model = $this->findModel($id);
+        $model->scenario = 'update';
+        if (Yii::$app->request->isGet)  return $this->render('update', ['model' => $model,]);
+       
+        $model->load(Yii::$app->request->post());
+        $model->file_img  = UploadedFile::getInstance($model, 'file_img');
+        $model->file_img_big  = UploadedFile::getInstance($model, 'file_img_big');
 
-        if ($model->load(Yii::$app->request->post()) && $model->save()) {
-            return $this->redirect(['view', 'id' => $model->col_id]);
-        }
+        if ($model->save()) return $this->setMessage('Статья успешно отредактирована')->redirect(['view', 'id' => $model->col_id]);
+        else throw new NotFoundHttpException('Ошибки при редактировании статьи.');
 
-        return $this->render('update', [
-            'model' => $model,
-        ]);
     }
 
     /**
@@ -111,15 +113,6 @@ class NewsAdminController extends BaseController
         $this->findModel($id)->delete();
 
         return $this->redirect(['index']);
-    }
-
-    /**
-        add adds aliases to articles created before site changes
-    */
-    public function actionAddAliases()
-    {
-        Article::addAliases();
-        return $this->setMessage('Алиасы добавлены')->redirect(['index']);
     }
 
     /**

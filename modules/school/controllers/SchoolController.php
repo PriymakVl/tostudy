@@ -17,9 +17,9 @@ class SchoolController extends \app\controllers\BaseController
         return $this->render('index', compact('schools', 'city', 'program'));
     }
 
-    public function actionView($id)
+    public function actionView($alias)
     {
-    	$school = School::findOne(['col_id' => $id]);
+    	$school = School::findOne(['col_alias' => $alias]);
     	$courses = $school->courses;
         return $this->render('view', compact('school', 'courses'));
     }

@@ -2,13 +2,14 @@
 
 use yii\helpers\Html;
 use yii\widgets\ActiveForm;
-use mihaildev\ckeditor\CKEditor;
-use mihaildev\elfinder\ElFinder;
+use dosamigos\ckeditor\CKEditor;
 use app\models\Article;
 
 /* @var $this yii\web\View */
 /* @var $model app\models\Article */
 /* @var $form yii\widgets\ActiveForm */
+
+$this->registerJs("CKEDITOR.plugins.addExternal('youtube', 'js/vendor/ckeditor/youtube/plugin.js', '');");
 ?>
 
 <div class="article-form">
@@ -18,24 +19,44 @@ use app\models\Article;
     <?= $form->field($model, 'col_title_ru')->textInput(['maxlength' => true]) ?>
 
     <?php 
+        $items = [Article::STATUS_PUBLISHED => 'Опубликована', Article::STATUS_DRAFT => 'Черновик'];
+        echo $form->field($model, 'col_status')->dropDownList($items);
+    ?>
+
+    <?php 
         echo $form->field($model, 'col_text_ru')->widget(CKEditor::className(), [
-            'editorOptions' => ElFinder::ckeditorOptions(
-
-            ['elfinder', 'path' => 'articles/text'],
-
-            ['preset' => 'standard', 'removePlugins' => 'flash',]
-        ),
+        'preset' => 'custom',
+        'clientOptions' => [
+            'extraPlugins' => 'youtube',
+            'allowedContent' => true,
+            'toolbarGroups' => [
+                ['name' => 'mode'],
+                ['name' => 'undo'],
+                ['name' => 'basicstyles', 'groups' => ['basicstyles', 'cleanup']],
+                ['name' => 'links', 'groups' => ['links', 'insert']],
+                ['name' => 'paragraph', 'groups' => [ 'list', 'indent', 'blocks', 'align', 'bidi' ]],
+                ['name' => 'youtube'], 
+            ]
+        ],
+        'kcfinder' => true,
+        'kcfOptions' => [
+            'uploadURL' => '@web/img/articles/text',
+            'uploadDir' => '@webroot/img/articles/text',
+            'access' => [  // @link http://kcfinder.sunhater.com/install#_access
+                        'files' => [
+                            'upload' => true,
+                            'delete' => true,
+                            'rename' => true,
+                        ],
+                    ],
+                    'thumbsDir' => false,
+            ],
         ]);
     ?>
 
     <?= $form->field($model, 'file_img')->fileInput()->label('Изображение') ?>
 
     <?= $form->field($model, 'file_img_big')->fileInput()->label('Большое изображение') ?>
-    
-    <?php 
-        $items = [Article::STATUS_PUBLISHED => 'Опубликована', Article::STATUS_DRAFT => 'Черновик'];
-        echo $form->field($model, 'col_status')->dropDownList($items);
-    ?>
     
     <div class="form-group">
         <?= Html::submitButton('Сохранить', ['class' => 'btn btn-success']) ?>

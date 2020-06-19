@@ -50,4 +50,10 @@ class School extends \app\modules\school\models\SchoolBase
     {
         return Yii::getAlias('@web') . '/img/schools/' . $this->col_img_mini;
     }
+
+    public function getAlias()
+    {
+        return $this->col_alias;
+    }
+
 }
