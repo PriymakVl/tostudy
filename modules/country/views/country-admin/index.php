@@ -32,7 +32,7 @@ app\assets\AdminAsset::register($this);
 
             'col_id',
 
-            ['attribute' => 'col_language_id', 'value' => function($model) {return $model->language->name;}],
+            ['attribute' => 'col_language_id', 'filter' => false, 'value' => function($model) {return $model->language->name;}],
 
             'col_title_ru',
 

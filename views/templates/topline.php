@@ -13,48 +13,45 @@
 					<a href="#">Программы</a>
 					<ul class="form-select">
 						<li>
-							<a href="/languages?program=<?= Yii::$app->program->get('language') ?>">
+							<a href="/languages/<?= Yii::$app->program->getAlias('language') ?>">
 								<?= Yii::$app->program->getName(Yii::$app->program->programs['language']) ?>
 							</a>
 						</li>
 						<li>
-							<a href="/languages?program=<?= Yii::$app->program->get('camp') ?>">
+							<a href="/languages/<?= Yii::$app->program->getAlias('camp') ?>">
 								<?= Yii::$app->program->getName(Yii::$app->program->programs['camp']) ?>
 							</a>
 						</li>
 						<li>
-							<a href="/languages?program=<?= Yii::$app->program->get('secondary') ?>">
+							<a href="/languages/<?= Yii::$app->program->getAlias('higher') ?>">
 								<?= Yii::$app->program->getName(Yii::$app->program->programs['higher']) ?>
 							</a>
 						</li>
 						<li>
-							<a href="/languages?program=<?= Yii::$app->program->get('higher') ?>">
+							<a href="/languages/<?= Yii::$app->program->getAlias('secondary') ?>">
 								<?= Yii::$app->program->getName(Yii::$app->program->programs['secondary']) ?>
 							</a>
 						</li>
 						<li>
-							<a href="/languages?program=<?= Yii::$app->program->get('online-course') ?>">
+							<a href="/languages/<?= Yii::$app->program->getAlias('online-course') ?>">
 								<?= Yii::$app->program->getName(Yii::$app->program->programs['online-course']) ?>
 							</a>
 						</li>
 						<li>
-							<a href="/languages?program=<?= Yii::$app->program->get('internships') ?>">
+							<a href="/languages/<?= Yii::$app->program->getAlias('internships') ?>">
 								<?= Yii::$app->program->getName(Yii::$app->program->programs['internships']) ?>
 							</a>
 						</li>
 					</ul> <!-- /.form-select -->
 				</li> <!-- /.link -->
-				<li class="link">
-					<!-- <a href="/info">Полезная информация</a> -->
-					<a href="/news">Новости</a>
-					<!-- <ul class="form-select">
+				<li class="link sel">
+					<a href="#">Полезная информация</a>
+					<ul class="form-select">
 						<li><a href="/info">Полезная информация</a></li>
 						<li><a href="/news">Новости</a></li>
-					</ul> --> <!-- /.form-select -->
+						<li><a href="/offers">Акции</a></li>
+					</ul> <!-- /.form-select -->
 				</li> <!-- /.link -->
-				<li class="link">
-					<a href="/offers">Акции</a>
-				</li>
 				<li class="link">
 					<a href="/insurance">Страхование</a>
 				</li>

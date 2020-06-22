@@ -1,6 +1,10 @@
-/*.section {
-	padding-top: 20px;
-}*/
+.section-countries, .section-languages {
+	padding-top: 0;
+}
+
+.section-schools {
+	margin-top: -40px;
+}
 
 .active-lang {
 	margin: 15px 0;

@@ -152,6 +152,12 @@ class SiteController extends BaseController
         return $this->render('reviews', ['reviews' => $reviews]);
     }
 
+    public function actionInfo()
+    {
+        $countries = Country::find()->all();
+        return $this->render('info', ['countries' => $countries]);
+    }
+
     public function actionCalculator($course_id)
     {
         $course = Course::findOne($course_id);

@@ -8,6 +8,7 @@ use app\modules\language\models\LanguageSearch;
 use app\controllers\BaseController;
 use yii\web\NotFoundHttpException;
 use yii\filters\VerbFilter;
+use yii\web\UploadedFile;
 
 /**
  * LanguageAdminController implements the CRUD actions for Language model.
@@ -67,14 +68,13 @@ class LanguageAdminController extends BaseController
     public function actionCreate()
     {
         $model = new Language();
+        if (Yii::$app->request->isGet)  return $this->render('create', ['model' => $model,]);
 
-        if ($model->load(Yii::$app->request->post()) && $model->add()) {
-            return $this->redirect(['view', 'id' => $model->col_id]);
-        }
+        $model->load(Yii::$app->request->post());
+        $model->file_image  = UploadedFile::getInstance($model, 'file_image');
 
-        return $this->render('create', [
-            'model' => $model,
-        ]);
+        if ($model->save()) return $this->setMessage('Язык успешно добавлен')->redirect(['view', 'id' => $model->col_id]);
+        else $this->setMessage('Ошибка при добавлении', 'error')->redirect(['view', 'id' => $model->col_id]);
     }
 
     /**
@@ -87,14 +87,13 @@ class LanguageAdminController extends BaseController
     public function actionUpdate($id)
     {
         $model = $this->findModel($id);
+        if (Yii::$app->request->isGet)  return $this->render('update', ['model' => $model,]);
 
-        if ($model->load(Yii::$app->request->post()) && $model->save()) {
-            return $this->redirect(['view', 'id' => $model->col_id]);
-        }
+        $model->load(Yii::$app->request->post());
+        $model->file_image  = UploadedFile::getInstance($model, 'file_image');
 
-        return $this->render('update', [
-            'model' => $model,
-        ]);
+        if ($model->save()) return $this->setMessage('Язык отредактирован')->redirect(['view', 'id' => $model->col_id]);
+        else $this->setMessage('Ошибка при редактировании', 'error')->redirect(['view', 'id' => $model->col_id]);
     }
 
     /**

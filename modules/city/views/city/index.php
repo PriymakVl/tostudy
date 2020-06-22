@@ -7,8 +7,7 @@ use app\modules\school\models\School;
 	<div class="wrap">
 		<a href="/">Главная</a>
 		<a href="/languages">Языки</a>
-		<a href="/countries?lang_id=<?= Yii::$app->session->get('lang_id') ?>">Страны</a>
-		<a href="/cities?country_Id=<?= Yii::$app->session->get('country_id') ?>">Города</a>
+		<a href="/countries/<?= $lang->col_alias ?>">Страны</a>
 		<span><?= $country->col_title_ru ?></span>
 	</div> <!-- /.wrap -->
 </div> <!-- /#breadcrumbs -->
@@ -25,7 +24,7 @@ use app\modules\school\models\School;
 				<?php foreach ($cities as $city): ?>
 					<?php $count_schools = $city->countSchoolsByProgram($program); ?>
 					<?php if ($count_schools): ?>
-						<a href="/schools?city_id=<?= $city->col_id ?>" class="item">
+						<a href="/schools/<?= $city->col_alias ?>" class="item">
 							<img src="/img/cities/<?= $city->col_img ?>" alt="<?= $city->col_title_ru ?>" class="country">
 							<div class="container">
 								<h3><?= $city->col_title_ru ?></h3>

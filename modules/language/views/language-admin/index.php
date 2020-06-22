@@ -30,11 +30,7 @@ $this->params['breadcrumbs'][] = $this->title;
 
             'col_title_ru',
 
-            [
-                'attribute' => 'col_img', 'value' => function($model) {return $model->createImage();},
-                // 'headerOptions' => ['class' => 'text-info'], 
-                'format' => 'raw',
-            ],
+            'image:image',
 
             ['class' => 'yii\grid\ActionColumn', 'header' => 'Действие',],
         ],

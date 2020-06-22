@@ -6,9 +6,9 @@
 	<div class="wrap">
 		<a href="/">Главная</a>
 		<a href="/languages">Языки</a>
-		<a href="/countries?lang_id=<?= Yii::$app->session->get('lang_id') ?>">Страны</a>
-		<a href="/cities?country_Id=<?= Yii::$app->session->get('country_id') ?>">Города</a>
-		<a href="/schools?city_id=<?= Yii::$app->session->get('city_id') ?>">Школы</a>
+		<a href="/countries/<?= $lang->col_alias ?>">Страны</a>
+		<a href="/cities/<?= $school->city->country->col_alias ?>">Города</a>
+		<a href="/schools/<?= $school->city->col_alias ?>">Школы</a>
 		<span><?= $school->name ?></span>
 	</div> <!-- /.wrap -->
 </div> <!-- /#breadcrumbs -->

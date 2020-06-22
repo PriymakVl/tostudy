@@ -23,7 +23,7 @@ use app\modules\school\models\School;
 				<?php foreach ($countries as $country): ?>
 					<?php $count_schools = $country->countSchoolsByProgram($program); ?>
 					<?php if ($count_schools): ?>
-						<a href="/cities?country_id=<?=$country->col_id?>" class="item">
+						<a href="/cities/<?=$country->alias?>" class="item">
 							<img src="/img/countries/<?= $country->col_img ?>" alt="<?= $country->col_title_ru ?>" class="country">
 							<div class="container">
 								<h3><?= $country->col_title_ru ?></h3>
@@ -32,7 +32,6 @@ use app\modules\school\models\School;
 							<span href="#" class="btn">Смотреть все школы</span>
 						</a>
 					<? endif; ?>
-					<!-- suffixWords($arr['col_count_schools'], $ini_file['header']['locale'], true)  -->
 				<?php endforeach ?>
 			<?php endif ?>
 		</div>

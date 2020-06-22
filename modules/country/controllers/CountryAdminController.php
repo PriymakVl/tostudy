@@ -74,8 +74,8 @@ class CountryAdminController extends BaseController
         $model->file_image  = UploadedFile::getInstance($model, 'file_image');
         $model->file_flag  = UploadedFile::getInstance($model, 'file_flag');
 
-        if ($model->add()) return $this->setMessage('Страна успешно добавлена')->redirect(['view', 'id' => $model->col_id]);
-        else throw new NotFoundHttpException('Ошибки при добавлении страны.');
+        if ($model->save()) return $this->setMessage('Страна успешно добавлена')->redirect(['view', 'id' => $model->col_id]);
+        else $this->setMessage('Ошибка при добавлении', 'error')->redirect(['view', 'id' => $model->col_id]);
     }
 
     /**
@@ -88,14 +88,14 @@ class CountryAdminController extends BaseController
     public function actionUpdate($id)
     {
         $model = $this->findModel($id);
+        if (Yii::$app->request->isGet) return $this->render('update', ['model' => $model,]);
 
-        if ($model->load(Yii::$app->request->post()) && $model->save()) {
-            return $this->redirect(['view', 'id' => $model->col_id]);
-        }
+        $model->load(Yii::$app->request->post());
+        $model->file_image = UploadedFile::getInstance($model, 'file_image');
+        $model->file_flag = UploadedFile::getInstance($model, 'file_flag');
 
-        return $this->render('update', [
-            'model' => $model,
-        ]);
+        if ($model->save()) return $this->setMessage('Страна отредактирована')->redirect(['view', 'id' => $model->col_id]);
+        else $this->setMessage('Ошибка при редактировании', 'error')->redirect(['view', 'id' => $model->col_id]);
     }
 
     /**

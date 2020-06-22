@@ -21,7 +21,7 @@ use app\modules\school\models\School;
 			<? foreach($languages as $language): ?>
 				<?php $count_schools = $language->countSchoolsByProgram($program); ?>
 					<?php if ($count_schools): ?>
-						<a href="/countries?lang_id=<?= $language->col_id ?>" class="item">
+						<a href="/countries/<?= $language->col_alias ?>" class="item">
 							<img src="/img/languages/<?= $language->col_img ?>" alt="<?= $language->col_title_ru ?>">
 							<h3><?= $language->col_title_ru ?></h3>
 							<span class="school"><?= School::suffixWords($count_schools, 'ru', true) ?></span>

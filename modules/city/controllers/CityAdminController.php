@@ -74,10 +74,10 @@ class CityAdminController extends BaseController
         $model->load(Yii::$app->request->post());
         $model->file_image  = UploadedFile::getInstance($model, 'file_image');
 
-        if ($model->save()) {
-            return $this->setMessage('Город успешно добавлен')->redirect(['view', 'id' => $model->col_id]);
-        }
-        else throw new NotFoundHttpException('Ошибка при добавлении города.');
+        if ($model->save()) $this->setMessage('Город успешно добавлен');
+        else $htis->messageError();
+        
+        return $this->redirect(['view', 'id' => $model->col_id]);
     }
 
     /**
@@ -90,14 +90,15 @@ class CityAdminController extends BaseController
     public function actionUpdate($id)
     {
         $model = $this->findModel($id);
+        if (Yii::$app->request->isGet)  return $this->render('update', ['model' => $model,]);
 
-        if ($model->load(Yii::$app->request->post()) && $model->save()) {
-            return $this->redirect(['view', 'id' => $model->col_id]);
-        }
+        $model->load(Yii::$app->request->post());
+        $model->file_image  = UploadedFile::getInstance($model, 'file_image');
 
-        return $this->render('update', [
-            'model' => $model,
-        ]);
+        if ($model->save()) $this->setMessage('Город успешно отредактирован');
+        else $htis->messageError();
+        
+        return $this->redirect(['view', 'id' => $model->col_id]);
     }
 
     /**

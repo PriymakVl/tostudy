@@ -3,6 +3,7 @@
 namespace app\modules\city\models;
 
 use Yii;
+use app\helpers\Inflector;
 use app\modules\school\models\School;
 use app\modules\country\models\Country;
 use app\models\ImageUpload;
@@ -37,11 +38,12 @@ class City extends \app\models\ModelApp
     public function rules()
     {
         return [
-            [['col_title_ru', 'file_image', 'col_country_id'], 'required'],
+            [['col_title_ru', 'col_country_id', 'col_alias'], 'required'],
             ['file_image', 'file', 'extensions' => 'jpeg, jpg, png'], 
             [['col_country_id'], 'integer'],
             [['col_title_ru', ], 'string', 'max' => 255],
             [['col_img'], 'string', 'max' => 100],
+            ['col_alias', 'unique'],
             [['col_title_en', 'col_title_es', 'col_title_ua', 'col_title_cn'], 'default', 'value' => ''],
         ];
     }
@@ -55,9 +57,10 @@ class City extends \app\models\ModelApp
             'col_id' => 'ID города',
             'col_country_id' => 'Страна',
             'col_title_ru' => 'Название города',
-            'col_img' => 'Col Img',
+            'col_img' => 'Изображение',
             'image' => 'Изображение',
             'language' => 'Язык',
+            'col_alias' => 'Псевдоним для ЧПУ',
         ];
     }
 
@@ -78,10 +81,15 @@ class City extends \app\models\ModelApp
 
     public function beforeSave($insert)
     {
+        $img = new ImageUpload();
         if ($insert) {
-            $img = new ImageUpload();
-            $this->col_img = $img->uploadFile($this->file_image, 'cities', $this->col_img);  
+            if ($this->file_image) $this->col_img = $img->uploadFile($this->file_image, 'cities', $this->col_img); 
+            else $this->col_img = ''; 
         }
+        else {
+             if ($this->file_image) $this->col_img = $img->uploadFile($this->file_image, 'cities', $this->col_img); 
+        }
+        $this->col_alias = Inflector::slug($this->col_alias, '_');
         return parent::beforeSave($insert);
     }
     

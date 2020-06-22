@@ -57,5 +57,28 @@ class ProgramComponent extends Component
 			default: return 'Не возможно определить программу';
 		}
 	}
+
+	public function getAlias($key)
+	{
+		switch ($key) {
+			case 'language': return 'yazykovyye_kursy_i_shkoly_za_rubezhom';
+			case 'camp': return 'yazykovyye_lagerya_za_granitsey_dlya_detey_i_podrostkov';
+			case 'higher': return 'vyssheye_obrazovaniye_mba_za_rubezhom';
+			case 'secondary': return 'sredneye_obrazovaniye_shkoly_kolledzhi_za_granitsey';
+			case 'online-course': return 'onlayn_kursy_yazykov';
+			case 'internships': return 'stazhirovki_i_programmy_obmena_za_granitsey';
+		}
+	}
+
+	public function getByAlias($alias)
+	{
+		$programs['yazykovyye_kursy_i_shkoly_za_rubezhom'] = self::PROGRAM_LANGUAGE;
+		$programs['yazykovyye_lagerya_za_granitsey_dlya_detey_i_podrostkov'] = self::PROGRAM_CAMP;
+		$programs['vyssheye_obrazovaniye_mba_za_rubezhom'] = self::PROGRAM_HIGHER_EDUCATION;
+		$programs['sredneye_obrazovaniye_shkoly_kolledzhi_za_granitsey'] = self::PROGRAM_SECONDARY_EDUCATION;
+		$programs['onlayn_kursy_yazykov'] = self::PROGRAM_ONLINE_COURSE;
+		$programs['stazhirovki_i_programmy_obmena_za_granitsey'] = self::PROGRAM_INTERNSHIPS;
+		if(isset($programs[$alias])) return $programs[$alias];
+	}
 	
 }

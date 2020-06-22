@@ -20,6 +20,13 @@ class BaseController extends \yii\web\Controller
 		return $this;
 	} 
 
+	public function messageError($text = false)
+	{
+		if (!$text) $text = 'Произошла ошибка';
+		Yii::$app->session->setFlash('error', $text);
+		return $this;
+	}
+
 	public function back()
 	{
 		return $this->redirect($this->request->referrer);

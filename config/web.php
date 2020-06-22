@@ -89,13 +89,15 @@ $config = [
                 'offers' => 'offer/offer/index',
                 'offer/<alias:\w+>' => 'offer/offer/view',
 
-                'schools' => 'school/school/index', 
+                'schools/<city_alias:\w+>' => 'school/school/index', 
                 'school/<alias:\w+>' => 'school/school/view',
                 'school/<action:\w+>' => 'school/school/<action>', 
 
-                'languages' => 'language/language/index', 
-                'countries' => 'country/country/index', 
-                'cities' => 'city/city/index', 
+                'languages/<program_alias:\w+>' => 'language/language/index',
+
+                'countries/<lang_alias:\w+>' => 'country/country/index', 
+
+                'cities/<country_alias:\w+>' => 'city/city/index', 
                 'course/<action:\w+>' => 'course/course/<action>', 
 
                 //admin

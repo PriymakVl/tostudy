@@ -39,6 +39,8 @@ app\assets\AdminAsset::register($this);
 
             'col_title_ru',
 
+            'col_alias',
+
             'image:image',
         ],
     ]) ?>

@@ -3,9 +3,9 @@
 namespace app\modules\language\models;
 
 use Yii;
+use app\helpers\Inflector;
 use yii\helpers\Html;
 use app\modules\country\models\Country;
-use yii\web\UploadedFile;
 use app\models\ImageUpload;
 
 /**
@@ -23,7 +23,7 @@ class Language extends \app\models\ModelApp
 {
 
     public $countries;
-    public $image;
+    public $file_image;
 
     /**
      * {@inheritdoc}
@@ -39,8 +39,10 @@ class Language extends \app\models\ModelApp
     public function rules()
     {
         return [
-            [['col_title_ru', 'image'], 'required'],
+            [['col_title_ru', 'col_alias'], 'required'],
             [['col_title_ru', 'col_img'], 'string', 'max' => 100],
+            ['col_alias', 'unique'],
+            ['file_image', 'file', 'extensions' => 'jpeg, jpg, png'],
             [['col_title_en', 'col_title_es', 'col_title_ua', 'col_title_cn'], 'default', 'value' => ''],
         ];
     }
@@ -58,6 +60,8 @@ class Language extends \app\models\ModelApp
             'col_title_ru' => 'Название',
             'col_title_cn' => 'Col Title Cn',
             'col_img' => 'Изображение',
+            'image' => 'Изображение',
+            'col_alias' => 'Пвсевдоним для ЧПУ',
         ];
     }
 
@@ -88,19 +92,23 @@ class Language extends \app\models\ModelApp
         return $this->col_title_ru;
     }
 
-    public function createImage($width = '100px')
+    public function getImage()
     {
-        return Html::img('@web/img/languages/' . $this->col_img, ['width' => $width]);
+        return '@web/img/languages/' . $this->col_img;
     }
 
-    public function add()
+    public function beforeSave($insert) 
     {
-        $this->image  = UploadedFile::getInstance($this, 'image');
-        if ($this->validate()) {
-            $obj = new ImageUpload();
-            $this->col_img = $obj->uploadFile($this->image, 'languages', $this->col_img);
-            return $this->save();
+        $img = new ImageUpload();
+        if ($insert) {
+            if ($this->file_image) $this->col_img = $img->uploadFile($this->file_image, 'languages', $this->col_img);
+            else $this->col_img = '';
         }
+        else {
+            if ($this->file_image) $this->col_img = $img->uploadFile($this->file_image, 'languages', $this->col_img);
+        }
+        $this->col_alias = Inflector::slug($this->col_alias, '_');
+        return parent::beforeSave($insert);
     }
 
 
