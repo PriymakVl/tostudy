@@ -94,7 +94,7 @@ $config = [
 
                 'info' => 'info/info/index',
                 'info/country/<country_alias:\w+>' => 'info/info/country',
-                'info/<alias:\w+>' => 'info/info/view',
+                'info/article/<article_alias:\w+>' => 'info/info/view',
 
                 'schools/<city_alias:\w+>' => 'school/school/index', 
                 'school/<alias:\w+>' => 'school/school/view',

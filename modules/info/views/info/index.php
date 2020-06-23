@@ -13,7 +13,9 @@
 			<?php if ($countries): ?>
 				<?php foreach ($countries as $country): ?>
 
-					<a href="/info_countries.php?id='. $arr['col_id'] .'" class="country-item row2">
+					<? if (!$country->info) continue; ?>
+
+					<a href="/info/country/<?= 	$country->col_alias ?>" class="country-item row2">
 						<img src="<?=$country->flag?>" alt="<?= $country->name ?>" class="country-item-img">
 						<h3 class="country-item-title">
 							<?= $country->name ?>

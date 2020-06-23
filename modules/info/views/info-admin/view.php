@@ -25,7 +25,7 @@ $this->params['breadcrumbs'][] = $this->title;
                 'method' => 'post',
             ],
         ]) ?>
-        <?= Html::a('Посмотреть на сайте', ['/info/' . $model->col_alias], ['class' => 'btn btn-primary']) ?>
+        <?= Html::a('Посмотреть на сайте', ['/info/article/' . $model->col_alias], ['class' => 'btn btn-primary']) ?>
     </p>
 
     <?= DetailView::widget([

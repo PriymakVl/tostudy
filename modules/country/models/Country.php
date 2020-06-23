@@ -7,6 +7,7 @@ use app\helpers\Inflector;
 use yii\helpers\Html;
 use app\modules\city\models\City;
 use app\modules\language\models\Language;
+use app\modules\info\models\Info;
 use yii\web\UploadedFile;
 use app\models\ImageUpload;
 
@@ -115,17 +116,22 @@ class Country extends \app\models\ModelApp
 
     public function getImage()
     {
-        return '@web/img/countries/' . $this->col_img;
+        return Yii::getAlias('@web') . '/img/countries/' . $this->col_img;
     }
 
     public function getFlag()
     {
-        return '@web/img/countries/flags/' . $this->col_flag;
+        return Yii::getAlias('@web') . '/img/countries/flags/' . $this->col_flag;
     }
 
     public function getAlias()
     {
         return $this->col_alias;
+    }
+
+    public function getInfo()
+    {
+        return $this->hasMany(Info::className(), ['col_country_id' => 'col_id']);
     }
 
     public function beforeSave($insert) 
