@@ -31,6 +31,9 @@ $config = [
         'offer' => [
             'class' => 'app\modules\offer\Module',
         ],
+        'info' => [
+            'class' => 'app\modules\info\Module',
+        ],
     ],
     'controllerMap' => [
         'elfinder' => [
@@ -89,6 +92,10 @@ $config = [
                 'offers' => 'offer/offer/index',
                 'offer/<alias:\w+>' => 'offer/offer/view',
 
+                'info' => 'info/info/index',
+                'info/country/<country_alias:\w+>' => 'info/info/country',
+                'info/<alias:\w+>' => 'info/info/view',
+
                 'schools/<city_alias:\w+>' => 'school/school/index', 
                 'school/<alias:\w+>' => 'school/school/view',
                 'school/<action:\w+>' => 'school/school/<action>', 
@@ -113,6 +120,9 @@ $config = [
                 'admin/school/<action:\w+>' => 'school/school-admin/<action>',
                 'admin/offers' => 'offer/offer-admin/index',
                 'admin/offer/<action:\w+>' => 'offer/offer-admin/<action>',
+
+                'admin/info' => 'info/info-admin/index',
+                'admin/info/<action:\w+>' => 'info/info-admin/<action>',
 
                 'pages' => 'page/index',
                 'admin/news' => 'news-admin/index',

@@ -122,7 +122,7 @@ class Article extends \app\models\ModelApp
             if ($this->file_img_big) $this->col_img_big = $img->uploadFile($this->file_img_big, 'articles/big', $this->col_img_big);
         }
         $this->col_alias = Inflector::slug($this->col_title_ru, '_');
-        return true;
+        return parent::beforeSave($insert);
     }
 
 

@@ -9,11 +9,11 @@ use app\modules\school\models\School;
 use app\modules\country\models\Country;
 use app\modules\language\models\Language;
 use app\modules\city\models\City;
+use app\modules\info\models\Info;
 
  
 class Alias
 {
-
 	public static function add()
 	{
 		self::articles();
@@ -21,6 +21,7 @@ class Alias
 		self::countries();
 		self::languages();
 		self::cities();
+		self::info();
 	}
 
 	public static function articles()
@@ -70,6 +71,16 @@ class Alias
         foreach ($cities as $city) {
             $city->col_alias = Inflector::slug($city->col_title_ru, '_');
             $city->save(false);
+        }
+	}
+
+	public static function info()
+	{
+	    $info = Info::find()->all();
+        if (!$info) return;
+        foreach ($info as $item) {
+            $item->col_alias = Inflector::slug($item->col_title_ru, '_');
+            $item->save(false);
         }
 	}
 

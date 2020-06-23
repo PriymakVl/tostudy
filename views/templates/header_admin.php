@@ -49,7 +49,7 @@ echo Nav::widget([
                 '<li class="divider"></li>',
                 ['label' => 'Вопросы и ответы', 'url' => '/faq'],
                 '<li class="divider"></li>',
-                ['label' => 'Полезная информация', 'url' => '/info'],
+                ['label' => 'Полезная информация', 'url' => '/admin/info'],
                 '<li class="divider"></li>',
                 ['label' => 'Настройки', 'url' => '/settings'],
             ],
