@@ -47,24 +47,25 @@ class Article extends \app\models\ModelApp
     public function rules()
     {
         return [
-            [['col_title_ru', 'col_text_ru', 'file_img', 'file_img_big', 'col_status'], 'required'],
+            [['col_title_ru', 'col_text_ru'], 'required'],
             [['col_text_ru'], 'string'],
             [['col_status'], 'integer'],
-            [['col_title_ru'], 'string', 'max' => 255],
+            [['col_title_ru', 'col_alias'], 'string', 'max' => 255],
             [['file_img_big', 'file_img'], 'file', 'extensions' => 'jpg, jpeg, png'],
-            // ['col_alias', 'save'],
+            [['col_meta_title', 'col_meta_keywords', 'col_meta_description'], 'string', 'max' => 255],
             [['col_img', 'col_img_big'], 'string', 'max' => 100],
+
             [['col_title_en', 'col_title_es', 'col_title_ua', 'col_title_cn',], 'default', 'value' => ''],
             [['col_text_en', 'col_text_es', 'col_text_ua', 'col_text_cn',], 'default', 'value' => ''],
         ];
     }
 
-    public function scenarios()
-    {
-        $scenarios = parent::scenarios();
-        $scenarios['update'] = ['col_title_ru', 'col_text_ru', 'col_status'];
-        return $scenarios;
-    }
+    // public function scenarios()
+    // {
+    //     $scenarios = parent::scenarios();
+    //     $scenarios['update'] = ['col_title_ru', 'col_text_ru', 'col_status'];
+    //     return $scenarios;
+    // }
 
     /**
      * {@inheritdoc}
@@ -88,6 +89,9 @@ class Article extends \app\models\ModelApp
             'col_status' => 'Статус',
             'image' => 'Изображение',
             'imageBig' => 'Большое изображение',
+            'col_meta_title' => 'Title (тег)',
+            'col_meta_keywords' => 'Keywords (метатег)',
+            'col_meta_description' => 'Description (метатег)',
         ];
     }
 
@@ -114,8 +118,10 @@ class Article extends \app\models\ModelApp
     {
         $img = new ImageUpload();
         if ($insert) {
-             $this->col_img = $img->uploadFile($this->file_img, 'articles', $this->col_img); 
-             $this->col_img_big = $img->uploadFile($this->file_img_big, 'articles/big', $this->col_img_big); 
+            if ($this->file_img) $this->col_img = $img->uploadFile($this->file_img, 'articles', $this->col_img); 
+            else $this->col_img = '';
+            if ($this->file_img_big) $this->col_img_big = $img->uploadFile($this->file_img_big, 'articles/big', $this->col_img_big); 
+            else $this->col_img_big  = '';
         }
         else {
             if ($this->file_img) $this->col_img = $img->uploadFile($this->file_img, 'articles', $this->col_img);

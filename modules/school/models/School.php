@@ -5,6 +5,7 @@ namespace app\modules\school\models;
 use Yii;
 use app\modules\city\models\City;
 use app\modules\course\models\Course;
+use app\models\Accommodation;
 
 class School extends \app\modules\school\models\SchoolBase
 {
@@ -54,6 +55,11 @@ class School extends \app\modules\school\models\SchoolBase
     public function getAlias()
     {
         return $this->col_alias;
+    }
+
+    public function getAccommodation()
+    {
+        return $this->hasMany(Accommodation::className(), ['col_school_id' => 'col_id']);
     }
 
 }

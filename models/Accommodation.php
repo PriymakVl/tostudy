@@ -62,4 +62,14 @@ class Accommodation extends \app\models\ModelApp
     {
         return $this->hasOne(School::className(), ['col_id' => 'col_school_id']);
     }
+
+    public function getTitle()
+    {
+        return $this->col_title_ru;
+    }
+
+    public function getPrice()
+    {
+        return $this->col_price;
+    }
 }

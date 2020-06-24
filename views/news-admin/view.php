@@ -37,6 +37,12 @@ app\assets\AdminAsset::register($this);
 
             ['attribute' => 'col_status', 'value' => function($model) { return $model->status; }],
 
+            'col_meta_title',
+
+            'col_meta_description',
+
+            'col_meta_keywords',
+
             'col_text_ru:raw',
 
             'image:image',

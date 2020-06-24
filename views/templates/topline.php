@@ -1,3 +1,8 @@
+<?php 
+use app\components\ProgramComponent;
+
+ ?>
+
 <?php if ($home): ?>
 	<div class="topline row2">
 <?php else: ?>
@@ -13,33 +18,33 @@
 					<a href="#">Программы</a>
 					<ul class="form-select">
 						<li>
-							<a href="/languages/<?= Yii::$app->program->getAlias('language') ?>">
-								<?= Yii::$app->program->getName(Yii::$app->program->programs['language']) ?>
+							<a href="/languages/<?= Yii::$app->program->getAlias(ProgramComponent::PROGRAM_LANGUAGE) ?>">
+								<?= Yii::$app->program->getName(ProgramComponent::PROGRAM_LANGUAGE) ?>
 							</a>
 						</li>
 						<li>
-							<a href="/languages/<?= Yii::$app->program->getAlias('camp') ?>">
-								<?= Yii::$app->program->getName(Yii::$app->program->programs['camp']) ?>
+							<a href="/languages/<?= Yii::$app->program->getAlias(ProgramComponent::PROGRAM_CAMP) ?>">
+								<?= Yii::$app->program->getName(ProgramComponent::PROGRAM_CAMP) ?>
 							</a>
 						</li>
 						<li>
-							<a href="/languages/<?= Yii::$app->program->getAlias('higher') ?>">
-								<?= Yii::$app->program->getName(Yii::$app->program->programs['higher']) ?>
+							<a href="/languages/<?= Yii::$app->program->getAlias(ProgramComponent::PROGRAM_HIGHER_EDUCATION) ?>">
+								<?= Yii::$app->program->getName(ProgramComponent::PROGRAM_HIGHER_EDUCATION) ?>
 							</a>
 						</li>
 						<li>
-							<a href="/languages/<?= Yii::$app->program->getAlias('secondary') ?>">
-								<?= Yii::$app->program->getName(Yii::$app->program->programs['secondary']) ?>
+							<a href="/languages/<?= Yii::$app->program->getAlias(ProgramComponent::PROGRAM_SECONDARY_EDUCATION) ?>">
+								<?= Yii::$app->program->getName(ProgramComponent::PROGRAM_SECONDARY_EDUCATION) ?>
 							</a>
 						</li>
 						<li>
-							<a href="/languages/<?= Yii::$app->program->getAlias('online-course') ?>">
-								<?= Yii::$app->program->getName(Yii::$app->program->programs['online-course']) ?>
+							<a href="/languages/<?= Yii::$app->program->getAlias(ProgramComponent::PROGRAM_ONLINE_COURSE) ?>">
+								<?= Yii::$app->program->getName(ProgramComponent::PROGRAM_ONLINE_COURSE) ?>
 							</a>
 						</li>
 						<li>
-							<a href="/languages/<?= Yii::$app->program->getAlias('internships') ?>">
-								<?= Yii::$app->program->getName(Yii::$app->program->programs['internships']) ?>
+							<a href="/languages/<?= Yii::$app->program->getAlias(ProgramComponent::PROGRAM_INTERNSHIPS) ?>">
+								<?= Yii::$app->program->getName(ProgramComponent::PROGRAM_INTERNSHIPS) ?>
 							</a>
 						</li>
 					</ul> <!-- /.form-select -->

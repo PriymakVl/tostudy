@@ -6,7 +6,7 @@ use app\modules\school\models\School;
 <div id="breadcrumbs">
 	<div class="wrap">
 		<a href="/">Главная</a>
-		<a href="/languages">Языки</a>
+		<a href="/languages/<?= Yii::$app->program->getAlias($program) ?>">Языки</a>
 		<span><?=$lang->col_title_ru?></span>
 	</div> <!-- /.wrap -->
 </div> <!-- /#breadcrumbs -->

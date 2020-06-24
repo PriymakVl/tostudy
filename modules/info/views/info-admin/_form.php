@@ -30,6 +30,12 @@ $this->registerJs("CKEDITOR.plugins.addExternal('youtube', 'js/vendor/ckeditor/y
 
     <?= $form->field($model, 'col_title_ru')->textInput(['maxlength' => true]) ?>
 
+    <?= $form->field($model, 'col_meta_title')->textInput(['maxlength' => true]) ?>
+
+    <?= $form->field($model, 'col_meta_description')->textInput(['maxlength' => true]) ?>
+    
+    <?= $form->field($model, 'col_meta_keywords')->textInput(['maxlength' => true]) ?>
+
     <?php 
         echo $form->field($model, 'col_text_ru')->widget(CKEditor::className(), [
         'preset' => 'custom',

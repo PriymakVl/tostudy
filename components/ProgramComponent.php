@@ -60,14 +60,15 @@ class ProgramComponent extends Component
 
 	public function getAlias($key)
 	{
-		switch ($key) {
-			case 'language': return 'yazykovyye_kursy_i_shkoly_za_rubezhom';
-			case 'camp': return 'yazykovyye_lagerya_za_granitsey_dlya_detey_i_podrostkov';
-			case 'higher': return 'vyssheye_obrazovaniye_mba_za_rubezhom';
-			case 'secondary': return 'sredneye_obrazovaniye_shkoly_kolledzhi_za_granitsey';
-			case 'online-course': return 'onlayn_kursy_yazykov';
-			case 'internships': return 'stazhirovki_i_programmy_obmena_za_granitsey';
+		switch (intval($key)) {
+			case self::PROGRAM_LANGUAGE: return 'yazykovyye_kursy_i_shkoly_za_rubezhom';
+			case self::PROGRAM_CAMP: return 'yazykovyye_lagerya_za_granitsey_dlya_detey_i_podrostkov';
+			case self::PROGRAM_HIGHER_EDUCATION: return 'vyssheye_obrazovaniye_mba_za_rubezhom';
+			case self::PROGRAM_SECONDARY_EDUCATION: return 'sredneye_obrazovaniye_shkoly_kolledzhi_za_granitsey';
+			case self::PROGRAM_ONLINE_COURSE: return 'onlayn_kursy_yazykov';
+			case self::PROGRAM_INTERNSHIPS: return 'stazhirovki_i_programmy_obmena_za_granitsey';
 		}
+		throw new Exception("нет пвсевдонима для компонента program c таким ключом");
 	}
 
 	public function getByAlias($alias)

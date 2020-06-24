@@ -22,8 +22,9 @@ class InfoController extends \app\controllers\BaseController
 
     public function actionView($article_alias)
     {
-    	$article = Info::findOne(['col_alias' => $article_alias]);
+    	$article = Info::findOne(['col_alias' => $article_alias, 'col_status' => Info::STATUS_PUBLISHED]);
     	$country = $article->country;
+        $this->registerMetaTags($article);
         return $this->render('view', compact('article', 'country'));
     }
 

@@ -23,8 +23,9 @@ class SchoolController extends \app\controllers\BaseController
     {
     	$school = School::findOne(['col_alias' => $alias]);
     	$courses = $school->courses;
+        $accommodation = $school->accommodation;
         $lang = Language::findOne(Yii::$app->session->get('lang_id'));
-        return $this->render('view', compact('school', 'courses', 'lang'));
+        return $this->render('view', compact('school', 'courses', 'accommodation', 'lang'));
     }
 
 }

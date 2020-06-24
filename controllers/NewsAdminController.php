@@ -89,7 +89,6 @@ class NewsAdminController extends BaseController
     public function actionUpdate($id)
     {
         $model = $this->findModel($id);
-        $model->scenario = 'update';
         if (Yii::$app->request->isGet)  return $this->render('update', ['model' => $model,]);
        
         $model->load(Yii::$app->request->post());

@@ -26,6 +26,7 @@ $(document).ready(function() {
 	$('#js-form-weeks').on('click', '.js-weeks-option', function(){
 		let week = $(this).text();
 		let price = $(this).data('price');
+
 		$('#js-weeks .js-selected').text(week).data('price', price);
 
 		setTimeout(calc, 100);
@@ -37,10 +38,13 @@ $(document).ready(function() {
 	
 	/* Выбор жилья (калькулятор)
 	------------------------------------------------------- */
+	$('#js-accommodation').click(() => { $('#js-form-accommodation').toggle();});
+
 	$('.js-accommodation-option').on('click', function(){
-		var $this = $(this), $d = $this.data();
+		let accom_name = $(this).text();
+		let price = $(this).data('price');
 		
-		$selected.data($d).children('.js-selected').text($this.text());
+		$('#js-accommodation .js-selected').text(accom_name).data('price', price);
 
 		setTimeout(calc, 100);
 
@@ -51,17 +55,15 @@ $(document).ready(function() {
 });
 
 function calc() {
-	var $weeks = parseInt($('#js-weeks').data('weeks')), //количество недель
-		$accommodation_week = parseInt($('#js-accommodation').data('price')), //цена жилья за неделю
+	var $weeks = parseInt($('#js-weeks .js-selected').text()), //количество недель
+		$accommodation_week = parseInt($('#js-accommodation .js-selected').data('price')), //цена жилья за неделю
 		$accommodation_all = 0, //цена жилья за все время
 		$registration_fee = parseInt($('#js-registration-fee').data('price')), //регистрационный сбор школы
 		$currency = $('#js-to-pay').data('currency'), //валюта
-		$course_week = parseInt($('#js-weeks').data('price')), //цена курса за неделю
+		$course_week = parseInt($('#js-weeks .js-selected').data('price')), //цена курса за неделю
 		$course_all = 0, //цена курса за все время
 		$discount_per = 0, //процент скидки за курс
 		$discount = 0; //скидка за курс
-
-		return console.log($course_week);
 
 	if ($weeks === 0) {
 		return false; 
@@ -75,6 +77,7 @@ function calc() {
 	$('#js-discount').text($discount +' '+ $currency);
 	$('#js-accommodation-price').text($accommodation_all +' '+ $currency);
 	// $('#js-to-pay').text(($course_all - $discount + $registration_fee + $accommodation_all) +' '+ $currency);
+
 	$('#js-to-pay').text(($course_all + $registration_fee + $accommodation_all) +' '+ $currency);
 }
 

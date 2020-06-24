@@ -3,6 +3,7 @@ namespace app\widgets;
 
 use Yii;
 use yii\base\Widget;
+use app\modules\language\models\Language;
 
 class Info extends Widget
 {
@@ -10,11 +11,12 @@ class Info extends Widget
 
 	public function run()
 	{
-		$lang = Yii::$app->session->get('language');
+		$lang_id = Yii::$app->session->get('lang_id');
+		$lang = language::findOne($lang_id);
 		$program_key = Yii::$app->session->get('program');
 		$program = Yii::$app->program->getName($program_key);
 
-		if ($this->language) $info = sprintf('<h3 class="active-lang">Язык: <span>"%s"</span></h3>', $lang);
+		if ($this->language) $info = sprintf('<h3 class="active-lang">Язык: <span>"%s"</span></h3>', $lang->name);
 		$info .= sprintf('<h3 class="active-program">Программа: <span>"%s"</span></h3>', $program);
 		
 		return $info;

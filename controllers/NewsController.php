@@ -16,6 +16,7 @@ class NewsController extends \app\controllers\BaseController
     public function actionView($alias)
     {
     	$article = Article::findOne(['col_alias' => $alias]);
+        $this->registerMetaTags($article);
         return $this->render('view', ['article' => $article]);
     }
 

@@ -45,6 +45,7 @@ class Info extends \app\models\ModelApp
             [['col_country_id', 'col_title_ru', 'col_text_ru',  'col_status'], 'required'],
             [['col_country_id', 'col_status'], 'integer'],
             [['col_text_ru'], 'string'],
+            [['col_meta_title', 'col_meta_keywords', 'col_meta_description'], 'string', 'max' => 255],
             [['col_title_ru', 'col_alias'], 'string', 'max' => 255],
             [['col_title_en', 'col_title_es', 'col_title_ua', 'col_title_cn'], 'default', 'value' => ''],
             [['col_text_en', 'col_text_es', 'col_text_ua', 'col_text_cn',], 'default', 'value' => ''],
@@ -64,6 +65,9 @@ class Info extends \app\models\ModelApp
             'col_text_ru' => 'Текст статьи',
             'col_status' => 'Статус',
             'col_alias' => 'Пвсевдоним для ЧПУ',
+            'col_meta_title' => 'Title (тег)',
+            'col_meta_keywords' => 'Keywords (метатег)',
+            'col_meta_description' => 'Description (метатег)',
         ];
     }
 

@@ -2,6 +2,7 @@
 
 use yii\helpers\Html;
 use yii\widgets\DetailView;
+USE app\modules\info\models\Info;
 
 /* @var $this yii\web\View */
 /* @var $model app\modules\info\models\Info */
@@ -25,7 +26,10 @@ $this->params['breadcrumbs'][] = $this->title;
                 'method' => 'post',
             ],
         ]) ?>
-        <?= Html::a('Посмотреть на сайте', ['/info/article/' . $model->col_alias], ['class' => 'btn btn-primary']) ?>
+
+        <?php if ($model->col_status == Info::STATUS_PUBLISHED): ?>
+            <?= Html::a('Посмотреть на сайте', ['/info/article/' . $model->col_alias], ['class' => 'btn btn-primary']) ?>
+        <?php endif ?>
     </p>
 
     <?= DetailView::widget([
@@ -39,6 +43,12 @@ $this->params['breadcrumbs'][] = $this->title;
             'col_title_ru',
 
             ['attribute' => 'col_status', 'value' => function($model) { return $model->status; }],
+
+            'col_meta_title',
+
+            'col_meta_description',
+
+            'col_meta_keywords',
             
             'col_text_ru:html',
 

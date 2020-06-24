@@ -131,7 +131,7 @@ class Country extends \app\models\ModelApp
 
     public function getInfo()
     {
-        return $this->hasMany(Info::className(), ['col_country_id' => 'col_id']);
+        return $this->hasMany(Info::className(), ['col_country_id' => 'col_id'])->where(['col_status' => Info::STATUS_PUBLISHED]);
     }
 
     public function beforeSave($insert) 

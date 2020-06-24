@@ -1,11 +1,11 @@
 <?php 
-	$this->registerJsFile('@web/js/public/calculator.js', ['depends' => [\yii\web\JqueryAsset::className()]]);
- ?>
+$this->registerJsFile('@web/js/public/calculator.js', ['depends' => [\yii\web\JqueryAsset::className()]]);
+?>
 
 <div id="breadcrumbs">
 	<div class="wrap">
 		<a href="/">Главная</a>
-		<a href="/languages">Языки</a>
+		<a href="/languages/<?= Yii::$app->program->getAlias($program) ?>">Языки</a>
 		<a href="/countries/<?= $lang->col_alias ?>">Страны</a>
 		<a href="/cities/<?= $school->city->country->col_alias ?>">Города</a>
 		<a href="/schools/<?= $school->city->col_alias ?>">Школы</a>
@@ -67,7 +67,7 @@
 
 			</div> <!-- /.column-left -->
 			
-			<?= $this->render('calculator.php', ['school' => $school, 'courses' => $courses]) ?>
+			<?= $this->render('calculator.php', compact('school', 'courses', 'accommodation')) ?>
 
 		</div> <!-- /.content -->
 	</div> <!-- /.wrap -->

@@ -30,7 +30,7 @@ class PublicAsset extends AssetBundle
     // 'js/public/moment.min.js',
     'js/public/moment-with-locales.js',
     'js/public/nprogress.js',
-    'js/public/main.js',
+    // 'js/public/main.js',
     // <script src="//code.jivosite.com/widget/3gTQRLtjez" async></script>
     ];
     public $depends = [
