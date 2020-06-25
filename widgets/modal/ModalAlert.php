@@ -4,7 +4,7 @@ namespace app\widgets\modal;
 
 use Yii;
 
-class Modal extends \yii\bootstrap\Widget
+class ModalAlert extends \yii\bootstrap\Widget
 {
 
 

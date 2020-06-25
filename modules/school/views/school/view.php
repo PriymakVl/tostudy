@@ -1,5 +1,6 @@
 <?php 
 $this->registerJsFile('@web/js/public/calculator.js', ['depends' => [\yii\web\JqueryAsset::className()]]);
+\app\assets\PublicAsset::register($this);
 ?>
 
 <div id="breadcrumbs">
@@ -67,7 +68,7 @@ $this->registerJsFile('@web/js/public/calculator.js', ['depends' => [\yii\web\Jq
 
 			</div> <!-- /.column-left -->
 			
-			<?= $this->render('calculator.php', compact('school', 'courses', 'accommodation')) ?>
+			<?= $this->render('calculator.php', compact('school', 'courses', 'accommodation', 'order')) ?>
 
 		</div> <!-- /.content -->
 	</div> <!-- /.wrap -->

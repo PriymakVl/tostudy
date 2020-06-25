@@ -43,7 +43,8 @@ class City extends \app\models\ModelApp
             [['col_country_id'], 'integer'],
             [['col_title_ru', ], 'string', 'max' => 255],
             [['col_img'], 'string', 'max' => 100],
-            ['col_alias', 'unique'],
+            // ['col_alias', 'unique'],
+            [['col_meta_title', 'col_meta_keywords', 'col_meta_description'], 'string', 'max' => 255],
             [['col_title_en', 'col_title_es', 'col_title_ua', 'col_title_cn'], 'default', 'value' => ''],
         ];
     }
@@ -61,6 +62,9 @@ class City extends \app\models\ModelApp
             'image' => 'Изображение',
             'language' => 'Язык',
             'col_alias' => 'Псевдоним для ЧПУ',
+            'col_meta_title' => 'Title (тег)',
+            'col_meta_keywords' => 'Keywords (метатег)',
+            'col_meta_description' => 'Description (метатег)',
         ];
     }
 

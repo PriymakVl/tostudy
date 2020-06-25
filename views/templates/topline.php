@@ -54,9 +54,11 @@ use app\components\ProgramComponent;
 					<ul class="form-select">
 						<li><a href="/info">Полезная информация</a></li>
 						<li><a href="/news">Новости</a></li>
-						<li><a href="/offers">Акции</a></li>
 					</ul> <!-- /.form-select -->
 				</li> <!-- /.link -->
+				<li class="link">
+					<a href="/offers">Акции</a>
+				</li>
 				<li class="link">
 					<a href="/insurance">Страхование</a>
 				</li>

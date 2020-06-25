@@ -1,10 +1,11 @@
 <?php
+/* @var $this yii\web\View */
+/* @var $model app\modules\offer\models\Offer */
+
 
 use yii\helpers\Html;
 use yii\widgets\DetailView;
-
-/* @var $this yii\web\View */
-/* @var $model app\modules\offer\models\Offer */
+use app\modules\offer\models\Offer;
 
 $this->title = 'Описание акции';
 
@@ -21,10 +22,13 @@ $this->params['breadcrumbs'][] = $this->title;
         <?= Html::a('Удалить', ['delete', 'id' => $model->col_id], [
             'class' => 'btn btn-danger',
             'data' => [
-                'confirm' => 'Are you sure you want to delete this item?',
+                'confirm' => 'Вы действительно хотите удалить акцию?',
                 'method' => 'post',
             ],
         ]) ?>
+         <?php if ($model->col_status == Offer::STATUS_ACTIVE): ?>
+            <?= Html::a('Посмотреть на сайте', ['/offer/' . $model->col_alias], ['target' => '_blank', 'class' => 'btn btn-primary']) ?>
+        <?php endif ?>
     </p>
 
     <?= DetailView::widget([
@@ -32,7 +36,10 @@ $this->params['breadcrumbs'][] = $this->title;
         'attributes' => [
             'col_id',
             'col_title_ru',
-            'col_text_ru:ntext',
+            'col_meta_title',
+            'col_meta_description',
+            'col_meta_keywords',
+            'col_text_ru:html',
             'col_alias',
             'img:image',
             'col_date',

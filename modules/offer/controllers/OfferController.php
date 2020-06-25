@@ -15,6 +15,7 @@ class OfferController extends \app\controllers\BaseController
     public function actionView($alias)
     {
     	$offer = Offer::findOne(['col_alias' => $alias]);
+        $this->registerMetaTags($offer);
         return $this->render('view', ['offer' => $offer]);
     }
 

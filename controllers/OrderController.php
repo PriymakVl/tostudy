@@ -3,6 +3,7 @@
 namespace app\controllers;
 
 use Yii;
+use yii\helpers\Url;
 use app\models\Order;
 use app\models\OrderSearch;
 use app\controllers\BaseController;
@@ -66,15 +67,14 @@ class OrderController extends BaseController
      */
     public function actionCreate()
     {
-        $model = new Order(['scenario' => 'status']);
+
+        $model = new Order();
 
         if ($model->load(Yii::$app->request->post()) && $model->save()) {
-            return $this->redirect(['view', 'id' => $model->col_id]);
+            $this->setMessage('заявка принята');
+            return $this->redirect(Url::previous());
         }
-
-        return $this->render('create', [
-            'model' => $model,
-        ]);
+        throw new NotFoundHttpException('ошибка при приеме заявки');
     }
 
     /**
@@ -87,9 +87,11 @@ class OrderController extends BaseController
     public function actionUpdate($id)
     {
         $model = $this->findModel($id);
+        $model->scenario = 'status';
 
         if ($model->load(Yii::$app->request->post()) && $model->save()) {
-            return $this->redirect(['view', 'id' => $model->col_id]);
+            $this->setMessage('Статус обновлен');
+            return $this->redirect(['index']);
         }
 
         return $this->render('update', [

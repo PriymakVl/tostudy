@@ -1,7 +1,6 @@
 <?php 
 use yii\helpers\Html;
 use yii\widgets\ActiveForm;
-use app\widgets\Alert;
 
 ?>
 
@@ -11,18 +10,6 @@ use app\widgets\Alert;
 		<span>Контакты</span>
 	</div> <!-- /.wrap -->
 </div> <!-- /#breadcrumbs -->
-
-<div class="wrap">
-	<?php if( Yii::$app->session->hasFlash('success') ): ?>
-		<div  class="alert alert-success">
-			<?php echo Yii::$app->session->getFlash('success'); ?>
-		</div>
-	<?php elseif( Yii::$app->session->hasFlash('error') ): ?>
-		<div class="alert alert-danger">
-			<?php echo Yii::$app->session->getFlash('error'); ?>
-		</div>
-	<?php endif;?>
-</div>
 
 <div id="contacts">
 	<div class="wrap">

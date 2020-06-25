@@ -47,6 +47,7 @@ class Offer extends \app\models\ModelApp
             [['col_status'], 'integer'],
             [['col_title_ru', 'col_img', 'col_img_big'], 'string', 'max' => 100],
             [['col_alias', 'col_title_ru'], 'string', 'max' => 255],
+            [['col_meta_title', 'col_meta_keywords', 'col_meta_description'], 'string', 'max' => 255],
             [['col_alias'], 'unique'],
         ];
     }
@@ -68,6 +69,9 @@ class Offer extends \app\models\ModelApp
             'file_img' => 'Изображение',
             // 'file_img_big' => 'Большое изображение',
             'img' => 'Изображение',
+            'col_meta_title' => 'Title (тег)',
+            'col_meta_keywords' => 'Keywords (метатег)',
+            'col_meta_description' => 'Description (метатег)',
         ];
     }
 
@@ -85,19 +89,11 @@ class Offer extends \app\models\ModelApp
         return Yii::getAlias('@web') . '/img/offers/' .$this->col_img;
     }
 
-    // public function getImgBig()
-    // {
-    //     return Yii::getAlias('@web') . '/img/offers/big' .$this->col_img_big;
-    // }
-
     public function beforeSave($insert)
     {
-        if ($insert) {
-            $img = new ImageUpload();
-            $this->col_img = $img->uploadFile($this->file_img, 'offers', $this->col_img);  
-            // $this->col_img_big = $img->uploadFile($this->file_img_big, 'offers/big', $this->col_img_big);  
-            $this->col_alias = Inflector::slug($this->col_title_ru);
-        }
+        $img = new ImageUpload();        
+        if ($this->file_img) $this->col_img = $img->uploadFile($this->file_img, 'offers', $this->col_img);  
+        $this->col_alias = Inflector::slug($this->col_title_ru, '_');
         return parent::beforeSave($insert);
     }
 }

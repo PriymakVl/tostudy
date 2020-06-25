@@ -47,7 +47,8 @@ class Country extends \app\models\ModelApp
             [['file_image', 'file_flag'], 'file', 'extensions' => 'jpeg, jpg, png'],
             [['col_language_id'], 'integer'],
             ['col_alias', 'string'],
-            ['col_alias', 'unique'],
+            // ['col_alias', 'unique'],
+            [['col_meta_title', 'col_meta_keywords', 'col_meta_description'], 'string', 'max' => 255],
             [['col_title_ru', 'col_img', 'col_flag'], 'string', 'max' => 100],
             [['col_title_en', 'col_title_es', 'col_title_ua', 'col_title_cn'], 'default', 'value' => '']
         ];
@@ -70,7 +71,10 @@ class Country extends \app\models\ModelApp
             'col_flag' => 'Col Flag',
             'image' => 'Изображение',
             'flag' => 'Флаг',
-            'col_alias', 'Пвсевдоним для ЧПУ'
+            'col_alias', 'Пвсевдоним для ЧПУ',
+            'col_meta_title' => 'Title (тег)',
+            'col_meta_keywords' => 'Keywords (метатег)',
+            'col_meta_description' => 'Description (метатег)',
         ];
     }
 
@@ -148,7 +152,9 @@ class Country extends \app\models\ModelApp
             if ($this->file_image) $this->col_img = $img->uploadFile($this->file_image, 'countries', $this->col_img);
             if ($this->file_flag) $this->col_flag = $img->uploadFile($this->file_flag, 'countries/flags', $this->col_flag);
         }
+
         $this->col_alias = Inflector::slug($this->col_alias, '_');
+
         return parent::beforeSave($insert);
     }
 }

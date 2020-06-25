@@ -1,6 +1,4 @@
 <?php 
-use app\widgets\modal\Modal;
- 
 	$this->registerJsFile('@web/js/public/search-home.js', ['depends' => [\yii\web\JqueryAsset::className()]]);
  ?>
 
@@ -145,10 +143,10 @@ use app\widgets\modal\Modal;
 				</div>
 				<div class="arrows">
 					<a href="#" class="slider-arrow left" id="js-slide-prev">
-						<?//= Yii::$app->svg->get('slider-arrow-left') ?>
+						<?= Yii::$app->svg->get('slider-arrow-left') ?>
 					</a>
 					<a href="#" class="slider-arrow right" id="js-slide-next">
-						<?//= Yii::$app->svg->get('slider-arrow-right') ?>
+						<?= Yii::$app->svg->get('slider-arrow-right') ?>
 					</a>
 				</div> <!-- /.arrows -->
 			</div> <!-- /.content -->
@@ -196,6 +194,5 @@ use app\widgets\modal\Modal;
 </section> <!-- /.section-partners -->
 <?php endif ?>
 
-<?= Modal::widget() ?>
 
 

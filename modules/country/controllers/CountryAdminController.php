@@ -93,7 +93,7 @@ class CountryAdminController extends BaseController
         $model->load(Yii::$app->request->post());
         $model->file_image = UploadedFile::getInstance($model, 'file_image');
         $model->file_flag = UploadedFile::getInstance($model, 'file_flag');
-
+        
         if ($model->save()) return $this->setMessage('Страна отредактирована')->redirect(['view', 'id' => $model->col_id]);
         else $this->setMessage('Ошибка при редактировании', 'error')->redirect(['view', 'id' => $model->col_id]);
     }

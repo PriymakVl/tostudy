@@ -39,6 +39,12 @@ app\assets\AdminAsset::register($this);
 
             'col_title_ru',
 
+            'col_meta_title',
+
+            'col_meta_description',
+            
+            'col_meta_keywords',
+
             'col_alias',
 
             'image:image',

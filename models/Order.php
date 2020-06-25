@@ -40,9 +40,12 @@ class Order extends \app\models\ModelApp
     public function rules()
     {
         return [
-            [['col_username', 'col_email', 'col_tel', 'col_comment', 'col_school_id', 'col_course_id', 'col_weeks', 'col_accommodation', 'col_date', 'col_status'], 'required'],
+            ['col_username', 'required', 'message' => 'Вы не указали имя'],
+            ['col_tel', 'required', 'message' => 'Вы не указали телефон'],
+            ['col_email', 'required', 'message' => 'Вы не указали email'],
+            ['col_email', 'email', 'message' => 'Email указан неверно'],
             [['col_comment'], 'string'],
-            [['col_school_id', 'col_course_id', 'col_weeks', 'col_accommodation', 'col_status'], 'integer'],
+            [['col_school_id', 'col_course_id', 'col_weeks', 'col_accommodation'], 'default', 'value' => 0],
             [['col_date'], 'safe'],
             [['col_username', 'col_email'], 'string', 'max' => 100],
             [['col_tel'], 'string', 'max' => 50],
@@ -69,11 +72,19 @@ class Order extends \app\models\ModelApp
         ];
     }
 
+    public function beforeSave($insert)
+    {
+        if ($insert) {
+            $this->col_date = date("Y-m-d H:i:s");
+            $this->col_status = self::STATUS_WAITING;
+        }
+        return parent::beforeSave($insert);
+    }
+
     public function scenarios()
     {
         $scenarios = parent::scenarios();
         $scenarios['status'] = ['col_status'];
-        // $scenarios[static::SCENARIO_USER] = ['post_title', 'post_body'];
         return $scenarios;
     }
 

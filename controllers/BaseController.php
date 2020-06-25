@@ -29,7 +29,7 @@ class BaseController extends \yii\web\Controller
 
 	public function back()
 	{
-		return $this->redirect($this->request->referrer);
+		return $this->redirect(Yii::$app->request->referrer);
 	}
 
 	public function registerMetaTags($object) 

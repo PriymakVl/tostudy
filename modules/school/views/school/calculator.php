@@ -1,6 +1,4 @@
-<?php 
-use yii\bootstrap\Modal;
- ?>
+<?php use yii\bootstrap\Modal; ?>
 <div class="calc" id="js-calc">
 	<h2>Калькулятор</h2>
 	<label class="input__label">
@@ -67,20 +65,9 @@ use yii\bootstrap\Modal;
 	</div>
 
 	<div class="action">
-		<!-- <a href="#" class="btn btn2 js-open-modal" data-modal-id="#js-modal-order">Забронировать</a> -->
 
-						<?
-
-Modal::begin([
- 'header' => '<h2>Hello world</h2>',
- 'toggleButton' => [
- 'label' => 'Забронировать',
- 'tag' => 'a',
- 'class' => 'btn btn2',
- ],
- 'footer' => 'Низ окна',
-]);
-			 ?>
+		<?= $this->render('order_form', ['order' => $order]) ?>
+		
 	</div>
 
 

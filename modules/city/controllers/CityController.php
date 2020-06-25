@@ -18,6 +18,8 @@ class CityController extends \app\controllers\BaseController
     	$country = Country::findOne(['col_alias' => $country_alias]);
 
     	$cities = City::findAll(['col_country_id' => $country->col_id]);
+    	
+    	$this->registerMetaTags($country);
 
         return $this->render('index' , compact('cities', 'country', 'program', 'lang'));
     }

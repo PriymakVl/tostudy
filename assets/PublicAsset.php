@@ -23,6 +23,7 @@ class PublicAsset extends AssetBundle
         'css/public/style.css',
         'css/public/media.css',
         'css/public/change.css',
+        'css/public/modal.css',
     ];
     public $js = [
     // <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
@@ -30,11 +31,13 @@ class PublicAsset extends AssetBundle
     // 'js/public/moment.min.js',
     'js/public/moment-with-locales.js',
     'js/public/nprogress.js',
-    // 'js/public/main.js',
+    'js/public/bootstrap.js',
+    'js/public/main.js',
     // <script src="//code.jivosite.com/widget/3gTQRLtjez" async></script>
     ];
     public $depends = [
         'yii\web\YiiAsset',
         // 'yii\bootstrap\BootstrapAsset',
+        // 'yii\bootstrap\BootstrapPluginAsset'
     ];
 }

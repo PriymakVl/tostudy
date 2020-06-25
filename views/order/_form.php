@@ -9,20 +9,25 @@ use app\models\Order;
 /* @var $form yii\widgets\ActiveForm */
 ?>
 
-<div class="order-form">
+<div class="container">
+	<div class="row">
+		<div class="col-lg-3 order-form">
 
-    <?php $form = ActiveForm::begin(); ?>
+		    <?php $form = ActiveForm::begin(); ?>
 
-    <?php   
-        $items = [Order::STATUS_WAITING => 'Ожидание', Order::STATUS_PROCESSING => 'В обработке', Order::STATUS_COMPLETED => 'Завершен'];
-        echo $form->field($model, 'col_status')->dropDownList($items);
-     ?>
+		    <?php   
+		        $items = [Order::STATUS_WAITING => 'Ожидание', Order::STATUS_PROCESSING => 'В обработке', Order::STATUS_COMPLETED => 'Завершен'];
+		        echo $form->field($model, 'col_status')->dropDownList($items);
+		     ?>
 
 
-    <div class="form-group">
-        <?= Html::submitButton('Сохранить', ['class' => 'btn btn-success']) ?>
-    </div>
+		    <div class="form-group">
+		        <?= Html::submitButton('Сохранить', ['class' => 'btn btn-success']) ?>
+		    </div>
 
-    <?php ActiveForm::end(); ?>
+		    <?php ActiveForm::end(); ?>
 
+		</div>
+	</div>
 </div>
+

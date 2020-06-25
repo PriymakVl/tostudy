@@ -29,7 +29,7 @@ $this->params['breadcrumbs'][] = $this->title;
 
             ['attribute' => 'col_status', 'value' => function($model) { return $model->status; }],
 
-            ['class' => 'yii\grid\ActionColumn', 'template' => '{view} {update}'],
+            ['class' => 'yii\grid\ActionColumn', 'template' => '{update}'],
         ],
     ]); ?>
 

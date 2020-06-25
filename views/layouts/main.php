@@ -3,8 +3,10 @@
 /* @var $this \yii\web\View */
 /* @var $content string */
 use yii\helpers\Html;
+use app\widgets\modal\ModalAlert;
 
 \app\assets\PublicAsset::register($this);
+
 ?>
 <?php $this->beginPage() ?>
 <!DOCTYPE html>
@@ -27,6 +29,8 @@ use yii\helpers\Html;
 		<?php else: ?>
 			<?=$this->render('@app/views/templates/header')?>
 	<?php endif ?>
+
+    <?= ModalAlert::widget() ?>
 
     <?= $content ?>
 

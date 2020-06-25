@@ -1,0 +1,118 @@
+
+.modal-backdrop.in {
+    opacity: 0.5;
+}
+
+.modal-backdrop {
+    position: fixed;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: 0;
+    z-index: 1040;
+    background-color: #000;
+}
+
+.fade {
+    transition: opacity 0.15s linear;
+}
+
+.modal {
+    display: none;
+    position: fixed;
+    top: 30px;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 600px;
+    z-index: 1050;
+    overflow-x: hidden;
+    overflow-y: auto;
+    outline: 0;
+    border-radius: 25px;
+}
+
+
+.modal-dialog {
+    font-family: Helvetica, Arial, sans-serif;
+    color: #262626;
+    margin: 10px;
+}
+
+.modal-content {
+    position: relative;
+    background-color: #fff;
+    background-clip: padding-box;
+    border: 1px solid #999;
+    box-shadow: 0 3px 9px rgba(0, 0, 0, 0.5);
+    outline: 0;
+    text-align: left;
+}
+
+.modal-header {
+    padding: 15px;
+    border-bottom: 1px solid #e5e5e5;
+}
+
+.modal-header h2  {
+    margin: 0 0 15px 0!important;
+    font-size: 1.6em;
+    font-weight: normal;
+    text-align: center;
+}
+
+.modal-header p {
+    margin: 0!important;
+    font-size: 1.2em;
+    font-weight: normal;
+}
+
+.modal-header .close {
+    display: block;
+    width: 30px;
+    height: 30px;
+    position: absolute;
+    top: 10px;
+    right: 10px;
+    text-align: center;
+    line-height: 30px;
+    font-size: 21px;
+    font-weight: bold;
+    color: #000;
+    text-shadow: 0 1px 0 #fff;
+    cursor: pointer;
+    z-index: 2000;
+}
+
+.modal-header .close:hover {
+    opacity: .5;
+}
+
+.modal-body {
+    padding: 20px;
+}
+
+.modal-body input  {
+    border: 1px solid #eee;
+}
+
+.modal-body textarea {
+    height: 80px;
+    background: #f7f8fa;
+    border: 1px solid #eee;
+}
+
+.modal-body .help-block {
+    color: #f00;
+}
+
+.modal-body label {
+    margin-bottom: 5px;
+}
+
+.modal-body .input__field {
+    max-width: 100%!important;
+}
+
+.modal-body .btn2 {
+    margin-top: 40px;
+}

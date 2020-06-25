@@ -29,13 +29,16 @@ $this->params['breadcrumbs'][] = $this->title;
     <?= DetailView::widget([
         'model' => $model,
         'attributes' => [
+
             'col_id',
             
-            ['attribute' => 'col_school_id', 'value' => function($model) { return $model->school->name; }],
+            ['attribute' => 'col_school_id', 'format' => 'html', 'value' => function($model) { 
+                return Html::a($model->school->name, ['/admin/school/view', 'id' => $model->school->col_id]); 
+            }],
 
             'col_title_ru',
 
-            'col_description_ru:ntext',
+            'col_description_ru:html',
 
             'col_price:ntext',
         ],

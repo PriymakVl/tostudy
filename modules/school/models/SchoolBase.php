@@ -62,7 +62,7 @@ class SchoolBase extends \app\models\ModelApp
 
             [['col_city_id', 'col_home_page', 'col_currency', 'col_subcategory'], 'integer'],
             [['col_description_ru', 'col_about_us_ru', 'col_residence_ru'], 'string'],
-            [['col_meta_title', 'col_meta_description', 'col_meta_keywords', 'col_title'], 'string', 'max' => 255],
+            [['col_meta_title', 'col_meta_description', 'col_meta_keywords', 'col_title', 'col_alias'], 'string', 'max' => 255],
 
             [['col_registration_fee', 'col_img_mini', 'col_img'], 'string', 'max' => 10],
             [['col_description_ru'], 'default', 'value' => ''],

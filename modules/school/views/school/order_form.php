@@ -1,0 +1,43 @@
+<?php 
+use yii\bootstrap\Modal;
+use yii\helpers\Html;
+use yii\widgets\ActiveForm;
+?>
+
+<?
+	Modal::begin([
+		'header' => '<h2>Забронировать</h2><p>Для бронирования укажите данные студента</p>',
+
+		'toggleButton' => ['label' => 'Забронировать','tag' => 'a','class' => 'btn btn2',],
+
+	]);
+?>
+
+	<?php $form = ActiveForm::begin(['action' => '/order/create']); ?>
+
+	    <?
+	    	$input_template = '{label} <div class="input__field"> {input} {error}</div>'; 
+			$label_options = ['class' => 'input__label'];
+			$input_options = [];
+			$style_input['template' ] = $input_template;
+			$style_input['labelOptions' ] = $label_options;
+			$style_input['inputOptions' ] = $input_options;
+		?>
+
+	    <?= $form->field($order, 'col_username', $style_input)->textInput(['autofocus' => true]) ?>
+	 
+	    <?= $form->field($order, 'col_tel', $style_input) ?>
+
+	    <?= $form->field($order, 'col_email', $style_input) ?>
+	 
+	    <?= $form->field($order, 'col_comment', $style_input)->textarea() ?>
+	 
+	    <div class="form-group" style="text-align: center;">
+	        <?= Html::submitButton('Забронировать', ['class' => 'btn btn2']) ?>
+	    </div>
+
+	<?php ActiveForm::end() ?>
+
+
+<? //Modal::end(); ?>
+	

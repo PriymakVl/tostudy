@@ -1,12 +1,14 @@
 <?php
+/* @var $this yii\web\View */
+/* @var $model app\modules\course\models\Course */
+/* @var $form yii\widgets\ActiveForm */
 
 use yii\helpers\Html;
 use yii\widgets\ActiveForm;
 use app\modules\school\models\School;
+use dosamigos\ckeditor\CKEditor;
 
-/* @var $this yii\web\View */
-/* @var $model app\modules\course\models\Course */
-/* @var $form yii\widgets\ActiveForm */
+$this->registerJs("CKEDITOR.plugins.addExternal('youtube', 'js/vendor/ckeditor/youtube/plugin.js', '');");
 ?>
 
 <div class="course-form">
@@ -21,7 +23,36 @@ use app\modules\school\models\School;
 
     <?= $form->field($model, 'col_title_ru')->textInput(['maxlength' => true]) ?>
 
-    <?= $form->field($model, 'col_description_ru')->textarea(['rows' => 6]) ?>
+    <?php 
+        echo $form->field($model, 'col_description_ru')->widget(CKEditor::className(), [
+        'preset' => 'custom',
+        'clientOptions' => [
+            'extraPlugins' => 'youtube',
+            'allowedContent' => true,
+            'toolbarGroups' => [
+                ['name' => 'mode'],
+                ['name' => 'undo'],
+                ['name' => 'basicstyles', 'groups' => ['basicstyles', 'cleanup']],
+                ['name' => 'links', 'groups' => ['links', 'insert']],
+                ['name' => 'paragraph', 'groups' => [ 'list', 'indent', 'blocks', 'align', 'bidi' ]],
+                ['name' => 'youtube'], 
+            ]
+        ],
+        'kcfinder' => true,
+        'kcfOptions' => [
+            'uploadURL' => '@web/img/courses',
+            'uploadDir' => '@webroot/img/courses',
+            'access' => [  // @link http://kcfinder.sunhater.com/install#_access
+                        'files' => [
+                            'upload' => true,
+                            'delete' => true,
+                            'rename' => true,
+                        ],
+                    ],
+                    'thumbsDir' => false,
+            ],
+        ]);
+    ?>
 
     <?= $form->field($model, 'col_price')->textarea(['rows' => 6]) ?>
 
