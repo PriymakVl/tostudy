@@ -153,7 +153,7 @@ class Country extends \app\models\ModelApp
             if ($this->file_flag) $this->col_flag = $img->uploadFile($this->file_flag, 'countries/flags', $this->col_flag);
         }
 
-        $this->col_alias = Inflector::slug($this->col_alias, '_');
+        $this->col_alias = Inflector::slug($this->col_title_ru, '_');
 
         return parent::beforeSave($insert);
     }

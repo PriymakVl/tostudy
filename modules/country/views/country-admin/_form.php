@@ -28,8 +28,6 @@ use app\modules\language\models\Language;
 
     <?= $form->field($model, 'col_meta_keywords')->textInput(['maxlength' => true]) ?>
 
-    <?= $form->field($model, 'col_alias')->textInput(['maxlength' => true])->label('Пвсевдоним для ЧПУ') ?>
-
     <?= $form->field($model, 'file_image')->fileInput()->label('Изображение') ?>
 
     <?= $form->field($model, 'file_flag')->fileInput()->label('Флаг') ?>

@@ -93,7 +93,7 @@ class City extends \app\models\ModelApp
         else {
              if ($this->file_image) $this->col_img = $img->uploadFile($this->file_image, 'cities', $this->col_img); 
         }
-        $this->col_alias = Inflector::slug($this->col_alias, '_');
+        $this->col_alias = Inflector::slug($this->col_title_ru, '_');
         return parent::beforeSave($insert);
     }
     

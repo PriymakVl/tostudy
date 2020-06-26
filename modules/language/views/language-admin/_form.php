@@ -14,8 +14,6 @@ use yii\widgets\ActiveForm;
 
     <?= $form->field($model, 'col_title_ru')->textInput(['maxlength' => true]) ?>
 
-    <?= $form->field($model, 'col_alias')->textInput()->label() ?>
-
     <?= $form->field($model, 'file_image')->fileInput()->label('Изображение') ?>
 
     <div class="form-group">

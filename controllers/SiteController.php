@@ -131,18 +131,21 @@ class SiteController extends BaseController
     public function actionAbout()
     {
         $page = Page::about();
+        $this->registerMetaTags($page);
         return $this->render('about', ['page' => $page]);
     }
 
     public function actionInsurance()
     {
         $page = Page::insurance();
+        $this->registerMetaTags($page);
         return $this->render('insurance', ['page' => $page]);
     }
 
     public function actionOrder()
     {
         $page = Page::order();
+        $this->registerMetaTags($page);
         return $this->render('order', ['page' => $page]);
     }
 
