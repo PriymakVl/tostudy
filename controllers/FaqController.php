@@ -8,6 +8,7 @@ use app\models\FaqSearch;
 use app\controllers\BaseController;
 use yii\web\NotFoundHttpException;
 use yii\filters\VerbFilter;
+use yii\web\UploadedFile;
 
 /**
  * FaqController implements the CRUD actions for Faq model.
@@ -67,14 +68,14 @@ class FaqController extends BaseController
     public function actionCreate()
     {
         $model = new Faq();
+        if (Yii::$app->request->isGet)  return $this->render('create', ['model' => $model,]);
 
-        if ($model->load(Yii::$app->request->post()) && $model->save()) {
-            return $this->redirect(['view', 'id' => $model->col_id]);
-        }
+        $model->load(Yii::$app->request->post());
 
-        return $this->render('create', [
-            'model' => $model,
-        ]);
+        if ($model->save()) $this->setMessage('Вопрос успешно добавлен');
+        else $this->setMessage('Ошибка при добавлении вопроса', 'error');
+
+        return $this->redirect(['view', 'id' => $model->col_id]);
     }
 
     /**
@@ -87,14 +88,13 @@ class FaqController extends BaseController
     public function actionUpdate($id)
     {
         $model = $this->findModel($id);
+        if (Yii::$app->request->isGet)  return $this->render('update', ['model' => $model,]);
 
-        if ($model->load(Yii::$app->request->post()) && $model->save()) {
-            return $this->redirect(['view', 'id' => $model->col_id]);
-        }
+        $model->load(Yii::$app->request->post());
+        if ($model->save()) $this->setMessage('Вопрос успешно отредактирован');
+        else $this->setMessage('Ошибка при редактировании вопроса', 'error');
 
-        return $this->render('update', [
-            'model' => $model,
-        ]);
+        return $this->redirect(['view', 'id' => $model->col_id]);
     }
 
     /**

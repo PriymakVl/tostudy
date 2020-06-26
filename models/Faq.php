@@ -21,6 +21,8 @@ use Yii;
  */
 class Faq extends \app\models\ModelApp
 {
+    public $file_img;
+
     /**
      * {@inheritdoc}
      */
@@ -35,7 +37,7 @@ class Faq extends \app\models\ModelApp
     public function rules()
     {
         return [
-            [['col_question_ru', 'col_answer_ru', 'col_answer_cn'], 'required'],
+            [['col_question_ru', 'col_answer_ru'], 'required'],
             [['col_answer_ru'], 'string'],
             [['col_question_ru'], 'string', 'max' => 255],
             [['col_question_en', 'col_question_es', 'col_question_ua', 'col_question_cn'], 'default', 'value' => ''],
@@ -60,6 +62,8 @@ class Faq extends \app\models\ModelApp
             'col_answer_ua' => 'Col Answer Ua',
             'col_answer_ru' => 'Ответ',
             'col_answer_cn' => 'Col Answer Cn',
+            'col_img' => 'Изображение',
+            'file_img' => 'Изображение',
         ];
     }
 }

@@ -35,16 +35,6 @@ $config = [
             'class' => 'app\modules\info\Module',
         ],
     ],
-    'controllerMap' => [
-        'elfinder' => [
-        'class' => 'mihaildev\elfinder\PathController',
-            'access' => ['@'],
-            'root' => [
-             'path' => 'img',
-             'name' => 'Изображения'
-            ],
-        ]
-    ],
     'components' => [
         'request' => [
             // !!! insert a secret key in the following (if it is empty) - this is required by cookie validation
