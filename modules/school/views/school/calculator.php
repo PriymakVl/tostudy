@@ -1,5 +1,8 @@
-<?php use yii\bootstrap\Modal; ?>
-<div class="calc" id="js-calc">
+<?php 
+use yii\bootstrap\Modal; 
+?>
+
+<div class="calc">
 	<h2>Калькулятор</h2>
 	<label class="input__label">
 		<span>Тип курса</span>

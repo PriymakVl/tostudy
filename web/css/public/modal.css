@@ -24,7 +24,7 @@
     left: 50%;
     transform: translateX(-50%);
     width: 600px;
-    z-index: 1050;
+    z-index: 2000;
     overflow-x: hidden;
     overflow-y: auto;
     outline: 0;
