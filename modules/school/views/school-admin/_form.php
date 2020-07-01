@@ -14,7 +14,7 @@ $this->registerJs("CKEDITOR.plugins.addExternal('youtube', 'js/vendor/ckeditor/y
 
 <div class="school-form">
 
-    <?php $form = ActiveForm::begin(); ?>
+    <?php $form = ActiveForm::begin(['options' => ['enctype' => 'multipart/form-data']]); ?>
 
     <?= $form->field($model, 'col_meta_title')->textInput(['maxlength' => true]) ?>
 
@@ -37,6 +37,8 @@ $this->registerJs("CKEDITOR.plugins.addExternal('youtube', 'js/vendor/ckeditor/y
     <?= $form->field($model, 'file_img_mini')->fileInput()->label('Изображение мини') ?>
 
     <?= $form->field($model, 'file_img')->fileInput()->label('Изображение') ?>
+
+    <?= $form->field($model, 'file_pdf')->fileInput() ?>
 
     <?php 
         echo $form->field($model, 'col_about_us_ru')->widget(CKEditor::className(), [

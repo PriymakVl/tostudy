@@ -44,6 +44,12 @@ $this->params['breadcrumbs'][] = $this->title;
 
             'img:image',
 
+            ['attribute' => 'col_pdf', 'format' => 'html', 'value' => function($model) { 
+                 if ($model->col_pdf) {
+                    return Html::a('Показать файл PDF', ['@web/pdf/'. $model->col_pdf]);
+                } }
+            ],
+
             'col_description_ru:ntext',
 
             [

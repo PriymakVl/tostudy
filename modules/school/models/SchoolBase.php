@@ -4,6 +4,7 @@ namespace app\modules\school\models;
 
 use Yii;
 use app\models\ImageUpload;
+use app\models\PdfUpload;
 use yii\helpers\Inflector;
 
 /**
@@ -43,6 +44,7 @@ class SchoolBase extends \app\models\ModelApp
 
     public $file_img;
     public $file_img_mini;
+    public $file_pdf;
 
     /**
      * {@inheritdoc}
@@ -64,9 +66,12 @@ class SchoolBase extends \app\models\ModelApp
             [['col_description_ru', 'col_about_us_ru', 'col_residence_ru'], 'string'],
             [['col_meta_title', 'col_meta_description', 'col_meta_keywords', 'col_title', 'col_alias'], 'string', 'max' => 255],
 
-            [['col_registration_fee', 'col_img_mini', 'col_img'], 'string', 'max' => 10],
+            [['col_registration_fee', 'col_img_mini', 'col_img', 'col_pdf'], 'string', 'max' => 10],
             [['col_description_ru'], 'default', 'value' => ''],
+
             [['file_img', 'file_img_mini'], 'file', 'extensions' => 'png, jpg, jpeg'],
+
+            ['file_pdf', 'file', 'extensions' => 'pdf'],
 
             [['col_url', ], 'default', 'value' => ''], //todo delete from table
 
@@ -99,6 +104,8 @@ class SchoolBase extends \app\models\ModelApp
             'col_home_page' => 'На главной',
             'col_currency' => 'Валюта',
             'col_subcategory' => 'Программа',
+            'file_pdf' => 'Файл PDF',
+            'col_pdf' => 'Файл PDF',
         ];
     }
 
@@ -112,14 +119,17 @@ class SchoolBase extends \app\models\ModelApp
     public function beforeSave($insert)
     {
         $img = new ImageUpload();
+        $pdf = new PdfUpload();
         if ($insert) {
-             $this->col_img = $img->uploadFile($this->file_img, 'schools/big', $this->col_img); 
-             $this->col_img_mini = $img->uploadFile($this->file_img_mini, 'schools', $this->col_img_mini); 
+            $this->col_img = $img->uploadFile($this->file_img, 'schools/big', $this->col_img); 
+            $this->col_img_mini = $img->uploadFile($this->file_img_mini, 'schools', $this->col_img_mini); 
+             
         }
         else {
             if ($this->file_img) $this->col_img = $img->uploadFile($this->file_img, 'schools/big', $this->col_img);
             if ($this->file_img_mini) $this->col_img_mini = $img->uploadFile($this->file_img_mini, 'schools', $this->col_img_mini);
         }
+        if ($this->file_pdf) $this->col_pdf = $pdf->uploadFile($this->file_pdf, $this->col_pdf);
         $this->col_alias = Inflector::slug($this->col_title, '_');
         return true;
     }

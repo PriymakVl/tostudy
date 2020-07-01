@@ -8,38 +8,33 @@
 		
 		<form action="/search/result" method="get" class="form">
 			<div>
-				<div class="input__field input__select js-open-form-select" data-id="#js-form-language">
+				<div class="input__field input__select" id="js-lang">
 					<span class="js-selected">Язык</span>
 					<?= Yii::$app->svg->get('arrow-bottom') ?>
 					<ul id="js-form-language" class="form-select js-form-select">
 						<li class="js-language-option" data-value="0">Все</li>
 						<?php foreach (Yii::$app->params['languages'] as $lang): ?>
-							<li class="js-language-option" data-value="<?= $lang->col_id ?>"><?= $lang->col_title_ru ?></li>
+							<li class="js-language-option" data-lang_id="<?= $lang->col_id ?>"><?= $lang->col_title_ru ?></li>
 						<?php endforeach ?>
 					</ul> <!-- /.form-select -->
 				</div> <!-- /.input__field -->
 
-				<div class="input__field input__select js-open-form-select" data-id="#js-form-country">
+				<div class="input__field input__select" id="js-country">
 					<span class="js-selected">Страна</span>
 					<?= Yii::$app->svg->get('arrow-bottom') ?>
-					<ul id="js-form-country" class="form-select js-form-select">
-						<li class="js-country-option" data-value="0">Все</li>
-					</ul> <!-- /.form-select -->
+					<ul id="js-form-country" class="form-select js-form-select"></ul> <!-- /.form-select -->
 				</div> <!-- /.input__field -->
 				
-				<div class="input__field input__select js-open-form-select" data-id="#js-form-city">
+				<div class="input__field input__select" id="js-city">
 					<span class="js-selected">Город</span>
 					<?= Yii::$app->svg->get('arrow-bottom') ?>
 					<ul id="js-form-city" class="form-select js-form-select">
-						<li class="js-city-option" data-value="0">Все</li>
+						<li class="js-city-option" data-city_id="0">Все</li>
 					</ul> <!-- /.form-select -->
 				</div> <!-- /.input__field -->
 			</div>
 			
 			<div>
-				<input type="hidden" name="language" value="" id="js-search-language">
-				<input type="hidden" name="country" value="" id="js-search-country">
-				<input type="hidden" name="city" value="" id="js-search-city">
 				<div class="input__field">
 					<input type="text" placeholder="Школа" name="school">
 				</div>

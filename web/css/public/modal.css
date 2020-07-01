@@ -1,3 +1,8 @@
+/*.btn-order {
+    position: absolute;
+    top: 0;
+    right: 0;
+}*/
 
 .modal-backdrop.in {
     opacity: 0.5;
@@ -113,6 +118,6 @@
     max-width: 100%!important;
 }
 
-.modal-body .btn2 {
+.modal-body .btn {
     margin-top: 40px;
 }

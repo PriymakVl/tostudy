@@ -53,17 +53,17 @@
 			<div class="schools-recommend">
 			<?php foreach ($schools as $school): ?>
 				'<div class="item">
-					<a href="/school?id=<?= $school->col_id ?>" class="wrap-img">
+					<a href="/school/<?= $school->alias ?>" class="wrap-img">
 						<img src="/img/schools/<?= $school->col_img_mini ?>" alt="<?= $school->name ?>">
 					</a>
 					<div class="container">
 						<div>
 							<h4>
-								<a href="/school?id=<?= $school->col_id ?>"><?= $school->name ?></a>
+								<a href="/school/<?= $school->alias ?>"><?= $school->name ?></a>
 							</h4>
 							<p class="description"><?= $school->col_description_ru ?></p>
 						</div>
-						<a href="/school?id=<?= $school->col_id ?>" class="btn3">Смотреть курсы</a>
+						<a href="/school/<?= $school->alias?>" class="btn3">Смотреть курсы</a>
 					</div>
 				</div>
 			<?php endforeach ?>

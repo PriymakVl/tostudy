@@ -1,5 +1,8 @@
 <?php 
+use yii\helpers\Html;
+
 $this->registerJsFile('@web/js/public/calculator.js', ['depends' => [\yii\web\JqueryAsset::className()]]);
+
 \app\assets\PublicAsset::register($this);
 ?>
 
@@ -22,6 +25,12 @@ $this->registerJsFile('@web/js/public/calculator.js', ['depends' => [\yii\web\Jq
 			
 			<div class="column-left">
 				<h1><?= $school->name ?></h1>
+
+				<?php if ($school->col_pdf): ?>
+					<div class="wrp-btn-pdf">
+						<?= Html::a('Загрузить файл PDF', ['/pdf/' . $school->col_pdf], ['class' => 'btn btn-pdf', 'target' => '_blank']) ?>
+					</div>
+				<?php endif; ?>
 				
 				<div class="switch">
 					<a href="#" class="active js-switch-tab" data-tab="1">О школе</a>
@@ -69,6 +78,8 @@ $this->registerJsFile('@web/js/public/calculator.js', ['depends' => [\yii\web\Jq
 			</div> <!-- /.column-left -->
 			
 			<?= $this->render('calculator.php', compact('school', 'courses', 'accommodation', 'order')) ?>
+
+
 
 		</div> <!-- /.content -->
 	</div> <!-- /.wrap -->

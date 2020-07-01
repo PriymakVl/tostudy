@@ -3,6 +3,7 @@ use yii\bootstrap\Modal;
 ?>
 
 <div class="calc">
+
 	<h2>Калькулятор</h2>
 	<label class="input__label">
 		<span>Тип курса</span>
@@ -68,11 +69,11 @@ use yii\bootstrap\Modal;
 	</div>
 
 	<div class="action">
-
+		
 		<?= $this->render('order_form', ['order' => $order]) ?>
 		
 	</div>
-
-
-
 </div> <!-- /.calc -->
+
+
+

@@ -14,6 +14,16 @@ use app\components\ProgramComponent;
 				<li class="link">
 					<a href="/about">О нас</a>
 				</li>
+				<li class="link">
+					<a href="/order">Как заказать</a>
+				</li>
+				<li class="link sel">
+					<a href="#">Полезная информация</a>
+					<ul class="form-select">
+						<li><a href="/info">Полезная информация</a></li>
+						<li><a href="/news">Новости</a></li>
+					</ul> <!-- /.form-select -->
+				</li> <!-- /.link -->
 				<li class="link sel">
 					<a href="#">Программы</a>
 					<ul class="form-select">
@@ -49,21 +59,11 @@ use app\components\ProgramComponent;
 						</li>
 					</ul> <!-- /.form-select -->
 				</li> <!-- /.link -->
-				<li class="link sel">
-					<a href="#">Полезная информация</a>
-					<ul class="form-select">
-						<li><a href="/info">Полезная информация</a></li>
-						<li><a href="/news">Новости</a></li>
-					</ul> <!-- /.form-select -->
-				</li> <!-- /.link -->
 				<li class="link">
 					<a href="/offers">Акции</a>
 				</li>
 				<li class="link">
 					<a href="/insurance">Страхование</a>
-				</li>
-				<li class="link">
-					<a href="/order">Как заказать</a>
 				</li>
 				<li class="link">
 					<a href="/reviews">Отзывы</a>

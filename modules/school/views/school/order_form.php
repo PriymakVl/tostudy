@@ -8,7 +8,7 @@ use yii\widgets\ActiveForm;
 	Modal::begin([
 		'header' => '<h2>Забронировать</h2><p>Для бронирования укажите данные студента</p>',
 
-		'toggleButton' => ['label' => 'Забронировать','tag' => 'a','class' => 'btn btn2',],
+		'toggleButton' => ['label' => 'Забронировать','tag' => 'a','class' => 'btn btn-order',],
 
 	]);
 ?>

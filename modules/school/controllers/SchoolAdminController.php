@@ -71,6 +71,7 @@ class SchoolAdminController extends \app\controllers\BaseController
         $model->load(Yii::$app->request->post());
         $model->file_img  = UploadedFile::getInstance($model, 'file_img');
         $model->file_img_mini  = UploadedFile::getInstance($model, 'file_img_mini');
+        $model->file_pdf  = UploadedFile::getInstance($model, 'file_pdf');
         if ($model->save()) {
             return $this->setMessage('Школа добавлена')->redirect(['view', 'id' => $model->col_id]);
         }
@@ -94,6 +95,7 @@ class SchoolAdminController extends \app\controllers\BaseController
         $model->load(Yii::$app->request->post());
         $model->file_img  = UploadedFile::getInstance($model, 'file_img');
         $model->file_img_mini  = UploadedFile::getInstance($model, 'file_img_mini');
+        $model->file_pdf  = UploadedFile::getInstance($model, 'file_pdf');
         if ($model->save()) {
             return $this->setMessage('Школа отредактирована')->redirect(['view', 'id' => $model->col_id]);
         }
