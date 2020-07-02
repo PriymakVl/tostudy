@@ -24,4 +24,11 @@ class CityController extends \app\controllers\BaseController
         return $this->render('index' , compact('cities', 'country', 'program', 'lang'));
     }
 
+    public function registerMetaTags($country)
+    {
+        $this->view->title = $country->col_meta_title_en;
+        $this->view->registerMetaTag(['name' => 'description', 'content' => $country->col_meta_description_en]);
+        $this->view->registerMetaTag(['name' => 'keywords', 'content' => $country->col_meta_keywords_en]);
+    }
+
 }

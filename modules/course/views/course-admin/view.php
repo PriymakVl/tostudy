@@ -32,13 +32,15 @@ $this->params['breadcrumbs'][] = $this->title;
 
             'col_id',
             
-            ['attribute' => 'col_school_id', 'format' => 'html', 'value' => function($model) { 
+            ['attribute' => 'school', 'format' => 'html', 'filter' => false, 'value' => function($model) { 
                 return Html::a($model->school->name, ['/admin/school/view', 'id' => $model->school->col_id]); 
             }],
 
             'col_title_ru',
 
-            'col_description_ru:html',
+            'col_title_en',
+
+            'col_description_en:html',
 
             'col_price:ntext',
         ],

@@ -8,30 +8,30 @@
 	<div class="wrap">
 		<div class="row">
 			<div>
-				<h3>Языки</h3>
+				<h3>Languages</h3>
 				<ul>
 					<?php foreach ($languages as $lang): ?>
 						<li>
-							<a href="/countries?lang_id=<?= $lang->col_id ?>" class="link"><?= $lang->col_title_ru ?></a>
+							<a href="/countries/<?= $lang->col_alias ?>" class="link"><?= $lang->col_title_en ?></a>
 						</li>
 					<?php endforeach ?>
 				</ul>
 			</div>
 			<div>
-				<h3>Клиентам</h3>
+				<h3>To customers</h3>
 				<ul>
-					<li><a href="/info" class="link">Полезная информация</a></li>
-					<li><a href="/news" class="link">Новости</a></li>
-					<li><a href="/insurance" class="link">Страхование</a></li>
-					<li><a href="/order" class="link">Как заказать</a></li>
+					<li><a href="/info" class="link">Useful information</a></li>
+					<li><a href="/news" class="link">News</a></li>
+					<li><a href="/insurance" class="link">Insurance</a></li>
+					<li><a href="/order" class="link">Order</a></li>
 				</ul>
 			</div>
 			<div>
-				<h3>О нас</h3>
+				<h3>About us</h3>
 				<ul>
-					<li><a href="/contacts" class="link">Контакты</a></li>
-					<li><a href="/about" class="link">О нас</a></li>
-					<li><a href="/reviews" class="link">Отзывы</a></li>
+					<li><a href="/contacts" class="link">Contacts</a></li>
+					<li><a href="/about" class="link">About us</a></li>
+					<li><a href="/reviews" class="link">Reviews</a></li>
 					<li>
 						<a href="https://www.facebook.com/<?= Yii::$app->setting->get('col_facebook') ?>/" target="_blank" class="link link2">
 							Facebook 
@@ -46,13 +46,13 @@
 					</li>
 					<li>
 						<a href="https://vk.com/<?= Yii::$app->setting->get('col_vk') ?>" target="_blank" class="link link2">
-							ВКонтакте 
+							Vk
 							<?= Yii::$app->svg->get('in-contact') ?>
 						</a>
 					</li>
 					<li>
 						<a href="https://ok.com/<?= Yii::$app->setting->get('col_ok') ?>/" target="_blank" class="link link2">
-							Однокласники 
+							Ok
 							<?= Yii::$app->svg->get('classmates') ?>
 						</a>
 					</li>
@@ -62,7 +62,7 @@
 				<ul>
 					<li><a href="mailto:<?=$row_st['col_email']?>" class="link email"><?= Yii::$app->setting->get('col_email') ?></a></li>
 				</ul>
-				<a href="#" class="btn btn2 js-open-modal" data-modal-id="#js-modal-question">Задать вопрос</a>
+				<a href="#" class="btn btn2 js-open-modal" data-modal-id="#js-modal-question">Ask a question</a>
 				<div class="social-network">
 					<a href="viber://add?number=<?=str_replace('+', '', Yii::$app->setting->get('col_tel'))?>" target="_blank">
 						<?= Yii::$app->svg->get('phone-volume') ?>
@@ -77,7 +77,7 @@
 			</div>
 		</div> <!-- /.row -->
 		<div class="row">
-			<div class="info">Обучение за рубежом с tostudy © <?=date('Y')?></div>
+			<div class="info">Study abroad with tostudy © <?=date('Y')?></div>
 		</div> <!-- /.row -->
 	</div> <!-- /.wrap -->
 </footer> <!-- /#footer -->

@@ -34,4 +34,11 @@ class SchoolController extends \app\controllers\BaseController
         return $this->render('view', compact('school', 'courses', 'accommodation', 'lang', 'order'));
     }
 
+    public function registerMetaTags($school)
+    {
+        $this->view->title = $school->col_meta_title_en;
+        $this->view->registerMetaTag(['name' => 'description', 'content' => $school->col_meta_description_en]);
+        $this->view->registerMetaTag(['name' => 'keywords', 'content' => $school->col_meta_keywords_en]);
+    }
+
 }

@@ -59,10 +59,10 @@ class Order extends \app\models\ModelApp
     {
         return [
             'col_id' => 'ID заказа',
-            'col_username' => 'Имя',
+            'col_username' => 'Name',
             'col_email' => 'Email',
-            'col_tel' => 'Телефон',
-            'col_comment' => 'Комментарий',
+            'col_tel' => 'Phone',
+            'col_comment' => 'Comment',
             'col_school_id' => 'Школа',
             'col_course_id' => 'Курс',
             'col_weeks' => 'Кол-во недель',

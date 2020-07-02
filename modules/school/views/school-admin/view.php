@@ -37,9 +37,9 @@ $this->params['breadcrumbs'][] = $this->title;
             'value' => function($model) {return $model->city->name;},
             ],
 
-            'col_meta_title',
-            'col_meta_description',
-            'col_meta_keywords',
+            'col_meta_title_en',
+            'col_meta_description_en',
+            'col_meta_keywords_en',
             'col_title',
 
             'img:image',
@@ -50,15 +50,15 @@ $this->params['breadcrumbs'][] = $this->title;
                 } }
             ],
 
-            'col_description_ru:ntext',
+            'col_description_en:ntext',
 
             [
-            'attribute' => 'col_about_us_ru', 'format' => 'raw',
+            'attribute' => 'col_about_us_en', 'format' => 'raw',
             'value' => function($model) {return $model->col_about_us_ru;},
             ],
 
             [
-            'attribute' => 'col_residence_ru', 'format' => 'raw',
+            'attribute' => 'col_residence_en', 'format' => 'raw',
             'value' => function($model) {return $model->col_residence_ru;},
             ],
 

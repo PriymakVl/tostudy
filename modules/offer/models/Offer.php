@@ -40,14 +40,14 @@ class Offer extends \app\models\ModelApp
     public function rules()
     {
         return [
-            [['col_title_ru'], 'required'],
+            [['col_title_en'], 'required'],
             [['file_img'], 'file', 'extensions' => 'jpg, jpeg, png'],
-            [['col_text_ru'], 'string'],
+            [['col_text_en'], 'string'],
             [['col_date'], 'default', 'value' => date("Y-m-d")],
             [['col_status'], 'integer'],
             [['col_title_ru', 'col_img', 'col_img_big'], 'string', 'max' => 100],
             [['col_alias', 'col_title_ru'], 'string', 'max' => 255],
-            [['col_meta_title', 'col_meta_keywords', 'col_meta_description'], 'string', 'max' => 255],
+            [['col_meta_title_en', 'col_meta_keywords_en', 'col_meta_description_en'], 'string', 'max' => 255],
             [['col_alias'], 'unique'],
         ];
     }
@@ -60,7 +60,8 @@ class Offer extends \app\models\ModelApp
         return [
             'col_id' => 'ID акции',
             'col_title_ru' => 'Название',
-            'col_text_ru' => 'Содержание',
+            'col_title_en' => 'Name',
+            'col_text_en' => 'Содержание',
             'col_alias' => 'Alias',
             'col_img' => 'Изображение',
             'col_img_big' => 'Большое изображение',
@@ -69,9 +70,9 @@ class Offer extends \app\models\ModelApp
             'file_img' => 'Изображение',
             // 'file_img_big' => 'Большое изображение',
             'img' => 'Изображение',
-            'col_meta_title' => 'Title (тег)',
-            'col_meta_keywords' => 'Keywords (метатег)',
-            'col_meta_description' => 'Description (метатег)',
+            'col_meta_title_en' => 'Title (тег)',
+            'col_meta_keywords_en' => 'Keywords (метатег)',
+            'col_meta_description_en' => 'Description (метатег)',
         ];
     }
 

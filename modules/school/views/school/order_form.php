@@ -6,9 +6,9 @@ use yii\widgets\ActiveForm;
 
 <?
 	Modal::begin([
-		'header' => '<h2>Забронировать</h2><p>Для бронирования укажите данные студента</p>',
+		'header' => '<h2>Book now</h2><p>For reservation, enter student details</p>',
 
-		'toggleButton' => ['label' => 'Забронировать','tag' => 'a','class' => 'btn btn-order',],
+		'toggleButton' => ['label' => 'Book now','tag' => 'a','class' => 'btn btn-order',],
 
 	]);
 ?>
@@ -33,7 +33,7 @@ use yii\widgets\ActiveForm;
 	    <?= $form->field($order, 'col_comment', $style_input)->textarea() ?>
 	 
 	    <div class="form-group" style="text-align: center;">
-	        <?= Html::submitButton('Забронировать', ['class' => 'btn btn2']) ?>
+	        <?= Html::submitButton('Book now', ['class' => 'btn btn2']) ?>
 	    </div>
 
 	<?php ActiveForm::end() ?>

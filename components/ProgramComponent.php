@@ -35,12 +35,12 @@ class ProgramComponent extends Component
 
 	public function getAll()
 	{
-		$array[self::PROGRAM_LANGUAGE] = 'Языковые курсы и школы за рубежом';
-		$array[self::PROGRAM_CAMP] = 'Языковые лагеря за границей для детей и подростков';
-		$array[self::PROGRAM_HIGHER_EDUCATION] = 'Высшее образование, MBA за рубежом';
-		$array[self::PROGRAM_SECONDARY_EDUCATION] = 'Среднее образование, школы, колледжи за границей';
-		$array[self::PROGRAM_ONLINE_COURSE] = 'Онлайн курсы языков';
-		$array[self::PROGRAM_INTERNSHIPS] = 'Стажировки и программы обмена за границей';
+		$array[self::PROGRAM_LANGUAGE] = 'Language courses and schools abroad';
+		$array[self::PROGRAM_CAMP] = 'Language camps abroad for children and adolescents';
+		$array[self::PROGRAM_HIGHER_EDUCATION] = 'Higher education, MBA abroad';
+		$array[self::PROGRAM_SECONDARY_EDUCATION] = 'Secondary education, schools, colleges abroad';
+		$array[self::PROGRAM_ONLINE_COURSE] = 'Online language courses';
+		$array[self::PROGRAM_INTERNSHIPS] = 'Internships and exchange programs abroad';
 		return $array;
 
 	}
@@ -48,12 +48,12 @@ class ProgramComponent extends Component
 	public function getName($key)
 	{
 		switch (intval($key)) {
-			case self::PROGRAM_LANGUAGE: return 'Языковые курсы и школы за рубежом';
-			case self::PROGRAM_CAMP: return 'Языковые лагеря за границей для детей и подростков';
-			case self::PROGRAM_HIGHER_EDUCATION: return 'Высшее образование, MBA за рубежом';
-			case self::PROGRAM_SECONDARY_EDUCATION: return 'Среднее образование, школы, колледжи за границей';
-			case self::PROGRAM_ONLINE_COURSE: return 'Онлайн курсы языков';
-			case self::PROGRAM_INTERNSHIPS: return 'Стажировки и программы обмена за границей';
+			case self::PROGRAM_LANGUAGE: return 'Language courses and schools abroad';
+			case self::PROGRAM_CAMP: return 'Language camps abroad for children and adolescents';
+			case self::PROGRAM_HIGHER_EDUCATION: return 'Higher education, MBA abroad';
+			case self::PROGRAM_SECONDARY_EDUCATION: return 'Secondary education, schools, colleges abroad';
+			case self::PROGRAM_ONLINE_COURSE: return 'Online language courses';
+			case self::PROGRAM_INTERNSHIPS: return 'Internships and exchange programs abroad';
 			default: return 'Не возможно определить программу';
 		}
 	}

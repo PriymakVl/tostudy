@@ -23,14 +23,14 @@ class SearchController extends \app\controllers\BaseController
     //ajax serach home page
 	public function actionCountries($lang_id)
     {
-    	$countries = Country::find()->select('col_id, col_title_ru')->where(['col_language_id' => $lang_id])->asArray()->all();
+    	$countries = Country::find()->select('col_id, col_title_en')->where(['col_language_id' => $lang_id])->asArray()->all();
     	return $countries ? json_encode($countries) : '';
     }
 
     //ajax serach home page
     public function actionCities($country_id)
     {
-    	$cities = City::find()->select('col_id, col_title_ru')->where(['col_country_id' => $country_id])->asArray()->all();
+    	$cities = City::find()->select('col_id, col_title_en')->where(['col_country_id' => $country_id])->asArray()->all();
     	return $cities ? json_encode($cities) : '';
     }
 

@@ -1,13 +1,13 @@
 <div id="breadcrumbs">
 	<div class="wrap">
-		<a href="/">Главная</a>
-		<span>Отзывы</span>
+		<a href="/">Home</a>
+		<span>Reviews</span>
 	</div> <!-- /.wrap -->
 </div> <!-- /#breadcrumbs -->
 
 <section class="reviews-page">
 	<div class="wrap">
-		<h1 class="page-title">Отзывы наших клиентов</h1>
+		<h1 class="page-title">Feedback from our customers</h1>
 		<?php if ($reviews): ?>
 			<?php foreach ($reviews as $review): ?>
 				<div class="review">

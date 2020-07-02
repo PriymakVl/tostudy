@@ -38,14 +38,14 @@ class City extends \app\models\ModelApp
     public function rules()
     {
         return [
-            [['col_title_ru', 'col_country_id', 'col_alias'], 'required'],
+            [['col_title_en', 'col_country_id', 'col_alias'], 'required'],
             ['file_image', 'file', 'extensions' => 'jpeg, jpg, png'], 
             [['col_country_id'], 'integer'],
-            [['col_title_ru', ], 'string', 'max' => 255],
+            [['col_title_en', ], 'string', 'max' => 255],
             [['col_img'], 'string', 'max' => 100],
             // ['col_alias', 'unique'],
-            [['col_meta_title', 'col_meta_keywords', 'col_meta_description'], 'string', 'max' => 255],
-            [['col_title_en', 'col_title_es', 'col_title_ua', 'col_title_cn'], 'default', 'value' => ''],
+            [['col_meta_title_en', 'col_meta_keywords_en', 'col_meta_description_en'], 'string', 'max' => 255],
+            [['col_title_ru', 'col_title_es', 'col_title_ua', 'col_title_cn'], 'default', 'value' => ''],
         ];
     }
 
@@ -56,15 +56,17 @@ class City extends \app\models\ModelApp
     {
         return [
             'col_id' => 'ID города',
-            'col_country_id' => 'Страна',
-            'col_title_ru' => 'Название города',
+            'col_country_id' => 'ID Страны',
+            'country' => 'Страна',
+            'col_title_ru' => 'Город',
+            'col_title_en' => 'City',
             'col_img' => 'Изображение',
             'image' => 'Изображение',
             'language' => 'Язык',
             'col_alias' => 'Псевдоним для ЧПУ',
-            'col_meta_title' => 'Title (тег)',
-            'col_meta_keywords' => 'Keywords (метатег)',
-            'col_meta_description' => 'Description (метатег)',
+            'col_meta_title_en' => 'Title (тег) en',
+            'col_meta_keywords_en' => 'Keywords (метатег) en',
+            'col_meta_description_en' => 'Description (метатег) en',
         ];
     }
 

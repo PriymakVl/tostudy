@@ -32,6 +32,8 @@ app\assets\AdminAsset::register($this);
 
             'col_title_ru',
 
+            'col_title_en',
+
             'img:image',
 
             'col_date',

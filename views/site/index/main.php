@@ -4,43 +4,43 @@
 
 <section class="section section-reasons" id="js-why-us">
 	<div class="wrap">
-		<h2>Почему мы?</h2>
+		<h2>Why us?</h2>
 		<ul class="wrap-items">
 			<li class="item">
 				<span class="icon">
 					<?= Yii::$app->svg->get('lang-courses') ?>
 				</span> <!-- /.icon -->
-				<span>Более 3800 языковых курсов<br>со всего мира в 340 образовательных<br>центрах</span>
+				<span>Over 3,800 language courses<br>from around the world in 340<br>educational centers</span>
 			</li> <!-- /.item -->
 			<li class="item">
 				<span class="icon">
 					<?= Yii::$app->svg->get('free-booking') ?>
 				</span> <!-- /.icon -->
-				<span>Бесплатное онлайн бронирование.<br>Цены ниже, чем напрямую<br>в школах</span>
+				<span>Free online booking. Prices.<br>are lower than directly<br>in schools</span>
 			</li> <!-- /.item -->
 			<li class="item">
 				<span class="icon">
 					<?= Yii::$app->svg->get('smile') ?>
 				</span> <!-- /.icon -->
-				<span>10 лет в сфере образования<br>за рубежом. Более 4500 студентов<br>со всего мира</span>
+				<span>10 years in the field of<br>education abroad. Over 4500 students<br>from around the world</span>
 			</li> <!-- /.item -->
 			<li class="item">
 				<span class="icon">
 					<?= Yii::$app->svg->get('consultation') ?>
 				</span> <!-- /.icon -->
-				<span>Консультации менеджеров<br>24/7</span>
+				<span>24/7 managers<br>consultation</span>
 			</li> <!-- /.item -->
 			<li class="item">
 				<span class="icon">
 					<?= Yii::$app->svg->get('magistracy') ?>
 				</span> <!-- /.icon -->
-				<span>Магистратура и первое высшее<br>образование в лучших университетах<br>и бизнес школах мира.<br>Зачисление без экзаменов</span>
+				<span>Master and first higher<br>education in the best universities and<br>business schools in the world.<br>Enrollment without exams</span>
 			</li> <!-- /.item -->
 			<li class="item">
 				<span class="icon">
 					<?= Yii::$app->svg->get('key') ?>
 				</span> <!-- /.icon -->
-				<span>Организация обучения<br>под ключ</span>
+				<span>Organization of training<br>under the key</span>
 			</li> <!-- /.item -->
 		</ul> <!-- /.wrap-items -->
 	</div> <!-- /.wrap -->
@@ -49,7 +49,7 @@
 <?php if ($schools): ?>
 	<section class="section">
 		<div class="wrap">
-			<h2>Рекомендуем языковые школы</h2>
+			<h2>We recommend language schools</h2>
 			<div class="schools-recommend">
 			<?php foreach ($schools as $school): ?>
 				'<div class="item">
@@ -63,7 +63,7 @@
 							</h4>
 							<p class="description"><?= $school->col_description_ru ?></p>
 						</div>
-						<a href="/school/<?= $school->alias?>" class="btn3">Смотреть курсы</a>
+						<a href="/school/<?= $school->alias?>" class="btn3">Watch courses</a>
 					</div>
 				</div>
 			<?php endforeach ?>
@@ -75,14 +75,14 @@
 
 <section class="section how-it-works">
 	<div class="wrap">
-		<h2>Как это работает</h2>
+		<h2>How it works</h2>
 		
 		<div class="item item1">
 			<span class="num">1</span>
 			<div class="content">
-				<h4>Поиск</h4>
+				<h4>Search</h4>
 				<p class="description">
-					С помощью умного поиска быстро и легко найти подходящий курс в удобном месте по самой выгодной цене
+					With smart search, you can quickly and easily find the right course in a convenient location at the best price. 
 				</p>
 			</div> <!-- /.content -->
 			<?= Yii::$app->svg->get('circle-1') ?>
@@ -91,9 +91,9 @@
 		<div class="item item2">
 			<span class="num">2</span>
 			<div class="content">
-				<h4>Бронирование</h4>
+				<h4>Booking</h4>
 				<p class="description">
-					В течение суток вам придет подтверждение, как гарантия того, что место в программе закреплено за вами
+					During the day you will receive a confirmation, as a guarantee that the place in the program is assigned to you 
 				</p>
 			</div> <!-- /.content -->
 			<?= Yii::$app->svg->get('circle-2') ?>
@@ -102,9 +102,9 @@
 		<div class="item">
 			<span class="num">3</span>
 			<div class="content">
-				<h4>Оплата</h4>
+				<h4>Payment</h4>
 				<p class="description">
-					Заказать образование у нас выгоднее и проще, чем через агентство или на сайте учебного заведения 
+					It is more profitable and easier to order education from us than through an agency or on the website of an educational institution 
 				</p>
 			</div> <!-- /.content -->
 			<?= Yii::$app->svg->get('circle-3') ?>
@@ -113,9 +113,9 @@
 		<div class="item">
 			<span class="num">4</span>
 			<div class="content">
-				<h4>Консультации</h4>
+				<h4>Consultation</h4>
 				<p class="description">
-					Мы знаем об образовании за рубежом все, сами прошли все этапы, и имеем международные аккредитации 
+					We know everything about education abroad, we ourselves have passed all stages, and we have international accreditations 
 				</p>
 			</div> <!-- /.content -->
 			<?= Yii::$app->svg->get('circle-4') ?>
@@ -127,7 +127,7 @@
 <?php if ($reviews): ?>
 	<section class="section section-reviews">
 		<div class="wrap">
-			<h2>Отзывы наших клиентов</h2>
+			<h2>Feedback from our customers</h2>
 			<div class="content">
 				<div class="slick-slider slider-reviews" id="js-slider-reviews">
 					<?php foreach ($reviews as $review): ?>
@@ -157,20 +157,22 @@
 <?php if ($questions): ?>
 	<section class="section section-faq">
 		<div class="wrap">
-			<h2>Часто задаваемые вопросы</h2>
+			<h2>Frequently asked Questions</h2>
 			<ul class="faq">
 				<?php foreach ($questions as $item): ?>
-					<li class="item">
-						<a href="#" class="question js-question" data-answer-id="#question-<?= $item->col_id ?>">
-							<?= $item->col_question_ru ?>				
-							<span class="icon">
-								<?= Yii::$app->svg->get('plus') ?>
-							</span>
-						</a>
-						<div class="answer js-answer" id="question-<?= $item->col_id ?>">
-							<?= $item->col_answer_ru ?>
-						</div>
-					</li>
+					<? if ($item->col_question_en && $item->col_answer_en): ?>
+						<li class="item">
+							<a href="#" class="question js-question" data-answer-id="#question-<?= $item->col_id ?>">
+								<?= $item->col_question_en ?>				
+								<span class="icon">
+									<?= Yii::$app->svg->get('plus') ?>
+								</span>
+							</a>
+							<div class="answer js-answer" id="question-<?= $item->col_id ?>">
+								<?= $item->col_answer_en ?>
+							</div>
+						</li>
+					<? endif; ?>
 				<?php endforeach ?>
 			</ul>
 		</div> <!-- /.wrap -->
@@ -182,7 +184,7 @@
 <?php if ($partners): ?>
 	<section class="section section-partners">
 	<div class="wrap">
-		<h2>С нами работают</h2>
+		<h2>Work with us</h2>
 		<div class="partners" id="js-slider-partners">
 			<?php foreach ($partners as $partner): ?>
 				<a href="<?= $partner->col_link ?>" class="item" target="_blank">

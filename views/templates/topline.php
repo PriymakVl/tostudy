@@ -14,16 +14,7 @@ use app\components\ProgramComponent;
 				<li class="link">
 					<a href="/about">About Us</a>
 				</li>
-				<li class="link">
-					<a href="/order">Order</a>
-				</li>
-				<li class="link sel">
-					<a href="#">Information</a>
-					<ul class="form-select">
-						<li><a href="/info">Useful information</a></li>
-						<li><a href="/news">News</a></li>
-					</ul> <!-- /.form-select -->
-				</li> <!-- /.link -->
+				<!-- Programs -->
 				<li class="link sel">
 					<a href="#">Programs</a>
 					<ul class="form-select">
@@ -59,12 +50,28 @@ use app\components\ProgramComponent;
 						</li>
 					</ul> <!-- /.form-select -->
 				</li> <!-- /.link -->
+
+				<!-- Useful information -->
+				<li class="link sel">
+					<a href="#">Information</a>
+					<ul class="form-select">
+						<li><a href="/info">Useful information</a></li>
+						<li><a href="/news">News</a></li>
+					</ul> <!-- /.form-select -->
+				</li> <!-- /.link -->
+
 				<li class="link">
 					<a href="/offers">Offers</a>
 				</li>
+
 				<li class="link">
 					<a href="/insurance">Insurance</a>
 				</li>
+
+				<li class="link">
+					<a href="/order">How to order</a>
+				</li>
+
 				<li class="link">
 					<a href="/reviews">Reviews</a>
 				</li>

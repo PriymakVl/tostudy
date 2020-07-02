@@ -4,11 +4,11 @@
 
 <div id="breadcrumbs">
 	<div class="wrap">
-		<a href="/">Главная</a>
-		<a href="/languages/<?= Yii::$app->program->getAlias($program) ?>">Языки</a>
-		<a href="/countries/<?= $lang->col_alias ?>">Страны</a>
-		<a href="/cities/<?= $city->country->col_alias ?>">Города</a>
-		<span><?= $city->col_title_ru ?></span>
+		<a href="/">Home</a>
+		<a href="/languages/<?= Yii::$app->program->getAlias($program) ?>">Languges</a>
+		<a href="/countries/<?= $lang->col_alias ?>">Countries</a>
+		<a href="/cities/<?= $city->country->col_alias ?>">Cities</a>
+		<span><?= $city->col_title_en ?></span>
 	</div> <!-- /.wrap -->
 </div> <!-- /#breadcrumbs -->
 
@@ -18,16 +18,16 @@
 		
 		<?= app\widgets\Info::widget() ?>
 
-		<?= app\widgets\text\Text::widget(['position' => 'top', 'texts' => $city->texts]); ?>
+		<?//= app\widgets\text\Text::widget(['position' => 'top', 'texts' => $city->texts]); ?>
 
-		<h2>Школы</h2>
+		<h2>Schools</h2>
 		<div class="schools">
 			<?php if ($schools): ?>
 				<?php foreach ($schools as $school): ?>
 
 					<div class="item">
 						<a href="/school/<?= $school->alias ?>" class="wrap-img">
-							<img src="/img/schools/<?= $school->col_img_mini ?>" alt="<?= $shool->col_title_ru ?>">
+							<img src="/img/schools/<?= $school->col_img_mini ?>" alt="<?= $shool->col_title_en ?>">
 						</a>
 						<h4><a href="/school/<?= $school->alias ?>"><?= $school->col_title ?></a></h4>
 						<div class="location">
@@ -41,7 +41,7 @@
 								<?= $school->courses[0]->getLowestPrice() .' '. $school->currency ?>
 								<span>/ нед</span>
 							</div>
-							<a href="/school/<?= $school->alias ?>" class="view">Смотреть курсы</a>
+							<a href="/school/<?= $school->alias ?>" class="view">View all schools</a>
 						</div>
 					</div>
 

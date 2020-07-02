@@ -19,4 +19,11 @@ class OfferController extends \app\controllers\BaseController
         return $this->render('view', ['offer' => $offer]);
     }
 
+    public function registerMetaTags($offer)
+    {
+        $this->view->title = $offer->col_title_en;
+        $this->view->registerMetaTag(['name' => 'description', 'content' => $offer->col_meta_description_en]);
+        $this->view->registerMetaTag(['name' => 'keywords', 'content' => $offer->col_meta_keywords_en]);
+    }
+
 }

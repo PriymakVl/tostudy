@@ -55,7 +55,7 @@ function template_countries(countries) {
 	countries = JSON.parse(countries);
 	let list_item_str = '<li class="js-country-option" data-value="0">Все</li>';
 	for(let i = 0; i < countries.length; i++) {
-		list_item_str += '<li class="js-country-option" data-country_id="' + countries[i].col_id + '">' + countries[i].col_title_ru + '</li>'
+		list_item_str += '<li class="js-country-option" data-country_id="' + countries[i].col_id + '">' + countries[i].col_title_en + '</li>'
 	}
 	$('#js-form-country').empty().append(list_item_str);
 }
@@ -66,7 +66,7 @@ function template_cities(cities) {
 	cities = JSON.parse(cities);
 	let list_item_str = '<li class="js-city-option" data-value="0">Все</li>';
 	for(let i = 0; i < cities.length; i++) {
-		list_item_str += '<li class="js-city-option" data-value="' + cities[i].col_id + '">' + cities[i].col_title_ru + '</li>'
+		list_item_str += '<li class="js-city-option" data-value="' + cities[i].col_id + '">' + cities[i].col_title_en + '</li>'
 	}
 	$('#js-form-city').empty().append(list_item_str);
 }

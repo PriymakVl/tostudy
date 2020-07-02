@@ -28,9 +28,13 @@ $this->params['breadcrumbs'][] = $this->title;
 
             'col_id',
 
-            ['attribute' => 'col_school_id', 'value' => function($model) { return $model->school->name; }],
+            'col_school_id',
+
+            ['attribute' => 'school', 'filter' => false, 'value' => function($model) { return $model->school->name; }],
 
             'col_title_ru',
+
+            'col_title_en',
 
             ['class' => 'yii\grid\ActionColumn'],
         ],

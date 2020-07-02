@@ -35,10 +35,10 @@ class Feedback extends \app\models\ModelApp
     public function rules()
     {
         return [
-            ['col_username', 'required', 'message' => 'Введите имя'],
-            ['col_email', 'required', 'message' => 'Введите email'],
-            ['col_comment', 'required', 'message' => 'Напишите текст сообщения'],
-            ['col_email', 'email', 'message' => 'Неправильный email'],
+            ['col_username', 'required', 'message' => 'Enter your name'],
+            ['col_email', 'required', 'message' => 'Enter Email'],
+            ['col_comment', 'required', 'message' => 'Write a message text'],
+            ['col_email', 'email', 'message' => 'Invalid email'],
             [['col_comment'], 'string'],
             [['col_date'], 'default', 'value' => date('Y-m-d h:m:s')],
             [['col_status'], 'default', 'value' => self::STATUS_WAITING],
@@ -53,9 +53,9 @@ class Feedback extends \app\models\ModelApp
     {
         return [
             'col_id' => 'ID заявки',
-            'col_username' => 'Имя',
+            'col_username' => 'Name',
             'col_email' => 'Email',
-            'col_comment' => 'Текст сообщения',
+            'col_comment' => 'Message text',
             'col_date' => 'Дата добавления',
             'col_status' => 'Статус',
         ];

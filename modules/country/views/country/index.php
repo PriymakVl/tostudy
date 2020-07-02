@@ -5,9 +5,9 @@ use app\modules\school\models\School;
 
 <div id="breadcrumbs">
 	<div class="wrap">
-		<a href="/">Главная</a>
-		<a href="/languages/<?= Yii::$app->program->getAlias($program) ?>">Языки</a>
-		<span><?=$lang->col_title_ru?></span>
+		<a href="/">Home</a>
+		<a href="/languages/<?= Yii::$app->program->getAlias($program) ?>">Languages</a>
+		<span><?=$lang->col_title_en?></span>
 	</div> <!-- /.wrap -->
 </div> <!-- /#breadcrumbs -->
 
@@ -17,19 +17,19 @@ use app\modules\school\models\School;
 
 		<?= app\widgets\Info::widget() ?>
 
-		<h1>Страны</h1>
+		<h1>Countries</h1>
 		<div class="countries">
 			<?php if ($countries): ?>
 				<?php foreach ($countries as $country): ?>
 					<?php $count_schools = $country->countSchoolsByProgram($program); ?>
 					<?php if ($count_schools): ?>
 						<a href="/cities/<?=$country->alias?>" class="item">
-							<img src="/img/countries/<?= $country->col_img ?>" alt="<?= $country->col_title_ru ?>" class="country">
+							<img src="/img/countries/<?= $country->col_img ?>" alt="<?= $country->col_title_en ?>" class="country">
 							<div class="container">
-								<h3><?= $country->col_title_ru ?></h3>
-								<span class="school"><?= School::suffixWords($count_schools, 'ru', true) ?></span>
+								<h3><?= $country->col_title_en ?></h3>
+								<span class="school"><?= School::suffixWords($count_schools, 'en', true) ?></span>
 							</div>
-							<span href="#" class="btn">Смотреть все школы</span>
+							<span href="#" class="btn">View all schools</span>
 						</a>
 					<? endif; ?>
 				<?php endforeach ?>

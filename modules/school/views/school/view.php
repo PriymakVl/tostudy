@@ -8,11 +8,11 @@ $this->registerJsFile('@web/js/public/calculator.js', ['depends' => [\yii\web\Jq
 
 <div id="breadcrumbs">
 	<div class="wrap">
-		<a href="/">Главная</a>
-		<a href="/languages/<?= Yii::$app->program->getAlias($program) ?>">Языки</a>
-		<a href="/countries/<?= $lang->col_alias ?>">Страны</a>
-		<a href="/cities/<?= $school->city->country->col_alias ?>">Города</a>
-		<a href="/schools/<?= $school->city->col_alias ?>">Школы</a>
+		<a href="/">Home</a>
+		<a href="/languages/<?= Yii::$app->program->getAlias($program) ?>">Languages</a>
+		<a href="/countries/<?= $lang->col_alias ?>">Countries</a>
+		<a href="/cities/<?= $school->city->country->col_alias ?>">Cities</a>
+		<a href="/schools/<?= $school->city->col_alias ?>">Schools</a>
 		<span><?= $school->name ?></span>
 	</div> <!-- /.wrap -->
 </div> <!-- /#breadcrumbs -->
@@ -28,14 +28,14 @@ $this->registerJsFile('@web/js/public/calculator.js', ['depends' => [\yii\web\Jq
 
 				<?php if ($school->col_pdf): ?>
 					<div class="wrp-btn-pdf">
-						<?= Html::a('Загрузить файл PDF', ['/pdf/' . $school->col_pdf], ['class' => 'btn btn-pdf', 'target' => '_blank']) ?>
+						<?= Html::a('Upload file PDF', ['/pdf/' . $school->col_pdf], ['class' => 'btn btn-pdf', 'target' => '_blank']) ?>
 					</div>
 				<?php endif; ?>
 				
 				<div class="switch">
-					<a href="#" class="active js-switch-tab" data-tab="1">О школе</a>
-					<a href="#" class="js-switch-tab" data-tab="2">Программы</a>
-					<a href="#" class="js-switch-tab" data-tab="3">Проживание</a>
+					<a href="#" class="active js-switch-tab" data-tab="1">About school</a>
+					<a href="#" class="js-switch-tab" data-tab="2">Programs</a>
+					<a href="#" class="js-switch-tab" data-tab="3">Accommodation</a>
 				</div> <!-- /.switch -->
 
 
@@ -43,14 +43,14 @@ $this->registerJsFile('@web/js/public/calculator.js', ['depends' => [\yii\web\Jq
 					<span id="js-selected">O школе</span>
 					<?= Yii::$app->svg->get('arrow-bottom') ?>
 					<ul id="js-form-tabs" class="form-select js-form-select">
-						<li class="active js-switch-mob-tab" data-tab="1">O школе</li>
-						<li class="js-switch-mob-tab" data-tab="2">Программы</li>
-						<li class="js-switch-mob-tab" data-tab="3">Проживание</li>
+						<li class="active js-switch-mob-tab" data-tab="1">About school</li>
+						<li class="js-switch-mob-tab" data-tab="2">Programs<</li>
+						<li class="js-switch-mob-tab" data-tab="3">Accommodation</li>
 					</ul>
 				</div> <!-- /.switch-mob -->
 				
 				<div class="wrap-tabs">
-					<div class="tab tab1" id="js-tab1"><?= $school->col_about_us_ru ?></div>	
+					<div class="tab tab1" id="js-tab1"><?= $school->col_about_us_en ?></div>	
 					<div class="tab hidden tab2" id="js-tab2">
 						<ul>
 							<?php if ($courses): ?>
@@ -64,7 +64,7 @@ $this->registerJsFile('@web/js/public/calculator.js', ['depends' => [\yii\web\Jq
 											</span>
 										</a>
 									<div class="answer js-answer" id="question-<?= $cours->col_id ?>">
-										<?= $cours->col_description_ru ?>
+										<?= $cours->col_description_en ?>
 									</div>
 									</li>
 
@@ -72,7 +72,7 @@ $this->registerJsFile('@web/js/public/calculator.js', ['depends' => [\yii\web\Jq
 							<?php endif ?>
 						</ul>
 					</div>
-					<div class="tab hidden tab1" id="js-tab3"><?= $school->col_residence_ru ?></div>
+					<div class="tab hidden tab1" id="js-tab3"><?= $school->col_residence_en ?></div>
 				</div> <!-- /.wrap-tabs -->
 
 			</div> <!-- /.column-left -->

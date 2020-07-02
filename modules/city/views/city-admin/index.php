@@ -21,8 +21,6 @@ AdminAsset::register($this);
         <?= Html::a('Новый город', ['create'], ['class' => 'btn btn-success']) ?>
     </p>
 
-    <?php // echo $this->render('_search', ['model' => $searchModel]); ?>
-
     <?= GridView::widget([
         'dataProvider' => $dataProvider,
         'filterModel' => $searchModel,
@@ -34,10 +32,14 @@ AdminAsset::register($this);
             [ 'attribute' => 'language', 'value' => function($model) {return $model->country->language->name;},
             'headerOptions' => ['class' => 'text-info'], ],
 
-            [ 'attribute' => 'col_country_id', 'value' => function($model) {return $model->country->name;},
+            'col_country_id',
+
+            [ 'attribute' => 'country', 'value' => function($model) {return $model->country->name;},
             'label' => 'Страна', 'headerOptions' => ['class' => 'text-info'], ],
 
             'col_title_ru',
+
+             'col_title_en',
 
             'image:image',
 

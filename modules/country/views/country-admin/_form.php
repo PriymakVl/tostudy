@@ -20,13 +20,13 @@ use app\modules\language\models\Language;
         echo $form->field($model, 'col_language_id')->dropDownList($items, $params);
      ?>
 
-    <?= $form->field($model, 'col_title_ru')->textInput(['maxlength' => true]) ?>
+    <?= $form->field($model, 'col_title_en')->textInput(['maxlength' => true]) ?>
 
-    <?= $form->field($model, 'col_meta_title')->textInput(['maxlength' => true]) ?>
+    <?= $form->field($model, 'col_meta_title_en')->textInput(['maxlength' => true]) ?>
 
-    <?= $form->field($model, 'col_meta_description')->textInput(['maxlength' => true]) ?>
+    <?= $form->field($model, 'col_meta_description_en')->textInput(['maxlength' => true]) ?>
 
-    <?= $form->field($model, 'col_meta_keywords')->textInput(['maxlength' => true]) ?>
+    <?= $form->field($model, 'col_meta_keywords_en')->textInput(['maxlength' => true]) ?>
 
     <?= $form->field($model, 'file_image')->fileInput()->label('Изображение') ?>
 

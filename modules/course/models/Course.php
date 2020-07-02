@@ -20,11 +20,6 @@ class Course extends \app\modules\course\models\CourseBase
    		return end($price);
    }
 
-   public function getName()
-   {
-   		return $this->col_title_ru;
-   }
-
    public function getWeeksWithPrices()
    {
    		$weeks = [];

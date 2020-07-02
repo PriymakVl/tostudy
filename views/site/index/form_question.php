@@ -11,7 +11,8 @@ use yii\bootstrap\Modal;
 
 <section class="section-discuss">
 	<div class="wrap">
-		<h2>Есть вопросы?<br>Оставьте свой Email — и мы с Вами свяжемся!</h2>
+		<h2>Have questions?<br>Leave your Email and we will contact you!</h2>
+
 		<?php $form = ActiveForm::begin(['action' =>['feedback/home']]); ?>
 		<div class="form">
 
@@ -19,7 +20,7 @@ use yii\bootstrap\Modal;
 					
 			<?= $form->field($model, 'col_email', $style_input)->textInput(['maxlength' => true]) ?>
 					
-			<?= Html::submitButton('Оставить заявку', ['class' => 'btn btn2']) ?>
+			<?= Html::submitButton('Submit your application', ['class' => 'btn btn2']) ?>
 
 		</div>
 		<?php ActiveForm::end(); ?>

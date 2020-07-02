@@ -43,14 +43,14 @@ class Country extends \app\models\ModelApp
     public function rules()
     {
         return [
-            [['col_language_id',  'col_title_ru', 'col_alias'], 'required'],
+            [['col_language_id',  'col_title_en', 'col_alias'], 'required'],
             [['file_image', 'file_flag'], 'file', 'extensions' => 'jpeg, jpg, png'],
             [['col_language_id'], 'integer'],
             ['col_alias', 'string'],
             // ['col_alias', 'unique'],
-            [['col_meta_title', 'col_meta_keywords', 'col_meta_description'], 'string', 'max' => 255],
-            [['col_title_ru', 'col_img', 'col_flag'], 'string', 'max' => 100],
-            [['col_title_en', 'col_title_es', 'col_title_ua', 'col_title_cn'], 'default', 'value' => '']
+            [['col_meta_title_en', 'col_meta_keywords_en', 'col_meta_description_en'], 'string', 'max' => 255],
+            [['col_title_en', 'col_img', 'col_flag'], 'string', 'max' => 100],
+            [['col_title_ru', 'col_title_es', 'col_title_ua', 'col_title_cn'], 'default', 'value' => '']
         ];
     }
 
@@ -61,11 +61,12 @@ class Country extends \app\models\ModelApp
     {
         return [
             'col_id' => 'ID страны',
-            'col_language_id' => 'Язык',
-            'col_title_en' => 'Col Title En',
+            'col_language_id' => 'ID Языка',
+            'language' => 'Язык',
+            'col_title_en' => 'Country',
             'col_title_es' => 'Col Title Es',
             'col_title_ua' => 'Col Title Ua',
-            'col_title_ru' => 'Название страны',
+            'col_title_ru' => 'Страна',
             'col_title_cn' => 'Col Title Cn',
             'col_img' => 'Col Img',
             'col_flag' => 'Col Flag',
@@ -106,11 +107,6 @@ class Country extends \app\models\ModelApp
             else $schools = array_merge($schools, $city->schools);
         }
         return $schools;
-    }
-
-    public function getName()
-    {
-        return $this->col_title_ru;
     }
 
     public function getLanguage()

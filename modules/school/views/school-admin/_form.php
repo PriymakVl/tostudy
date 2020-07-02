@@ -16,11 +16,11 @@ $this->registerJs("CKEDITOR.plugins.addExternal('youtube', 'js/vendor/ckeditor/y
 
     <?php $form = ActiveForm::begin(['options' => ['enctype' => 'multipart/form-data']]); ?>
 
-    <?= $form->field($model, 'col_meta_title')->textInput(['maxlength' => true]) ?>
+    <?= $form->field($model, 'col_meta_title_en')->textInput(['maxlength' => true]) ?>
 
-    <?= $form->field($model, 'col_meta_description')->textInput(['maxlength' => true]) ?>
+    <?= $form->field($model, 'col_meta_description_en')->textInput(['maxlength' => true]) ?>
 
-    <?= $form->field($model, 'col_meta_keywords')->textInput(['maxlength' => true]) ?>
+    <?= $form->field($model, 'col_meta_keywords_en')->textInput(['maxlength' => true]) ?>
 
     <?= $form->field($model, 'col_title')->textInput(['maxlength' => true]) ?>
 
@@ -41,7 +41,7 @@ $this->registerJs("CKEDITOR.plugins.addExternal('youtube', 'js/vendor/ckeditor/y
     <?= $form->field($model, 'file_pdf')->fileInput() ?>
 
     <?php 
-        echo $form->field($model, 'col_about_us_ru')->widget(CKEditor::className(), [
+        echo $form->field($model, 'col_about_us_en')->widget(CKEditor::className(), [
         'preset' => 'custom',
         'clientOptions' => [
             'extraPlugins' => 'youtube',
@@ -74,7 +74,7 @@ $this->registerJs("CKEDITOR.plugins.addExternal('youtube', 'js/vendor/ckeditor/y
     ?>
 
     <?php 
-        echo $form->field($model, 'col_residence_ru')->widget(CKEditor::className(), [
+        echo $form->field($model, 'col_residence_en')->widget(CKEditor::className(), [
         'preset' => 'custom',
         'clientOptions' => [
             'extraPlugins' => 'youtube',

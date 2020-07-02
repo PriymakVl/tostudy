@@ -89,7 +89,7 @@ class Language extends \app\models\ModelApp
 
     public function getName()
     {
-        return $this->col_title_ru;
+        return $this->col_title_en;
     }
 
     public function getImage()

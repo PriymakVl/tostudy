@@ -21,10 +21,10 @@ $this->registerJs("CKEDITOR.plugins.addExternal('youtube', 'js/vendor/ckeditor/y
         echo $form->field($model, 'col_school_id')->dropDownList($items, $params);
      ?>
 
-    <?= $form->field($model, 'col_title_ru')->textInput(['maxlength' => true]) ?>
+    <?= $form->field($model, 'col_title_en')->textInput(['maxlength' => true]) ?>
 
     <?php 
-        echo $form->field($model, 'col_description_ru')->widget(CKEditor::className(), [
+        echo $form->field($model, 'col_description_en')->widget(CKEditor::className(), [
         'preset' => 'custom',
         'clientOptions' => [
             'extraPlugins' => 'youtube',

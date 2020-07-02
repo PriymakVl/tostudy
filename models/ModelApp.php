@@ -60,7 +60,7 @@ class ModelApp extends \yii\db\ActiveRecord
 
     public function getName()
     {
-        return $this->col_title_ru;
+        return $this->col_title_en;
     }
 
     public function sortSchoolsByProgram($program)

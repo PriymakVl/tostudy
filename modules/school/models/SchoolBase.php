@@ -60,14 +60,17 @@ class SchoolBase extends \app\models\ModelApp
     public function rules()
     {
         return [
-            [['col_city_id', 'col_meta_title', 'col_meta_description', 'col_meta_keywords', 'col_title', 'col_about_us_ru', 'col_residence_ru', 'col_registration_fee', 'col_home_page', 'col_currency', 'col_subcategory', 'file_img_mini', 'file_img'], 'required'],
+            [['col_city_id', 'col_title', 'col_about_us_en', 'col_residence_en', 'col_registration_fee', 'col_home_page', 'col_currency', 'col_subcategory', 'file_img_mini', 'file_img'], 'required'],
 
             [['col_city_id', 'col_home_page', 'col_currency', 'col_subcategory'], 'integer'],
-            [['col_description_ru', 'col_about_us_ru', 'col_residence_ru'], 'string'],
-            [['col_meta_title', 'col_meta_description', 'col_meta_keywords', 'col_title', 'col_alias'], 'string', 'max' => 255],
+
+            [['col_description_en', 'col_about_us_en', 'col_residence_en'], 'string'],
+
+            [['col_meta_title_en', 'col_meta_description_en', 'col_meta_keywords_en', 'col_title', 'col_alias'], 'string', 'max' => 255],
 
             [['col_registration_fee', 'col_img_mini', 'col_img', 'col_pdf'], 'string', 'max' => 10],
-            [['col_description_ru'], 'default', 'value' => ''],
+
+            [['col_description_en'], 'default', 'value' => ''],
 
             [['file_img', 'file_img_mini'], 'file', 'extensions' => 'png, jpg, jpeg'],
 
@@ -75,9 +78,11 @@ class SchoolBase extends \app\models\ModelApp
 
             [['col_url', ], 'default', 'value' => ''], //todo delete from table
 
-            [['col_description_en', 'col_description_es', 'col_description_ua', 'col_description_cn'], 'default', 'value' => ''],
-            [['col_about_us_en', 'col_about_us_es', 'col_about_us_ua', 'col_about_us_cn'], 'default', 'value' => ''],
-            [['col_residence_en', 'col_residence_es', 'col_residence_ua', 'col_residence_cn'], 'default', 'value' => ''],
+            [['col_meta_title', 'col_meta_description', 'col_meta_keywords'], 'default', 'value' => ''],
+
+            [['col_description_ru', 'col_description_es', 'col_description_ua', 'col_description_cn'], 'default', 'value' => ''],
+            [['col_about_us_ru', 'col_about_us_es', 'col_about_us_ua', 'col_about_us_cn'], 'default', 'value' => ''],
+            [['col_residence_ru', 'col_residence_es', 'col_residence_ua', 'col_residence_cn'], 'default', 'value' => ''],
         ];
     }
 
@@ -98,8 +103,8 @@ class SchoolBase extends \app\models\ModelApp
             'col_img' => 'Изображение',
             'img' => 'Изображеие',
             'col_description_ru' => 'Краткое описание',
-            'col_about_us_ru' => 'О школе',
-            'col_residence_ru' => 'Проживание',
+            'col_about_us_en' => 'О школе',
+            'col_residence_en' => 'Проживание',
             'col_registration_fee' => 'Регистрационный сбор',
             'col_home_page' => 'На главной',
             'col_currency' => 'Валюта',
@@ -112,7 +117,7 @@ class SchoolBase extends \app\models\ModelApp
     public function scenarios()
     {
         $scenarios = parent::scenarios();
-        $scenarios['update'] = ['col_city_id', 'col_meta_title', 'col_meta_description', 'col_meta_keywords', 'col_title', 'col_about_us_ru', 'col_residence_ru', 'col_registration_fee', 'col_home_page', 'col_currency', 'col_subcategory'];
+        $scenarios['update'] = ['col_city_id', 'col_meta_title_en', 'col_meta_description_en', 'col_meta_keywords_en', 'col_title', 'col_about_us_en', 'col_residence_en', 'col_registration_fee', 'col_home_page', 'col_currency', 'col_subcategory'];
         return $scenarios;
     }
 

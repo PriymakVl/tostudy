@@ -15,21 +15,21 @@ $this->registerJs("CKEDITOR.plugins.addExternal('youtube', 'js/vendor/ckeditor/y
 
     <?php $form = ActiveForm::begin(['options' => ['enctype' => 'multipart/form-data']]); ?>
 
-    <?= $form->field($model, 'col_title_ru')->textInput(['maxlength' => true]) ?>
+    <?= $form->field($model, 'col_title_en')->textInput(['maxlength' => true]) ?>
 
     <?php 
         $items = [Offer::STATUS_ACTIVE => 'Активна', Offer::STATUS_INACTIVE => 'Не активна'];
         echo $form->field($model, 'col_status')->dropDownList($items);
     ?>
 
-    <?= $form->field($model, 'col_meta_title')->textInput(['maxlength' => true]) ?>
+    <?= $form->field($model, 'col_meta_title_en')->textInput(['maxlength' => true]) ?>
 
-    <?= $form->field($model, 'col_meta_description')->textInput(['maxlength' => true]) ?>
+    <?= $form->field($model, 'col_meta_description_en')->textInput(['maxlength' => true]) ?>
 
-    <?= $form->field($model, 'col_meta_keywords')->textInput(['maxlength' => true]) ?>
+    <?= $form->field($model, 'col_meta_keywords_en')->textInput(['maxlength' => true]) ?>
 
     <?php 
-        echo $form->field($model, 'col_text_ru')->widget(CKEditor::className(), [
+        echo $form->field($model, 'col_text_en')->widget(CKEditor::className(), [
         'preset' => 'custom',
         'clientOptions' => [
             'extraPlugins' => 'youtube',
