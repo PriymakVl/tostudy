@@ -43,7 +43,7 @@ class Country extends \app\models\ModelApp
     public function rules()
     {
         return [
-            [['col_language_id',  'col_title_ru', 'col_alias'], 'required'],
+            [['col_language_id',  'col_title_ru'], 'required'],
             [['file_image', 'file_flag'], 'file', 'extensions' => 'jpeg, jpg, png'],
             [['col_language_id'], 'integer'],
             ['col_alias', 'string'],

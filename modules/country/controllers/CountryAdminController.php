@@ -74,8 +74,10 @@ class CountryAdminController extends BaseController
         $model->file_image  = UploadedFile::getInstance($model, 'file_image');
         $model->file_flag  = UploadedFile::getInstance($model, 'file_flag');
 
-        if ($model->save()) return $this->setMessage('Страна успешно добавлена')->redirect(['view', 'id' => $model->col_id]);
-        else $this->setMessage('Ошибка при добавлении', 'error')->redirect(['view', 'id' => $model->col_id]);
+        if ($model->save()) $this->setMessage('Страна успешно добавлена');
+        else $this->setMessage('Ошибка при добавлении', 'error');
+
+        return $this->redirect(['view', 'id' => $model->col_id]);
     }
 
     /**
@@ -94,8 +96,10 @@ class CountryAdminController extends BaseController
         $model->file_image = UploadedFile::getInstance($model, 'file_image');
         $model->file_flag = UploadedFile::getInstance($model, 'file_flag');
         
-        if ($model->save()) return $this->setMessage('Страна отредактирована')->redirect(['view', 'id' => $model->col_id]);
-        else $this->setMessage('Ошибка при редактировании', 'error')->redirect(['view', 'id' => $model->col_id]);
+        if ($model->save()) $this->setMessage('Страна успешно отредактирована');
+        else $this->setMessage('Ошибка при редактировании', 'error');
+
+        return $this->redirect(['view', 'id' => $model->col_id]);
     }
 
     /**
