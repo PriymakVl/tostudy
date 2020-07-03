@@ -150,7 +150,7 @@ class Country extends \app\models\ModelApp
             if ($this->file_image) $this->col_img = $img->uploadFile($this->file_image, 'countries', $this->col_img);
             else $this->col_img = '';
 
-            if($this->file_flag) $this->col_flag = $flag->uploadFile($this->file_flag, 'countries/flags', $this->col_flag);
+            if($this->file_flag) $this->col_flag = $img->uploadFile($this->file_flag, 'countries/flags', $this->col_flag);
             else $this->col_flag = '';
         }
         else {

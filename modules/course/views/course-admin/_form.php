@@ -36,6 +36,7 @@ $this->registerJs("CKEDITOR.plugins.addExternal('youtube', 'js/vendor/ckeditor/y
                 ['name' => 'links', 'groups' => ['links', 'insert']],
                 ['name' => 'paragraph', 'groups' => [ 'list', 'indent', 'blocks', 'align', 'bidi' ]],
                 ['name' => 'youtube'], 
+                ['name' => 'styles'],
             ]
         ],
         'kcfinder' => true,

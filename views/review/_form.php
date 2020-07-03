@@ -1,13 +1,14 @@
 <?php
-
-use yii\helpers\Html;
-use yii\widgets\ActiveForm;
-use mihaildev\ckeditor\CKEditor;
-use app\models\Review;
-
 /* @var $this yii\web\View */
 /* @var $model app\models\Review */
 /* @var $form yii\widgets\ActiveForm */
+
+use yii\helpers\Html;
+use yii\widgets\ActiveForm;
+use app\models\Review;
+use dosamigos\ckeditor\CKEditor;
+
+$this->registerJs("CKEDITOR.plugins.addExternal('youtube', 'js/vendor/ckeditor/youtube/plugin.js', '');");
 ?>
 
 <div class="review-form">
@@ -16,11 +17,33 @@ use app\models\Review;
 
     <?= $form->field($model, 'col_username')->textInput(['maxlength' => true]) ?>
 
-    <?php 
-        echo $form->field($model, 'col_comment')->widget(CKEditor::className(),[
-            'editorOptions' => [
-                'preset' => 'basic',
-                'inline' => false,
+     <?php 
+        echo $form->field($model, 'col_comment')->widget(CKEditor::className(), [
+        'preset' => 'custom',
+        'clientOptions' => [
+            'extraPlugins' => 'youtube',
+            'allowedContent' => true,
+            'toolbarGroups' => [
+                ['name' => 'mode'],
+                ['name' => 'undo'],
+                ['name' => 'basicstyles', 'groups' => ['basicstyles', 'cleanup']],
+                ['name' => 'links', 'groups' => ['links', 'insert']],
+                ['name' => 'paragraph', 'groups' => [ 'list', 'indent', 'blocks', 'align', 'bidi' ]],
+                ['name' => 'youtube'], 
+                ['name' => 'styles'],
+            ]
+        ],
+        'kcfinder' => true,
+        'kcfOptions' => [
+            'uploadURL' => '@web/img/offers',
+            'uploadDir' => '@webroot/img/offers',
+            'access' => [  // @link http://kcfinder.sunhater.com/install#_access
+                        'files' => [
+                            'upload' => true,
+                            'delete' => true,
+                            'rename' => true,
+                        ],
+                    ],
             ],
         ]);
     ?>
