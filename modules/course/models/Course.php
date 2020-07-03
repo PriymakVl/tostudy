@@ -14,12 +14,6 @@ class Course extends \app\modules\course\models\CourseBase
         return $this->hasOne(School::className(), ['col_id' => 'col_school_id']);
    }
 
-   public function getLowestPrice()
-   {
-   		$price = explode(':', $this->col_price);
-   		return end($price);
-   }
-
    public function getName()
    {
    		return $this->col_title_ru;

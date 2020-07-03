@@ -32,6 +32,18 @@ class School extends \app\modules\school\models\SchoolBase
     	return $this->hasMany(Course::className(), ['col_school_id' => 'col_id']);
     }
 
+    public function getLowestPriceCourses()
+    {
+        if (!$this->courses) return 0;
+        foreach ($this->courses as $course) {
+            if (!$course->col_price) continue;
+            $prices_course = explode(',', $course->col_price);
+            $lowest_price = explode(':', $prices_course[0])[1];
+            if ((int)$lowest_price !== 0) $prices[] = $lowest_price;
+        }
+        return min($prices);
+    }
+
     public function getName()
     {
     	return $this->col_title;

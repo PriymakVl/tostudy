@@ -3,20 +3,20 @@
 namespace app\controllers;
 
 use Yii;
+use app\modules\language\models\Language;
 use app\modules\country\models\Country;
 use app\modules\city\models\City;
 use app\modules\school\models\School;
 
 class SearchController extends \app\controllers\BaseController
 {
-    public function actionResult()
+    public function actionResult($lang_id, $country_id, $city_id, $school)
     {
-        $get = Yii::$app->request->get();
-        $schools = false;
-        if(!empty($get['school'])) $schools = School::find()->where(['like', 'col_title', $get['school']])->all();
-        else if (!empty($get['city'])) $schools = School::findAll(['col_city_id' => $get['city']]);
-        else if (!empty($get['country'])) $schools = Country::findSchools($get['country']);
-        else if (!empty($get['language'])) $schools = language::findSchools($get['language']);
+        $schools = $this->getSchools($lang_id, $country_id, $city_id);
+
+        if ($schools) $schools = $this->filterSchoolName($schools, $school);
+        else $schools = School::find()->where(['like', 'col_title', $school])->all();
+
         return $this->render('result', compact('schools'));
     }
 
@@ -38,6 +38,23 @@ class SearchController extends \app\controllers\BaseController
     public function actionSchools()
     {
         return $this->render('schools');
+    }
+
+    public function getSchools($lang_id, $country_id, $city_id)
+    {
+        if ($city_id) return School::findAll(['col_city_id' => $city_id]);
+        if ($country_id) return Country::findSchools($country_id);
+        if ($lang_id) return Language::findSchools($lang_id);
+    }
+
+    public function filterSchoolName($schools, $search)
+    {
+        if (!$search) return $schools;
+        $result = [];
+        foreach ($schools as $school) {
+            if (stripos($school->col_title, $search) !== false) $result[] = $school;
+        }
+        return $result;
     }
 
 }

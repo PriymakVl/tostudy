@@ -6,13 +6,13 @@
 		<h1 class="title">Подберем программу обучения</h1>
 		<div class="subtitle">ВЫГОДНЕЕ, ЧЕМ НАПРЯМУЮ В ШКОЛЕ. СКИДКИ ДО 50%</div>
 		
-		<form action="/search/result" method="get" class="form">
+		<form class="form">
 			<div>
 				<div class="input__field input__select" id="js-lang">
-					<span class="js-selected">Язык</span>
+					<span class="js-selected" lang_id="">Язык</span>
 					<?= Yii::$app->svg->get('arrow-bottom') ?>
 					<ul id="js-form-language" class="form-select js-form-select">
-						<li class="js-language-option" data-value="0">Все</li>
+						<li class="js-language-option" data-lang_id="0">Все</li>
 						<?php foreach (Yii::$app->params['languages'] as $lang): ?>
 							<li class="js-language-option" data-lang_id="<?= $lang->col_id ?>"><?= $lang->col_title_ru ?></li>
 						<?php endforeach ?>
@@ -20,13 +20,15 @@
 				</div> <!-- /.input__field -->
 
 				<div class="input__field input__select" id="js-country">
-					<span class="js-selected">Страна</span>
+					<span class="js-selected" country_id="">Страна</span>
 					<?= Yii::$app->svg->get('arrow-bottom') ?>
-					<ul id="js-form-country" class="form-select js-form-select"></ul> <!-- /.form-select -->
+					<ul id="js-form-country" class="form-select js-form-select">
+						<li class="js-city-option" data-country_id="0">Все</li>
+					</ul> <!-- /.form-select -->
 				</div> <!-- /.input__field -->
 				
 				<div class="input__field input__select" id="js-city">
-					<span class="js-selected">Город</span>
+					<span class="js-selected" city_id="">Город</span>
 					<?= Yii::$app->svg->get('arrow-bottom') ?>
 					<ul id="js-form-city" class="form-select js-form-select">
 						<li class="js-city-option" data-city_id="0">Все</li>
@@ -38,7 +40,7 @@
 				<div class="input__field">
 					<input type="text" placeholder="Школа" name="school">
 				</div>
-				<button type="submit" class="btn">Искать</button>
+				<button id="js-submit-search" class="btn">Искать</button>
 			</div>
 		</form> <!-- /.form -->
 	</div> <!-- /.content -->

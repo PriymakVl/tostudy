@@ -27,7 +27,9 @@
 						<a href="/school/<?= $school->alias ?>" class="wrap-img">
 							<img src="/img/schools/<?= $school->col_img_mini ?>" alt="<?= $shool->col_title_ru ?>">
 						</a>
-						<h4><a href="/school/<?= $school->alias ?>"><?= $school->col_title ?></a></h4>
+						<h4>
+							<a href="/school/<?= $school->alias ?>"><?= $school->col_title ?></a>
+						</h4>
 						<div class="location">
 							<?= Yii::$app->svg->get('locale') ?>
 							<?= $school->city->name ?>,
@@ -36,7 +38,7 @@
 						<div class="wrap-price">
 							<div class="price">
 								<span>от</span> 
-								<?= $school->courses[0]->getLowestPrice() .' '. $school->currency ?>
+								<?= $school->getLowestPriceCourses() .' '. $school->currency ?>
 								<span>/ нед</span>
 							</div>
 							<a href="/school/<?= $school->alias ?>" class="view">Смотреть курсы</a>
