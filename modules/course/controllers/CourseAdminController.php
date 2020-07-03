@@ -108,6 +108,13 @@ class CourseAdminController extends BaseController
     {
         $this->findModel($id)->delete();
 
+        
+    }
+
+    public function actionPrices($id)
+    {
+        $model = $this->findModel($id);
+        debug($model->prices);
         return $this->redirect(['index']);
     }
 

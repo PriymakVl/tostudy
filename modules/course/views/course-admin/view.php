@@ -24,6 +24,7 @@ $this->params['breadcrumbs'][] = $this->title;
                 'method' => 'post',
             ],
         ]) ?>
+        <?= Html::a('Цены', ['prices', 'id' => $model->col_id], ['class' => 'btn btn-primary']) ?>
     </p>
 
     <?= DetailView::widget([

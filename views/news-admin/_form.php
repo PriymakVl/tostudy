@@ -55,7 +55,6 @@ $this->registerJs("CKEDITOR.plugins.addExternal('youtube', 'js/vendor/ckeditor/y
                             'rename' => true,
                         ],
                     ],
-                    'thumbsDir' => false,
             ],
         ]);
     ?>

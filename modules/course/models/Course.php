@@ -38,6 +38,13 @@ class Course extends \app\modules\course\models\CourseBase
 		return $weeks;
    }
 
+   public function getPrices()
+   {
+      if (!$this->col_price) return;
+      $prices = explode(',', $this->col_price);
+      return $prices;
+   }
+
 
 
 }
