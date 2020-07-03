@@ -7,7 +7,7 @@ use dosamigos\ckeditor\CKEditor;
 $this->registerJs("CKEDITOR.plugins.addExternal('youtube', 'js/vendor/ckeditor/youtube/plugin.js', '');");
 ?>
 
-<div class="school-form">
+<div>
 
     <?php $form = ActiveForm::begin(); ?>
 
@@ -30,8 +30,8 @@ $this->registerJs("CKEDITOR.plugins.addExternal('youtube', 'js/vendor/ckeditor/y
         ],
         'kcfinder' => true,
         'kcfOptions' => [
-            'uploadURL' => '@web/img/cities/texts',
-            'uploadDir' => '@webroot/img/cities/texts',
+            'uploadURL' => '@web/img/countries/texts',
+            'uploadDir' => '@webroot/img/countries/texts',
             'access' => [  // @link http://kcfinder.sunhater.com/install#_access
                         'files' => [
                             'upload' => true,
@@ -63,8 +63,8 @@ $this->registerJs("CKEDITOR.plugins.addExternal('youtube', 'js/vendor/ckeditor/y
         ],
         'kcfinder' => true,
         'kcfOptions' => [
-            'uploadURL' => '@web/img/cities/texts',
-            'uploadDir' => '@webroot/img/cities/texts',
+            'uploadURL' => '@web/img/countries/texts',
+            'uploadDir' => '@webroot/img/countries/texts',
             'access' => [  // @link http://kcfinder.sunhater.com/install#_access
                         'files' => [
                             'upload' => true,

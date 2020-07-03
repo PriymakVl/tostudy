@@ -4,7 +4,7 @@ use yii\helpers\Html;
 use yii\widgets\DetailView;
 
 
-$this->title = 'Город: ' . $model->city->name;
+$this->title = 'Страна: ' . $model->country->name;
 
 
 app\assets\AdminAsset::register($this);
@@ -15,7 +15,7 @@ app\assets\AdminAsset::register($this);
 
     <p>
         <?= Html::a('Редактировать', ['update', 'id' => $model->col_id], ['class' => 'btn btn-primary']) ?>
-        <?= Html::a('Тексты', ['index', 'city_id' => $model->col_city_id], ['class' => 'btn btn-primary']) ?>
+        <?= Html::a('Тексты', ['index', 'country_id' => $model->col_country_id], ['class' => 'btn btn-primary']) ?>
     </p>
 
     <?= DetailView::widget([

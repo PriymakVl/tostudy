@@ -18,8 +18,6 @@
 		
 		<?= app\widgets\Info::widget() ?>
 
-		<?= app\widgets\text\Text::widget(['position' => 'top', 'texts' => $city->texts]); ?>
-
 		<h2>Школы</h2>
 		<div class="schools">
 			<?php if ($schools): ?>
@@ -48,8 +46,6 @@
 				<?php endforeach ?>
 			<?php endif ?>
 		</div>
-
-		<?= app\widgets\text\Text::widget(['position' => 'bottom', 'texts' => $city->texts]); ?>
 
 	</div> <!-- /.wrap -->
 </section> <!-- /.section-schools -->

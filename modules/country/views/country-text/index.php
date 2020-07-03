@@ -5,7 +5,7 @@ use yii\helpers\Html;
 /* @var $this yii\web\View */
 /* @var $model app\modules\school\models\CityText */
 
-$this->title = 'Тексты для города: ' . $city->name;
+$this->title = 'Тексты для страны: ' . $country->name;
 
 \yii\web\YiiAsset::register($this);
 ?>
@@ -13,7 +13,7 @@ $this->title = 'Тексты для города: ' . $city->name;
 
     <h3><?= $this->title ?></h3>
 
-    <?= Html::a('Город', ['/city/city-admin/view', 'id' => $city->col_id], ['class' => 'btn btn-primary']) ?>
+    <?= Html::a('Страна', ['/country/country-admin/view', 'id' => $country->col_id], ['class' => 'btn btn-primary']) ?>
 
     <br><br>
 
@@ -22,7 +22,6 @@ $this->title = 'Тексты для города: ' . $city->name;
             <tr>
                 <th>№</th>
                 <th>Программа</th>
-                <th>Операции</th>
             </tr>
         </thead>
         <tbody>
@@ -30,9 +29,8 @@ $this->title = 'Тексты для города: ' . $city->name;
             <?php foreach (Yii::$app->program->all as $key => $name): ?>
                 <tr>
                     <td><?= $num ?></td>
-                    <td><?= $name ?></td>
                     <td>
-                        <?= Html::a('<span class="glyphicon glyphicon-eye-open"></span>', ['view', 'city_id' => $city->col_id, 'prog' => $key]) ?>
+                        <?= Html::a($name, ['view', 'country_id' => $country->col_id, 'prog' => $key]) ?>       
                     </td>
                 </tr>
                 <? $num++; ?>

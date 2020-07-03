@@ -96,10 +96,5 @@ class City extends \app\models\ModelApp
         $this->col_alias = Inflector::slug($this->col_title_ru, '_');
         return parent::beforeSave($insert);
     }
-
-    public function getTexts()
-    {
-        return $this->hasMany(CityText::className(), ['col_city_id' => 'col_id']);
-    }
     
 }

@@ -17,6 +17,8 @@ use app\modules\school\models\School;
 	<div class="wrap">
 
 		<?= app\widgets\Info::widget() ?>
+
+		<?= app\widgets\text\Text::widget(['position' => 'top', 'texts' => $country->texts]); ?>
 		
 		<h1>Города</h1>
 		<div class="countries">
@@ -36,10 +38,14 @@ use app\modules\school\models\School;
 				<?php endforeach ?>
 			<?php endif ?>
 		</div>
+		<br><br>
+		<?= app\widgets\text\Text::widget(['position' => 'bottom', 'texts' => $country->texts]); ?>
+
 	</div> <!-- /.wrap -->
 </section> <!-- /.section-countries -->
 
-	
+
+
 <section class="section section-schools">
 	<div class="wrap">
 		<h2><?//=$ini_file['schools']['title']?></h2>

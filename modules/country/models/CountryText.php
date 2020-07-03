@@ -1,27 +1,27 @@
 <?php
 
-namespace app\modules\city\models;
+namespace app\modules\country\models;
 
 use Yii;
-use app\modules\city\models\City;
+use app\modules\country\models\Country;
 
 /**
- * This is the model class for table "tbl_city_texts".
+ * This is the model class for table "tbl_country_texts".
  *
  * @property int $col_id
- * @property int $col_city_id
+ * @property int $col_country_id
  * @property string|null $col_text_top
  * @property string|null $col_text_bottom
  * @property int $col_prog
  */
-class CityText extends \app\models\ModelApp
+class CountryText extends \app\models\ModelApp
 {
     /**
      * {@inheritdoc}
      */
     public static function tableName()
     {
-        return 'tbl_city_texts';
+        return 'tbl_country_texts';
     }
 
     /**
@@ -30,7 +30,7 @@ class CityText extends \app\models\ModelApp
     public function rules()
     {
         return [
-            [['col_city_id', 'col_prog'], 'integer'],
+            [['col_country_id', 'col_prog'], 'integer'],
             [['col_text_top', 'col_text_bottom'], 'string'],
         ];
     }
@@ -42,16 +42,16 @@ class CityText extends \app\models\ModelApp
     {
         return [
             'col_id' => 'Col ID',
-            'col_city_id' => 'Город',
+            'col_country_id' => 'Страна',
             'col_text_top' => 'Текст сверху',
             'col_text_bottom' => 'Текст снизу',
             'col_prog' => 'Программа',
         ];
     }
 
-    public function getCity()
+    public function getCountry()
     {
-        return $this->hasOne(City::className(), ['col_id' => 'col_city_id']);
+        return $this->hasOne(Country::className(), ['col_id' => 'col_country_id']);
     }
 
     public function getProgram()
