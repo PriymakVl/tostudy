@@ -111,11 +111,14 @@ class CourseAdminController extends BaseController
         
     }
 
-    public function actionPrices($id)
+    public function actionPrices($id, $prices = false)
     {
         $model = $this->findModel($id);
-        debug($model->prices);
-        return $this->redirect(['index']);
+        if (!$prices) return $this->render('prices', ['model' => $model]);
+        $model->col_price = $prices;
+        if ($model->save(false)) $this->setMessage('Цены успешно отредактированы');
+        else $this->errorMessage('При редактировании цен произошла ошибка');
+        return $this->redirect(['view', 'id' => $id]);
     }
 
     /**

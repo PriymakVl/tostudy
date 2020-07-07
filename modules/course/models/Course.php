@@ -35,7 +35,11 @@ class Course extends \app\modules\course\models\CourseBase
    public function getPrices()
    {
       if (!$this->col_price) return;
-      $prices = explode(',', $this->col_price);
+      $arr = explode(',', $this->col_price);
+      foreach ($arr as $item) {
+         $price = explode(':', $item);
+         $prices[$price[0]] = $price[1];
+      }
       return $prices;
    }
 

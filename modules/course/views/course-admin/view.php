@@ -25,6 +25,7 @@ $this->params['breadcrumbs'][] = $this->title;
             ],
         ]) ?>
         <?= Html::a('Цены', ['prices', 'id' => $model->col_id], ['class' => 'btn btn-primary']) ?>
+        <?= Html::a('Курсы', ['index'], ['class' => 'btn btn-primary']) ?>
     </p>
 
     <?= DetailView::widget([
@@ -41,7 +42,6 @@ $this->params['breadcrumbs'][] = $this->title;
 
             'col_description_ru:html',
 
-            'col_price:ntext',
         ],
     ]) ?>
 

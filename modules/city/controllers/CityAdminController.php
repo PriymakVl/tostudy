@@ -73,9 +73,9 @@ class CityAdminController extends BaseController
 
         $model->load(Yii::$app->request->post());
         $model->file_image  = UploadedFile::getInstance($model, 'file_image');
-
+        
         if ($model->save()) $this->setMessage('Город успешно добавлен');
-        else $htis->messageError();
+        else throw new NotFoundHttpException('Ошибка при добавлении города');
         
         return $this->redirect(['view', 'id' => $model->col_id]);
     }
@@ -96,7 +96,7 @@ class CityAdminController extends BaseController
         $model->file_image  = UploadedFile::getInstance($model, 'file_image');
 
         if ($model->save()) $this->setMessage('Город успешно отредактирован');
-        else $htis->messageError();
+        else $this->messageError();
         
         return $this->redirect(['view', 'id' => $model->col_id]);
     }

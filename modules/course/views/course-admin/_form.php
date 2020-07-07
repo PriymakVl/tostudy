@@ -54,8 +54,6 @@ $this->registerJs("CKEDITOR.plugins.addExternal('youtube', 'js/vendor/ckeditor/y
         ]);
     ?>
 
-    <?= $form->field($model, 'col_price')->textarea(['rows' => 6]) ?>
-
     <div class="form-group">
         <?= Html::submitButton('Сохранить', ['class' => 'btn btn-success']) ?>
     </div>

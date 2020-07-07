@@ -38,7 +38,7 @@ class City extends \app\models\ModelApp
     public function rules()
     {
         return [
-            [['col_title_ru', 'col_country_id', 'col_alias'], 'required'],
+            [['col_title_ru', 'col_country_id'], 'required'],
             ['file_image', 'file', 'extensions' => 'jpeg, jpg, png'], 
             [['col_country_id'], 'integer'],
             [['col_title_ru', ], 'string', 'max' => 255],
