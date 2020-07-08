@@ -138,11 +138,6 @@ class Country extends \app\models\ModelApp
         return $this->hasMany(Info::className(), ['col_country_id' => 'col_id'])->where(['col_status' => Info::STATUS_PUBLISHED]);
     }
 
-    public function getTexts()
-    {
-        return $this->hasMany(CountryText::className(), ['col_country_id' => 'col_id']);
-    }
-
     public function beforeSave($insert) 
     {
         $img = new ImageUpload();
