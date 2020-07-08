@@ -11,7 +11,7 @@ class CityController extends \app\controllers\BaseController
 {
     public function actionIndex($country_alias)
     {
-    	$program = Yii::$app->session->get('program');
+    	$prog_id = Yii::$app->session->get('prog_id');
 
     	$lang = Language::findOne(Yii::$app->session->get('lang_id'));
 
@@ -21,7 +21,7 @@ class CityController extends \app\controllers\BaseController
     	
     	$this->registerMetaTags($country);
 
-        return $this->render('index' , compact('cities', 'country', 'program', 'lang'));
+        return $this->render('index' , compact('cities', 'country', 'prog_id', 'lang'));
     }
 
 }

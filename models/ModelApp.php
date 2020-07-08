@@ -32,19 +32,19 @@ class ModelApp extends \yii\db\ActiveRecord
         return $this->col_title_ru;
     }
 
-    public function sortSchoolsByProgram($program)
+    public function sortSchoolsByProgram($prog_id)
     {
         $schools_program = [];
         if (!$this->schools) return $schools_program;
         foreach ($this->schools as $school) {
-            if ($school->col_subcategory == intval($program)) $schools_program[] = $school;
+            if (in_array(intval($prog_id), $school->idsPrograms)) $schools_program[] = $school;
         }
         return $schools_program;
     }
 
-    public function countSchoolsByProgram($program)
+    public function countSchoolsByProgram($prog_id)
     {
-        $schools = $this->sortSchoolsByProgram($program);
+        $schools = $this->sortSchoolsByProgram($prog_id);
         return $schools ? count($schools) : 0;
     }
 

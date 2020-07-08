@@ -1,15 +1,15 @@
 <?php
 
-namespace app\modules\school\models;
+namespace app\models;
 
 use yii\base\Model;
 use yii\data\ActiveDataProvider;
-use app\modules\school\models\School;
+use app\models\Program;
 
 /**
- * SchoolSearch represents the model behind the search form of `app\modules\school\models\School`.
+ * SearchProgram represents the model behind the search form of `app\models\Program`.
  */
-class SchoolSearch extends School
+class SearchProgram extends Program
 {
     /**
      * {@inheritdoc}
@@ -17,8 +17,8 @@ class SchoolSearch extends School
     public function rules()
     {
         return [
-            [['col_id', 'col_city_id', 'col_home_page', 'col_currency'], 'integer'],
-            [['col_meta_title', 'col_meta_description', 'col_meta_keywords', 'col_title', 'col_url', 'col_img_mini', 'col_img', 'col_description_en', 'col_description_es', 'col_description_ua', 'col_description_ru', 'col_description_cn', 'col_about_us_en', 'col_about_us_es', 'col_about_us_ua', 'col_about_us_ru', 'col_about_us_cn', 'col_residence_en', 'col_residence_es', 'col_residence_ua', 'col_residence_ru', 'col_residence_cn', 'col_registration_fee'], 'safe'],
+            [['col_id', 'col_key'], 'integer'],
+            [['col_name', 'col_alias'], 'safe'],
         ];
     }
 
@@ -40,7 +40,7 @@ class SchoolSearch extends School
      */
     public function search($params)
     {
-        $query = School::find();
+        $query = Program::find()->orderBy(['col_rating' => SORT_DESC]);
 
         // add conditions that should always apply here
 
@@ -59,12 +59,11 @@ class SchoolSearch extends School
         // grid filtering conditions
         $query->andFilterWhere([
             'col_id' => $this->col_id,
-            'col_city_id' => $this->col_city_id,
-            'col_home_page' => $this->col_home_page,
+            'col_key' => $this->col_key,
         ]);
 
-        $query->andFilterWhere(['like', 'col_title', $this->col_title])
-            ;
+        $query->andFilterWhere(['like', 'col_name', $this->col_name])
+            ->andFilterWhere(['like', 'col_alias', $this->col_alias]);
 
         return $dataProvider;
     }

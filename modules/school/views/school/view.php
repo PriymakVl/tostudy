@@ -1,5 +1,6 @@
 <?php 
 use yii\helpers\Html;
+use app\models\Program;
 
 $this->registerJsFile('@web/js/public/calculator.js', ['depends' => [\yii\web\JqueryAsset::className()]]);
 
@@ -9,7 +10,7 @@ $this->registerJsFile('@web/js/public/calculator.js', ['depends' => [\yii\web\Jq
 <div id="breadcrumbs">
 	<div class="wrap">
 		<a href="/">Главная</a>
-		<a href="/languages/<?= Yii::$app->program->getAlias($program) ?>">Языки</a>
+		<a href="/languages/<?= Program::findOne($prog_id)->col_alias ?>">Языки</a>
 		<a href="/countries/<?= $lang->col_alias ?>">Страны</a>
 		<a href="/cities/<?= $school->city->country->col_alias ?>">Города</a>
 		<a href="/schools/<?= $school->city->col_alias ?>">Школы</a>
@@ -19,18 +20,14 @@ $this->registerJsFile('@web/js/public/calculator.js', ['depends' => [\yii\web\Jq
 
 <section id="product">
 	<div class="wrap">
+
+		<?= app\widgets\Info::widget() ?>
 		
 		<img src="/img/schools/big/<?= $school->col_img ?>" alt="<?= $school->name ?>" class="photo">
 		<div class="content row" id="js-row">
 			
 			<div class="column-left">
 				<h1><?= $school->name ?></h1>
-
-				<?php if ($school->col_pdf): ?>
-					<div class="wrp-btn-pdf">
-						<?= Html::a('Загрузить файл PDF', ['/pdf/' . $school->col_pdf], ['class' => 'btn btn-pdf', 'target' => '_blank']) ?>
-					</div>
-				<?php endif; ?>
 				
 				<div class="switch">
 					<a href="#" class="active js-switch-tab" data-tab="1">О школе</a>

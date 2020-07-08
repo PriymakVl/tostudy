@@ -1,7 +1,9 @@
 <?php 
-use app\components\ProgramComponent;
+use app\models\Program;
 
- ?>
+$programs = Program::find()->where(['col_status' => Program::STATUS_ACTIVE])->orderBy(['col_rating' => SORT_DESC])->all();
+
+?>
 
 <?php if ($home): ?>
 	<div class="topline row2">
@@ -18,36 +20,13 @@ use app\components\ProgramComponent;
 				<li class="link sel">
 					<a href="#">Программы</a>
 					<ul class="form-select">
-						<li>
-							<a href="/languages/<?= Yii::$app->program->getAlias(ProgramComponent::PROGRAM_LANGUAGE) ?>">
-								<?= Yii::$app->program->getName(ProgramComponent::PROGRAM_LANGUAGE) ?>
-							</a>
-						</li>
-						<li>
-							<a href="/languages/<?= Yii::$app->program->getAlias(ProgramComponent::PROGRAM_CAMP) ?>">
-								<?= Yii::$app->program->getName(ProgramComponent::PROGRAM_CAMP) ?>
-							</a>
-						</li>
-						<li>
-							<a href="/languages/<?= Yii::$app->program->getAlias(ProgramComponent::PROGRAM_HIGHER_EDUCATION) ?>">
-								<?= Yii::$app->program->getName(ProgramComponent::PROGRAM_HIGHER_EDUCATION) ?>
-							</a>
-						</li>
-						<li>
-							<a href="/languages/<?= Yii::$app->program->getAlias(ProgramComponent::PROGRAM_SECONDARY_EDUCATION) ?>">
-								<?= Yii::$app->program->getName(ProgramComponent::PROGRAM_SECONDARY_EDUCATION) ?>
-							</a>
-						</li>
-						<li>
-							<a href="/languages/<?= Yii::$app->program->getAlias(ProgramComponent::PROGRAM_ONLINE_COURSE) ?>">
-								<?= Yii::$app->program->getName(ProgramComponent::PROGRAM_ONLINE_COURSE) ?>
-							</a>
-						</li>
-						<li>
-							<a href="/languages/<?= Yii::$app->program->getAlias(ProgramComponent::PROGRAM_INTERNSHIPS) ?>">
-								<?= Yii::$app->program->getName(ProgramComponent::PROGRAM_INTERNSHIPS) ?>
-							</a>
-						</li>
+						<?php foreach ($programs as $program): ?>
+							<li>
+								<a href="/languages/<?= $program->col_alias ?>">
+									<?= $program->col_name ?>
+								</a>
+							</li>
+						<?php endforeach ?>
 					</ul> <!-- /.form-select -->
 				</li> <!-- /.link -->
 				<!-- Полезная информация -->

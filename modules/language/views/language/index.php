@@ -16,10 +16,12 @@ use app\modules\school\models\School;
 
 		<?= app\widgets\Info::widget(['language' => false]) ?>
 
+		<?= $program->col_text_top ?>
+		<br>
 		<h1>Каталог школ</h1>
 		<div class="languages">
 			<? foreach($languages as $language): ?>
-				<?php $count_schools = $language->countSchoolsByProgram($program); ?>
+				<?php $count_schools = $language->countSchoolsByProgram($program->col_id); ?>
 					<?php if ($count_schools): ?>
 						<a href="/countries/<?= $language->col_alias ?>" class="item">
 							<img src="/img/languages/<?= $language->col_img ?>" alt="<?= $language->col_title_ru ?>">
@@ -29,6 +31,9 @@ use app\modules\school\models\School;
 					<? endif; ?>
 			<? endforeach; ?>
 		</div>
+		<br>
+		<?= $program->col_text_bottom ?>
+
 	</div> <!-- /.wrap -->
 </section> <!-- /.section-languages -->
 

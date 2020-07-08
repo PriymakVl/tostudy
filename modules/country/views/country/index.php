@@ -1,12 +1,13 @@
 <?php
 /* @var $this yii\web\View */
 use app\modules\school\models\School;
+use app\models\Program;
 ?>
 
 <div id="breadcrumbs">
 	<div class="wrap">
 		<a href="/">Главная</a>
-		<a href="/languages/<?= Yii::$app->program->getAlias($program) ?>">Языки</a>
+		<a href="/languages/<?= Program::findOne($prog_id)->col_alias ?>">Языки</a>
 		<span><?=$lang->col_title_ru?></span>
 	</div> <!-- /.wrap -->
 </div> <!-- /#breadcrumbs -->
@@ -21,7 +22,7 @@ use app\modules\school\models\School;
 		<div class="countries">
 			<?php if ($countries): ?>
 				<?php foreach ($countries as $country): ?>
-					<?php $count_schools = $country->countSchoolsByProgram($program); ?>
+					<?php $count_schools = $country->countSchoolsByProgram($prog_id); ?>
 					<?php if ($count_schools): ?>
 						<a href="/cities/<?=$country->alias?>" class="item">
 							<img src="/img/countries/<?= $country->col_img ?>" alt="<?= $country->col_title_ru ?>" class="country">

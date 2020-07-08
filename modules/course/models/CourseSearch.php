@@ -17,7 +17,8 @@ class CourseSearch extends Course
     public function rules()
     {
         return [
-            [['col_id', 'col_school_id'], 'integer'],
+            [['col_id', 'col_school_id', 'col_prog_id'], 'integer'],
+            ['col_title_ru', 'string'],
             [['col_title_en', 'col_title_es', 'col_title_ua', 'col_title_ru', 'col_title_cn', 'col_description_en', 'col_description_es', 'col_description_ua', 'col_description_ru', 'col_description_cn', 'col_price'], 'safe'],
         ];
     }
@@ -60,19 +61,10 @@ class CourseSearch extends Course
         $query->andFilterWhere([
             'col_id' => $this->col_id,
             'col_school_id' => $this->col_school_id,
+            'col_prog_id' => $this->col_prog_id,
         ]);
 
-        $query->andFilterWhere(['like', 'col_title_en', $this->col_title_en])
-            ->andFilterWhere(['like', 'col_title_es', $this->col_title_es])
-            ->andFilterWhere(['like', 'col_title_ua', $this->col_title_ua])
-            ->andFilterWhere(['like', 'col_title_ru', $this->col_title_ru])
-            ->andFilterWhere(['like', 'col_title_cn', $this->col_title_cn])
-            ->andFilterWhere(['like', 'col_description_en', $this->col_description_en])
-            ->andFilterWhere(['like', 'col_description_es', $this->col_description_es])
-            ->andFilterWhere(['like', 'col_description_ua', $this->col_description_ua])
-            ->andFilterWhere(['like', 'col_description_ru', $this->col_description_ru])
-            ->andFilterWhere(['like', 'col_description_cn', $this->col_description_cn])
-            ->andFilterWhere(['like', 'col_price', $this->col_price]);
+        $query->andFilterWhere(['like', 'col_title_ru', $this->col_title_ru]);
 
         return $dataProvider;
     }

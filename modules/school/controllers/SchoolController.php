@@ -16,17 +16,18 @@ class SchoolController extends \app\controllers\BaseController
     	$city = City::findOne(['col_alias' => $city_alias]);
         $lang = Language::findOne(Yii::$app->session->get('lang_id'));
         Yii::$app->session->set('city_id', $city->col_id);
-        $program = Yii::$app->session->get('program');
-        $schools = $city->sortSchoolsByProgram($program);
+        $prog_id = Yii::$app->session->get('prog_id');
+        $schools = $city->sortSchoolsByProgram($prog_id);
         $this->registerMetaTags($city);
-        return $this->render('index', compact('schools', 'city', 'program', 'lang'));
+        return $this->render('index', compact('schools', 'city', 'prog_id', 'lang'));
     }
 
     public function actionView($alias)
     {
         Url::remember();
     	$school = School::findOne(['col_alias' => $alias]);
-    	$courses = $school->courses;
+        $prog_id = Yii::$app->session->get('prog_id');
+    	$courses = $school->getCourses($prog_id);
         $accommodation = $school->accommodation;
         $lang = Language::findOne(Yii::$app->session->get('lang_id'));
         $order = new Order();

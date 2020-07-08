@@ -1,18 +1,20 @@
 <?php
 
-namespace app\modules\course\controllers;
+namespace app\controllers;
 
 use Yii;
-use app\modules\course\models\Course;
-use app\modules\course\models\CourseSearch;
+use app\models\Program;
+use app\models\SearchProgram;
 use app\controllers\BaseController;
 use yii\web\NotFoundHttpException;
 use yii\filters\VerbFilter;
+use app\modules\school\models\School;
+use app\modules\course\models\Course;
 
 /**
- * CourseAdminController implements the CRUD actions for Course model.
+ * ProgramController implements the CRUD actions for Program model.
  */
-class CourseAdminController extends BaseController
+class ProgramController extends BaseController
 {
     public $layout = '@app/views/layouts/admin';
     
@@ -32,12 +34,12 @@ class CourseAdminController extends BaseController
     }
 
     /**
-     * Lists all Course models.
+     * Lists all Program models.
      * @return mixed
      */
     public function actionIndex()
     {
-        $searchModel = new CourseSearch();
+        $searchModel = new SearchProgram();
         $dataProvider = $searchModel->search(Yii::$app->request->queryParams);
 
         return $this->render('index', [
@@ -47,7 +49,7 @@ class CourseAdminController extends BaseController
     }
 
     /**
-     * Displays a single Course model.
+     * Displays a single Program model.
      * @param integer $id
      * @return mixed
      * @throws NotFoundHttpException if the model cannot be found
@@ -60,17 +62,17 @@ class CourseAdminController extends BaseController
     }
 
     /**
-     * Creates a new Course model.
+     * Creates a new Program model.
      * If creation is successful, the browser will be redirected to the 'view' page.
      * @return mixed
      */
-    public function actionCreate($school_id = false)
+    public function actionCreate()
     {
-        $model = new Course();
-        $model->col_school_id = $school_id;
-        
+        $model = new Program();
+
         if ($model->load(Yii::$app->request->post()) && $model->save()) {
-            return $this->redirect(['view', 'id' => $model->col_id]);
+            $this->setMessage('Программа создана');
+            return $this->redirect(['view', 'id' => $model->id]);
         }
 
         return $this->render('create', [
@@ -79,7 +81,7 @@ class CourseAdminController extends BaseController
     }
 
     /**
-     * Updates an existing Course model.
+     * Updates an existing Program model.
      * If update is successful, the browser will be redirected to the 'view' page.
      * @param integer $id
      * @return mixed
@@ -90,7 +92,8 @@ class CourseAdminController extends BaseController
         $model = $this->findModel($id);
 
         if ($model->load(Yii::$app->request->post()) && $model->save()) {
-            return $this->redirect(['view', 'id' => $model->col_id]);
+            $this->setMessage('Программа отредактирована');
+            return $this->redirect(['view', 'id' => $model->id]);
         }
 
         return $this->render('update', [
@@ -99,7 +102,7 @@ class CourseAdminController extends BaseController
     }
 
     /**
-     * Deletes an existing Course model.
+     * Deletes an existing Program model.
      * If deletion is successful, the browser will be redirected to the 'index' page.
      * @param integer $id
      * @return mixed
@@ -109,29 +112,33 @@ class CourseAdminController extends BaseController
     {
         $this->findModel($id)->delete();
 
-        
+        return $this->redirect(['index']);
     }
 
-    public function actionPrices($id, $prices = false)
+    //переносим данные по программе с таблицы schools в таблицу courses
+    public function actionSeed()
     {
-        $model = $this->findModel($id);
-        if (!$prices) return $this->render('prices', ['model' => $model]);
-        $model->col_price = $prices;
-        if ($model->save(false)) $this->setMessage('Цены успешно отредактированы');
-        else $this->errorMessage('При редактировании цен произошла ошибка');
-        return $this->redirect(['view', 'id' => $id]);
+        $schools = School::find()->all();
+        foreach ($schools as $school) {
+            $courses = Course::findAll(['col_school_id' => $school->col_id]);
+            foreach ($courses as $course) {
+                $course->col_prog_id = $school->col_subcategory + 1;
+                $course->save(false);
+            }
+        }
+        exit('end');
     }
 
     /**
-     * Finds the Course model based on its primary key value.
+     * Finds the Program model based on its primary key value.
      * If the model is not found, a 404 HTTP exception will be thrown.
      * @param integer $id
-     * @return Course the loaded model
+     * @return Program the loaded model
      * @throws NotFoundHttpException if the model cannot be found
      */
     protected function findModel($id)
     {
-        if (($model = Course::findOne($id)) !== null) {
+        if (($model = Program::findOne($id)) !== null) {
             return $model;
         }
 

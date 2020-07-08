@@ -60,13 +60,13 @@ class SchoolBase extends \app\models\ModelApp
     public function rules()
     {
         return [
-            [['col_city_id', 'col_meta_title', 'col_meta_description', 'col_meta_keywords', 'col_title', 'col_about_us_ru', 'col_residence_ru', 'col_registration_fee', 'col_home_page', 'col_currency', 'col_subcategory', 'file_img_mini', 'file_img'], 'required'],
+            [['col_city_id', 'col_meta_title', 'col_meta_description', 'col_meta_keywords', 'col_title', 'col_about_us_ru', 'col_residence_ru', 'col_registration_fee', 'col_home_page', 'col_currency', 'file_img_mini', 'file_img'], 'required'],
 
-            [['col_city_id', 'col_home_page', 'col_currency', 'col_subcategory'], 'integer'],
+            [['col_city_id', 'col_home_page', 'col_currency'], 'integer'],
             [['col_description_ru', 'col_about_us_ru', 'col_residence_ru'], 'string'],
             [['col_meta_title', 'col_meta_description', 'col_meta_keywords', 'col_title', 'col_alias'], 'string', 'max' => 255],
 
-            [['col_registration_fee', 'col_img_mini', 'col_img', 'col_pdf'], 'string', 'max' => 10],
+            [['col_registration_fee', 'col_img_mini', 'col_img'], 'string', 'max' => 10],
             [['col_description_ru'], 'default', 'value' => ''],
 
             [['file_img', 'file_img_mini'], 'file', 'extensions' => 'png, jpg, jpeg'],
@@ -103,16 +103,14 @@ class SchoolBase extends \app\models\ModelApp
             'col_registration_fee' => 'Регистрационный сбор',
             'col_home_page' => 'На главной',
             'col_currency' => 'Валюта',
-            'col_subcategory' => 'Программа',
-            'file_pdf' => 'Файл PDF',
-            'col_pdf' => 'Файл PDF',
         ];
     }
 
     public function scenarios()
     {
         $scenarios = parent::scenarios();
-        $scenarios['update'] = ['col_city_id', 'col_meta_title', 'col_meta_description', 'col_meta_keywords', 'col_title', 'col_about_us_ru', 'col_residence_ru', 'col_registration_fee', 'col_home_page', 'col_currency', 'col_subcategory'];
+        $scenarios['update'] = ['col_city_id', 'col_meta_title', 'col_meta_description', 'col_meta_keywords', 'col_title', 'col_about_us_ru', 'col_residence_ru', 'col_registration_fee', 'col_home_page', 'col_currency'];
+        $scenarios['pdf'] = ['file_pdf'];
         return $scenarios;
     }
 
@@ -129,8 +127,14 @@ class SchoolBase extends \app\models\ModelApp
             if ($this->file_img) $this->col_img = $img->uploadFile($this->file_img, 'schools/big', $this->col_img);
             if ($this->file_img_mini) $this->col_img_mini = $img->uploadFile($this->file_img_mini, 'schools', $this->col_img_mini);
         }
-        if ($this->file_pdf) $this->col_pdf = $pdf->uploadFile($this->file_pdf, $this->col_pdf);
         $this->col_alias = Inflector::slug($this->col_title, '_');
+        return true;
+    }
+
+    public function uploadPdf()
+    {
+        $pdf = new PdfUpload();
+        $pdf->uploadFile($this->file_pdf, 'img/schools/description/files/pdf');
         return true;
     }
 }

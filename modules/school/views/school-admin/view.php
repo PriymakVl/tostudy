@@ -24,7 +24,7 @@ $this->params['breadcrumbs'][] = $this->title;
                 'method' => 'post',
             ],
         ]) ?>
-        <?= Html::a('Смотреть на сайте', ['/school/' . $model->alias], ['class' => 'btn btn-primary', 'target' => '_blank']) ?>
+        <?= Html::a('Программы', ['/admin/school/programs/', 'id' => $model->col_id], ['class' => 'btn btn-primary']) ?>
     </p>
 
     <?= DetailView::widget([
@@ -43,12 +43,6 @@ $this->params['breadcrumbs'][] = $this->title;
             'col_title',
 
             'img:image',
-
-            ['attribute' => 'col_pdf', 'format' => 'html', 'value' => function($model) { 
-                 if ($model->col_pdf) {
-                    return Html::a('Показать файл PDF', ['@web/pdf/'. $model->col_pdf]);
-                } }
-            ],
 
             'col_description_ru:ntext',
 
@@ -73,8 +67,6 @@ $this->params['breadcrumbs'][] = $this->title;
             'attribute' => 'col_currency', 
             'value' => function($model) {return Yii::$app->params['currencies'][$model->col_currency];},
             ],
-
-            [ 'attribute' => 'col_subcategory', 'value' => function($model) {return $model->program;} ],
         ],
     ]) ?>
 

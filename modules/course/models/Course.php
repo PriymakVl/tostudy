@@ -4,6 +4,7 @@ namespace app\modules\course\models;
 
 use Yii;
 use app\modules\school\models\School;
+use app\models\Program;
 
 class Course extends \app\modules\course\models\CourseBase
 {
@@ -41,6 +42,11 @@ class Course extends \app\modules\course\models\CourseBase
          $prices[$price[0]] = $price[1];
       }
       return $prices;
+   }
+
+   public function getProgram()
+   {
+      return $this->hasOne(Program::className(), ['col_id' => 'col_prog_id']);
    }
 
 

@@ -6,6 +6,7 @@
 use yii\helpers\Html;
 use yii\widgets\ActiveForm;
 use app\modules\school\models\School;
+use app\models\Program;
 use dosamigos\ckeditor\CKEditor;
 
 $this->registerJs("CKEDITOR.plugins.addExternal('youtube', 'js/vendor/ckeditor/youtube/plugin.js', '');");
@@ -14,6 +15,12 @@ $this->registerJs("CKEDITOR.plugins.addExternal('youtube', 'js/vendor/ckeditor/y
 <div class="course-form">
 
     <?php $form = ActiveForm::begin(); ?>
+
+    <?php 
+        $items = Program::find()->select('col_name')->asArray()->indexBy('col_id')->orderBy('col_rating')->column();
+        $params = ['prompt' => 'Выберите программу'];
+        echo $form->field($model, 'col_prog_id')->dropDownList($items, $params);
+     ?>
 
     <?php 
         $items = School::find()->select('col_title')->asArray()->indexBy('col_id')->orderBy('col_title')->column();

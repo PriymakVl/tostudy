@@ -1,11 +1,12 @@
 <?php
 /* @var $this yii\web\View */
+use app\models\Program;
 ?>
 
 <div id="breadcrumbs">
 	<div class="wrap">
 		<a href="/">Главная</a>
-		<a href="/languages/<?= Yii::$app->program->getAlias($program) ?>">Языки</a>
+		<a href="/languages/<?= Program::findOne($prog_id)->col_alias ?>">Языки</a>
 		<a href="/countries/<?= $lang->col_alias ?>">Страны</a>
 		<a href="/cities/<?= $city->country->col_alias ?>">Города</a>
 		<span><?= $city->col_title_ru ?></span>
@@ -38,7 +39,7 @@
 						<div class="wrap-price">
 							<div class="price">
 								<span>от</span> 
-								<?= $school->getLowestPriceCourses() .' '. $school->currency ?>
+								<?= $school->getLowestPriceCourses($prog_id) .' '. $school->currency ?>
 								<span>/ нед</span>
 							</div>
 							<a href="/school/<?= $school->alias ?>" class="view">Смотреть курсы</a>

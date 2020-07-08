@@ -9,46 +9,24 @@ use yii\web\UploadedFile;
 class PdfUpload extends Model 
 {
     
-    public $pdf;
+    public $file;
     public $folder;
 
 
-    public function uploadFile(UploadedFile $file, $currentPdf)
+    public function uploadFile(UploadedFile $file, $folder)
     {
-        $this->pdf = $file;
-        $this->setFolder();
-        $this->deleteCurrentPdf($currentPdf);
-        return $this->savePdf();
+        $this->file = $file;
+        $this->setFolder($folder);
+        return $this->save();
     }
 
-    public function setFolder()
+    public function setFolder($folder)
     {
-        $this->folder = Yii::getAlias('@webroot') . '/pdf';
+        $this->folder = Yii::getAlias('@webroot') . '/' . $folder;
     }
 
-    public function generateFilename()
+    public function save()
     {
-        return time().'_'.rand(0, 1000) . '.' . $this->pdf->extension;
-    }
-
-    public function deleteCurrentPdf($currentPdf)
-    {
-        if($this->fileExists($currenPdf))
-        {
-            unlink($this->folder . '/' . $currentPdf);
-        }
-    }
-
-    public function fileExists($currentPdf)
-    {
-        if(empty($currentPdf)) return false;
-        return file_exists($this->folder . '/' . $currentPdf);
-    }
-
-    public function savePdf()
-    {
-        $filename = $this->generateFilename();
-        $this->pdf->saveAs($this->folder . '/' . $filename);
-        return $filename;
+        return $this->file->saveAs($this->folder . '/' . $this->file->name);
     }
 }

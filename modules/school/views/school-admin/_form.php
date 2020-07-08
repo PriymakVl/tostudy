@@ -38,8 +38,6 @@ $this->registerJs("CKEDITOR.plugins.addExternal('youtube', 'js/vendor/ckeditor/y
 
     <?= $form->field($model, 'file_img')->fileInput()->label('Изображение') ?>
 
-    <?= $form->field($model, 'file_pdf')->fileInput() ?>
-
     <?php 
         echo $form->field($model, 'col_about_us_ru')->widget(CKEditor::className(), [
         'preset' => 'custom',
@@ -109,8 +107,6 @@ $this->registerJs("CKEDITOR.plugins.addExternal('youtube', 'js/vendor/ckeditor/y
     <?= $form->field($model, 'col_home_page')->dropDownList(['0' => 'Нет', '1' => 'Да']); ?>
 
     <?= $form->field($model, 'col_currency')->dropDownList(Yii::$app->params['currencies']); ?>
-
-    <?= $form->field($model, 'col_subcategory')->dropDownList(Yii::$app->program->all); ?>
 
     <div class="form-group">
         <?= Html::submitButton('Сохранить', ['class' => 'btn btn-success']) ?>

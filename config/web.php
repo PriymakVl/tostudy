@@ -111,6 +111,7 @@ $config = [
                 'admin/school/<action:\w+>' => 'school/school-admin/<action>',
                 'admin/offers' => 'offer/offer-admin/index',
                 'admin/offer/<action:\w+>' => 'offer/offer-admin/<action>',
+                'programs' => 'program/index',
 
                 'admin/info' => 'info/info-admin/index',
                 'admin/info/<action:\w+>' => 'info/info-admin/<action>',
@@ -127,9 +128,6 @@ $config = [
         'svg' => [ 'class' => 'app\components\Svg', ],
         //get settings from table settings database
         'setting' => ['class' => 'app\components\SettingComponent'],
-        //get programs educations
-        'program' => ['class' => 'app\components\ProgramComponent'],
-        
     ],
     'params' => $params,
 ];

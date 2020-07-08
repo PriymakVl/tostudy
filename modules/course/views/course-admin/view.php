@@ -38,6 +38,10 @@ $this->params['breadcrumbs'][] = $this->title;
                 return Html::a($model->school->name, ['/admin/school/view', 'id' => $model->school->col_id]); 
             }],
 
+            'col_prog_id',
+
+            ['attribute' => 'program', 'filter' => false, 'value' => function($model) { return $model->program->col_name; }],
+
             'col_title_ru',
 
             'col_description_ru:html',

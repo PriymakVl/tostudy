@@ -4,7 +4,7 @@ namespace app\modules\school\controllers;
 
 use Yii;
 use app\modules\school\models\{School, SchoolSearch};
-use app\models\ImageUpload;
+use app\models\{ImageUpload, Program};
 use yii\web\NotFoundHttpException;
 use yii\filters\VerbFilter;
 use yii\web\UploadedFile;
@@ -114,6 +114,32 @@ class SchoolAdminController extends \app\controllers\BaseController
         $this->findModel($id)->delete();
 
         return $this->redirect(['index']);
+    }
+
+    public function actionPrograms($id)
+    {
+        return $this->render('programs', ['model' => $this->findModel($id),]);
+    }
+
+    public function actionCourses($id, $prog_id)
+    {
+        $school = $this->findModel($id);
+        $program = Program::findOne($prog_id);
+        $courses = $school->getCourses($prog_id);
+        return $this->render('courses', compact('school', 'program', 'courses'));
+    }
+
+    public function actionPdf()
+    {
+        $model = new School(['scenario' => 'pdf']);
+        if (Yii::$app->request->isGet)  return $this->render('form_pdf', ['model' => $model,]);
+
+        $model->load(Yii::$app->request->post());
+        $model->file_pdf  = UploadedFile::getInstance($model, 'file_pdf');
+        if ($model->uploadPdf()) {
+            return $this->setMessage('Файл PDF добавлен')->redirect(['index']);
+        }
+        else throw new NotFoundHttpException('Ошибка при добавлении файла PDF.'); 
     }
 
 

@@ -1,17 +1,30 @@
 <?php
+/* @var $this yii\web\View */
+/* @var $model app\models\Program */
+/* @var $form yii\widgets\ActiveForm */
 
 use yii\helpers\Html;
 use yii\widgets\ActiveForm;
+use app\models\Program;
 use dosamigos\ckeditor\CKEditor;
-
 $this->registerJs("CKEDITOR.plugins.addExternal('youtube', 'js/vendor/ckeditor/youtube/plugin.js', '');");
+
 ?>
 
-<div>
+<div class="program-form">
 
     <?php $form = ActiveForm::begin(); ?>
 
+    <?= $form->field($model, 'col_name')->textInput(['maxlength' => true]) ?>
+
+    <?= $form->field($model, 'col_rating')->textInput() ?>
+    
     <?php 
+    	$items = [Program::STATUS_ACTIVE => 'Активна', Program::STATUS_INACTIVE => 'Не активна'];
+    	echo $form->field($model, 'col_status')->dropDownList($items);
+     ?>
+
+     <?php 
         echo $form->field($model, 'col_text_top')->widget(CKEditor::className(), [
         'preset' => 'custom',
         'clientOptions' => [
@@ -30,8 +43,8 @@ $this->registerJs("CKEDITOR.plugins.addExternal('youtube', 'js/vendor/ckeditor/y
         ],
         'kcfinder' => true,
         'kcfOptions' => [
-            'uploadURL' => '@web/img/countries/texts',
-            'uploadDir' => '@webroot/img/countries/texts',
+            'uploadURL' => '@web/img/programs',
+            'uploadDir' => '@webroot/img/programs',
             'access' => [  // @link http://kcfinder.sunhater.com/install#_access
                         'files' => [
                             'upload' => true,
@@ -62,8 +75,8 @@ $this->registerJs("CKEDITOR.plugins.addExternal('youtube', 'js/vendor/ckeditor/y
         ],
         'kcfinder' => true,
         'kcfOptions' => [
-            'uploadURL' => '@web/img/countries/texts',
-            'uploadDir' => '@webroot/img/countries/texts',
+            'uploadURL' => '@web/img/programs',
+            'uploadDir' => '@webroot/img/programs',
             'access' => [  // @link http://kcfinder.sunhater.com/install#_access
                         'files' => [
                             'upload' => true,
@@ -74,7 +87,7 @@ $this->registerJs("CKEDITOR.plugins.addExternal('youtube', 'js/vendor/ckeditor/y
             ],
         ]);
     ?>
-
+	
     <div class="form-group">
         <?= Html::submitButton('Сохранить', ['class' => 'btn btn-success']) ?>
     </div>
