@@ -18,8 +18,6 @@ use app\models\Program;
 	<div class="wrap">
 
 		<?= app\widgets\Info::widget() ?>
-
-		<?= app\widgets\text\Text::widget(['position' => 'top', 'texts' => $country->texts]); ?>
 		
 		<h1>Города</h1>
 		<div class="countries">
@@ -39,8 +37,6 @@ use app\models\Program;
 				<?php endforeach ?>
 			<?php endif ?>
 		</div>
-		<br><br>
-		<?= app\widgets\text\Text::widget(['position' => 'bottom', 'texts' => $country->texts]); ?>
 
 	</div> <!-- /.wrap -->
 </section> <!-- /.section-countries -->
