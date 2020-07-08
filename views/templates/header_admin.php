@@ -20,7 +20,7 @@ echo Nav::widget([
         [
             'label' => 'Модули',
             'items' => [
-                 ['label' => 'Прогаммы', 'url' => '/programs'],
+                 ['label' => 'Программы', 'url' => '/programs'],
                  '<li class="divider"></li>',
                  ['label' => 'Языки', 'url' => '/admin/languages'],
                  '<li class="divider"></li>',
