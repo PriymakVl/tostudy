@@ -17,8 +17,9 @@ class Info extends Widget
 		$prog_id = Yii::$app->session->get('prog_id');
 		$program = Program::findOne($prog_id);
 
-		if ($this->language) $info = sprintf('<h3 class="active-lang">Язык: <span>"%s"</span></h3>', $lang->name);
-		$info .= sprintf('<h3 class="active-program">Программа: <span>"%s"</span></h3>', $program->col_name);
+		$info = '';
+		if ($lang) $info = sprintf('<h3 class="active-lang">Язык: <span>"%s"</span></h3>', $lang->name);
+		if ($program) $info .= sprintf('<h3 class="active-program">Программа: <span>"%s"</span></h3>', $program->col_name);
 		
 		return $info;
 	}

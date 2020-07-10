@@ -74,3 +74,5 @@ $programs = Program::find()->where(['col_status' => Program::STATUS_ACTIVE])->or
 			</svg>
 		</div> <!-- /.column-right -->
 	</div> <!-- /.topline -->
+
+	<?= $this->render('menu_modal', ['programs' => $programs]) ?>

@@ -74,7 +74,10 @@
 	$('.js-switch-mob-tab').on('click', function(){
 		var $this = $(this),
 			$tab = $this.data('tab');
-		
+
+		$('.js-switch-mob-tab').removeClass('active');
+		$(this).addClass('active');
+
 		$('.tab').addClass('hidden');
 		$('#js-tab'+ $tab).removeClass('hidden');
 		
@@ -83,8 +86,8 @@
 			$('#js-slider-products'+ $tab).slick('setPosition');
 		}
 		
-		$('#js-selected').text($this.text());
-		$('.js-form-select').hide();
+		// $('#js-selected').text($this.text());
+		// $('.js-form-select').hide();
 		return false;
 	});
 	
