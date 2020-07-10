@@ -11,7 +11,7 @@
 		<li><a href="/insurance.php">Страхование</a></li>
 		<li><a href="/how_to_order.php">Как заказать</a></li>
 		<li><a href="/reviews.php">Отзывы</a></li>
-		<li><a href="/contacts.php"lass="link">Контакты</a></li>
+		<li><a href="/contacts.php">Контакты</a></li>
 	</ul>
 	<div class="catalog">
 		<h4 class="active js-show-hidden" data-hidden="#js-catalog">

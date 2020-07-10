@@ -1,6 +1,8 @@
 <?php
 /* @var $this yii\web\View */
 use app\modules\school\models\School;
+
+\app\assets\PublicAsset::register($this);
 ?>
 
 <div id="breadcrumbs">
@@ -15,9 +17,11 @@ use app\modules\school\models\School;
 	<div class="wrap">
 
 		<?= app\widgets\Info::widget(['language' => false]) ?>
+		
+		<div class="program-text">
+			<?= $program->col_text_top ?>
+		</div>
 
-		<?= $program->col_text_top ?>
-		<br>
 		<h1>Каталог школ</h1>
 		<div class="languages">
 			<? foreach($languages as $language): ?>
@@ -31,8 +35,10 @@ use app\modules\school\models\School;
 					<? endif; ?>
 			<? endforeach; ?>
 		</div>
-		<br>
-		<?= $program->col_text_bottom ?>
+
+		<div class="program-text">
+			<?= $program->col_text_bottom ?>
+		</div>
 
 	</div> <!-- /.wrap -->
 </section> <!-- /.section-languages -->

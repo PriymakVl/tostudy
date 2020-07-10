@@ -35,16 +35,14 @@ $this->registerJsFile('@web/js/public/calculator.js', ['depends' => [\yii\web\Jq
 					<a href="#" class="js-switch-tab" data-tab="3">Проживание</a>
 				</div> <!-- /.switch -->
 
- <!-- id="js-form-tabs" class="form-select js-form-select" -->
 				<div class="switch-mob js-open-form-select" data-id="#js-form-tabs">
-					<!-- <span id="js-selected">O школе</span> -->
-					<?//= Yii::$app->svg->get('arrow-bottom') ?>
 					<ul>
 						<li class="active js-switch-mob-tab" data-tab="1">O школе</li>
 						<li class="js-switch-mob-tab" data-tab="2">Программы</li>
 						<li class="js-switch-mob-tab" data-tab="3">Проживание</li>
 					</ul>
 				</div> <!-- /.switch-mob -->
+				<br><br>
 				
 				<div class="wrap-tabs">
 					<div class="tab tab1" id="js-tab1"><?= $school->col_about_us_ru ?></div>	

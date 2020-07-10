@@ -112,11 +112,20 @@ table td {
 
 .switch-mob ul {
 	box-shadow: 0px 5px 12px rgba(0, 0, 0, 0.1);
-	line-height: 60px!important;
 }
 
 .js-switch-mob-tab.active {
 	background-color: #F7F8FA;
+}
+
+.program-text {
+	margin: 15px 0;
+	font-size: 16px;
+}
+
+.program-text a {
+	color: #f4471d;
+	text-decoration: underline;
 }
 
 
