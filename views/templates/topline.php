@@ -75,4 +75,4 @@ $programs = Program::find()->where(['col_status' => Program::STATUS_ACTIVE])->or
 		</div> <!-- /.column-right -->
 	</div> <!-- /.topline -->
 
-	<?= $this->render('menu_modal', ['programs' => $programs]) ?>
+	<?= $this->render('modal/menu', ['programs' => $programs]) ?>

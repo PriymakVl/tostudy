@@ -26,9 +26,8 @@ class PublicAsset extends AssetBundle
         'css/public/modal.css',
     ];
     public $js = [
-    // <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
     'js/public/slick.min.js',
-    // 'js/public/moment.min.js',
+    'js/public/moment.min.js',
     'js/public/moment-with-locales.js',
     'js/public/nprogress.js',
     'js/public/bootstrap.js',

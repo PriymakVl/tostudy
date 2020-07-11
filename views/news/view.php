@@ -5,6 +5,7 @@
 <div id="breadcrumbs">
 	<div class="wrap">
 		<a href="/">Главная</a>
+		<a href="/news">Новости</a>
 		<span><?= $article->col_title_ru ?></span>
 	</div> <!-- /.wrap -->
 </div> <!-- /#breadcrumbs -->

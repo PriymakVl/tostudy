@@ -39,6 +39,7 @@ use app\widgets\modal\ModalAlert;
 </div> <!-- /.wrapper -->
 
 <?php $this->endBody() ?>
+<script src="//code.jivosite.com/widget/3gTQRLtjez" async></script>
 </body>
 </html>
 <?php $this->endPage() ?>

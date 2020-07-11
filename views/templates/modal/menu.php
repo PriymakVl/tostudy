@@ -3,15 +3,18 @@
 
 ?>
 <div class="menu" id="js-menu">
-	<a href="#" class="btn btn2 js-open-modal" data-modal-id="#js-modal-question">Задать вопрос</a>
+
+	<?//= $this->render('feedback') ?>
+
 	<ul class="links">
-		<li><a href="/about.php">О нас</a></li>
-		<li><a href="/info.php">Полезная информация</a></li>
-		<li><a href="/news.php">Новости</a></li>
-		<li><a href="/insurance.php">Страхование</a></li>
-		<li><a href="/how_to_order.php">Как заказать</a></li>
-		<li><a href="/reviews.php">Отзывы</a></li>
-		<li><a href="/contacts.php">Контакты</a></li>
+		<li><a href="/about">О нас</a></li>
+		<li><a href="/info">Полезная информация</a></li>
+		<li><a href="/news">Новости</a></li>
+		<li><a href="/offers">Акции</a></li>
+		<li><a href="/insurance">Страхование</a></li>
+		<li><a href="/order">Как заказать</a></li>
+		<li><a href="/reviews">Отзывы</a></li>
+		<li><a href="/contacts">Контакты</a></li>
 	</ul>
 	<div class="catalog">
 		<h4 class="active js-show-hidden" data-hidden="#js-catalog">
