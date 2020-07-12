@@ -17,7 +17,7 @@ class SchoolController extends \app\controllers\BaseController
         $lang = Language::findOne(Yii::$app->session->get('lang_id'));
         Yii::$app->session->set('city_id', $city->col_id);
         $prog_id = Yii::$app->session->get('prog_id');
-        $schools = $city->sortSchoolsByProgram($prog_id);
+        $schools = $prog_id ? $city->sortSchoolsByProgram($prog_id) : $city->schools;
         $this->registerMetaTags($city);
         return $this->render('index', compact('schools', 'city', 'prog_id', 'lang'));
     }

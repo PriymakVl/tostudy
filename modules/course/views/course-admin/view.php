@@ -33,14 +33,21 @@ $this->params['breadcrumbs'][] = $this->title;
         'attributes' => [
 
             'col_id',
+
+            ['attribute' => 'country', 'format' => 'html', 'value' => function($model) { 
+                return Html::a($model->school->city->country->name, ['/country/country-admin/view', 'id' => $model->school->city->country->col_id]);
+            }],
+
+            ['attribute' => 'city', 'format' => 'html', 'value' => function($model) { 
+                return Html::a($model->school->city->name, ['/city/city-admin/view', 'id' => $model->school->city->col_id]); 
+            }],
             
-            ['attribute' => 'col_school_id', 'format' => 'html', 'value' => function($model) { 
+            ['attribute' => 'school', 'format' => 'html', 'value' => function($model) { 
                 return Html::a($model->school->name, ['/admin/school/view', 'id' => $model->school->col_id]); 
             }],
 
-            'col_prog_id',
 
-            ['attribute' => 'program', 'filter' => false, 'value' => function($model) { return $model->program->col_name; }],
+            ['attribute' => 'program', 'value' => function($model) { return $model->program->col_name; }],
 
             'col_title_ru',
 

@@ -6,16 +6,14 @@ use yii\helpers\Html;
 /* @var $model app\modules\course\models\Course */
 
 $this->title = 'Редактирование курса: ' . $model->col_title_ru;
-$this->params['breadcrumbs'][] = ['label' => 'Courses', 'url' => ['index']];
-$this->params['breadcrumbs'][] = ['label' => $model->col_id, 'url' => ['view', 'id' => $model->col_id]];
-$this->params['breadcrumbs'][] = 'Update';
+
 ?>
 <div class="course-update">
 
     <h1><?= Html::encode($this->title) ?></h1>
 
     <?= $this->render('_form', [
-        'model' => $model,
+        'model' => $model, 'country_id' => $country_id, 'city_id' => $city_id, 'school_id' => $school_id
     ]) ?>
 
 </div>

@@ -43,8 +43,9 @@ class School extends \app\modules\school\models\SchoolBase
         return Course::find()->select(['col_prog_id'])->where(['col_school_id' => $this->col_id])->asArray()->groupBy('col_prog_id')->column();
     }
 
-    public function getLowestPriceCourses($prog_id)
+    public function getLowestPriceCourses($prog_id = false)
     {
+        if (!$prog_id) $prog_id = 1;
         $courses = $this->getCourses($prog_id);
         if (!$courses) return 0;
         $prices = [];

@@ -54,7 +54,9 @@ class CourseBase extends \app\models\ModelApp
         return [
             'col_id' => 'ID курса',
             'col_school_id' => 'ID школы',
-            'school' => 'Название школы',
+            'school' => 'Школа',
+            'city' => 'Город',
+            'country' => 'Страна',
             'col_title_en' => 'Col Title En',
             'col_title_es' => 'Col Title Es',
             'col_title_ua' => 'Col Title Ua',

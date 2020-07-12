@@ -9,6 +9,7 @@ use app\controllers\BaseController;
 use yii\web\NotFoundHttpException;
 use yii\filters\VerbFilter;
 
+
 /**
  * CourseAdminController implements the CRUD actions for Course model.
  */
@@ -64,18 +65,16 @@ class CourseAdminController extends BaseController
      * If creation is successful, the browser will be redirected to the 'view' page.
      * @return mixed
      */
-    public function actionCreate($school_id = false)
+    public function actionCreate($country_id = false, $city_id = false, $school_id = false)
     {
         $model = new Course();
-        $model->col_school_id = $school_id;
-        
+
         if ($model->load(Yii::$app->request->post()) && $model->save()) {
+            $this->setMessage('Курс добавлен');
             return $this->redirect(['view', 'id' => $model->col_id]);
         }
 
-        return $this->render('create', [
-            'model' => $model,
-        ]);
+        return $this->render('create', compact('model', 'country_id', 'city_id', 'school_id'));
     }
 
     /**
@@ -85,17 +84,16 @@ class CourseAdminController extends BaseController
      * @return mixed
      * @throws NotFoundHttpException if the model cannot be found
      */
-    public function actionUpdate($id)
+    public function actionUpdate($id, $country_id = false, $city_id = false, $school_id = false)
     {
         $model = $this->findModel($id);
 
         if ($model->load(Yii::$app->request->post()) && $model->save()) {
+            $this->setMessage('Курс отредактирован');
             return $this->redirect(['view', 'id' => $model->col_id]);
         }
 
-        return $this->render('update', [
-            'model' => $model,
-        ]);
+        return $this->render('update', compact('model', 'country_id', 'city_id', 'school_id'));
     }
 
     /**
