@@ -39,9 +39,8 @@ class Language extends \app\models\ModelApp
     public function rules()
     {
         return [
-            [['col_title_ru', 'col_alias'], 'required'],
-            [['col_title_ru', 'col_img'], 'string', 'max' => 100],
-            ['col_alias', 'unique'],
+            [['col_title_ru'], 'required'],
+            [['col_title_ru', 'col_img', 'col_alias'], 'string', 'max' => 100],
             ['file_image', 'file', 'extensions' => 'jpeg, jpg, png'],
             [['col_title_en', 'col_title_es', 'col_title_ua', 'col_title_cn'], 'default', 'value' => ''],
         ];

@@ -55,7 +55,7 @@ $programs = Program::find()->where(['col_status' => Program::STATUS_ACTIVE])->or
 			</ul> <!-- /.nav -->
 		</div> <!-- /.column-left -->
 		<div class="column-right row2">
-			<a href="#" class="btn btn2 js-open-modal" data-modal-id="#js-modal-question"><?=$ini_file['header']['btn']?></a>
+			<!-- <a href="#" class="btn btn2 js-open-modal" data-modal-id="#js-modal-question">Задать вопрос</a> -->
 			<div class="language">
 				<div class="selected js-open-form-select" id="js-language-site" data-id="#js-form-language-site">
 					<span class="js-selected">Ru</span>

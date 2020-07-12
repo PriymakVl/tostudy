@@ -73,8 +73,10 @@ class LanguageAdminController extends BaseController
         $model->load(Yii::$app->request->post());
         $model->file_image  = UploadedFile::getInstance($model, 'file_image');
 
-        if ($model->save()) return $this->setMessage('Язык успешно добавлен')->redirect(['view', 'id' => $model->col_id]);
-        else $this->setMessage('Ошибка при добавлении', 'error')->redirect(['view', 'id' => $model->col_id]);
+        if ($model->save()) $this->setMessage('Язык успешно добавлен');
+        else var_dump($model->errors);
+
+        $this->redirect(['view', 'id' => $model->col_id]);
     }
 
     /**
@@ -91,9 +93,9 @@ class LanguageAdminController extends BaseController
 
         $model->load(Yii::$app->request->post());
         $model->file_image  = UploadedFile::getInstance($model, 'file_image');
-
-        if ($model->save()) return $this->setMessage('Язык отредактирован')->redirect(['view', 'id' => $model->col_id]);
-        else $this->setMessage('Ошибка при редактировании', 'error')->redirect(['view', 'id' => $model->col_id]);
+        if ($model->save()) $this->setMessage('Язык отредактирован');
+        else var_dump($model->errors);
+        $this->redirect(['view', 'id' => $model->col_id]);
     }
 
     /**

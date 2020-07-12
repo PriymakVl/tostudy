@@ -27,8 +27,6 @@ app\assets\AdminAsset::register($this);
                 'method' => 'post',
             ],
         ]) ?>
-                <?= Html::a('Тексты', ['/country/country-text/index', 'country_id' => $model->col_id], ['class' => 'btn btn-primary']) ?>
-
     </p>
 
     <?= DetailView::widget([

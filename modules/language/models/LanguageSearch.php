@@ -40,7 +40,7 @@ class LanguageSearch extends Language
      */
     public function search($params)
     {
-        $query = Language::find();
+        $query = Language::find()->orderBy(['col_id' => SORT_DESC]);
 
         // add conditions that should always apply here
 
