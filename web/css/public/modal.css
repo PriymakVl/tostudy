@@ -141,11 +141,14 @@
         font-size: 1em;
         line-height: 1;
     }
+    .modal .input__field {
+        margin-bottom: 10px;
+    }
 }
 
 @media screen and (max-width: 400px) {
     .modal {
-        width: 90%;
+        width: 95%;
         margin-bottom: 30px;
     }
 
