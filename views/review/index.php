@@ -30,7 +30,7 @@ $this->params['breadcrumbs'][] = $this->title;
     
             'col_comment:html',
    
-            'col_date',
+             ['attribute' => 'col_date', 'value' => function($model) { return date('Y-m-d', strtotime($model->col_date)); }],
 
             ['attribute' => 'col_status', 'value' => function($model) { return $model->status; }],
 

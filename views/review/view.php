@@ -7,8 +7,7 @@ use yii\widgets\DetailView;
 /* @var $model app\models\Review */
 
 $this->title = 'Отзыв от: ' . $model->col_username;
-$this->params['breadcrumbs'][] = ['label' => 'Reviews', 'url' => ['index']];
-$this->params['breadcrumbs'][] = $this->title;
+
 \yii\web\YiiAsset::register($this);
 ?>
 <div class="review-view">
@@ -34,7 +33,7 @@ $this->params['breadcrumbs'][] = $this->title;
 
             'col_comment:html',
 
-            'col_date',
+            ['attribute' => 'col_date', 'value' => function($model) { return date('Y-m-d', strtotime($model->col_date)); }],
 
             ['attribute' => 'col_status', 'value' => function($model) { return $model->status; }],
 

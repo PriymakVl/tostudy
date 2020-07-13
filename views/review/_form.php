@@ -5,6 +5,7 @@
 
 use yii\helpers\Html;
 use yii\widgets\ActiveForm;
+use yii\jui\DatePicker;
 use app\models\Review;
 use dosamigos\ckeditor\CKEditor;
 
@@ -16,6 +17,11 @@ $this->registerJs("CKEDITOR.plugins.addExternal('youtube', 'js/vendor/ckeditor/y
     <?php $form = ActiveForm::begin(); ?>
 
     <?= $form->field($model, 'col_username')->textInput(['maxlength' => true]) ?>
+
+    <?
+        if ($model->col_date) $model->col_date = date('Y-m-d', strtotime($model->col_date));
+        echo $form->field($model, 'col_date')->textInput(['type' => 'date']) 
+    ?>
 
      <?php 
         echo $form->field($model, 'col_comment')->widget(CKEditor::className(), [

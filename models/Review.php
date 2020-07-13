@@ -36,8 +36,8 @@ class Review extends \app\models\ModelApp
     {
         return [
             [['col_username', 'col_comment', 'col_status', 'col_home_page'], 'required'],
-            [['col_comment'], 'string'],
-            [['col_date'], 'default', 'value' => date("Y-m-d H:i:s")],
+            [['col_comment', 'col_date'], 'string'],
+            // [['col_date'], 'default', 'value' => date("Y-m-d H:i:s")],
             [['col_status', 'col_home_page'], 'integer'],
             [['col_username'], 'string', 'max' => 100],
         ];
@@ -94,5 +94,12 @@ class Review extends \app\models\ModelApp
             case self::SHOW_HOME_NOT: return 'Нет';
             default: return 'Ошибка';
         }
+    }
+
+    public function beforeSave($insert)
+    {
+        if (!$this->col_date) $this->col_date = date("Y-m-d H:i:s");
+        else $this->col_date = date("Y-m-d H:i:s", strtotime($this->col_date));
+        return parent::beforeSave($insert);
     }
 }
