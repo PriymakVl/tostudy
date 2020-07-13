@@ -33,7 +33,6 @@
     overflow-x: hidden;
     overflow-y: auto;
     outline: 0;
-    border-radius: 25px;
 }
 
 
@@ -131,8 +130,31 @@
 @media screen and (max-width: 570px) {
     .modal {
         width: 380px;
+        border: none;
+        box-shadow: none;
     }
     .wrap-tabs table {
         width: 100%!important;
+    }
+
+    .modal-header p {
+        font-size: 1em;
+        line-height: 1;
+    }
+}
+
+@media screen and (max-width: 400px) {
+    .modal {
+        width: 90%;
+        margin-bottom: 30px;
+    }
+
+    .modal-header h2 {
+        margin-bottom: 0;
+    }
+
+    .modal-header p {
+        font-size: 0;
+        line-height: 0;
     }
 }
