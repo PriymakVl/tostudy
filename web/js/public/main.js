@@ -160,6 +160,22 @@
 		});
 	}
 
+		/* Дата написания комментария
+	------------------------------------------------------- */
+	if ($('.js-date').length) {
+		
+		var $locale = $('.js-date').eq(0).data('locale');
+		
+		moment.locale($locale);
+
+		$('.js-date').each(function(){
+			var $this = $(this),
+				$date = $this.text();
+
+			$this.text(moment($date).fromNow());
+		});
+	}
+
 
 
 

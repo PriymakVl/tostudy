@@ -103,6 +103,9 @@ class SchoolBase extends \app\models\ModelApp
             'col_registration_fee' => 'Регистрационный сбор',
             'col_home_page' => 'На главной',
             'col_currency' => 'Валюта',
+            'city' => 'Город',
+            'country' => 'Страна',
+            'lang' => 'Язык',
         ];
     }
 

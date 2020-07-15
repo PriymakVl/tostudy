@@ -29,14 +29,17 @@ $this->params['breadcrumbs'][] = $this->title;
 
             'col_id',
             [
-            'attribute' => 'lang', 'label' => 'Язык', 'format' => 'raw',
+            'attribute' => 'lang', 'headerOptions' => ['class' => 'text-info'], 
             'value' => function($model) {return $model->city->country->language->name;},
             ],
 
             [
-            'attribute' => 'country', 'label' => 'Страна', 'format' => 'raw',
+            'attribute' => 'country', 'headerOptions' => ['class' => 'text-info'],
             'value' => function($model) {return $model->city->country->name;},
             ],
+
+            [ 'attribute' => 'col_city_id', 'value' => function($model) {return $model->city->name;},
+            'headerOptions' => ['class' => 'text-info'], ],
 
             'col_title',
 

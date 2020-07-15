@@ -26,7 +26,7 @@ $this->registerJs("CKEDITOR.plugins.addExternal('youtube', 'js/vendor/ckeditor/y
 
     <?php 
 
-        $items = City::find()->select('col_title_ru')->asArray()->indexBy('col_id')->column();
+        $items = City::find()->select('col_title_ru')->orderBy('col_title_ru')->asArray()->indexBy('col_id')->column();
  
         $params = ['prompt' => 'Не выбран'];
  

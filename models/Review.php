@@ -70,7 +70,7 @@ class Review extends \app\models\ModelApp
 
     public function getDate()
     {
-        return $this->col_date;
+        return date('d-m-Y', strtotime($this->col_date)); 
     }
 
     public function getComment()

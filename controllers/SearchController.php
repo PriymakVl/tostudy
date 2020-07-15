@@ -14,8 +14,8 @@ class SearchController extends \app\controllers\BaseController
     {
         $schools = $this->getSchools($lang_id, $country_id, $city_id);
 
-        if ($schools) $schools = $this->filterSchoolName($schools, $school);
-        else $schools = School::find()->where(['like', 'col_title', $school])->all();
+        if ($schools && $school) $schools = $this->filterSchoolName($schools, $school);
+        else if ($school) $schools = School::find()->where(['like', 'col_title', $school])->all();
 
         return $this->render('result', compact('schools'));
     }
@@ -42,9 +42,10 @@ class SearchController extends \app\controllers\BaseController
 
     public function getSchools($lang_id, $country_id, $city_id)
     {
-        if ($city_id) return School::findAll(['col_city_id' => $city_id]);
+        if ($city_id) return City::findOne($city_id)->schools;
         if ($country_id) return Country::findSchools($country_id);
         if ($lang_id) return Language::findSchools($lang_id);
+        return School::find()->all();
     }
 
     public function filterSchoolName($schools, $search)

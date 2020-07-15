@@ -13,7 +13,7 @@
 				<div class="review">
 					<div class="avatar"><?= $review->avatar ?></div>
 					<div class="name"><?= $review->username ?></div>
-					<time class="date js-date" data-locale="ru"><?= $review->date ?></time>
+					<time class="date js-date" data-locale="ru"><?= $review->col_date ?></time>
 					<div class="description"><?= $review->comment ?></div>
 				</div>
 			<?php endforeach ?>

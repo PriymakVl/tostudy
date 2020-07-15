@@ -33,7 +33,7 @@ $this->title = 'Отзыв от: ' . $model->col_username;
 
             'col_comment:html',
 
-            ['attribute' => 'col_date', 'value' => function($model) { return date('Y-m-d', strtotime($model->col_date)); }],
+            ['attribute' => 'col_date', 'value' => function($model) { return $model->date; }],
 
             ['attribute' => 'col_status', 'value' => function($model) { return $model->status; }],
 
