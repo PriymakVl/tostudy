@@ -8,6 +8,7 @@ use app\models\Order;
 use app\modules\language\models\Language;
 use app\modules\school\models\School;
 use app\modules\city\models\City;
+USE app\models\Program;
 
 class SchoolController extends \app\controllers\BaseController
 {
@@ -26,7 +27,7 @@ class SchoolController extends \app\controllers\BaseController
     {
         Url::remember();
     	$school = School::findOne(['col_alias' => $alias]);
-        $prog_id = Yii::$app->session->get('prog_id');
+        $prog_id = Yii::$app->session->get('prog_id') ?? Program::DEFAULT_ID;
     	$courses = $school->getCourses($prog_id);
         $accommodation = $school->accommodation;
         $lang = Language::findOne(Yii::$app->session->get('lang_id'));
