@@ -13,9 +13,8 @@ class LanguageController extends \app\controllers\BaseController
 {
     public function actionIndex($program_alias)
     {
-        $program = Program::findOne(['col_alias' => $program_alias]);
-        if (!$program) throw new NotFoundHttpException('программа не определена');
-        Yii::$app->session->set('prog_id', $program->col_id);
+        if ($program_alias != 'all') $program = Program::findOne(['col_alias' => $program_alias]);
+        if ($program) Yii::$app->session->set('prog_id', $program->col_id);
     	$languages = Language::find()->all();
         return $this->render('index', compact('languages', 'program'));
     }

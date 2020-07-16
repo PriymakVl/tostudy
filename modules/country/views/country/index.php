@@ -2,13 +2,19 @@
 /* @var $this yii\web\View */
 use app\modules\school\models\School;
 use app\models\Program;
+
+$class_h = $prog_id || $lag ? '' : 'margin-top-40';
 ?>
 
 <div id="breadcrumbs">
 	<div class="wrap">
 		<a href="/">Главная</a>
-		<a href="/languages/<?= Program::findOne($prog_id)->col_alias ?>">Языки</a>
-		<span><?=$lang->col_title_ru?></span>
+		<a href="/languages/<?= Program::findOne($prog_id)->col_alias ?? 'all' ?>">Языки</a>
+		<?php if ($lang): ?>
+			<span><?=$lang->col_title_ru?></span>
+		<?php else: ?>
+			<span>Все</span>
+		<?php endif ?>
 	</div> <!-- /.wrap -->
 </div> <!-- /#breadcrumbs -->
 
@@ -18,7 +24,7 @@ use app\models\Program;
 
 		<?= app\widgets\Info::widget() ?>
 
-		<h1>Страны</h1>
+		<h1 class="<?= $class_h ?>">Страны</h1>
 		<div class="countries">
 			<?php if ($countries): ?>
 				<?php foreach ($countries as $country): ?>

@@ -7,6 +7,9 @@
 
 <section class="section search-page">
 	<div class="wrap">
+
+		<?= app\widgets\Info::widget() ?>
+		
 		<h1>Результат поиска</h1>
 		
 		<?php if (empty($schools)): ?>

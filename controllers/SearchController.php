@@ -12,17 +12,20 @@ class SearchController extends \app\controllers\BaseController
 {
     public function actionResult($lang_id, $country_id, $city_id, $school)
     {
+        Yii::$app->session->remove('prog_id');
+        $lang = Language::findOne(Yii::$app->session->get('lang_id'));
         $schools = $this->getSchools($lang_id, $country_id, $city_id);
 
         if ($schools && $school) $schools = $this->filterSchoolName($schools, $school);
         else if ($school) $schools = School::find()->where(['like', 'col_title', $school])->all();
 
-        return $this->render('result', compact('schools'));
+        return $this->render('result', compact('schools', 'lang'));
     }
 
     //ajax serach home page
 	public function actionCountries($lang_id)
     {
+        Yii::$app->session->set('lang_id', $lang_id);
     	$countries = Country::find()->select('col_id, col_title_ru')->where(['col_language_id' => $lang_id])->asArray()->all();
     	return $countries ? json_encode($countries) : '';
     }

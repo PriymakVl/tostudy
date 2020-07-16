@@ -36,6 +36,7 @@ class ModelApp extends \yii\db\ActiveRecord
     {
         $schools_program = [];
         if (!$this->schools) return $schools_program;
+        if (!$prog_id) return $this->schools;
         foreach ($this->schools as $school) {
             if (in_array(intval($prog_id), $school->idsPrograms)) $schools_program[] = $school;
         }

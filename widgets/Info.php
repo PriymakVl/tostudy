@@ -12,7 +12,7 @@ class Info extends Widget
 
 	public function run()
 	{
-		$lang_id = Yii::$app->session->get('lang_id');
+		$lang_id = $this->language ? Yii::$app->session->get('lang_id') : null;
 		$lang = language::findOne($lang_id);
 		$prog_id = Yii::$app->session->get('prog_id');
 		$program = Program::findOne($prog_id);

@@ -7,8 +7,8 @@ use app\models\Program;
 <div id="breadcrumbs">
 	<div class="wrap">
 		<a href="/">Главная</a>
-		<a href="/languages/<?= Program::findOne($prog_id)->col_alias ?>">Языки</a>
-		<a href="/countries/<?= $lang->col_alias ?>">Страны</a>
+		<a href="/languages/<?= Program::findOne($prog_id)->col_alias ?? 'all' ?>">Языки</a>
+		<a href="/countries/<?= $lang->col_alias ?? 'all' ?>">Страны</a>
 		<span><?= $country->col_title_ru ?></span>
 	</div> <!-- /.wrap -->
 </div> <!-- /#breadcrumbs -->

@@ -12,10 +12,14 @@ class CountryController extends \app\controllers\BaseController
     {
     	$prog_id = Yii::$app->session->get('prog_id');
 
-    	$lang = Language::findOne(['col_alias' => $lang_alias]);
-    	Yii::$app->session->set('lang_id', $lang->col_id);
+    	if ($lang_alias == 'all') $countries = Country::find()->all();
+    	else {
+    		$lang = Language::findOne(['col_alias' => $lang_alias]);
+    		Yii::$app->session->set('lang_id', $lang->col_id);
 
-    	$countries = Country::findAll(['col_language_id' => $lang->col_id]);
+    		$countries = Country::findAll(['col_language_id' => $lang->col_id]);
+    	}
+
     	
         return $this->render('index', compact('countries', 'lang', 'prog_id'));
     }
