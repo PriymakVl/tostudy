@@ -176,6 +176,56 @@
 		});
 	}
 
+/* Модальные окна
+	------------------------------------------------------- */
+	$('.js-open-modal').on('click', function(){
+		var $modal_id = $(this).data('modalId');
+		$($modal_id).show().removeClass('bounceOutUp').addClass('bounceInDown');
+		$('#page').addClass('form-open');
+		$('#js-menu').removeClass('open'); //закрываем мобильное меню
+		return false;
+	});
+	
+	
+	$('.js-close').on('click', function(){
+		var $modal = $($(this).data('modalId'));
+		/*$modal.hide();*/
+		closeModalWindow($modal); //закрываем модальное окно
+		return false;
+	});
+
+/* Закрыть модальное окно
+------------------------------------------------------- */
+function closeModalWindow($modal) {
+	'use strict';
+	$modal.removeClass('bounceInDown').addClass('bounceOutUp');
+	$('#page').removeClass('form-open');
+	setTimeout(function() {
+		$modal.hide();
+	}, 700);
+}
+	
+	
+	/* Закрыть модальное окно при клике вне его зоны
+	------------------------------------------------------- */
+	$(function(){	
+		$(document).on('click touchstart', function(event) {
+			if ($('.modal').is(':visible')) {
+				if ($(event.target).closest('.modal').length) { return; }
+				/*$('.modal:visible').hide();*/
+				closeModalWindow($('.modal:visible')); //закрываем модальное окно
+				event.stopPropagation();
+			}
+		});
+	});
+
+
+/* Показ и скрытие информационного окна */
+
+$('.popup-info').fadeIn('slow').delay(7000).fadeOut('slow');
+	
+
+
 
 
 

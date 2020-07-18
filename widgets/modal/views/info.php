@@ -5,14 +5,3 @@
 	<p><?= $message ?></p>
 
 </div>
-
-<script>
-
-setTimeout(hidePopup, 10000);
-
-function hidePopup() {
-	let modal = document.getElementById('popup-success');
-	modal.style.display = 'none';
-}
-
-</script>

@@ -126,6 +126,21 @@ class FeedbackController extends BaseController
     }
 
     /**
+    *  create new feedbac from footer
+    */
+    public function actionFooter()
+    {
+        $model = new Feedback();
+        $model->setAttributes(Yii::$app->request->get());
+        if ($model->save()) {
+            $message = 'Спасибо, заявка принята. Мы свяжемся с Вами в ближайшее время.';
+            $this->setMessage($message);
+        }
+        else $this->setMessage('Произошла ошибка', 'error');
+        return $this->back();
+    }
+
+    /**
      * Finds the Feedback model based on its primary key value.
      * If the model is not found, a 404 HTTP exception will be thrown.
      * @param integer $id

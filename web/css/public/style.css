@@ -3210,13 +3210,13 @@ input::placeholder {
 	border: 2px solid #fcdc47;
 	border-radius: 3px;
 	box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
-	visibility: visible;
-	-webkit-animation-name: bounceInDown;
+	display: none;
+/*	-webkit-animation-name: bounceInDown;
 			animation-name: bounceInDown;
 	-webkit-animation-duration: 1s;
 			animation-duration: 1s;
 	-webkit-animation-timing-function: ease-in-out;	
-			animation-timing-function: ease-in-out;
+			animation-timing-function: ease-in-out;*/
 	font-family: 'Montserrat-Medium';
 }
 

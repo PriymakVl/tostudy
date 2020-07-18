@@ -58,11 +58,14 @@
 					</li>
 				</ul>
 			</div>
+
 			<div class="contacts">
 				<ul>
 					<li><a href="mailto:<?=$row_st['col_email']?>" class="link email"><?= Yii::$app->setting->get('col_email') ?></a></li>
 				</ul>
+				
 				<a href="#" class="btn btn2 js-open-modal" data-modal-id="#js-modal-question">Задать вопрос</a>
+
 				<div class="social-network">
 					<a href="viber://add?number=<?=str_replace('+', '', Yii::$app->setting->get('col_tel'))?>" target="_blank">
 						<?= Yii::$app->svg->get('phone-volume') ?>
@@ -83,3 +86,5 @@
 </footer> <!-- /#footer -->
 
 </div> <!-- /.wrapper -->
+
+<?php echo $this->render('modal/question');

@@ -14,7 +14,7 @@ class ModalAlert extends \yii\bootstrap\Widget
     		return $this->render('info', ['message' => Yii::$app->session->getFlash('success')]);
     	}
     	else if (Yii::$app->session->hasFlash('error')) {
-    		return $this->render('error', ['message' => Yii::$app->session->getFlash('success')]);
+    		return $this->render('error', ['message' => Yii::$app->session->getFlash('error')]);
     	}
     }
 }
