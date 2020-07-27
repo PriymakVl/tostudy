@@ -6,11 +6,11 @@
 		
 		<label class="input__label">Имя</label>
 		<div class="input__field">
-			<input type="text" id="js-username-feedback-modal" name="col_username">
+			<input type="text" id="js-username-feedback-modal" name="col_name">
 		</div>
 		<label class="input__label">Email</label>
 		<div class="input__field">
-			<input type="email" id="js-email-feedback-modal" name="col_email">
+			<input type="email" required id="js-email-feedback-modal" name="col_email">
 		</div>
 		<div class="action">
 			<input type="submit" value="Подписаться" class="btn">

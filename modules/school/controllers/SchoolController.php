@@ -33,7 +33,7 @@ class SchoolController extends \app\controllers\BaseController
         $lang = Language::findOne(Yii::$app->session->get('lang_id'));
         $order = new Order();
         $this->registerMetaTags($school);
-        return $this->render('view', compact('school', 'courses', 'accommodation', 'lang', 'order'));
+        return $this->render('view', compact('prog_id', 'school', 'courses', 'accommodation', 'lang', 'order'));
     }
 
     private function getCity($lang_id, $city_alias)

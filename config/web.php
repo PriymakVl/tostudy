@@ -111,6 +111,8 @@ $config = [
                 'admin/school/<action:\w+>' => 'school/school-admin/<action>',
                 'admin/offers' => 'offer/offer-admin/index',
                 'admin/offer/<action:\w+>' => 'offer/offer-admin/<action>',
+                'admin/subscribe' => 'subscribe/index',
+                'admin/subscribe/<action:\w+>' => 'subscibe/<action>',
                 'programs' => 'program/index',
 
                 'admin/info' => 'info/info-admin/index',

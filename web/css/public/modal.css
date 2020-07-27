@@ -134,12 +134,21 @@
     margin-bottom: 5px;
 }
 
-.modal-body .input__field {
+.modal .input__field {
     max-width: 100%!important;
 }
 
 .modal-body .btn {
     margin-top: 40px;
+}
+
+/*modal subscribe*/
+#js-modal-subscribe {
+    z-index: 9002;
+    background: #fff;
+    padding: 10px;
+    max-width: 460px;
+    text-align: center;
 }
 
 @media screen and (max-width: 768px) {

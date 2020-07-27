@@ -1,5 +1,8 @@
 <?php
 /* @var $this yii\web\View */
+
+$this->registerCssFile('https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.0.0/animate.min.css');
+
 ?>
 
 <div id="breadcrumbs">
@@ -13,7 +16,7 @@
 	<div class="wrap">
 
 		<div class="subscribe-wrp">
-			<button class="js-open-modal btn" data-modal-id="#js-modal-subscribe">Не упусти свою скидку!</button>
+			<button class="animate__animated animate__bounce js-open-modal btn" data-modal-id="#js-modal-subscribe">Не упусти свою скидку!</button>
 		</div>
 
 		<h1 class="page-title">Акции</h1>

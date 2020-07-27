@@ -39,6 +39,8 @@ echo Nav::widget([
         [
             'label' => 'Разное',
             'items' => [
+                ['label' => 'Подписчики', 'url' => ['/admin/subscribe']],
+                '<li class="divider"></li>',
                 ['label' => 'Новости', 'url' => ['/admin/news']],
                 '<li class="divider"></li>',
                 ['label' => 'Акции', 'url' => ['/admin/offers']],
