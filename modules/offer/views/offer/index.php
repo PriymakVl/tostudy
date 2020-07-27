@@ -11,6 +11,11 @@
 
 <div class="articles">
 	<div class="wrap">
+
+		<div class="subscribe-wrp">
+			<button class="js-open-modal btn" data-modal-id="#js-modal-subscribe">Не упусти свою скидку!</button>
+		</div>
+
 		<h1 class="page-title">Акции</h1>
 		<div class="content">
 			<?php if ($offers): ?>
@@ -25,3 +30,6 @@
 		</div>
 	</div> <!-- /.wrap -->
 </div> <!-- /.articles -->
+
+<?= $this->render('@app/views/templates/modal/subscribe') ?>
+

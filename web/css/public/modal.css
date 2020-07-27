@@ -35,8 +35,8 @@
     outline: 0;
 }
 
-#js-modal-question {
-  display: none;
+#js-modal-question, #js-modal-subsribe {
+    display: none;
     position: fixed;
     z-index: 9002;
     top: 90px;

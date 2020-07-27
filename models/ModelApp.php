@@ -8,6 +8,7 @@ use app\models\{Sound, State};
 use yii\web\NotFoundHttpException;
 use app\modules\string\models\{FullString, SubString};
 use app\modules\word\models\{Word, WordText};
+use yii\helpers\ArrayHelper;
 
 class ModelApp extends \yii\db\ActiveRecord
 {

@@ -6,6 +6,7 @@ use Yii;
 use app\modules\city\models\City;
 use app\modules\country\models\Country;
 use app\modules\language\models\Language;
+use yii\helpers\ArrayHelper;
 
 class CityController extends \app\controllers\BaseController
 {
@@ -15,7 +16,7 @@ class CityController extends \app\controllers\BaseController
 
     	$lang = Language::findOne(Yii::$app->session->get('lang_id'));
 
-    	$country = Country::findOne(['col_alias' => $country_alias]);
+    	$country = Country::findOne(['col_alias' => $country_alias, 'col_language_id' => $lang->col_id]);
 
     	$cities = City::findAll(['col_country_id' => $country->col_id]);
     	

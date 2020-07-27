@@ -14,8 +14,8 @@ class SchoolController extends \app\controllers\BaseController
 {
     public function actionIndex($city_alias)
     {
-    	$city = City::findOne(['col_alias' => $city_alias]);
         $lang = Language::findOne(Yii::$app->session->get('lang_id'));
+    	$city = $this->getCity($lang->col_id, $city_alias);
         Yii::$app->session->set('city_id', $city->col_id);
         $prog_id = Yii::$app->session->get('prog_id');
         $schools = $city->sortSchoolsByProgram($prog_id);
@@ -34,6 +34,14 @@ class SchoolController extends \app\controllers\BaseController
         $order = new Order();
         $this->registerMetaTags($school);
         return $this->render('view', compact('school', 'courses', 'accommodation', 'lang', 'order'));
+    }
+
+    private function getCity($lang_id, $city_alias)
+    {
+        $cities = City::findAll(['col_alias' => $city_alias]);
+        foreach ($cities as $city) {
+            if ($city->country->col_language_id == $lang_id) return $city;
+        }   
     }
 
 }
