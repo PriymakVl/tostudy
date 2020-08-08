@@ -9,7 +9,7 @@ use dosamigos\ckeditor\CKEditor;
 /* @var $model app\modules\school\models\School */
 /* @var $form yii\widgets\ActiveForm */
 
-$this->registerJs("CKEDITOR.plugins.addExternal('youtube', 'js/vendor/ckeditor/youtube/plugin.js', '');");
+$this->registerJs("CKEDITOR.plugins.addExternal('youtube', '/ckeditor/plugins/youtube/plugin.js', '');");
 ?>
 
 <div class="school-form">

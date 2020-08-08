@@ -10,9 +10,9 @@ class BaseController extends \yii\web\Controller
 
 	public function init()
 	{
+		parent::init();
         Yii::$app->session->open();
         $this->setParams();
-        return parent::init();
 	} 
 
 	public function setMessage($text, $type = 'success')
