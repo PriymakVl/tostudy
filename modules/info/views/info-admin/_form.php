@@ -10,7 +10,7 @@ use app\modules\country\models\Country;
 /* @var $model app\modules\info\models\Info */
 /* @var $form yii\widgets\ActiveForm */
 
-$this->registerJs("CKEDITOR.plugins.addExternal('youtube', 'js/vendor/ckeditor/youtube/plugin.js', '');");
+$this->registerJs("CKEDITOR.plugins.addExternal('youtube', '/ckeditor/plugins/youtube/plugin.js', '');");
 ?>
 
 <div class="info-form">

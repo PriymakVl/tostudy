@@ -18,7 +18,6 @@
         "yiisoft/yii2": "~2.0.14",
         "yiisoft/yii2-bootstrap": "~2.0.0",
         "yiisoft/yii2-swiftmailer": "~2.0.0 || ~2.1.0",
-        "mihaildev/yii2-elfinder": "*",
         "2amigos/yii2-ckeditor-widget": "^1.0@dev",
         "kartik-v/yii2-widget-datetimepicker": "^1.4@dev"
     },
