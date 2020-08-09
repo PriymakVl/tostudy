@@ -9,7 +9,7 @@ use app\models\Article;
 /* @var $model app\models\Article */
 /* @var $form yii\widgets\ActiveForm */
 
-$this->registerJs("CKEDITOR.plugins.addExternal('youtube', 'js/vendor/ckeditor/youtube/plugin.js', '');");
+$this->registerJs("CKEDITOR.plugins.addExternal('youtube', '/ckeditor/plugins/youtube/plugin.js', '');");
 ?>
 
 <div class="article-form">

@@ -9,7 +9,7 @@ use yii\jui\DatePicker;
 use app\models\Review;
 use dosamigos\ckeditor\CKEditor;
 
-$this->registerJs("CKEDITOR.plugins.addExternal('youtube', 'js/vendor/ckeditor/youtube/plugin.js', '');");
+$this->registerJs("CKEDITOR.plugins.addExternal('youtube', '/ckeditor/plugins/youtube/plugin.js', '');");
 ?>
 
 <div class="review-form">
