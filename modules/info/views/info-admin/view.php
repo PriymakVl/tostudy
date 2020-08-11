@@ -26,7 +26,6 @@ $this->params['breadcrumbs'][] = $this->title;
                 'method' => 'post',
             ],
         ]) ?>
-        <?= Html::a('Посмотреть на сайте', ['/info/article/'.$model->col_alias], ['class' => 'btn btn-primary']) ?>
 
         <?php if ($model->col_status == Info::STATUS_PUBLISHED): ?>
             <?= Html::a('Посмотреть на сайте', ['/info/article/' . $model->col_alias], ['target' => '_blank', 'class' => 'btn btn-primary']) ?>
