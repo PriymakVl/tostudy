@@ -24,6 +24,12 @@ $this->registerJs("CKEDITOR.plugins.addExternal('youtube', '/ckeditor/plugins/yo
     	echo $form->field($model, 'col_status')->dropDownList($items);
      ?>
 
+     <?= $form->field($model, 'col_meta_title')->textInput(['maxlength' => true]) ?>
+
+     <?= $form->field($model, 'col_meta_description')->textInput(['maxlength' => true]) ?>
+
+     <?= $form->field($model, 'col_meta_keywords')->textInput(['maxlength' => true]) ?>
+
      <?php 
         echo $form->field($model, 'col_text_top')->widget(CKEditor::className(), [
         'preset' => 'custom',

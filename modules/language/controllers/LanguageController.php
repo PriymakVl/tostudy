@@ -14,7 +14,10 @@ class LanguageController extends \app\controllers\BaseController
     public function actionIndex($program_alias)
     {
         if ($program_alias != 'all') $program = Program::findOne(['col_alias' => $program_alias]);
-        if ($program) Yii::$app->session->set('prog_id', $program->col_id);
+        if ($program) {
+        	Yii::$app->session->set('prog_id', $program->col_id);
+        	$this->registerMetaTags($program);
+        }
     	$languages = Language::find()->all();
         return $this->render('index', compact('languages', 'program'));
     }

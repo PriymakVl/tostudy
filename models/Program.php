@@ -35,7 +35,7 @@ class Program extends \app\models\ModelApp
         return [
             [['col_name', 'col_rating', 'col_status'], 'required'],
             [['col_key', 'col_rating', 'col_status'], 'integer'],
-            [['col_name', 'col_alias'], 'string', 'max' => 255],
+            [['col_name', 'col_alias', 'col_meta_title', 'col_meta_description', 'col_meta_keywords'], 'string', 'max' => 255],
             [['col_text_top', 'col_text_bottom'], 'string'],
             [['col_name'], 'unique'],
             [['col_alias'], 'unique'],
