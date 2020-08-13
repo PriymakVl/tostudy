@@ -131,7 +131,7 @@ class SchoolBase extends \app\models\ModelApp
             if ($this->file_img_mini) $this->col_img_mini = $img->uploadFile($this->file_img_mini, 'schools', $this->col_img_mini);
         }
         $this->col_alias = Inflector::slug($this->col_title, '_');
-        return true;
+        return parent::beforeSave($insert);
     }
 
     public function uploadPdf()
