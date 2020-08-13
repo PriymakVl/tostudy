@@ -35,7 +35,10 @@ class BaseController extends \yii\web\Controller
 
 	public function registerMetaTags($object) 
 	{
-		$this->view->title = $object->col_meta_title ? $object->col_meta_title : $object->col_title_ru;
+		if (isset($object->col_title_ru)) $title = $object->col_title_ru;
+		else if (isset($object->col_meta_title)) $title = $object->col_meta_title;
+		else $title = '';
+		$this->view->title = $title;
 		$this->view->registerMetaTag(['name' => 'description', 'content' => $object->col_meta_description]);
 		$this->view->registerMetaTag(['name' => 'keywords', 'content' => $object->col_meta_keywords]);
 	}
