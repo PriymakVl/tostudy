@@ -12,6 +12,7 @@ use app\modules\city\models\City;
 use dosamigos\ckeditor\CKEditor;
 
 $this->registerJs("CKEDITOR.plugins.addExternal('youtube', '/ckeditor/plugins/youtube/plugin.js', '');");
+$this->registerJsFile('@web/js/admin/select_country_city.js', ['depends' => [\yii\web\JqueryAsset::className()]]);
 
 if ($school_id) $model->col_school_id = $school_id;
 
@@ -22,20 +23,7 @@ if ($city_id) {
 
 ?>
 
-<script>
-
-function selectCountry(elem) {
-    if (elem.value) location.href = '/course/course-admin/create/?country_id=' + elem.value;
-    else location.href = '/course/course-admin/' + action;
-}
-
-function selectCity(elem) {
-    location.href = '/course/course-admin/create/?city_id=' + elem.value;
-}
-
-</script>
-
-<div class="course-form">
+<div class="course-form" data-action="<?= Yii::$app->controller->action->id ?>">
 
     <?php $form = ActiveForm::begin(); ?>
 
@@ -50,7 +38,7 @@ function selectCity(elem) {
             <label for="country_id" class="control-label">Страна</label>
             <?php 
                 $countries = Country::find()->select(['col_title_ru'])->asArray()->indexBy('col_id')->column();
-                $options = ['onchange' => 'selectCountry(this);', 'prompt' => 'Не выбрана', 'class' => 'form-control'];
+                $options = ['prompt' => 'Не выбрана', 'class' => 'form-control'];
                 echo Html::dropDownList('country_id', $country_id, $countries, $options);
             ?>
         </div>
@@ -60,7 +48,7 @@ function selectCity(elem) {
                 <label for="city_id" class="control-label">Город</label>
                 <?php 
                     $cities = City::find()->select(['col_title_ru'])->where(['col_country_id' => $country_id])->asArray()->indexBy('col_id')->column();
-                    $options = ['onchange' => 'selectCity(this);','prompt' => 'Не выбран', 'class' => 'form-control'];
+                    $options = ['prompt' => 'Не выбран', 'class' => 'form-control'];
                     echo Html::dropDownList('city_id', $city_id, $cities, $options);
                  ?>
              </div>

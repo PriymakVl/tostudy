@@ -65,9 +65,10 @@ class CourseAdminController extends BaseController
      * If creation is successful, the browser will be redirected to the 'view' page.
      * @return mixed
      */
-    public function actionCreate($country_id = false, $city_id = false, $school_id = false)
+    public function actionCreate($country_id = false, $city_id = false, $school_id = false, $program_id = false)
     {
         $model = new Course();
+        $model->col_prog_id = $program_id;
 
         if ($model->load(Yii::$app->request->post()) && $model->save()) {
             $this->setMessage('Курс добавлен');
@@ -106,8 +107,7 @@ class CourseAdminController extends BaseController
     public function actionDelete($id)
     {
         $this->findModel($id)->delete();
-
-        
+        return $this->setMessage('Курс удален')->redirect(['index']);
     }
 
     public function actionPrices($id, $prices = false)
