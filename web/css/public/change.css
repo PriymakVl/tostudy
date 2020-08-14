@@ -122,9 +122,40 @@ table td {
 	background-color: #F7F8FA;
 }
 
+/* program text page language */
 .program-text {
+	padding: 0 100px;
 	margin: 15px 0;
+	font-family: "Open Sans";
 	font-size: 16px;
+	font-weight: 300;
+}
+
+.program-text h1, .program-text h2 {
+	margin-bottom: 15px;
+	text-align: center;
+	font-size: 40px;
+	line-height: 1.1;
+}
+
+.program-text p {
+	text-indent: 30px;
+	margin-bottom: 15px;
+	font-size: 17px;
+	line-height: 28px;
+}
+
+.program-text ol {
+	list-style-type: decimal;
+}
+
+.program-text ul {
+	list-style-type: circle;
+}
+
+.program-text li {
+	margin-bottom: 10px;
+	font-size: 17px;
 }
 
 .program-text a {
