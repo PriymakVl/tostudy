@@ -164,6 +164,12 @@ table td {
 	text-decoration: underline;
 }
 
+@media screen and (max-width: 800px) {
+	.program-text { padding: 0 5px; }
+
+	.program-text h1, .program-tex h2 { font-size: 30px; }
+}
+
 /* subscribe */
 
 .subscribe-wrp {
