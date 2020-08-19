@@ -2965,7 +2965,7 @@ input::placeholder {
 #other-pages p > img {
 	margin-top: 16px;
 	width: 100%;
-	max-width: 600px;
+	/*max-width: 600px;*/
 }
 
 #other-pages a {

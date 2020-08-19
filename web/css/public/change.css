@@ -148,15 +148,20 @@ table td {
 
 .program-text ol {
 	list-style-type: decimal;
+	font-family: "Open Sans";
+	font-size: 17px;
+	font-weight: 300;
 }
 
 .program-text ul {
-	list-style-type: circle;
+	list-style-type: disc;
+	font-family: "Open Sans";
+	font-size: 17px;
+	font-weight: 300;
 }
 
 .program-text li {
 	margin-bottom: 10px;
-	font-size: 17px;
 }
 
 .program-text a {
