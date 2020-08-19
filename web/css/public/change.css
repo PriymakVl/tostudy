@@ -128,6 +128,10 @@ table td {
 	margin: 15px 0;
 }
 
+.program-text strong {
+	font-weight: bold!important;
+}
+
 .program-text h1, .program-text h2 {
 	margin-bottom: 15px;
 	text-align: center;
