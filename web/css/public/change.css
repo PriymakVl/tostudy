@@ -189,6 +189,13 @@ blockquote p {
 	.program-text { padding: 0 5px; }
 
 	.program-text h1, .program-tex h2 { font-size: 30px; }
+
+	.article-text img {
+		width: 100%!important;
+		height: auto!important;
+	}
+
+	.article-text table { width: 100%!important; }
 }
 
 /* subscribe */
