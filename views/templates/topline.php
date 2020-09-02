@@ -11,7 +11,10 @@ $programs = Program::find()->where(['col_status' => Program::STATUS_ACTIVE])->or
 	<div class="wrap topline row2">
 <?php endif ?>
 		<div class="column-left row2">
-			<a href="/" class="logo">to<span>study</span></a>
+			<!-- <a href="/" class="logo">to<span>study</span></a> -->
+			<a href="/">
+				<img src="/img/logo.png" alt="logo">
+			</a>
 			<ul class="nav row2">
 				<li class="link">
 					<a href="/about">О нас</a>

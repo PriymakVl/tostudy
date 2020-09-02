@@ -507,7 +507,8 @@ input::placeholder {
 }
 
 #header .nav {
-	margin-left: 60px;
+	/*margin-left: 60px;*/ /*для логотипа без изображения*/
+	margin-left: 55px;
 }
 
 #header.home .nav {
