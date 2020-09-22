@@ -151,6 +151,10 @@ class SiteController extends BaseController
 
     public function actionReviews()
     {
+        $title = "Отзывы | Тустади Tostudy";
+        $description = "Отзывы клиентов о Tostudy, образование за рубежом, обучение и учеба за границей";
+        $keywords = "отзывы клиентов tostudy";
+        $this->registerMetaTags(null, $title, $description, $keywords);
         $reviews = Review::find()->all();
         return $this->render('reviews', ['reviews' => $reviews]);
     }

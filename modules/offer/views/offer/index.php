@@ -34,5 +34,5 @@ $this->registerCssFile('https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.0.0
 	</div> <!-- /.wrap -->
 </div> <!-- /.articles -->
 
-<?= $this->render('@app/views/templates/modal/subscribe') ?>
+<?= $this->render('@app/views/templates/modal/offer') ?>
 

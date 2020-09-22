@@ -2340,7 +2340,7 @@ input::placeholder {
 	padding-left: 9px;
 }
 
-.tab1 ul li::before {
+/*.tab1 ul li::before {
 	content: '';
 	position: absolute;
 	top: 12px;
@@ -2349,7 +2349,7 @@ input::placeholder {
 	height: 4px;
 	border-radius: 50%;
 	background: #696969;
-}
+}*/
 
 .tab1 a {
 	color: #f4471d;

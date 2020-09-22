@@ -138,7 +138,7 @@ blockquote p, blockquote ul {
 	margin: 15px 0;
 }
 
-.program-text strong {
+.program-text strong, .tab strong {
 	font-weight: bold!important;
 }
 
@@ -151,7 +151,7 @@ blockquote p, blockquote ul {
 	font-weight: 300;
 }
 
-.program-text p {
+.program-text p, .tab p, .tab .answer {
 	text-indent: 30px;
 	margin-bottom: 15px;
 	font-size: 17px;
@@ -160,7 +160,7 @@ blockquote p, blockquote ul {
 	font-weight: 300;
 }
 
-.program-text ol {
+.program-text ol, .tab ol {
 	list-style-type: decimal;
 	font-family: "Open Sans";
 	font-size: 17px;
@@ -168,7 +168,7 @@ blockquote p, blockquote ul {
 	line-height: 28px;
 }
 
-.program-text ul {
+.program-text ul, .tab ul {
 	list-style-type: disc;
 	font-family: "Open Sans";
 	font-size: 17px;
@@ -176,7 +176,7 @@ blockquote p, blockquote ul {
 	line-height: 28px;
 }
 
-.program-text li {
+.program-text li, .tab li {
 	margin-bottom: 10px;
 }
 

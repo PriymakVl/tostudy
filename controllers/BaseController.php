@@ -33,14 +33,19 @@ class BaseController extends \yii\web\Controller
 		return $this->redirect(Yii::$app->request->referrer);
 	}
 
-	public function registerMetaTags($object) 
+	public function registerMetaTags($object, $title = null, $description = null, $keywords = null) 
 	{
-		if (isset($object->col_title_ru)) $title = $object->col_title_ru;
-		else if (isset($object->col_meta_title)) $title = $object->col_meta_title;
-		else $title = '';
-		$this->view->title = $title;
-		$this->view->registerMetaTag(['name' => 'description', 'content' => $object->col_meta_description]);
-		$this->view->registerMetaTag(['name' => 'keywords', 'content' => $object->col_meta_keywords]);
+		$this->view->title = $this->setMetaTitle($object, $title);
+		$this->view->registerMetaTag(['name' => 'description', 'content' => $description ? $description : $object->col_meta_description]);
+		$this->view->registerMetaTag(['name' => 'keywords', 'content' => $keywords ? $keywords : $object->col_meta_keywords]);
+	}
+
+	private function setMetaTitle($object, $title) 
+	{
+		if ($title) return $title; 
+		if (isset($object->col_title_ru)) return $object->col_title_ru;
+		if (isset($object->col_meta_title)) return $object->col_meta_title;
+		return '';
 	}
 
 	protected function setParams()
