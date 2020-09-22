@@ -507,12 +507,11 @@ input::placeholder {
 }
 
 #header .nav {
-	/*margin-left: 60px;*/ /*для логотипа без изображения*/
-	margin-left: 55px;
+	margin-left: 20px;
 }
 
 #header.home .nav {
-    margin-left: 60px;
+    margin-left: 40px;
 	position: relative;
 	z-index: 102;
 }
