@@ -328,6 +328,11 @@ input::placeholder {
 	background-color: #C4C4C4;
 }
 
+.btn-news-subscribe {
+	width: auto;
+	padding: 0 10px;
+}
+
 .checkbox {
 	margin-bottom: 10px;
     display: -webkit-flex;

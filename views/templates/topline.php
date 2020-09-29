@@ -11,9 +11,8 @@ $programs = Program::find()->where(['col_status' => Program::STATUS_ACTIVE])->or
 	<div class="wrap topline row2">
 <?php endif ?>
 		<div class="column-left row2">
-			<!-- <a href="/" class="logo">to<span>study</span></a> -->
 			<a href="/">
-				<?= Yii::$app->svg->get('logo'); ?>
+				<img src="/img/svg/logo.svg" alt="logo">
 			</a>
 			<ul class="nav row2">
 				<li class="link">

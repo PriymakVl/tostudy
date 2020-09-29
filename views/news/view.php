@@ -17,7 +17,7 @@ $this->registerCssFile('https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.0.0
 	<div class="wrap">
 
 		<div class="subscribe-wrp">
-			<button class="animate__animated animate__bounce js-open-modal btn" data-modal-id="#js-modal-subscribe">Подписаться на новости!</button>
+			<button class="animate__animated animate__bounce js-open-modal btn btn-news-subscribe" data-modal-id="#js-modal-subscribe">Подписывайтесь и будьте в курсе последних новостей в мире образования за рубежом и скидок на обучение за границей!</button>
 		</div>
 
 		<h1 class="page-title"><?= $article->col_title_ru ?></h1>
