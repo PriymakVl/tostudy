@@ -1,6 +1,5 @@
 <?php 
 use yii\helpers\Html;
-use app\models\Program;
 
 $this->registerJsFile('@web/js/public/calculator.js', ['depends' => [\yii\web\JqueryAsset::className()]]);
 
@@ -10,10 +9,10 @@ $this->registerJsFile('@web/js/public/calculator.js', ['depends' => [\yii\web\Jq
 <div id="breadcrumbs">
 	<div class="wrap">
 		<a href="/">Главная</a>
-		<a href="/languages/<?= Program::findOne($prog_id)->col_alias ?>">Языки</a>
-		<a href="/countries/<?= $lang->col_alias ?>">Страны</a>
-		<a href="/cities/<?= $school->city->country->col_alias ?>">Города</a>
-		<a href="/schools/<?= $school->city->col_alias ?>">Школы</a>
+		<a href="/languages/<?= $program->col_alias ?>">Языки</a>
+		<a href="/countries/<?= $lang->col_alias ?>/<?= $program->col_alias ?>">Страны</a>
+		<a href="/cities/<?= $school->city->country->col_alias ?>/<?= $program->col_alias ?>">Города</a>
+		<a href="/schools/<?= $school->city->col_alias ?>/<?= $program->col_alias ?>">Школы</a>
 		<span><?= $school->name ?></span>
 	</div> <!-- /.wrap -->
 </div> <!-- /#breadcrumbs -->

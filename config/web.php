@@ -87,15 +87,15 @@ $config = [
                 'info/country/<country_alias:\w+>' => 'info/info/country',
                 'info/article/<article_alias:\w+>' => 'info/info/view',
 
-                'schools/<city_alias:\w+>' => 'school/school/index', 
-                'school/<alias:\w+>' => 'school/school/view',
+                'schools/<city_alias:\w+>/<prog_alias:\w+>' => 'school/school/index', 
+                'school/<alias:\w+>/<prog_alias:\w+>' => 'school/school/view',
                 'school/<action:\w+>' => 'school/school/<action>', 
 
                 'languages/<program_alias:\w+>' => 'language/language/index',
 
-                'countries/<lang_alias:\w+>' => 'country/country/index', 
+                'countries/<lang_alias:\w+>/<prog_alias:\w+>' => 'country/country/index', 
 
-                'cities/<country_alias:\w+>' => 'city/city/index', 
+                'cities/<country_alias:\w+>/<prog_alias:\w+>' => 'city/city/index', 
                 'course/<action:\w+>' => 'course/course/<action>', 
 
                 //admin

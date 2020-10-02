@@ -1,14 +1,13 @@
 <?php
 /* @var $this yii\web\View */
-use app\models\Program;
 ?>
 
 <div id="breadcrumbs">
 	<div class="wrap">
 		<a href="/">Главная</a>
-		<a href="/languages/<?= Program::findOne($prog_id)->col_alias ?>">Языки</a>
-		<a href="/countries/<?= $lang->col_alias ?>">Страны</a>
-		<a href="/cities/<?= $city->country->col_alias ?>">Города</a>
+		<a href="/languages/<?= $program->col_alias ?>">Языки</a>
+		<a href="/countries/<?= $lang->col_alias ?>/<?= $program->col_alias ?>">Страны</a>
+		<a href="/cities/<?= $city->country->col_alias ?>/<?= $program->col_alias ?>">Города</a>
 		<span><?= $city->col_title_ru ?></span>
 	</div> <!-- /.wrap -->
 </div> <!-- /#breadcrumbs -->
@@ -25,11 +24,11 @@ use app\models\Program;
 				<?php foreach ($schools as $school): ?>
 
 					<div class="item">
-						<a href="/school/<?= $school->alias ?>" class="wrap-img">
+						<a href="/school/<?= $school->alias ?>/<?= $program->col_alias ?>" class="wrap-img">
 							<img src="/img/schools/<?= $school->col_img_mini ?>" alt="<?= $shool->col_title_ru ?>">
 						</a>
 						<h4>
-							<a href="/school/<?= $school->alias ?>"><?= $school->col_title ?></a>
+							<a href="/school/<?= $school->alias ?>/<?= $program->col_alias ?>"><?= $school->col_title ?></a>
 						</h4>
 						<div class="location">
 							<?= Yii::$app->svg->get('locale') ?>
@@ -39,10 +38,10 @@ use app\models\Program;
 						<div class="wrap-price">
 							<div class="price">
 								<span>от</span> 
-								<?= $school->getLowestPriceCourses($prog_id) .' '. $school->currency ?>
+								<?= $school->getLowestPriceCourses($program->id) .' '. $school->currency ?>
 								<span>/ нед</span>
 							</div>
-							<a href="/school/<?= $school->alias ?>" class="view">Смотреть курсы</a>
+							<a href="/school/<?= $school->alias ?>/<?= $program->col_alias ?>" class="view">Смотреть курсы</a>
 						</div>
 					</div>
 

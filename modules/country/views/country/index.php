@@ -1,15 +1,14 @@
 <?php
 /* @var $this yii\web\View */
 use app\modules\school\models\School;
-use app\models\Program;
 
-$class_h = $prog_id || $lag ? '' : 'margin-top-40';
+$class_h = $program || $lag ? '' : 'margin-top-40';
 ?>
 
 <div id="breadcrumbs">
 	<div class="wrap">
 		<a href="/">Главная</a>
-		<a href="/languages/<?= Program::findOne($prog_id)->col_alias ?? 'all' ?>">Языки</a>
+		<a href="/languages/<?= $program->col_alias ?? 'all' ?>">Языки</a>
 		<?php if ($lang): ?>
 			<span><?=$lang->col_title_ru?></span>
 		<?php else: ?>
@@ -28,9 +27,9 @@ $class_h = $prog_id || $lag ? '' : 'margin-top-40';
 		<div class="countries">
 			<?php if ($countries): ?>
 				<?php foreach ($countries as $country): ?>
-					<?php $count_schools = $country->countSchoolsByProgram($prog_id); ?>
+					<?php $count_schools = $country->countSchoolsByProgram($program->id); ?>
 					<?php if ($count_schools): ?>
-						<a href="/cities/<?=$country->alias?>" class="item">
+						<a href="/cities/<?=$country->alias?>/<?= $program->col_alias ?>" class="item">
 							<img src="/img/countries/<?= $country->col_img ?>" alt="<?= $country->col_title_ru ?>" class="country">
 							<div class="container">
 								<h3><?= $country->col_title_ru ?></h3>

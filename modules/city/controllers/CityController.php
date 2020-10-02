@@ -6,13 +6,14 @@ use Yii;
 use app\modules\city\models\City;
 use app\modules\country\models\Country;
 use app\modules\language\models\Language;
+use app\models\Program;
 use yii\helpers\ArrayHelper;
 
 class CityController extends \app\controllers\BaseController
 {
-    public function actionIndex($country_alias)
+    public function actionIndex($country_alias, $prog_alias)
     {
-    	$prog_id = Yii::$app->session->get('prog_id');
+        $program = Program::findOne(['col_alias' => $prog_alias]);
 
     	$lang = Language::findOne(Yii::$app->session->get('lang_id'));
 
@@ -22,7 +23,7 @@ class CityController extends \app\controllers\BaseController
     	
     	$this->registerMetaTags($country);
 
-        return $this->render('index' , compact('cities', 'country', 'prog_id', 'lang'));
+        return $this->render('index' , compact('cities', 'country', 'program', 'lang'));
     }
 
 }

@@ -12,28 +12,32 @@ USE app\models\Program;
 
 class SchoolController extends \app\controllers\BaseController
 {
-    public function actionIndex($city_alias)
+    public function actionIndex($city_alias, $prog_alias)
     {
         $lang = Language::findOne(Yii::$app->session->get('lang_id'));
     	$city = $this->getCity($lang->col_id, $city_alias);
+        $program = Program::findOne(['col_alias' => $prog_alias]);
+        $schools = $city->sortSchoolsByProgram($program->id);
+
         Yii::$app->session->set('city_id', $city->col_id);
-        $prog_id = Yii::$app->session->get('prog_id');
-        $schools = $city->sortSchoolsByProgram($prog_id);
         $this->registerMetaTags($city);
-        return $this->render('index', compact('schools', 'city', 'prog_id', 'lang'));
+
+        return $this->render('index', compact('schools', 'city', 'program', 'lang'));
     }
 
-    public function actionView($alias)
+    public function actionView($alias, $prog_alias)
     {
         Url::remember();
     	$school = School::findOne(['col_alias' => $alias]);
-        $prog_id = Yii::$app->session->get('prog_id') ?? Program::DEFAULT_ID;
-    	$courses = $school->getCourses($prog_id);
+        $program = Program::findOne(['col_alias' => $prog_alias]);
+    	$courses = $school->getCourses($program->id);
         $accommodation = $school->accommodation;
         $lang = Language::findOne(Yii::$app->session->get('lang_id'));
         $order = new Order();
+
         $this->registerMetaTags($school);
-        return $this->render('view', compact('prog_id', 'school', 'courses', 'accommodation', 'lang', 'order'));
+
+        return $this->render('view', compact('program', 'school', 'courses', 'accommodation', 'lang', 'order'));
     }
 
     private function getCity($lang_id, $city_alias)

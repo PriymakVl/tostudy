@@ -1,14 +1,13 @@
 <?php
 /* @var $this yii\web\View */
 use app\modules\school\models\School;
-use app\models\Program;
 ?>
 
 <div id="breadcrumbs">
 	<div class="wrap">
 		<a href="/">Главная</a>
-		<a href="/languages/<?= Program::findOne($prog_id)->col_alias ?? 'all' ?>">Языки</a>
-		<a href="/countries/<?= $lang->col_alias ?? 'all' ?>">Страны</a>
+		<a href="/languages/<?= $program->col_alias ?? 'all' ?>">Языки</a>
+		<a href="/countries/<?= $lang->col_alias ?? 'all' ?>/<?= $program->col_alias ?>">Страны</a>
 		<span><?= $country->col_title_ru ?></span>
 	</div> <!-- /.wrap -->
 </div> <!-- /#breadcrumbs -->
@@ -23,9 +22,9 @@ use app\models\Program;
 		<div class="countries">
 			<?php if ($cities): ?>
 				<?php foreach ($cities as $city): ?>
-					<?php $count_schools = $city->countSchoolsByProgram($prog_id); ?>
+					<?php $count_schools = $city->countSchoolsByProgram($program->id); ?>
 					<?php if ($count_schools): ?>
-						<a href="/schools/<?= $city->col_alias ?>" class="item">
+						<a href="/schools/<?= $city->col_alias ?>/<?= $program->col_alias ?>" class="item">
 							<img src="/img/cities/<?= $city->col_img ?>" alt="<?= $city->col_title_ru ?>" class="country">
 							<div class="container">
 								<h3><?= $city->col_title_ru ?></h3>
