@@ -152,7 +152,7 @@ blockquote p, blockquote ul {
 }
 
 .program-text p, .tab p, .tab .answer {
-	text-indent: 30px;
+/*	text-indent: 30px;*/
 	margin-bottom: 15px;
 	font-size: 17px;
 	line-height: 28px;

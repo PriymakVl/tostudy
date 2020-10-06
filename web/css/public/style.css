@@ -161,6 +161,11 @@ a {
 	font-family: 'Montserrat-Bold';
 }
 
+.section img {
+	width: 100%!important;
+	height: auto!important;
+}
+
 .wrap {
 	margin: 0 auto;
 	width: 100%;
