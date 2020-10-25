@@ -1,10 +1,3 @@
-<?php 
-use app\models\Program;
-
-$programs = Program::find()->where(['col_status' => Program::STATUS_ACTIVE])->orderBy(['col_rating' => SORT_DESC])->all();
-
-?>
-
 <?php if ($home): ?>
 	<div class="topline row2">
 <?php else: ?>
@@ -22,7 +15,7 @@ $programs = Program::find()->where(['col_status' => Program::STATUS_ACTIVE])->or
 				<li class="link sel">
 					<a href="#">Программы</a>
 					<ul class="form-select">
-						<?php foreach ($programs as $program): ?>
+						<?php foreach (Yii::$app->params['programs'] as $program): ?>
 							<li>
 								<a href="/languages/<?= $program->col_alias ?>">
 									<?= $program->col_name ?>

@@ -17,9 +17,11 @@
 		<? else: ?>
 			<div class="schools" id="js-products">
 				<?php foreach ($schools as $school): ?>
-					
+
+					<? if (!in_array($program->id, $school->getIdsPrograms())) continue; ?>
+
 					<div class="item">
-						<a href="/school/<?= $school->alias ?>" class="wrap-img">
+						<a href="/school/<?= $school->alias ?>/<?= $program->col_alias ?>" class="wrap-img">
 							<img src="/img/schools/<?= $school->col_img_mini ?>" alt="<?= $shool->col_title_ru ?>">
 						</a>
 						<h4>
@@ -36,7 +38,7 @@
 								<? echo $school->getLowestPriceCourses() .' '. $school->currency;  ?>
 								<span>/ нед</span>
 							</div>
-							<a href="/school/<?= $school->alias ?>" class="view">Смотреть курсы</a>
+							<a href="/school/<?= $school->alias ?>/<?= $program->col_alias ?>" class="view">Смотреть курсы</a>
 						</div>
 					</div>
 

@@ -8,11 +8,20 @@
 		
 		<form class="form">
 			<div>
+				<div class="input__field input__select" id="js-program">
+					<span class="js-selected" prog_id="">Программа</span>
+					<?= Yii::$app->svg->get('arrow-bottom') ?>
+					<ul id="js-form-program" class="form-select js-form-select">
+						<?php foreach (Yii::$app->params['programs'] as $program): ?>
+							<li class="js-program-option" data-prog_id="<?= $program->col_id ?>"><?= $program->col_name ?></li>
+						<?php endforeach ?>
+					</ul> <!-- /.form-select -->
+				</div> <!-- /.input__field -->
+
 				<div class="input__field input__select" id="js-lang">
 					<span class="js-selected" lang_id="">Язык</span>
 					<?= Yii::$app->svg->get('arrow-bottom') ?>
 					<ul id="js-form-language" class="form-select js-form-select">
-						<li class="js-language-option" data-lang_id="0">Все</li>
 						<?php foreach (Yii::$app->params['languages'] as $lang): ?>
 							<li class="js-language-option" data-lang_id="<?= $lang->col_id ?>"><?= $lang->col_title_ru ?></li>
 						<?php endforeach ?>
@@ -23,7 +32,6 @@
 					<span class="js-selected" country_id="">Страна</span>
 					<?= Yii::$app->svg->get('arrow-bottom') ?>
 					<ul id="js-form-country" class="form-select js-form-select">
-						<li class="js-city-option" data-country_id="0">Все</li>
 					</ul> <!-- /.form-select -->
 				</div> <!-- /.input__field -->
 				
@@ -31,7 +39,6 @@
 					<span class="js-selected" city_id="">Город</span>
 					<?= Yii::$app->svg->get('arrow-bottom') ?>
 					<ul id="js-form-city" class="form-select js-form-select">
-						<li class="js-city-option" data-city_id="0">Все</li>
 					</ul> <!-- /.form-select -->
 				</div> <!-- /.input__field -->
 			</div>

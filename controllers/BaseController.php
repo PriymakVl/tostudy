@@ -4,6 +4,7 @@ namespace app\controllers;
 
 use Yii;
 use app\modules\language\models\Language;
+use app\models\Program;
 
 class BaseController extends \yii\web\Controller
 {
@@ -51,5 +52,7 @@ class BaseController extends \yii\web\Controller
 	protected function setParams()
 	{
 		Yii::$app->params['languages'] = language::find()->orderBy('col_id')->all();
+
+		Yii::$app->params['programs'] = Program::find()->where(['col_status' => Program::STATUS_ACTIVE])->orderBy(['col_rating' => SORT_DESC])->all();
 	}
 }

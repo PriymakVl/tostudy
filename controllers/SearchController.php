@@ -7,33 +7,34 @@ use app\modules\language\models\Language;
 use app\modules\country\models\Country;
 use app\modules\city\models\City;
 use app\modules\school\models\School;
+use app\models\Program;
 
 class SearchController extends \app\controllers\BaseController
 {
-    public function actionResult($lang_id, $country_id, $city_id, $school)
+    public function actionResult($prog_id, $lang_id, $country_id, $city_id, $school)
     {
-        Yii::$app->session->remove('prog_id');
-        $lang = Language::findOne(Yii::$app->session->get('lang_id'));
+        $program = Program::findOne($prog_id);
+        $lang = Language::findOne($lang_id);
         $schools = $this->getSchools($lang_id, $country_id, $city_id);
 
-        if ($schools && $school) $schools = $this->filterSchoolName($schools, $school);
-        else if ($school) $schools = School::find()->where(['like', 'col_title', $school])->all();
+        if ($school) $schools = $this->filterSchoolName($schools, $school);
 
-        return $this->render('result', compact('schools', 'lang'));
+        return $this->render('result', compact('schools', 'lang', 'program'));
     }
 
     //ajax serach home page
-	public function actionCountries($lang_id)
+	public function actionCountries($lang_id, $prog_id)
     {
-        Yii::$app->session->set('lang_id', $lang_id);
-    	$countries = Country::find()->select('col_id, col_title_ru')->where(['col_language_id' => $lang_id])->asArray()->all();
+        $countries = Country::find()->where(['col_language_id' => $lang_id])->all();
+    	$countries = $this->selectCountries($countries, $prog_id);
     	return $countries ? json_encode($countries) : '';
     }
 
     //ajax serach home page
-    public function actionCities($country_id)
+    public function actionCities($prog_id, $country_id)
     {
-    	$cities = City::find()->select('col_id, col_title_ru')->where(['col_country_id' => $country_id])->asArray()->all();
+    	$cities = City::find()->where(['col_country_id' => $country_id])->all();
+        $cities = $this->selectCities($cities, $prog_id);
     	return $cities ? json_encode($cities) : '';
     }
 
@@ -59,6 +60,28 @@ class SearchController extends \app\controllers\BaseController
             if (stripos($school->col_title, $search) !== false) $result[] = $school;
         }
         return $result;
+    }
+
+    private function selectCities($cities, $prog_id) {
+        
+        if (!$cities) return false;
+        $selected = [];
+        foreach ($cities as $city) {
+            $schools = $city->countSchoolsByProgram($prog_id);
+            if ($schools) $selected[] = ['id' => $city->col_id, 'name' => $city->name];
+        }
+        return $selected;
+    }
+
+    private function selectCountries($countries, $prog_id) {
+        
+        if (!$countries) return false;
+        $selected = [];
+        foreach ($countries as $country) {
+            $schools = $country->countSchoolsByProgram($prog_id);
+            if ($schools) $selected[] = ['id' => $country->col_id, 'name' => $country->name];
+        }
+        return $selected;
     }
 
 }

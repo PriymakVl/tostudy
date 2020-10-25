@@ -16,7 +16,7 @@
 			<?= Yii::$app->svg->getArrowTop() ?>
 		</h4>
 		<ul id="js-catalog">
-			<?php foreach ($programs as $program): ?>
+			<?php foreach (Yii::$app->params['programs']  as $program): ?>
 				<li>
 					<a href="/languages/<?= $program->col_alias ?>">
 						<?= $program->col_name ?>
