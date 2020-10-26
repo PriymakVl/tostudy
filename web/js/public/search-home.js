@@ -26,7 +26,6 @@ $(document).ready(function() {
 		$('#js-lang .js-selected').text(lang_name).attr('lang_id', lang_id);
 
 		if (!prog_id) alert('Не выбрана программа');
-		// else return location.href = '/search/countries?lang_id=' + lang_id + '&prog_id=' + prog_id;
 		else $.get('/search/countries', {lang_id: lang_id, prog_id: prog_id}, (data) => {template_countries(data);});
 
 		$('.js-form-select').hide();
@@ -73,8 +72,11 @@ $(document).ready(function() {
 		let country_id = $('#js-country .js-selected').attr('country_id');
 		let city_id = $('#js-city .js-selected').attr('city_id');
 		let school = $('input[name="school"]').val();
-		location.href = '/search/result?prog_id=' + prog_id + '&lang_id=' + lang_id + '&country_id=' + country_id
+
+		if (!prog_id) return alert('Не выбрана программа');
+		else location.href = '/search/result?prog_id=' + prog_id + '&lang_id=' + lang_id + '&country_id=' + country_id
 		 + '&city_id=' + city_id + '&school=' +school;
+
 		return false;
 	});
 
