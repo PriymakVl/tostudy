@@ -22,7 +22,7 @@ use app\modules\school\models\School;
 			<?= $program->col_text_top ?>
 		</div>
 
-		<h1>Каталог школ</h1>
+		<h1>Каталог</h1>
 		<div class="languages">
 			<? foreach($languages as $language): ?>
 				<?php $count_schools = $language->countSchoolsByProgram($program->col_id); ?>
