@@ -33,11 +33,11 @@ class SchoolController extends \app\controllers\BaseController
     	$courses = $school->getCourses($program->id);
         $accommodation = $school->accommodation;
 
-        $lang = Language::findOne(Yii::$app->session->get('lang_id'));
-        if (!$lang) $lang = Language::findOne($school->city->country->col_language_id);
+        $lang = Language::findOne($school->city->country->col_language_id);
+        //если попали на страницу по  ссылке не выбирая язык
+        Yii::$app->session->set('lang_id', $lang->col_id);
 
         $order = new Order();
-
         $this->registerMetaTags($school);
 
         return $this->render('view', compact('program', 'school', 'courses', 'accommodation', 'lang', 'order'));
