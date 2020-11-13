@@ -18,7 +18,6 @@ class SchoolController extends \app\controllers\BaseController
     	$city = $this->getCity($lang->col_id, $city_alias);
         $program = Program::findOne(['col_alias' => $prog_alias]);
         $schools = $city->sortSchoolsByProgram($program->id);
-
         Yii::$app->session->set('city_id', $city->col_id);
         $this->registerMetaTags($city);
 
@@ -29,10 +28,14 @@ class SchoolController extends \app\controllers\BaseController
     {
         Url::remember();
     	$school = School::findOne(['col_alias' => $alias]);
+
         $program = Program::findOne(['col_alias' => $prog_alias]);
     	$courses = $school->getCourses($program->id);
         $accommodation = $school->accommodation;
+
         $lang = Language::findOne(Yii::$app->session->get('lang_id'));
+        if (!$lang) $lang = Language::findOne($school->city->country->col_language_id);
+
         $order = new Order();
 
         $this->registerMetaTags($school);
