@@ -2326,7 +2326,7 @@ input::placeholder {
 
 .tab1 p > img {
 	margin-top: 16px;
-	width: 100%!important;
+	/*width: 100%!important;*/
 	height: auto!important;
 	max-width: 685px;
 }
