@@ -200,6 +200,10 @@ a {
 	font-family: 'Montserrat-Bold';
 }
 
+.page-title-news {
+	margin-top: 10px;
+}
+
 .hidden {
 	display: none;
 }
@@ -336,6 +340,7 @@ input::placeholder {
 .btn-news-subscribe {
 	width: auto;
 	padding: 0 10px;
+	margin-bottom: 15px;
 }
 
 .checkbox {

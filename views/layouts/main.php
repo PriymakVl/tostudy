@@ -39,8 +39,12 @@ use app\widgets\modal\ModalAlert;
 
 </div> <!-- /.wrapper -->
 
-<?php $this->endBody() ?>
+<!-- scripts -->
 <script src="//code.jivosite.com/widget/3gTQRLtjez" async></script>
+<!-- social icons service usocial -->
+<script async src="https://usocial.pro/usocial/usocial.js?v=6.1.4" data-script="usocial" charset="utf-8"></script>
+
+<?php $this->endBody() ?>
 </body>
 </html>
 <?php $this->endPage() ?>

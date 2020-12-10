@@ -1,6 +1,6 @@
 <?php
 /* @var $this yii\web\View */
-
+use app\widgets\Shared;
 $this->registerCssFile('https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.0.0/animate.min.css');
 
 ?>
@@ -20,7 +20,10 @@ $this->registerCssFile('https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.0.0
 			<button class="animate__animated animate__bounce js-open-modal btn btn-news-subscribe" data-modal-id="#js-modal-subscribe">Подписывайтесь и будьте в курсе последних новостей в мире образования за рубежом и скидок на обучение за границей!</button>
 		</div>
 
-		<h1 class="page-title"><?= $article->col_title_ru ?></h1>
+		<!-- social icons -->
+		<?= Shared::widget() ?>
+
+		<h1 class="page-title page-title-news"><?= $article->col_title_ru ?></h1>
 		<div class="content">
 			<div class="article-img">
 				<img src="/img/articles/<?= $article->col_img ?>" alt="<?= $article->col_title_ru ?>" title="<?= $article->col_title_ru ?>">
@@ -29,6 +32,10 @@ $this->registerCssFile('https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.0.0
 				<?= $article->col_text_ru ?>
 			</div>
 		</div>
+
+		<!-- social icons -->
+		<?= Shared::widget() ?>
+
 	</div> <!-- /.wrap -->
 </div> <!-- /#other-pages -->
 
