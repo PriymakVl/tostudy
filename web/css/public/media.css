@@ -84,6 +84,13 @@
 	.country-item:nth-child(3n) {
 		margin-right: 0;
 	}
+
+	/*news*/
+	.btn-news-subscribe {
+		height: auto;
+		line-height: normal;
+		padding: 10px 15px;
+	}
 	
 } /*1170*/
 
