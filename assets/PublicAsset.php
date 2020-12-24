@@ -32,6 +32,8 @@ class PublicAsset extends AssetBundle
     'js/public/nprogress.js',
     'js/public/bootstrap.js',
     'js/public/main.js',
+    'js/public/pluso_social_icons.js',
+    // 'js/share42/share42.js'
     // <script src="//code.jivosite.com/widget/3gTQRLtjez" async></script>
     ];
     public $depends = [

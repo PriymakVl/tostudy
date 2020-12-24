@@ -3395,3 +3395,17 @@ input::placeholder {
   0%   { transform: rotate(0deg); }
   100% { transform: rotate(360deg); }
 }
+
+/*Social icons service Pluso*/
+.pluso { margin-top: 25px }
+
+.pluso::before {
+	content: 'Поделиться';
+	font-size: 14px;
+	color: #000;
+	position: absolute;
+	top: -15px;
+	left: 5%;
+	text-transform: uppercase;
+	font-weight: bold;
+}
