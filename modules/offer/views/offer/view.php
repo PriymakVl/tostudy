@@ -1,5 +1,6 @@
 <?php
 /* @var $this yii\web\View */
+use app\widgets\Shared;
 ?>
 
 <div id="breadcrumbs">
@@ -12,6 +13,10 @@
 
 <div id="other-pages">
 	<div class="wrap">
+
+		<!-- social icons -->
+		<?= Shared::widget() ?>
+
 		<h1 class="page-title"><?= $offer->col_title_ru ?></h1>
 		<div class="content">
 			<div class="article-img">
@@ -21,5 +26,9 @@
 				<?= $offer->col_text_ru ?>
 			</div>
 		</div>
+
+		<!-- social icons -->
+		<?= Shared::widget() ?>
+
 	</div> <!-- /.wrap -->
 </div> <!-- /#other-pages -->
