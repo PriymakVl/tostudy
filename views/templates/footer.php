@@ -67,13 +67,19 @@
 				<a href="#" class="btn btn2 js-open-modal" data-modal-id="#js-modal-question">Задать вопрос</a>
 
 				<div class="social-network">
-					<a href="viber://add?number=<?=str_replace('+', '', Yii::$app->setting->get('col_tel'))?>" target="_blank">
-						<?= Yii::$app->svg->get('phone-volume') ?>
+					<!-- viber -->
+				<!-- 	<a href="viber://add?number=34722544687" target="_blank">
+						<?//= Yii::$app->svg->get('phone-volume') ?>
+					</a> -->
+					<a href="viber://add?number=34722544687">
+						<img src="https://it-land.by/wp-content/uploads/2018/10/Viber-logo.png">
 					</a>
-					<a href="whatsapp://send/?phone=<?= Yii::$app->setting->get('col_tel') ?>" target="_blank">
+					<!-- whatsapp -->
+					<a href="https://wa.me/34722544687" target="_blank">
 						<?= Yii::$app->svg->get('phone') ?>
 					</a>
-					<a href="https://t.me/<?= Yii::$app->setting->get('col_telegram') ?>" target="_blank">
+					<!-- telegram -->
+					<a href="https://t.me/@TostudyPro<?= Yii::$app->setting->get('col_telegram') ?>" target="_blank">
 						<?= Yii::$app->svg->get('paper-plan') ?>
 					</a>
 				</div> <!-- /.social-network -->
