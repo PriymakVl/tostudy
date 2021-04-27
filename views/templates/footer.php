@@ -79,7 +79,7 @@
 						<?= Yii::$app->svg->get('phone') ?>
 					</a>
 					<!-- telegram -->
-					<a href="https://t.me/@TostudyPro<?= Yii::$app->setting->get('col_telegram') ?>" target="_blank">
+					<a href="https://t.me/TostudyPro" target="_blank">
 						<?= Yii::$app->svg->get('paper-plan') ?>
 					</a>
 				</div> <!-- /.social-network -->
