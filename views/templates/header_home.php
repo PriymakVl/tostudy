@@ -55,16 +55,16 @@
 	<div class="scroll-down js-get-section" data-section="#js-why-us"><span>Далее</span><i></i></div>
 
 	<div class="social-network2">
-		<a href="https://www.facebook.com/<?= Yii::$app->setting->get('col_facebook') ?>/" target="_blank">
+		<a href="<?= Yii::$app->setting->get('col_facebook') ?>/" target="_blank">
 			<?= Yii::$app->svg->get('facebook') ?>
 		</a>
-		<a href="https://www.instagram.com/<?= Yii::$app->setting->get('col_instagram') ?>/" target="_blank">
+		<a href="<?= Yii::$app->setting->get('col_instagram') ?>/" target="_blank">
 			<?= Yii::$app->svg->get('instagram') ?>
 		</a>
-		<a href="https://vk.com/<?= Yii::$app->setting->get('col_vk') ?>/" target="_blank"> 
+		<a href="<?= Yii::$app->setting->get('col_vk') ?>/" target="_blank"> 
 			<?= Yii::$app->svg->get('in-contact') ?>
 		</a>
-		<a href="https://ok.com/<?= Yii::$app->setting->get('col_ok') ?>/" target="_blank"> 
+		<a href="<?= Yii::$app->setting->get('col_ok') ?>/" target="_blank"> 
 			<?= Yii::$app->svg->get('classmates') ?>
 		</a>
 	</div> <!-- /.social-network -->

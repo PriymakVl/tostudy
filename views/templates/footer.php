@@ -33,25 +33,25 @@
 					<li><a href="/about" class="link">О нас</a></li>
 					<li><a href="/reviews" class="link">Отзывы</a></li>
 					<li>
-						<a href="https://www.facebook.com/<?= Yii::$app->setting->get('col_facebook') ?>/" target="_blank" class="link link2">
+						<a href="<?= Yii::$app->setting->get('col_facebook') ?>/" target="_blank" class="link link2">
 							Facebook 
 							<?= Yii::$app->svg->get('facebook') ?>
 						</a>
 					</li>
 					<li>
-						<a href="https://www.instagram.com/<?= Yii::$app->setting->get('col_instagram') ?>/" target="_blank" class="link link2">
+						<a href="<?= Yii::$app->setting->get('col_instagram') ?>/" target="_blank" class="link link2">
 							Instagram
 							<?= Yii::$app->svg->get('instagram') ?>
 						</a>
 					</li>
 					<li>
-						<a href="https://vk.com/<?= Yii::$app->setting->get('col_vk') ?>" target="_blank" class="link link2">
+						<a href="<?= Yii::$app->setting->get('col_vk') ?>" target="_blank" class="link link2">
 							ВКонтакте 
 							<?= Yii::$app->svg->get('in-contact') ?>
 						</a>
 					</li>
 					<li>
-						<a href="https://ok.com/<?= Yii::$app->setting->get('col_ok') ?>/" target="_blank" class="link link2">
+						<a href="<?= Yii::$app->setting->get('col_ok') ?>/" target="_blank" class="link link2">
 							Однокласники 
 							<?= Yii::$app->svg->get('classmates') ?>
 						</a>

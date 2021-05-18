@@ -20,16 +20,16 @@ use yii\widgets\ActiveForm;
 				<p>тел: <?= $contact->col_tel ?></p>
 				<p><?= $contact->col_email ?></p>
 				<div class="social-network">
-					<a href="https://www.facebook.com/<?= $contact->col_facebook ?>/" target="_blank">
+					<a href="<?= Yii::$app->setting->get('col_facebook') ?>/" target="_blank">
 						<?= Yii::$app->svg->get('facebook-contacts') ?>
 					</a>
-					<a href="https://www.instagram.com/<?= $contact->col_instagram ?>/" target="_blank">
+					<a href="<?= Yii::$app->setting->get('col_instagram') ?>/" target="_blank">
 						<?= Yii::$app->svg->get('instagram-contacts') ?>
 					</a>
-					<a href="https://vk.com/<?= $contact->col_vk ?>/" target="_blank">
+					<a href="<?= Yii::$app->setting->get('col_vk') ?>/" target="_blank">
 						<?= Yii::$app->svg->get('vk-contacts') ?>
 					</a>
-					<a href="https://ok.com/<?= $contact->col_ok ?>/" target="_blank">
+					<a href="<?= Yii::$app->setting->get('col_ok') ?>/" target="_blank">
 						<?= Yii::$app->svg->get('ok-contacts') ?>
 					</a>
 				</div> <!-- /.social-network -->
